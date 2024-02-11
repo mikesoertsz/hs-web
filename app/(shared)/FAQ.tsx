@@ -1,0 +1,41 @@
+import tw from "tailwind-styled-components";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { Desire } from "../../lib/types";
+import { TitleBlock } from "./Titles";
+
+export default function FAQ({ faq }: Desire) {
+  return (
+    <Wrapper id="faq" className="bg-slate-50 py-[5vh]">
+      <InnerWrap className="flex max-w-4xl">
+        <TitleBlock {...faq.header} />
+        <Accordion type="single" collapsible className="w-full">
+          {faq.questions.map((item, index) => (
+            <AccordionItem
+              key={index}
+              value={item.value}
+              className="px-4 mt-3 transition duration-200 ease-in-out bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md first:mt-0"
+            >
+              <AccordionTrigger>
+                <div className="text-sm text-left md:text-[1.2em] pl-2">
+                  {item.question}
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="flex px-4 pt-3 pb-6 text-md max-w-prose">
+                  {item.answer}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
