@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Nav from "./(shared)/Nav";
 import Footer from "./(shared)/Footer";
 import { footer } from "@/public/content/en";
 
-const inter = Inter({ subsets: ["latin"] });
+const body = Inter({ subsets: ["latin"], variable: "--font-body" });
+const title = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-title",
+});
 
 export const metadata: Metadata = {
   title: "investment.yachts | Guaranteed 8% yield: alternative asset fund.",
@@ -21,7 +25,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={`${body.className} ${title.variable} relative`}>
           <div className="fillscreen">
             <Nav />
             {children}

@@ -140,13 +140,13 @@ export type Desire = {
       value: string;
     }[];
   };
-  bonus: {
-    preheading: string;
-    heading: string;
-    subheading: string;
-    icon: string;
-    image: string;
-  };
+  // bonus: {
+  //   preheading: string;
+  //   heading: string;
+  //   subheading: string;
+  //   icon: string;
+  //   image: string;
+  // };
 };
 
 export type Action = {

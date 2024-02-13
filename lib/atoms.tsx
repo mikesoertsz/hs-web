@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 
 export const Wrapper = tw.section`mx-auto w-full py-[4vh] snap-always snap-center mx-auto px-6 md:px-0`;
-export const InnerWrap = tw.div`mx-auto max-w-5xl w-full flex items-center justify-center flex-col`;
+export const InnerWrap = tw.div`mx-auto max-w-6xl w-full flex items-center justify-center flex-col`;
 export const GreyBlock = tw.div`flex flex-col items-center justify-center w-full p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm`;
 export const SplitWrap = tw.div`mx-auto max-w-6xl px-6 md:px-0 w-full flex items-center justify-center gap-2`;
 

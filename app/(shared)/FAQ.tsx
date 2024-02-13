@@ -15,15 +15,15 @@ export default function FAQ({ faq }: Desire) {
     <Wrapper id="faq" className="bg-slate-50 py-[5vh]">
       <InnerWrap className="flex max-w-4xl">
         <TitleBlock {...faq.header} />
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full pt-12">
           {faq.questions.map((item, index) => (
             <AccordionItem
               key={index}
               value={item.value}
-              className="px-4 mt-3 transition duration-200 ease-in-out bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md first:mt-0"
+              className="px-4 mt-3 transition duration-200 ease-in-out bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md first:mt-0 "
             >
               <AccordionTrigger>
-                <div className="text-sm text-left md:text-[1.2em] pl-2">
+                <div className="text-left md:text-[1.2em] pl-2">
                   {item.question}
                 </div>
               </AccordionTrigger>

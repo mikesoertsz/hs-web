@@ -11,7 +11,7 @@ const TitleWrap = tw.div`flex flex-col items-center justify-center w-full`;
 export const PreHeading = tw.h4`text-sm text-gray-400 font-body text-center`;
 export const Heading = tw.h2`max-w-2/3 tracking-tight font-title text-5xl my-3 text-center`;
 export const SubHeading = tw.h3`text-3xl md:text-2xl tracking-tight font-body max-w-3xl font-light mt-2 text-center`;
-export const Body = tw.p`max-w-prose text-sm font-body leading-relaxed text-center mx-auto px-4 md:px-0`;
+export const Body = tw.p`max-w-prose text-md font-body font-light leading-relaxed text-center mx-auto px-4 md:px-0 py-4 text-gray-900`;
 
 export function TitleBlock({
   icon,
