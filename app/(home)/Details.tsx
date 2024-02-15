@@ -3,6 +3,11 @@ import { Separator } from "@/components/ui/separator";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 import React from "react";
 import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 type Props = {};
 
@@ -159,7 +164,7 @@ export function DetailsBlock() {
         {
           label: "Payment schedule",
           description: "",
-          value: "Quarterly/Annual",
+          value: "Quarterly",
           icon: "",
         },
         {
@@ -176,7 +181,7 @@ export function DetailsBlock() {
         {
           label: "Fund type",
           description: "",
-          value: "Closed-end",
+          value: "Closed-ended",
           icon: "",
         },
         {
@@ -188,7 +193,7 @@ export function DetailsBlock() {
         {
           label: "Offering Structure",
           description: "",
-          value: "SPV Shareholder",
+          value: "SPV",
           icon: "",
         },
         {
@@ -231,10 +236,10 @@ export function DetailsBlock() {
                 {item.details.map((detail, index) => (
                   <li
                     key={index}
-                    className="flex item-center justify-between text-sm w-full mt-1"
+                    className="flex item-center justify-between text-sm w-full mt-1 hover:bg-gray-300"
                   >
-                    <p className="text-xs">{detail.label}</p>
-                    <p className="text-xs font-normal text-green-700">
+                    <p className="text-sm">{detail.label}</p>
+                    <p className="text-sm font-normal text-green-700">
                       {detail.value}
                     </p>
                   </li>

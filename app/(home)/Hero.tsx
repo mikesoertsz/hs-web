@@ -89,6 +89,11 @@ const stats = [
     subtitle: "Guaranteed",
   },
   {
+    title: "Target Yield",
+    value: "9.5%",
+    subtitle: "Projected",
+  },
+  {
     title: "Fund Status",
     value: "Pre-Raise",
     subtitle: "Register early interest",
