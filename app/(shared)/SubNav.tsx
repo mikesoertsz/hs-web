@@ -77,16 +77,12 @@ const submenu = [
     link: "#opportunity",
   },
   {
-    title: "Risk",
-    link: "#risks",
-  },
-  {
     title: "Market",
     link: "#",
   },
   {
-    title: "Potential",
-    link: "#",
+    title: "Risk",
+    link: "#risks",
   },
   {
     title: "Docs",
