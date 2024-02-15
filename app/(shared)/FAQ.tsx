@@ -35,6 +35,18 @@ export default function FAQ({ faq }: Desire) {
             </AccordionItem>
           ))}
         </Accordion>
+        <p className="text-xs tect-gray-400 mt-9">
+          For a more comprehensive list of FAQs,{" "}
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-blue-700 tranistion duration-200 ease-in-out"
+          >
+            please download here
+          </a>
+          .
+        </p>
       </InnerWrap>
     </Wrapper>
   );

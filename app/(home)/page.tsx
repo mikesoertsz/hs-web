@@ -1,7 +1,7 @@
 import Image from "next/image";
 import FAQ from "../(shared)/FAQ";
 import { homepage } from "@/public/content/en";
-import Hero from "./Hero";
+import Hero, { HeroSplit } from "./Hero";
 import Disclaimer from "./Disclaimer";
 import Details, { DetailsBlock } from "./Details";
 import DetailsBar from "./Details";
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center fillscreen bg-slate-100">
       <SubNav />
-      <Hero />
+      <HeroSplit />
       <DetailsBar />
       <DetailsBlock />
       <Intro />

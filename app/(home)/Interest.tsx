@@ -94,8 +94,8 @@ export function IncomeDistribution({}: Props) {
             <h4 className="max-w-prose">
               The Fund primarily generates income through charter yachts,
               alongside real estate and a diversified portfolio of alternative,
-              liquid asset investments, aiming for regular income and capital
-              appreciation.
+              liquid asset investments, aiming for regular, guaranteed income
+              and capital appreciation.
             </h4>
             <ul className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 items-start h-[120px] px-12">
               {data.map((item, index) => (
@@ -134,6 +134,15 @@ export function IncomeDistribution({}: Props) {
             </div>
           </div>
         </div>
+        <p className="text-xs text-gray-400">
+          As of{" "}
+          {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString(
+            "en-GB",
+            { day: "2-digit", month: "2-digit", year: "numeric" }
+          )}
+          . Percentages are based on total investment activities and subject to
+          change.
+        </p>
       </InnerWrap>
     </Wrapper>
   );
@@ -144,7 +153,7 @@ const data = [
     value: 70,
     name: "Charter Yachts",
     description:
-      "We partner with world-renown chartering companies that operate year-round charter yachts for profit.",
+      "We've partnered with world-renown chartering companies that operate year-round charter yachts for profit.",
     icon: "", // Placeholder for icon path or component
     statlabel: "Percentage of Portfolio",
     statvalue: "70%",
@@ -154,7 +163,7 @@ const data = [
     value: 20,
     name: "Real Estate",
     description:
-      "A portion of the portfolio is allocated to real estate development projects in Portugal.",
+      "A portion of the portfolio is allocated to real estate development projects in Portugal for cashflow and gapital gains.",
     icon: "", // Placeholder for icon path or component
     statlabel: "Percentage of Portfolio",
     statvalue: "20%",
@@ -165,8 +174,8 @@ const data = [
     name: "Alternative Assets",
     description: (
       <span>
-        The fund leverages equity to acquire high-yield bond assets through
-        reputable, performant{" "}
+        The fund leverages asset equity to acquire high-yield, liquid bond
+        assets through reputable{" "}
         <a href="#disclaimer3">
           partner funds<sup>1</sup>
         </a>

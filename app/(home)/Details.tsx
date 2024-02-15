@@ -13,11 +13,13 @@ export default function DetailsBar({}: Props) {
               key={index}
               className="flex flex-col items-start justify-start w-full"
             >
-              <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-slate-600">
+              <p className="text-[9px] uppercase font-semibold tracking-[0.1em] text-slate-600">
                 {item.pretitle}
               </p>
-              <div className="mt-2 text-xl font-semibold">{item.title}</div>
-              <div className="pt-1 text-xs text-left">{item.description}</div>
+              <div className="mt-2 text-lg font-medium">{item.title}</div>
+              <div className="text-xs text-left text-gray-500">
+                {item.description}
+              </div>
             </li>
           ))}
         </ul>
@@ -28,14 +30,14 @@ export default function DetailsBar({}: Props) {
 
 const details = [
   {
-    pretitle: "risk",
+    pretitle: "risk class",
     title: "Low Risk",
     description: "Investment only into tangible, cashflowing assets.",
     icon: "",
     value: "",
   },
   {
-    pretitle: "Yield",
+    pretitle: "Fixed Yield",
     title: (
       <>
         8% Guaranteed
@@ -54,21 +56,7 @@ const details = [
     value: "",
   },
   {
-    pretitle: "ticket size",
-    title: "$100,000",
-    description: "Investment entry at $100k minimum.",
-    icon: "",
-    value: "",
-  },
-  {
-    pretitle: "term",
-    title: "6 years",
-    description: "Standard closed-fund structure with long term stability.",
-    icon: "",
-    value: "",
-  },
-  {
-    pretitle: "annualized YOC",
+    pretitle: "Performance Yield",
     title: "9.5% projected",
     description: (
       <>
@@ -84,6 +72,20 @@ const details = [
         performance bonus of 9.5%-13% at end of term.
       </>
     ),
+    icon: "",
+    value: "",
+  },
+  {
+    pretitle: "ticket size",
+    title: "$100,000",
+    description: "Investment entry at $100k minimum.",
+    icon: "",
+    value: "",
+  },
+  {
+    pretitle: "term",
+    title: "6 years",
+    description: "Standard closed-fund structure with long term stability.",
     icon: "",
     value: "",
   },

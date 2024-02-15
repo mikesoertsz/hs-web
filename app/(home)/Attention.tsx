@@ -19,7 +19,7 @@ export default function Intro({}: Props) {
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const handleCategoryClick = (category: string) => {
+  const handleCategoryClick = (category: string | null) => {
     setSelectedCategory(category);
   };
 
@@ -30,7 +30,7 @@ export default function Intro({}: Props) {
     : painpoints;
 
   const listItemVariants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: 5 },
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
@@ -39,8 +39,8 @@ export default function Intro({}: Props) {
   };
 
   return (
-    <Wrapper className="py-8 bg-white">
-      <InnerWrap>
+    <Wrapper className="py-8 bg-white px-0" id="risks">
+      <InnerWrap className="px-0">
         <div className="flex flex-col items-center justify-center text-center">
           <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
             hassle-free yacht investment
@@ -57,37 +57,42 @@ export default function Intro({}: Props) {
           </h4>
         </div>
 
-        <ul className="flex items-center justify-center gap-3 mt-12">
-          {categories.map((category, index) => (
-            <li key={index} className="w-full">
+        <div className="w-full mt-12 flex justify-center items-center pt-3">
+          <ul className="flex items-center justify-center gap-3 max-w-screen overflow-x-scroll">
+            <h4 className="text-xs text-gray-400 font-medium">Risks:</h4>
+            {categories.map((category, index) => (
+              <li key={index} className="w-full">
+                <Button
+                  variant={
+                    selectedCategory === category ? "secondary" : "outline"
+                  }
+                  className={`text-xs ${
+                    selectedCategory === category
+                      ? "bg-blue-500 text-white"
+                      : ""
+                  }`}
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  {category}
+                </Button>
+              </li>
+            ))}
+            <li className="w-full">
               <Button
-                variant={
-                  selectedCategory === category ? "secondary" : "outline"
-                }
+                variant={selectedCategory === null ? "secondary" : "outline"}
                 className={`text-xs ${
-                  selectedCategory === category ? "bg-blue-500 text-white" : ""
+                  selectedCategory === null ? "bg-blue-500 text-white" : ""
                 }`}
-                onClick={() => handleCategoryClick(category)}
+                onClick={() => handleCategoryClick(null)}
               >
-                {category}
+                All Risks
               </Button>
             </li>
-          ))}
-          <li className="w-full">
-            <Button
-              variant={selectedCategory === null ? "secondary" : "outline"}
-              className={`text-xs ${
-                selectedCategory === null ? "bg-blue-500 text-white" : ""
-              }`}
-              onClick={() => handleCategoryClick(null)}
-            >
-              All Risks
-            </Button>
-          </li>
-        </ul>
+          </ul>
+        </div>
         <AnimatePresence>
           <motion.ul
-            className="grid grid-cols-4 md:grid-cols-4 gap-6 mt-8 gap-x-10"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 gap-x-10"
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -103,11 +108,13 @@ export default function Intro({}: Props) {
                 exit="hidden"
                 layout
               >
-                <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-slate-600">
-                  {item.category}
-                </p>
-                <h3 className="mt-1 text-lg font-medium">{item.title}</h3>
-                <p className="pt-0.5 text-xs text-left">{item.description}</p>
+                <div className="flex flex-col items-start justify-start w-full">
+                  <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-slate-600">
+                    {item.category}
+                  </p>
+                  <h3 className="mt-1 text-lg font-medium">{item.title}</h3>
+                  <p className="pt-0.5 text-xs text-left">{item.description}</p>
+                </div>
               </motion.li>
             ))}
           </motion.ul>

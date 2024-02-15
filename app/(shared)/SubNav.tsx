@@ -1,53 +1,99 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 type Props = {};
 
 export default function SubNav({}: Props) {
   return (
-    <nav className="flex w-full bg-zinc-50 mt-12 py-2 px-8 border-t border-slate-200">
-      <ul className="flex gap-2 items-center justify-center w-full">
-        <li>
-          <Button variant="outline" className="text-xs">
-            Details
+    <Drawer>
+      <nav className="sticky top-12 inset-x-0 bottom-0 flex justify-between items-center py-2 px-4 bg-slate-100 w-full z-80">
+        <ul className="flex w-full justify-between md:justify-center md:gap-2">
+          {submenu.map((item, index) => (
+            <li key={index} className="hidden md:block">
+              <Button variant="outline">
+                <a href={item.link} className="">
+                  {item.title}
+                </a>
+              </Button>
+            </li>
+          ))}
+          <li className="md:hidden">
+            <Button variant="outline">
+              <a href="#" className="">
+                More
+              </a>
+            </Button>
+          </li>
+        </ul>
+        <DrawerTrigger asChild className="ml-2">
+          <Button variant="outline" className="shadow-sm">
+            Menu
           </Button>
-        </li>
-        <li>
-          <Button variant="outline" className="text-xs">
-            Opportunity
-          </Button>
-        </li>
-        <li>
-          <Button variant="outline" className="text-xs">
-            Risk
-          </Button>
-        </li>
-        <li>
-          <Button variant="outline" className="text-xs">
-            Overview
-          </Button>
-        </li>
-        <li>
-          <Button variant="outline" className="text-xs">
-            Market
-          </Button>
-        </li>
-        <li>
-          <Button variant="outline" className="text-xs">
-            Potential
-          </Button>
-        </li>
-        <li>
-          <Button variant="outline" className="text-xs">
-            Docs
-          </Button>
-        </li>
-        <li>
-          <Button variant="outline" className="text-xs">
-            Content
-          </Button>
-        </li>
-      </ul>
-    </nav>
+        </DrawerTrigger>
+      </nav>
+      <DrawerContent>
+        <div className="mx-auto w-full max-w-sm">
+          <DrawerHeader>
+            <DrawerTitle>Move Goal</DrawerTitle>
+            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4 pb-0">
+            <div className="mt-3 h-[120px]">test</div>
+          </div>
+          <DrawerFooter>
+            <Button>Submit</Button>
+            <DrawerClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
+      </DrawerContent>
+    </Drawer>
   );
 }
+
+const submenu = [
+  {
+    title: "Details",
+    link: "#",
+  },
+  {
+    title: "Opportunity",
+    link: "#",
+  },
+  {
+    title: "Risk",
+    link: "#risks",
+  },
+  {
+    title: "Overview",
+    link: "#",
+  },
+  {
+    title: "Market",
+    link: "#",
+  },
+  {
+    title: "Potential",
+    link: "#",
+  },
+  {
+    title: "Docs",
+    link: "#",
+  },
+  {
+    title: "Content",
+    link: "#",
+  },
+];

@@ -4,15 +4,19 @@ import { Wrapper, InnerWrap } from "@/lib/atoms";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import tw from "tailwind-styled-components";
 
 type Props = {};
 
+const Left = tw.div`flex flex-col items-center justify-center w-1/2 min-h-full bg-brand-p2 text-white`;
+const Right = tw.div`relative flex items-center justify-center w-1/2 min-h-full`;
+
 export default function Hero({}: Props) {
   return (
-    <Wrapper className="bg-brand-p2 bg-[url('/img/hero/hero2.jpg')] bg-cover bg-right h-[70vh]">
-      <InnerWrap className="flex items-center justify-center">
-        <div className="grid items-center justify-center w-full grid-cols-2">
-          <div className="flex flex-col items-start justify-center h-full">
+    <Wrapper className="bg-brand-p2 h-[70vh]">
+      <InnerWrap className="">
+        <Left>
+          <div className="flex flex-col items-center justify-center h-full w-2/3 mx-12">
             <h4 className="mb-3 text-sm tracking-wide text-white">
               Alternative Income Fund
             </h4>
@@ -20,7 +24,7 @@ export default function Hero({}: Props) {
               Earn 8% guaranteed yield from a fleet of charter yachts
             </h1>
             <p className="mt-4 text-2xl font-thin text-white ">
-              Earn from a grooming industry without the high entry costs and
+              Earn from a growing industry, without the high entry costs and
               risk.
             </p>
             <ul className="flex items-start justify-start w-full gap-6 mt-6">
@@ -63,7 +67,16 @@ export default function Hero({}: Props) {
               </p>
             </div>
           </div>
-        </div>
+        </Left>
+        <Right>
+          <Image
+            src="/img/hero/hero2.jpg"
+            alt="hero"
+            fill
+            style={{ objectFit: "cover" }}
+            className="absolute inset-0 w-full h-full flex z-90"
+          />
+        </Right>
       </InnerWrap>
     </Wrapper>
   );
@@ -81,3 +94,68 @@ const stats = [
     subtitle: "Register early interest",
   },
 ];
+
+export function HeroSplit({}: Props) {
+  return (
+    <Wrapper className="flex min-h-[75vh] z-20 mt-12">
+      <Left>
+        <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
+          <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
+            Alternative Income Fund
+          </h4>
+          <h1 className="text-6xl font-medium text-white drop-shadow-lg font-title leading-tight">
+            Earn 8% yield from a fleet of charter yachts.
+          </h1>
+          <p className="mt-4 text-2xl font-light text-brand-p0 flex w-3/4">
+            Earn from a growing industry, without the high entry costs and risk.
+          </p>
+          <ul className="flex items-start justify-start w-full gap-6 mt-6">
+            {stats.map((item, index) => (
+              <li
+                key={index}
+                className="flex flex-col items-start justify-start"
+              >
+                <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
+                  {item.title}
+                </p>
+                <h3 className="mt-2 text-2xl font-light text-white">
+                  {item.value}
+                </h3>
+                <p className="pt-1 text-xs text-left text-white">
+                  {item.subtitle}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col items-center justify-between gap-2 bg-gray-900 mt-8 p-4 bg-opacity-30 rounded-lg px-6">
+            <button className="px-12 py-3 transition duration-100 rounded-lg text-brand-p2 hover:bg-blue-700 bg-brand-p4 hover:text-white relative overflow-hidden">
+              <a href="#" className="z-10 relative">
+                Register Interest Now
+              </a>
+            </button>
+            <div className="w-full h-1 mb-1 bg-white">
+              <motion.div
+                className="h-full bg-green-500"
+                initial={{ width: 0 }}
+                animate={{ width: "15%" }}
+                transition={{ duration: 1 }}
+              />
+            </div>
+            <p className="mt-1 text-xs text-gray-400">
+              Accepting $100,000 - $1,000,000 investments
+            </p>
+          </div>
+        </div>
+      </Left>
+      <Right>
+        <Image
+          src="/img/hero/hero8.jpg"
+          alt="hero"
+          fill
+          style={{ objectFit: "cover" }}
+          className="absolute inset-0 w-full h-full flex z-90"
+        />
+      </Right>
+    </Wrapper>
+  );
+}

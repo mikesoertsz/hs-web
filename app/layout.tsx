@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${body.className} ${title.variable} relative`}>
+        <body
+          className={`${body.className} ${title.variable} relative scroll-smooth`}
+        >
           <div className="fillscreen">
             <Nav />
             {children}

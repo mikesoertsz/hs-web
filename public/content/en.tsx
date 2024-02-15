@@ -134,36 +134,63 @@ export const homepage = {
           question: "What are the benefits of investing a charter yacht fleet?",
           answer:
             "Investing in guaranteed charter yacht revenues provides a stable and predictable income stream, as the charter company guarantees a fixed revenue regardless of the yacht's actual usage. This can be particularly attractive in the luxury vacation market where demand can fluctuate seasonally.",
-          value: "item-11",
+          value: "1",
         },
         {
           question: "How do you guarantee annual yield?",
           answer:
-            "The guaranteed revenue model for yacht charters involves a contract where the charter company agrees to pay the fund (as yacht fleet owner) a predetermined amount of money on a regular basis based on the revenue generated from the vessels through chartering. This amount is paid even if the yacht is not chartered out through the agreement with the charter company, ensuring the owner earns consistent revenue. In practice, the yachts generate well over an 8% yield, but we guarantee 8% and offset performance revenue to the end of the term.",
-          value: "item-12",
+            "The guaranteed revenue model for yacht charters involves a contract where our charter company partner(s) agree to pay the fund (as yacht fleet owner) a predetermined amount of money on a regular basis based on the revenue generated from the vessels through chartering. This amount is paid even if the yacht is not chartered out through the agreement with the charter company, ensuring the owner earns consistent revenue. In practice, the yachts generate well over an 8% yield, but we guarantee 8% and offset performance revenue to the end of the term.",
+          value: "2",
+        },
+        {
+          question: "Can I access a yacht for personal usage?",
+          answer:
+            "No, in this investment model, yachts are exclusively utilized as business assets to maximize profit generation and are operated year-round by the charter company. This is different from other yacht investment models where the owner can use the yacht for personal purposes, often called 'Fractional Owernship'.",
+          value: "7",
+        },
+        {
+          question: "What are the fees charged by the fund?",
+          answer:
+            "The fund charges a typical 2/20 structure where the fund manager charges a 2% annual management fee on the value of capital manageed by the fund, and a 20% performance fee based on EBITDA, only AFTER guaranteed dividends have been paid to you. However, the fund has a unique structure where the fund manager's performance fee is only charged on the performance bonus, not on the guaranteed 8% yield. This means the fund manager only earns a performance fee if the fund outperforms the guaranteed 8% yield. This is a unique structure in the industry and aligns the fund manager's interests with the investors. The fund also has a 0% entry fee and 0% exit fee.",
+          value: "3",
         },
         {
           question: "What kind of return on investment can I expect?",
           answer:
-            "At minimum, you will receive an annualized yeild guaranteed at 8%, paid either quarterly or annually. The fund also projects a performance bonus of 9.5%-13% at the end of the term. This is based on the business plan projections of the yacht fleet, historical performance and the charter company's track record, and projections for the charter market over the next 6 years. The fund's projected annualized yield is minimum 9.5%.",
-          value: "item-13",
+            "At minimum, you will receive an annualized yield guaranteed at 8%, paid either quarterly or annually depending on your preference. The fund also projects a performance bonus of 9.5%-13% at the end of the 6-year term. This is based on the business plan projections of the yacht fleet, historical performance and the charter company's track record, and projections for the charter market over the next 6 years. The fund's projected annualized yield is minimum 9.5%.",
+          value: "10",
         },
         {
           question: "Are there any additional fees I should be aware of?",
           answer: "There are zero additional fees.",
-          value: "item-1",
+          value: "4",
         },
         {
           question: "Is there a minimum investment period?",
           answer:
             "Yes. This fund has a fixed, closed-end structure with a 6-year term. The fund is designed to provide a stable, long-term investment opportunity with a focus on income generation and capital preservation. Your principle will be repaid in full at the end of the 6-year term, as well as a performance bonus of 9.5%-13% based on the cashflow activity of the fund during the term.",
-          value: "item-2",
+          value: "5",
         },
         {
-          question: "Can I use the yacht for personal purposes?",
+          question: "Is there an option to exit early?",
           answer:
-            "No, in this investment model, yachts are exclusively utilized as business assets to maximize profit generation and are operated year-round by the charter company. This is different from other yacht investment models where the owner can use the yacht for personal purposes, often called 'Fractional Owernship'.",
-          value: "item-3",
+            "No. This fund does not allow early redemption and is a fixed 6-year term, or the remaining tenure until December 31st, 2029.",
+          value: "6",
+        },
+
+        {
+          question:
+            "Can I purchase tickets in the fund in order currencies other than USD?",
+          answer:
+            "Yes. Other currencies such as, but not limited to GBP, EUR, AED, CHF, QAR, SAR, and others are accepted. The fund will convert the currency to USD at the time of investment and convert back to the original currency at the time of redemption.",
+          value: "8",
+        },
+        {
+          question:
+            "At the maturity date, will the fund return the principal and the performance bonus?",
+          answer:
+            "Yes. At the end of the 6-year term, the fund will return the principal and the performance bonus to the investor. The performance bonus is projected to be 9.5%-13% based on the cashflow and activge management activities of the fund during the term.",
+          value: "9",
         },
       ],
     },
