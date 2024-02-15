@@ -1,7 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CTAButtonsBasic, InnerWrap, Wrapper } from "@/lib/atoms";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
 import React from "react";
+import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
 
 type Props = {};
 

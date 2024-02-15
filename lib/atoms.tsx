@@ -12,21 +12,3 @@ export const PreHeading = tw.h4`text-sm font-light tracking-[0.3em] text-gray-40
 export const Heading = tw.h2`max-w-2/3 font-bold tracking-tight font-title text-5xl`;
 export const SubHeading = tw.h3`text-3xl md:text-3xl tracking-tight font-body max-w-3xl`;
 export const Body = tw.p`max-w-prose text-sm font-body leading-relaxed text-center mx-auto`;
-
-export function CTAButtonsBasic() {
-  return (
-    <>
-      <div className="flex items-center justify-center gap-2 p-12">
-        <a
-          href="#cta"
-          className="mt-12 border border-slate-300 rounded-lg py-3 px-6 text-sm font-medium transition duration-200 ease-in-out hover:bg-black flex"
-        >
-          Download Prospectus
-        </a>
-        <button className="mt-12 border border-slate-300 rounded-lg py-3 px-6 text-sm transition duration-200 ease-in-out">
-          <a href="#cta">Watch video (1min)</a>
-        </button>
-      </div>
-    </>
-  );
-}
