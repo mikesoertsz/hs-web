@@ -97,7 +97,7 @@ const stats = [
 
 export function HeroSplit({}: Props) {
   return (
-    <Wrapper className="flex min-h-[75vh] z-20 mt-12">
+    <Wrapper className="flex min-h-[75vh] z-20">
       <Left>
         <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
           <h4 className="mb-3 text-sm tracking-wide text-brand-g1">

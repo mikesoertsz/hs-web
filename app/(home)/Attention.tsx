@@ -12,7 +12,7 @@ type Painpoint = {
   description: string;
 };
 
-export default function Intro({}: Props) {
+export default function RiskFactors({}: Props) {
   const categories = Array.from(
     new Set(painpoints.map((item) => item.category.replace(" Risk", "")))
   );

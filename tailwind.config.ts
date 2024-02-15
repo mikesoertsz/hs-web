@@ -27,7 +27,7 @@ const config = {
           p0: "#7096D1",
           p1: "#334EAC",
           p2: "#081F5C",
-          p3: "#DOE3FF",
+          p3: "#ABF7E4",
           p4: "#EDF1F6",
           s0: "#F7F2EB",
           s1: "#FFF9F0",

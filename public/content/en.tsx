@@ -118,6 +118,48 @@ export const homepage = {
         "We prioritize your privacy and make best efforts to be GDPR compliant. Our site does not share your data with any other company or third party. We are committed to protecting your personal information and use only necessary cookies to enhance your experience.",
       ],
     },
+    behindtheinvestment: {
+      feestructure: {
+        title: "Fee Structure",
+        description:
+          "The fund charges a typical 2/20 structure where the fund manager charges a 2% annual management fee on the value of capital manageed by the fund, and a 20% performance fee based on EBITDA, only AFTER guaranteed dividends have been paid to you. However, the fund has a unique structure where the fund manager's performance fee is only charged on the performance bonus, not on the guaranteed 8% yield. This means the fund manager only earns a performance fee if the fund outperforms the guaranteed 8% yield. This is a unique structure in the industry and aligns the fund manager's interests with the investors. The fund also has a 0% entry fee and 0% exit fee.",
+        feeschedule: [
+          {
+            title: "Entry Fee",
+            description: "There is no entry fee charged in this fund.",
+            percentage: 0,
+            width: 0,
+          },
+          {
+            title: "Preferred Return",
+            description:
+              "The fund guarantees a preferred return (hurdle rate) at 8% guaranteed yield, paid out quarterly or annually, BEFORE any performance bonus is paid to the fund.",
+            percentage: 8,
+            width: 0,
+          },
+          {
+            title: "Catch-up Fee",
+            description:
+              "2% annual management fee on the value of capital managed by the fund, taken only AFTER the guaranteed Performance Return has been paid to investors.",
+            percentage: 2,
+            width: 0,
+          },
+          {
+            title: "Carried Interest",
+            description:
+              "The fund carries a standard 80/20 split & earns a 20% on EBITDA, AFTER the guaranteed 8% yield and operating expenses of the portfolio.",
+            percentage: 80,
+            width: 0,
+          },
+          {
+            title: "Exit Fee",
+            description: "There is no exit fee charged in this fund.",
+            percentage: 0,
+            width: 0,
+          },
+        ],
+      },
+    },
   },
   desire: {
     faq: {
@@ -145,7 +187,7 @@ export const homepage = {
         {
           question: "Can I access a yacht for personal usage?",
           answer:
-            "No, in this investment model, yachts are exclusively utilized as business assets to maximize profit generation and are operated year-round by the charter company. This is different from other yacht investment models where the owner can use the yacht for personal purposes, often called 'Fractional Owernship'.",
+            "No, in this investment model, yachts are exclusively utilized as business assets to maximize profit generation and are operated year-round by the charter company. This is different from other yacht investment models where the owner can use the yacht for personal purposes, often called 'Fractional Owernship'. This model is designed to maximize the revenue potential of the yacht and provide a stable income stream to the investor without the downside of 'sharing' your fractional yacht in a time-share. This also negates the negative impact of charter usage on the yacht's condition and value, which can be a problem if it's 'your' yacht.",
           value: "7",
         },
         {
@@ -191,6 +233,31 @@ export const homepage = {
           answer:
             "Yes. At the end of the 6-year term, the fund will return the principal and the performance bonus to the investor. The performance bonus is projected to be 9.5%-13% based on the cashflow and activge management activities of the fund during the term.",
           value: "9",
+        },
+        {
+          question: "What is investment.yachts fund?",
+          answer: "",
+          value: "11",
+        },
+        {
+          question: "What is the minimum investment amount?",
+          answer: "",
+          value: "12",
+        },
+        {
+          question: "What is the minimum investment amount?",
+          answer: "",
+          value: "13",
+        },
+        {
+          question: "What is the minimum investment amount?",
+          answer: "",
+          value: "14",
+        },
+        {
+          question: "What is the minimum investment amount?",
+          answer: "",
+          value: "15",
         },
       ],
     },

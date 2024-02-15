@@ -1,10 +1,24 @@
 "use client";
-import React from "react";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
-import { PieChart } from "react-minimal-pie-chart";
-import { SimplyDonut, SimplyLegend } from "react-simply-donut";
-import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useState } from "react";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { homepage } from "@/public/content/en";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { RiQuestionLine } from "react-icons/ri";
+import { SimplyDonut, SimplyLegend } from "react-simply-donut";
+import { IoIosCheckmark } from "react-icons/io";
+import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
+import {
+  HiOutlineArrowLeftCircle,
+  HiOutlineArrowRightCircle,
+} from "react-icons/hi2";
 
 type Props = {};
 
@@ -81,8 +95,8 @@ const overview = [
 
 export function IncomeDistribution({}: Props) {
   return (
-    <Wrapper className="py-[5vh] bg-white">
-      <InnerWrap className="py-12 border rounded-xl border-slate-200">
+    <Wrapper className="py-[5vh]" id="opportunity">
+      <InnerWrap className="py-12 border rounded-xl border-slate-300 bg-white">
         <div className="flex flex-col items-center justify-center w-full gap-12">
           <div className="flex flex-col items-center justify-center text-center">
             <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
@@ -92,10 +106,10 @@ export function IncomeDistribution({}: Props) {
               Income from tangible assets
             </h1>
             <h4 className="max-w-prose">
-              The Fund primarily generates income through charter yachts,
-              alongside real estate and a diversified portfolio of alternative,
-              liquid asset investments, aiming for regular, guaranteed income
-              and capital appreciation.
+              The Fund primarily generates income through charter yachts
+              purchased with your capital. Real estate and a alternative assets
+              add diversification and depreciation hedges into the portfolio,
+              guaranteeing income and capital appreciation.
             </h4>
             <ul className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 items-start h-[120px] px-12">
               {data.map((item, index) => (
@@ -114,7 +128,26 @@ export function IncomeDistribution({}: Props) {
                       {item.statvalue}
                     </h3>
                     <Separator orientation="vertical" />
-                    <p className="text-xs text-gray-400">{item.statlabel}</p>
+                    <div className="flex flex-col items-start justify-start text-left">
+                      <p className="text-xs text-gray-600 pb-1">
+                        <span className="font-semibold pr-1">Why:</span>
+                        {item.statlabel}
+                      </p>
+                      <ul>
+                        {item.reasons.map((reason, index) => (
+                          <li
+                            key={index}
+                            className="text-xs text-gray-500 flex items-start justify-start gap-1"
+                          >
+                            <IoIosCheckmark
+                              size={15}
+                              className="text-green-600"
+                            />
+                            {reason}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </li>
               ))}
@@ -151,13 +184,18 @@ export function IncomeDistribution({}: Props) {
 const data = [
   {
     value: 70,
-    name: "Charter Yachts",
+    name: "Luxury Charter Yachts",
     description:
       "We've partnered with world-renown chartering companies that operate year-round charter yachts for profit.",
     icon: "", // Placeholder for icon path or component
-    statlabel: "Percentage of Portfolio",
+    statlabel: "Income Generation",
     statvalue: "70%",
     strategy: "cashflow",
+    reasons: [
+      "Growing sector",
+      "Stable, predictable income",
+      "Market demand inelascicity",
+    ],
   },
   {
     value: 20,
@@ -165,9 +203,14 @@ const data = [
     description:
       "A portion of the portfolio is allocated to real estate development projects in Portugal for cashflow and gapital gains.",
     icon: "", // Placeholder for icon path or component
-    statlabel: "Percentage of Portfolio",
+    statlabel: "Captal Appreciation",
     statvalue: "20%",
     strategy: "capital gains",
+    reasons: [
+      "Yacht depreciation offset",
+      "Predictable yield",
+      "Tried and true",
+    ],
   },
   {
     value: 10,
@@ -183,64 +226,70 @@ const data = [
       </span>
     ),
     icon: "", // Placeholder for icon path or component
-    statlabel: "Percentage of Portfolio",
+    statlabel: "Diversification",
     statvalue: "10%",
     strategy: "liquid alternative bonds",
+    reasons: ["Liquid", "High yield", "Asset diversification"],
   },
 ];
 
 export function BehindTheInvestment({}: Props) {
+  const [hoveredSection, setHoveredSection] = useState<number | null>(null);
+  const totalPercentage =
+    homepage.interest.behindtheinvestment.feestructure.feeschedule.reduce(
+      (total, fee) => total + fee.percentage,
+      0
+    );
+
   return (
-    <Wrapper className="py-[5vh] bg-white">
-      <InnerWrap className="border border-slate-200 p-8 rounded-xl">
-        <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2">
-          <div className="flex flex-col items-start justify-start">
-            <h2 className="text-2xl font-medium">Behind the investment</h2>
-            <h3></h3>
-            <p>
-              Investment.yachts has formed partnerships with globally
-              recognized, leading brands in the yachting industry. Through these
-              agreements, access both new yachts and existing yachts in our
-              charter partner fleets, we provide our investors a guaranteed net
-              yield of 8% of principle invested.
-            </p>
-            <p>
-              Investment.yachts has formed partnerships with globally
-              recognized, leading brands in the yachting industry. Through these
-              agreements, access both new yachts and existing yachts in our
-              charter partner fleets, we provide our investors a guaranteed net
-              yield of 8% of principle invested.
-            </p>
-          </div>
-          <div className="flex items-center justify-center">
-            <ul className="flex gap-4">
-              {leadership.map((item, index) => (
-                <li
-                  key={index}
-                  className="flex flex-col items-start justify-start overflow-hidden border rounded-xl border-slate-200"
-                >
-                  <div className="relative flex w-full aspect-square">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="absolute inset-0"
-                      style={{ objectFit: "cover" }}
-                    />
-                  </div>
-                  <div className="flex flex-col items-start justify-between w-full p-4">
-                    <h3 className="text-xl font-semibold tracking-tight text-black">
-                      {item.name}
-                    </h3>
-                    <p className="pt-1 text-xs text-left text-black">
-                      {item.details}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <Wrapper className="pb-[5vh] " id="structure">
+      <InnerWrap className="border rounded-xl border-slate-300 px-12 relative bg-white">
+        <ul className="flex items-center justify-center absolute right-3 top-3 text-xs font-medium gap-3 bg-slate-100 rounded-md border-slate-300 border">
+          <li className="bg-slate-200 p-2">
+            <HiOutlineArrowLeftCircle size={18} />
+          </li>
+          <li className="">Structure</li>
+          <li className="">Fees</li>
+          <li className="">Leadership</li>
+          <li className="">Advisors</li>
+          <li className="">Partners</li>
+          <li className="bg-slate-200 p-2">
+            <HiOutlineArrowRightCircle size={18} />
+          </li>
+        </ul>
+        <div className="flex mt-16">structure</div>
+        <div className="flex justify-between items-center p-4 w-full">
+          {homepage.interest.behindtheinvestment.feestructure.feeschedule.map(
+            (fee, index) => (
+              <motion.div
+                key={index}
+                className="text-center p-2 flex-col items-center justify-center gap-1"
+                whileHover={{ scale: 1.1 }}
+                tabIndex={0} // for accessibility
+              >
+                <span className="text-sm font-bold">
+                  {fee.percentage}
+                  {fee.percentage > 0 ? "%" : ""}
+                </span>
+                <div className="flex items-center justify-center">
+                  <h2 className="text-xs font-medium">{fee.title}</h2>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <RiQuestionLine className="pl-1 w-4 h-4" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-[250px]">{fee.description}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+              </motion.div>
+            )
+          )}
         </div>
+
+        <FundLeadership />
       </InnerWrap>
     </Wrapper>
   );
@@ -248,52 +297,51 @@ export function BehindTheInvestment({}: Props) {
 
 export function FundLeadership({}: Props) {
   return (
-    <Wrapper className="py-[5vh] bg-white">
-      <InnerWrap className="border border-slate-200 p-8 rounded-xl">
-        <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2">
-          <div className="flex flex-col items-start justify-start">
-            <h1 className="text-2xl font-medium">Fund Leadership</h1>
-            <p>
-              Investment.yachts is led by Mike Soertsz, a seasoned entrepreneur
-              & sailor with a history of building deep tech in the finance and
-              banking sectors. Mike has assembled a team of experienced
-              professionals in the maritime, investment management, finance, and
-              technology sectors to develop this fund.
-            </p>
-          </div>
-          <div className="flex items-center justify-center">
-            <ul className="grid grid-cols-1 gap-4">
-              {leadership.map((item, index) => (
-                <li
-                  key={index}
-                  className="flex flex-col items-start justify-start overflow-hidden border rounded-xl border-slate-200 w-full"
-                >
-                  <div className="">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={300}
-                      height={300}
-                    />
-                  </div>
-                  <div className="flex flex-col items-start justify-between w-full p-4">
-                    <h3 className="text-lg font-medium tracking-tight text-black">
-                      {item.name}
-                    </h3>
-                    <p className="text-sm text-left text-gray-700">
-                      {item.details}
-                    </p>
-                    <p className="text-xs text-left text-gray-500 pt-1">
-                      {item.location}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <>
+      <Separator />
+      <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2 m-12">
+        <div className="flex flex-col items-start justify-start">
+          <h1 className="text-2xl font-medium">Fund Leadership</h1>
+          <p>
+            Investment.yachts is led by Mike Soertsz, a seasoned entrepreneur &
+            sailor with a history of building deep tech in the finance and
+            banking sectors. Mike has assembled a team of experienced
+            professionals in the maritime, investment management, finance, and
+            technology sectors to develop this fund.
+          </p>
         </div>
-      </InnerWrap>
-    </Wrapper>
+        <div className="flex items-center justify-end w-full">
+          <ul className="grid grid-cols-1 gap-4">
+            {leadership.map((item, index) => (
+              <li
+                key={index}
+                className="flex flex-col items-start justify-start overflow-hidden border rounded-xl border-slate-200 w-full"
+              >
+                <div className="">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={300}
+                    height={300}
+                  />
+                </div>
+                <div className="flex flex-col items-start justify-between w-full p-4">
+                  <h3 className="text-lg font-medium tracking-tight text-black">
+                    {item.name}
+                  </h3>
+                  <p className="text-sm text-left text-gray-700">
+                    {item.details}
+                  </p>
+                  <p className="text-xs text-left text-gray-500 pt-1">
+                    {item.location}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
   );
 }
 

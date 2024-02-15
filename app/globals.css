@@ -76,6 +76,10 @@
 }
 
 @layer utilities {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
   .slide-center {
     transform: translateX(
       calc(

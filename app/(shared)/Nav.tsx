@@ -9,7 +9,7 @@ type Props = {};
 
 export default function Nav({}: Props) {
   return (
-    <nav className="w-full flex justify-between items-center bg-white py-2 fixed top-0 left-0 right-0 h-12 overflow-hidden z-80">
+    <nav className="w-full flex justify-between items-center py-2 sticky top-0 left-0 right-0 h-12 overflow-hidden z-70 bg-white">
       <div className="flex items-center px-6">
         <h1>investment.yachts</h1>
         <div className="hidden md:flex gap-9 text-xs font-medium transition-colors hover:text-accent-foreground focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 ml-12">
