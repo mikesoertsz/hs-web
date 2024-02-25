@@ -413,13 +413,64 @@ export function RiskProfile({}: Props) {
 }
 
 export function Benefits({}: Props) {
+  const benefits = [
+    {
+      icon: "",
+      title: "Guaranteed Income",
+    },
+    {
+      icon: "",
+      title: "Low Risk",
+    },
+    {
+      icon: "",
+      title: "Real Assets",
+    },
+    {
+      icon: "",
+      title: "Quarterly Payouts",
+    },
+    {
+      icon: "",
+      title: "Tangible Investments",
+    },
+    {
+      icon: "",
+      title: "Diversified Portfolio",
+    },
+  ];
   return (
-    <>
-      <div>
-        <h1 className="text-4xl font-medium font-title tracking-tight my-3">
-          Why invest in a fleet?
-        </h1>
-      </div>
-    </>
+    <Wrapper className="bg-white py-[10vh]">
+      <InnerWrap>
+        <h1 className="text-5xl font-title">Why invest in a fleet?</h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full pt-8">
+          <ul className="flex flex-col items-center justify-center w-full">
+            {benefits.slice(0, 3).map((item, index) => (
+              <li
+                key={index}
+                className="flex items-start justify-start gap-4 w-full"
+              >
+                {item.icon}
+                <h3 className="text-xl font-medium">{item.title}</h3>
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center justify-center">
+            <Image src="/img/side.png" alt="hero" width={300} height={300} />
+          </div>
+          <ul className="flex flex-col items-center justify-center w-full">
+            {benefits.slice(3, 6).map((item, index) => (
+              <li
+                key={index}
+                className="flex items-start justify-start gap-4 w-full"
+              >
+                {item.icon}
+                <h3 className="text-xl font-medium">{item.title}</h3>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </InnerWrap>
+    </Wrapper>
   );
 }

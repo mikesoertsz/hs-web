@@ -59,7 +59,7 @@ export default function WhoFor({}: Props) {
                   control={form.control}
                   name="income"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
                       <div className="space-y-0.5">
                         <FormLabel className="">
                           Do you earn $200K+ yearly, or $300K+ with your spousal
@@ -73,6 +73,7 @@ export default function WhoFor({}: Props) {
                         <Switch
                           checked={field.value}
                           onCheckedChange={(checked) => field.onChange(checked)}
+                          className="ml-8"
                         />
                       </FormControl>
                     </FormItem>
@@ -82,7 +83,7 @@ export default function WhoFor({}: Props) {
                   control={form.control}
                   name="assets"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
                       <div className="space-y-0.5">
                         <FormLabel>
                           Do you have $1M+ in assets, excluding your primary
@@ -96,6 +97,7 @@ export default function WhoFor({}: Props) {
                         <Switch
                           checked={field.value}
                           onCheckedChange={(checked) => field.onChange(checked)}
+                          className="ml-8"
                         />
                       </FormControl>
                     </FormItem>
@@ -105,7 +107,7 @@ export default function WhoFor({}: Props) {
                   control={form.control}
                   name="entity"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
                       <div className="space-y-0.5">
                         <FormLabel>
                           Do you own an entity (i.e., family office) with $5M+
@@ -120,6 +122,7 @@ export default function WhoFor({}: Props) {
                         <Switch
                           checked={field.value}
                           onCheckedChange={(checked) => field.onChange(checked)}
+                          className="ml-8"
                         />
                       </FormControl>
                     </FormItem>
@@ -129,7 +132,7 @@ export default function WhoFor({}: Props) {
                   control={form.control}
                   name="license"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
                       <div className="space-y-0.5">
                         <FormLabel>
                           Do you hold a Series 7, 65, or 82 license currently in
@@ -163,6 +166,7 @@ export default function WhoFor({}: Props) {
                         <Switch
                           checked={field.value}
                           onCheckedChange={(checked) => field.onChange(checked)}
+                          className="ml-8"
                         />
                       </FormControl>
                     </FormItem>

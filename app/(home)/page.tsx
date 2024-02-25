@@ -4,7 +4,11 @@ import SubNav from "../(shared)/SubNav";
 import DetailsBar, { DetailsBlock } from "./Details";
 import Disclaimer from "./Disclaimer";
 import { HeroSplit } from "./Hero";
-import Overview, { BehindTheInvestment, IncomeDistribution } from "./Interest";
+import Overview, {
+  BehindTheInvestment,
+  Benefits,
+  IncomeDistribution,
+} from "./Interest";
 import WhoFor from "./WhoFor";
 
 export default function Home() {
@@ -13,6 +17,7 @@ export default function Home() {
       <SubNav />
       <HeroSplit />
       <DetailsBar />
+      <Benefits />
       <WhoFor />
       <Overview />
       <DetailsBlock />
