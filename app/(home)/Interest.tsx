@@ -25,8 +25,10 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { IoBoatOutline } from "react-icons/io5";
 import { RiMoneyEuroCircleLine } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
-import { LuFileSignature, PiChatsTeardrop, PiSignature } from "react-icons/pi";
+import { PiSignature } from "react-icons/pi";
 import { RiRefund2Fill } from "react-icons/ri";
+import { LuFileSignature } from "react-icons/lu";
+import { PiChatsTeardrop } from "react-icons/pi";
 
 type Props = {};
 
@@ -531,7 +533,7 @@ export function HowItWorks({}: Props) {
         {
           title: "Subscription",
           description:
-            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+            "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
           icon: <PiSignature size={22} />,
           person: {
             avatar: "/img/mike.jpg",
@@ -546,7 +548,7 @@ export function HowItWorks({}: Props) {
         {
           title: "Fund Payouts",
           description:
-            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+            "Receive regular payouts from the fund's income-generating activities, such as chartering yachts and real estate development.",
           icon: <RiMoneyEuroCircleLine size={22} />,
           person: {
             avatar: "/img/mike.jpg",
@@ -561,7 +563,7 @@ export function HowItWorks({}: Props) {
         {
           title: "Quarterly Reports",
           description:
-            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+            "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis.",
           icon: <TbReportAnalytics size={22} />,
           person: {
             avatar: "/img/mike.jpg",
@@ -576,7 +578,7 @@ export function HowItWorks({}: Props) {
         {
           title: "Principle Payback",
           description:
-            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+            "At the end of the investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
           icon: <RiRefund2Fill size={25} />,
           person: {
             avatar: "/img/mike.jpg",
@@ -592,8 +594,11 @@ export function HowItWorks({}: Props) {
       <InnerWrap className="border border-slate-200 p-8 rounded-xl">
         <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2">
           <div className="flex flex-col items-start justify-start h-full">
-            <h1 className="text-2xl font-title">How It Works</h1>
-            <p>
+            <h4 className="mb-3 text-sm tracking-wide text-brand-p1">
+              Interested in investing?
+            </h4>
+            <h3 className="text-4xl font-title">How It Works</h3>
+            <p className="text-md mt-4 pr-12">
               Investment.yachts is a fund that invests in luxury charter yachts
               and real estate development projects. The fund generates income
               through chartering, and capital appreciation through real estate
@@ -609,9 +614,9 @@ export function HowItWorks({}: Props) {
                   <ul className="flex flex-col items-start justify-start">
                     {event.items.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex gap-4">
-                        <div className="flex items-start justify-start h-full">
+                        <div className="flex items-start justify-start h-full mt-1">
                           <div className="relative z-10">
-                            <div className="h-2 w-2 rounded-full bg-gray-400 dark:bg-gray-900 mt-[3px]"></div>
+                            <div className="h-2 w-2 hidden rounded-full bg-gray-800 dark:bg-gray-900 mt-[3px]"></div>
                           </div>
                           <div className="text-xs font-medium uppercase text-gray-600 dark:text-gray-400 pl-1 w-12">
                             {event.date}
