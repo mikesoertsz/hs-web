@@ -236,7 +236,7 @@ export function DetailsBlock() {
                 {item.details.map((detail, index) => (
                   <li
                     key={index}
-                    className="flex item-center justify-between text-sm w-full mt-1 hover:bg-gray-300"
+                    className="flex item-center justify-between text-sm w-full mt-1 hover:bg-slate-100 rounded-full px-2 py-1 cursor-pointer"
                   >
                     <p className="text-sm">{detail.label}</p>
                     <p className="text-sm font-normal text-green-700">
@@ -253,6 +253,9 @@ export function DetailsBlock() {
           <ul className="my-2 gap-2 flex items-center justify-center">
             <li>
               <Badge variant="outline">Income Guarantee</Badge>
+            </li>
+            <li>
+              <Badge variant="outline">Quarterly Payouts</Badge>
             </li>
             <li>
               <Badge variant="outline">Low Risk</Badge>

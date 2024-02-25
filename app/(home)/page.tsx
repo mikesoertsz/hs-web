@@ -1,17 +1,11 @@
-import Image from "next/image";
-import FAQ from "../(shared)/FAQ";
 import { homepage } from "@/public/content/en";
-import Hero, { HeroSplit } from "./Hero";
-import Disclaimer from "./Disclaimer";
-import Details, { DetailsBlock } from "./Details";
-import DetailsBar from "./Details";
-import Overview, {
-  BehindTheInvestment,
-  FundLeadership,
-  IncomeDistribution,
-} from "./Interest";
-import Intro from "./Attention";
+import FAQ from "../(shared)/FAQ";
 import SubNav from "../(shared)/SubNav";
+import DetailsBar, { DetailsBlock } from "./Details";
+import Disclaimer from "./Disclaimer";
+import { HeroSplit } from "./Hero";
+import Overview, { BehindTheInvestment, IncomeDistribution } from "./Interest";
+import WhoFor from "./WhoFor";
 
 export default function Home() {
   return (
@@ -19,6 +13,7 @@ export default function Home() {
       <SubNav />
       <HeroSplit />
       <DetailsBar />
+      <WhoFor />
       <Overview />
       <DetailsBlock />
       <IncomeDistribution />

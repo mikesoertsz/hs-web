@@ -16,7 +16,7 @@ type Props = {};
 
 export default function SubNav({}: Props) {
   return (
-    <Drawer>
+    <>
       <nav className="sticky top-12 inset-x-0 bottom-0 flex justify-between items-center py-2 px-4 bg-slate-100 w-full z-70">
         <ul className="flex w-full justify-between md:justify-center md:gap-2">
           {submenu.map((item, index) => (
@@ -59,7 +59,7 @@ export default function SubNav({}: Props) {
           </DrawerFooter>
         </div>
       </DrawerContent>
-    </Drawer>
+    </>
   );
 }
 

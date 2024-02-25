@@ -154,7 +154,7 @@ export function HeroSplit({}: Props) {
       </Left>
       <Right>
         <Image
-          src="/img/hero/hero8.jpg"
+          src="/img/hero/hero10.jpg"
           alt="hero"
           fill
           style={{ objectFit: "cover" }}

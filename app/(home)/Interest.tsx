@@ -19,10 +19,50 @@ import {
   HiOutlineArrowLeftCircle,
   HiOutlineArrowRightCircle,
 } from "react-icons/hi2";
+import { TitleBlock } from "../(shared)/Titles";
 
 type Props = {};
 
 export default function Overview({}: Props) {
+  const overview = [
+    {
+      title: "Stable Income",
+      description: (
+        <>
+          Seeks to generate quarterly income at a rate above inflation and
+          traditional fixed income.
+        </>
+      ),
+    },
+    {
+      title: "Principal Return",
+      description: (
+        <>
+          Investors are guaranteed to receive their principal back in full at
+          the end of the term, independent of the fund&apos;s performance.
+        </>
+      ),
+    },
+    {
+      title: "Diversified Portfolio",
+      description: (
+        <>
+          Each portfolio includes three different income notes tied to three
+          different stocks, allowing investors to diversify their risk.
+        </>
+      ),
+    },
+    {
+      title: "Diligent Investment Approach",
+      description: (
+        <>
+          Income structured notes are purchased based on a transparent process
+          that requires each underlying stock to meet certain criteria, which is
+          expected to minimize the likelihood of any significant price decline.
+        </>
+      ),
+    },
+  ];
   return (
     <Wrapper className="py-[5vh] bg-white" id="overview">
       <InnerWrap className="border border-slate-200 p-8 rounded-xl">
@@ -53,47 +93,58 @@ export default function Overview({}: Props) {
   );
 }
 
-const overview = [
-  {
-    title: "Stable Income",
-    description: (
-      <>
-        Seeks to generate quarterly income at a rate above inflation and
-        traditional fixed income.
-      </>
-    ),
-  },
-  {
-    title: "Principal Return",
-    description: (
-      <>
-        Investors are guaranteed to receive their principal back in full at the
-        end of the term, independent of the fund&apos;s performance.
-      </>
-    ),
-  },
-  {
-    title: "Diversified Portfolio",
-    description: (
-      <>
-        Each portfolio includes three different income notes tied to three
-        different stocks, allowing investors to diversify their risk.
-      </>
-    ),
-  },
-  {
-    title: "Diligent Investment Approach",
-    description: (
-      <>
-        Income structured notes are purchased based on a transparent process
-        that requires each underlying stock to meet certain criteria, which is
-        expected to minimize the likelihood of any significant price decline.
-      </>
-    ),
-  },
-];
-
 export function IncomeDistribution({}: Props) {
+  const data = [
+    {
+      value: 70,
+      name: "Luxury Charter Yachts",
+      description:
+        "We've partnered with world-renown chartering companies that operate year-round charter yachts for profit.",
+      icon: "", // Placeholder for icon path or component
+      statlabel: "Income Generation",
+      statvalue: "70%",
+      strategy: "cashflow",
+      reasons: [
+        "Growing sector",
+        "Stable, predictable income",
+        "Market demand inelascicity",
+      ],
+    },
+    {
+      value: 20,
+      name: "Real Estate",
+      description:
+        "A portion of the portfolio is allocated to real estate development projects in Portugal for cashflow and gapital gains.",
+      icon: "", // Placeholder for icon path or component
+      statlabel: "Captal Appreciation",
+      statvalue: "20%",
+      strategy: "capital gains",
+      reasons: [
+        "Yacht depreciation offset",
+        "Predictable yield",
+        "Tried and true",
+      ],
+    },
+    {
+      value: 10,
+      name: "Alternative Assets",
+      description: (
+        <span>
+          The fund leverages asset equity to acquire high-yield, liquid bond
+          assets through reputable{" "}
+          <a href="#disclaimer3">
+            partner funds<sup>1</sup>
+          </a>
+          .
+        </span>
+      ),
+      icon: "", // Placeholder for icon path or component
+      statlabel: "Diversification",
+      statvalue: "10%",
+      strategy: "liquid alternative bonds",
+      reasons: ["Liquid", "High yield", "Asset diversification"],
+    },
+  ];
   return (
     <Wrapper className="py-[5vh]" id="opportunity">
       <InnerWrap className="py-12 border rounded-xl border-slate-300 bg-white">
@@ -181,58 +232,6 @@ export function IncomeDistribution({}: Props) {
   );
 }
 
-const data = [
-  {
-    value: 70,
-    name: "Luxury Charter Yachts",
-    description:
-      "We've partnered with world-renown chartering companies that operate year-round charter yachts for profit.",
-    icon: "", // Placeholder for icon path or component
-    statlabel: "Income Generation",
-    statvalue: "70%",
-    strategy: "cashflow",
-    reasons: [
-      "Growing sector",
-      "Stable, predictable income",
-      "Market demand inelascicity",
-    ],
-  },
-  {
-    value: 20,
-    name: "Real Estate",
-    description:
-      "A portion of the portfolio is allocated to real estate development projects in Portugal for cashflow and gapital gains.",
-    icon: "", // Placeholder for icon path or component
-    statlabel: "Captal Appreciation",
-    statvalue: "20%",
-    strategy: "capital gains",
-    reasons: [
-      "Yacht depreciation offset",
-      "Predictable yield",
-      "Tried and true",
-    ],
-  },
-  {
-    value: 10,
-    name: "Alternative Assets",
-    description: (
-      <span>
-        The fund leverages asset equity to acquire high-yield, liquid bond
-        assets through reputable{" "}
-        <a href="#disclaimer3">
-          partner funds<sup>1</sup>
-        </a>
-        .
-      </span>
-    ),
-    icon: "", // Placeholder for icon path or component
-    statlabel: "Diversification",
-    statvalue: "10%",
-    strategy: "liquid alternative bonds",
-    reasons: ["Liquid", "High yield", "Asset diversification"],
-  },
-];
-
 export function BehindTheInvestment({}: Props) {
   const [hoveredSection, setHoveredSection] = useState<number | null>(null);
   const totalPercentage =
@@ -296,6 +295,15 @@ export function BehindTheInvestment({}: Props) {
 }
 
 export function FundLeadership({}: Props) {
+  const leadership = [
+    {
+      name: "Mike Soertsz",
+      image: "/img/mike.jpg",
+      details: "Principle Fund Manager",
+      location: "Porto, Portugal",
+    },
+  ];
+
   return (
     <>
       <Separator />
@@ -345,16 +353,15 @@ export function FundLeadership({}: Props) {
   );
 }
 
-const leadership = [
-  {
-    name: "Mike Soertsz",
-    image: "/img/mike.jpg",
-    details: "Principle Fund Manager",
-    location: "Porto, Portugal",
-  },
-];
-
 export function RiskProfile({}: Props) {
+  const leadership = [
+    {
+      name: "Mike Soertsz",
+      image: "/img/mike.jpg",
+      details: "Principle Fund Manager",
+      location: "Porto, Portugal",
+    },
+  ];
   return (
     <Wrapper className="py-[5vh] bg-white">
       <InnerWrap className="border border-slate-200 p-8 rounded-xl">
@@ -402,5 +409,17 @@ export function RiskProfile({}: Props) {
         </div>
       </InnerWrap>
     </Wrapper>
+  );
+}
+
+export function Benefits({}: Props) {
+  return (
+    <>
+      <div>
+        <h1 className="text-4xl font-medium font-title tracking-tight my-3">
+          Why invest in a fleet?
+        </h1>
+      </div>
+    </>
   );
 }

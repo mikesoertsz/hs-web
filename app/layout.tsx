@@ -1,10 +1,10 @@
+import { footer } from "@/public/content/en";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import Nav from "./(shared)/Nav";
 import Footer from "./(shared)/Footer";
-import { footer } from "@/public/content/en";
+import Nav from "./(shared)/Nav";
+import "./globals.css";
+import { Drawer } from "@/components/ui/drawer";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 const title = Playfair_Display({
@@ -23,18 +23,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${body.className} ${title.variable} relative scroll-smooth`}
-        >
+    <html lang="en">
+      <body
+        className={`${body.className} ${title.variable} relative scroll-smooth`}
+      >
+        <Drawer>
           <div className="fillscreen">
             <Nav />
             {children}
             <Footer content={footer} />
           </div>
-        </body>
-      </html>
-    </ClerkProvider>
+        </Drawer>
+      </body>
+    </html>
   );
 }

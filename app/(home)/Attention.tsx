@@ -13,6 +13,104 @@ type Painpoint = {
 };
 
 export default function RiskFactors({}: Props) {
+  const painpoints: Painpoint[] = [
+    {
+      title: "Operational Complexity",
+      description:
+        "Managing a yacht requires expertise in maritime operations, legal compliance, and guest services.",
+      category: "Operational Risk",
+    },
+    {
+      title: "High Maintenance Costs",
+      description:
+        "Yachts necessitate regular, costly maintenance to ensure safety, functionality, and guest satisfaction.",
+      category: "Operational Risk",
+    },
+    {
+      title: "Crew Management",
+      description:
+        "Hiring, training, and managing a crew is a significant challenge that requires time and resources.",
+      category: "Operational Risk",
+    },
+    {
+      title: "Seasonal Fluctuations",
+      description:
+        "Income can be highly variable due to seasonal demand in the charter industry.",
+      category: "Market Risk",
+    },
+    {
+      title: "Market Risks",
+      description:
+        "Economic downturns and changes in consumer preferences can affect charter income.",
+      category: "Market Risk",
+    },
+    {
+      title: "Depreciation",
+      description:
+        "Yachts are depreciating assets, which can lead to a loss in value over time.",
+      category: "Credit Risk",
+    },
+    {
+      title: "Regulatory Hurdles",
+      description:
+        "Navigating maritime laws and regulations can be complex and varies by region.",
+      category: "Legal and Regulatory Risk",
+    },
+    {
+      title: "Insurance and Liability",
+      description:
+        "Comprehensive insurance is necessary to mitigate risks associated with accidents and liabilities.",
+      category: "Operational Risk",
+    },
+    {
+      title: "Marketing and Booking",
+      description:
+        "Effective marketing strategies are required to maintain high occupancy rates and profitability.",
+      category: "Market Risk",
+    },
+    {
+      title: "Docking and Storage",
+      description:
+        "Securing and paying for docking space and storage during off-seasons can be expensive.",
+      category: "Operational Risk",
+    },
+    {
+      title: "Environmental Concerns",
+      description:
+        "Operating a yacht has an environmental impact that may lead to additional regulations and costs.",
+      category: "Environmental Risk",
+    },
+    {
+      title: "Customer Satisfaction",
+      description:
+        "Ensuring high levels of customer satisfaction is critical but can be difficult to consistently achieve.",
+      category: "Operational Risk",
+    },
+    {
+      title: "Capital Intensive",
+      description:
+        "Initial investment for purchasing a yacht is substantial, with annual capital requirements on average 10% of the principle.",
+      category: "Credit Risk",
+    },
+    {
+      title: "Liquidity Risk",
+      description:
+        "Yachts can be difficult to sell depending on the state, type and model, especially in a saturated or declining market.",
+      category: "Liquidity Risk",
+    },
+    {
+      title: "Interest Rate Fluctuations",
+      description:
+        "Changes in interest rates can affect the cost of capital and yacht financing, influencing market demand and asset valuation.",
+      category: "Market Risk",
+    },
+    {
+      title: "Currency Exchange Risk",
+      description:
+        "Fluctuations in exchange rates can affect cost of dealing with global suppliers and maintainence vendors.",
+      category: "Market Risk",
+    },
+  ];
   const categories = Array.from(
     new Set(painpoints.map((item) => item.category.replace(" Risk", "")))
   );
@@ -123,102 +221,3 @@ export default function RiskFactors({}: Props) {
     </Wrapper>
   );
 }
-
-const painpoints: Painpoint[] = [
-  {
-    title: "Operational Complexity",
-    description:
-      "Managing a yacht requires expertise in maritime operations, legal compliance, and guest services.",
-    category: "Operational Risk",
-  },
-  {
-    title: "High Maintenance Costs",
-    description:
-      "Yachts necessitate regular, costly maintenance to ensure safety, functionality, and guest satisfaction.",
-    category: "Operational Risk",
-  },
-  {
-    title: "Crew Management",
-    description:
-      "Hiring, training, and managing a crew is a significant challenge that requires time and resources.",
-    category: "Operational Risk",
-  },
-  {
-    title: "Seasonal Fluctuations",
-    description:
-      "Income can be highly variable due to seasonal demand in the charter industry.",
-    category: "Market Risk",
-  },
-  {
-    title: "Market Risks",
-    description:
-      "Economic downturns and changes in consumer preferences can affect charter income.",
-    category: "Market Risk",
-  },
-  {
-    title: "Depreciation",
-    description:
-      "Yachts are depreciating assets, which can lead to a loss in value over time.",
-    category: "Credit Risk",
-  },
-  {
-    title: "Regulatory Hurdles",
-    description:
-      "Navigating maritime laws and regulations can be complex and varies by region.",
-    category: "Legal and Regulatory Risk",
-  },
-  {
-    title: "Insurance and Liability",
-    description:
-      "Comprehensive insurance is necessary to mitigate risks associated with accidents and liabilities.",
-    category: "Operational Risk",
-  },
-  {
-    title: "Marketing and Booking",
-    description:
-      "Effective marketing strategies are required to maintain high occupancy rates and profitability.",
-    category: "Market Risk",
-  },
-  {
-    title: "Docking and Storage",
-    description:
-      "Securing and paying for docking space and storage during off-seasons can be expensive.",
-    category: "Operational Risk",
-  },
-  {
-    title: "Environmental Concerns",
-    description:
-      "Operating a yacht has an environmental impact that may lead to additional regulations and costs.",
-    category: "Environmental Risk",
-  },
-  {
-    title: "Customer Satisfaction",
-    description:
-      "Ensuring high levels of customer satisfaction is critical but can be difficult to consistently achieve.",
-    category: "Operational Risk",
-  },
-  {
-    title: "Capital Intensive",
-    description:
-      "Initial investment for purchasing a yacht is substantial, with annual capital requirements on average 10% of the principle.",
-    category: "Credit Risk",
-  },
-  {
-    title: "Liquidity Risk",
-    description:
-      "Yachts can be difficult to sell depending on the state, type and model, especially in a saturated or declining market.",
-    category: "Liquidity Risk",
-  },
-  {
-    title: "Interest Rate Fluctuations",
-    description:
-      "Changes in interest rates can affect the cost of capital and yacht financing, influencing market demand and asset valuation.",
-    category: "Market Risk",
-  },
-  {
-    title: "Currency Exchange Risk",
-    description:
-      "Fluctuations in exchange rates can affect cost of dealing with global suppliers and maintainence vendors.",
-    category: "Market Risk",
-  },
-];
