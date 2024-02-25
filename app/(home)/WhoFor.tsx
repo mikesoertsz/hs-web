@@ -45,11 +45,15 @@ export default function WhoFor({}: Props) {
       <InnerWrap>
         <div className="bg-gray-900 flex w-full items-start justify-center p-12 rounded-xl gap-12">
           <div className="flex flex-col items-start justify-start">
-            <h2 className="text-4xl font-medium text-white">
-              Who is this for?
+            <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
+              Interested in investing?
+            </h4>
+            <h2 className="text-4xl font-medium text-white font-title">
+              See if you qualify.
             </h2>
-            <p className="text-lg text-white mt-2 mb-4">
-              This fund is specifically restricted to Accredited Investors.
+            <p className="text-md text-white mt-4 mb-4">
+              This fund is specifically restricted to Accredited Investors
+              <sup>?</sup>.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg">

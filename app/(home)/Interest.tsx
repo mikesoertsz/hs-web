@@ -23,6 +23,10 @@ import { SimplyDonut, SimplyLegend } from "react-simply-donut";
 import { TiChartPieOutline } from "react-icons/ti";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoBoatOutline } from "react-icons/io5";
+import { RiMoneyEuroCircleLine } from "react-icons/ri";
+import { TbReportAnalytics } from "react-icons/tb";
+import { LuFileSignature, PiChatsTeardrop, PiSignature } from "react-icons/pi";
+import { RiRefund2Fill } from "react-icons/ri";
 
 type Props = {};
 
@@ -483,6 +487,154 @@ export function Benefits({}: Props) {
               </li>
             ))}
           </ul>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function HowItWorks({}: Props) {
+  const timelineEvents = [
+    {
+      date: "Step 1",
+      items: [
+        {
+          title: "Consultation",
+          description:
+            "Schedule an initial consultation with our fund manager to discuss your investment goals and risk tolerance, subscription process, payout process and principle return at fund maturity.",
+          icon: <PiChatsTeardrop size={22} />,
+          person: {
+            avatar: "/img/mike.jpg",
+            name: "Mike Soertsz",
+          },
+        },
+      ],
+    },
+    {
+      date: "Step 2",
+      items: [
+        {
+          title: "Pre-Subscription",
+          description:
+            "Register your interest in the fund if you qualify as an Accredited Investor. You will be contacted by our fund manager when the official fundraise begins.",
+          icon: <LuFileSignature size={22} />,
+          person: {
+            avatar: "/img/mike.jpg",
+            name: "Mike Soertsz",
+          },
+        },
+      ],
+    },
+    {
+      date: "Step 3",
+      items: [
+        {
+          title: "Subscription",
+          description:
+            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+          icon: <PiSignature size={22} />,
+          person: {
+            avatar: "/img/mike.jpg",
+            name: "Mike Soertsz",
+          },
+        },
+      ],
+    },
+    {
+      date: "Step 4",
+      items: [
+        {
+          title: "Fund Payouts",
+          description:
+            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+          icon: <RiMoneyEuroCircleLine size={22} />,
+          person: {
+            avatar: "/img/mike.jpg",
+            name: "Mike Soertsz",
+          },
+        },
+      ],
+    },
+    {
+      date: "Step 5",
+      items: [
+        {
+          title: "Quarterly Reports",
+          description:
+            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+          icon: <TbReportAnalytics size={22} />,
+          person: {
+            avatar: "/img/mike.jpg",
+            name: "Mike Soertsz",
+          },
+        },
+      ],
+    },
+    {
+      date: "Step 6",
+      items: [
+        {
+          title: "Principle Payback",
+          description:
+            "The fund was established by Mike Soertsz, a seasoned entrepreneur & sailor with a history of building deep tech in the finance and banking sectors.",
+          icon: <RiRefund2Fill size={25} />,
+          person: {
+            avatar: "/img/mike.jpg",
+            name: "Mike Soertsz",
+          },
+        },
+      ],
+    },
+  ];
+
+  return (
+    <Wrapper className="py-[5vh] bg-white" id="how-it-works">
+      <InnerWrap className="border border-slate-200 p-8 rounded-xl">
+        <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2">
+          <div className="flex flex-col items-start justify-start h-full">
+            <h1 className="text-2xl font-title">How It Works</h1>
+            <p>
+              Investment.yachts is a fund that invests in luxury charter yachts
+              and real estate development projects. The fund generates income
+              through chartering, and capital appreciation through real estate
+              development. The fund is managed by a team of experienced
+              professionals in the maritime, investment management, finance, and
+              technology sectors.
+            </p>
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="flex flex-col">
+              {timelineEvents.map((event, index) => (
+                <div key={index} className="mb-4">
+                  <ul className="flex flex-col items-start justify-start">
+                    {event.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex gap-4">
+                        <div className="flex items-start justify-start h-full">
+                          <div className="relative z-10">
+                            <div className="h-2 w-2 rounded-full bg-gray-400 dark:bg-gray-900 mt-[3px]"></div>
+                          </div>
+                          <div className="text-xs font-medium uppercase text-gray-600 dark:text-gray-400 pl-1 w-12">
+                            {event.date}
+                          </div>
+                        </div>
+                        <div className="grow pt-0.5">
+                          <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                            {item.icon}
+                            {item.title}
+                          </h3>
+                          {item.description && (
+                            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                              {item.description}
+                            </p>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </InnerWrap>
     </Wrapper>

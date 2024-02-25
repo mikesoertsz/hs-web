@@ -7,6 +7,7 @@ import { HeroSplit } from "./Hero";
 import Overview, {
   BehindTheInvestment,
   Benefits,
+  HowItWorks,
   IncomeDistribution,
 } from "./Interest";
 import WhoFor from "./WhoFor";
@@ -20,9 +21,10 @@ export default function Home() {
       <Benefits />
       <WhoFor />
       <Overview />
+      <HowItWorks />
       <DetailsBlock />
       <IncomeDistribution />
-      <BehindTheInvestment />
+      {/* <BehindTheInvestment /> */}
       <FAQ {...homepage.desire} />
       <Disclaimer />
     </main>
