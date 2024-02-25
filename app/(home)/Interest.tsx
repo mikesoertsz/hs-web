@@ -6,20 +6,23 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useState } from "react";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 import { homepage } from "@/public/content/en";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { RiQuestionLine } from "react-icons/ri";
-import { SimplyDonut, SimplyLegend } from "react-simply-donut";
-import { IoIosCheckmark } from "react-icons/io";
-import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs";
+import { useState } from "react";
+import { GiSailboat } from "react-icons/gi";
 import {
   HiOutlineArrowLeftCircle,
   HiOutlineArrowRightCircle,
 } from "react-icons/hi2";
-import { TitleBlock } from "../(shared)/Titles";
+import { IoIosCheckmark } from "react-icons/io";
+import { PiClockClockwise, PiPiggyBank, PiShieldLight } from "react-icons/pi";
+import { RiQuestionLine } from "react-icons/ri";
+import { SimplyDonut, SimplyLegend } from "react-simply-donut";
+import { TiChartPieOutline } from "react-icons/ti";
+import { AiOutlineDashboard } from "react-icons/ai";
+import { IoBoatOutline } from "react-icons/io5";
 
 type Props = {};
 
@@ -415,57 +418,68 @@ export function RiskProfile({}: Props) {
 export function Benefits({}: Props) {
   const benefits = [
     {
-      icon: "",
-      title: "Guaranteed Income",
+      icon: <PiPiggyBank size={25} />,
+      title: (
+        <span>
+          <strong>Guaranteed Income</strong>: Receive guaranteed income from
+          your investments.
+        </span>
+      ),
     },
     {
-      icon: "",
-      title: "Low Risk",
+      icon: <PiShieldLight size={25} />,
+      title: "Enjoy the benefits of low-risk investment opportunities.",
     },
     {
-      icon: "",
-      title: "Real Assets",
+      icon: <IoBoatOutline size={25} />,
+      title: "Earn from real assets with intrinsic value.",
     },
     {
-      icon: "",
-      title: "Quarterly Payouts",
+      icon: <PiClockClockwise size={25} />,
+      title: "Regular quarterly payouts to your bank account.",
     },
     {
-      icon: "",
-      title: "Tangible Investments",
+      icon: <AiOutlineDashboard size={25} />,
+      title: "Transparent and real-time asset performance tracking.",
     },
     {
-      icon: "",
-      title: "Diversified Portfolio",
+      icon: <TiChartPieOutline size={25} />,
+      title: "Diversify your portfolio with alternative assets.",
     },
   ];
   return (
     <Wrapper className="bg-white py-[10vh]">
       <InnerWrap>
-        <h1 className="text-5xl font-title">Why invest in a fleet?</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full pt-8">
-          <ul className="flex flex-col items-center justify-center w-full">
+        <h1 className="text-5xl font-title tracking-tight">
+          Why invest in a charter fleet?
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full pt-8 gap-4 mt-12">
+          <ul className="flex flex-col items-center justify-center w-full gap-4">
             {benefits.slice(0, 3).map((item, index) => (
               <li
                 key={index}
-                className="flex items-start justify-start gap-4 w-full"
+                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
               >
-                {item.icon}
-                <h3 className="text-xl font-medium">{item.title}</h3>
+                <div className="w-10 flex h-full items-center justify-center">
+                  {item.icon}
+                </div>
+                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
               </li>
             ))}
           </ul>
           <div className="flex items-center justify-center">
-            <Image src="/img/side.png" alt="hero" width={300} height={300} />
+            <Image src="/img/tanna47.png" alt="hero" width={300} height={300} />
           </div>
-          <ul className="flex flex-col items-center justify-center w-full">
+          <ul className="flex flex-col items-center justify-center w-full gap-4">
             {benefits.slice(3, 6).map((item, index) => (
               <li
                 key={index}
-                className="flex items-start justify-start gap-4 w-full"
+                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
               >
-                {item.icon}
-                <h3 className="text-xl font-medium">{item.title}</h3>
+                <div className="w-10 flex h-full items-center justify-center">
+                  {item.icon}
+                </div>
+                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
               </li>
             ))}
           </ul>

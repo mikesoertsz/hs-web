@@ -210,19 +210,19 @@ export function DetailsBlock() {
       <InnerWrap>
         <div className="flex flex-col items-center justify-center text-center my-12">
           <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
-            overview
+            fund details
           </p>
-          <h1 className="text-4xl font-medium font-title tracking-tight my-3">
-            Why invest in a charter fleet?
+          <h1 className="text-5xl font-medium font-title tracking-tight my-3">
+            Investment Specifics
           </h1>
-          <h4 className="max-w-prose text-center">
+          <h4 className="max-w-prose text-center mt-4">
             Our fund offers a unique opportunity to invest in a diversified
             fleet of charter yachts, with a focus on the lucrative and growing
             Seychelles market. Our investment strategy is designed to provide a
             secure, stable-yield income stream over a 6 year term.
           </h4>
         </div>
-        <ul className="grid w-full grid-cols-2 gap-4 md:grid-cols-4 mt-6">
+        <ul className="grid w-full grid-cols-2 gap-4 md:grid-cols-4 mt-1">
           {detailsblock.map((item, index) => (
             <li
               key={index}
