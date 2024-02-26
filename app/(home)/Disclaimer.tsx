@@ -90,12 +90,11 @@ export default function Disclaimer({}: Props) {
                   Alternative Income Fund contains this and other information
                   about the Fund and can be obtained by emailing
                   investments@Investment.Yachts.com or by referring to
-                  www.Investment.Yachtsalternativeincomefund.com. The prospectus
-                  should be read carefully before investing in the Fund.
-                  Investments in the Fund are not bank deposits (and thus not
-                  insured by the FDIC or by any other federal governmental
-                  agency) and are not guaranteed by Investment.Yachts or any
-                  other party.
+                  helmshare.yachts/prospectus. The prospectus should be read
+                  carefully before investing in the Fund. Investments in the
+                  Fund are not bank deposits (and thus not insured by the FDIC
+                  or by any other federal governmental agency) and are not
+                  guaranteed by Investment.Yachts or any other party.
                 </p>
 
                 <p>
@@ -177,6 +176,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Alternative investments should only be part of your overall
                   investment portfolio. Further, the alternative investment
                   portion of your portfolio should include a balanced portfolio
@@ -184,6 +184,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Articles or information from third-party media outside of this
                   domain may discuss Investment.Yachts or relate to information
                   contained herein, but Investment.Yachts does not approve and
@@ -194,6 +195,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Investing in securities (the Securities) listed on
                   Investment.Yachts™ pose risks, including but not limited to
                   credit risk, interest rate risk, and the risk of losing some
@@ -209,6 +211,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Investing in private placements requires long-term
                   commitments, the ability to afford to lose the entire
                   investment, and low liquidity needs. This website provides
@@ -228,6 +231,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Investment.Yachts Inc. is the direct owner of
                   Investment.Yachts Management, LLC, which is an SEC-registered
                   investment adviser that manages the Investment.Yachts funds
@@ -249,6 +253,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Investment.Yachts is not a bank. Certain services are offered
                   through Synapse Financial Technologies, Inc. and its
                   affiliates (collectively, “Synapse”) as well as certain
@@ -266,6 +271,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Investment advisory services are only provided to clients of
                   Investment.Yachts Management, LLC, an investment advisor
                   registered with the Securities and Exchange Commission,
@@ -273,6 +279,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Our site uses a third party service to match browser cookies
                   to your mailing address. We then use another company to send
                   special offers through the mail on our behalf. Our company
@@ -281,11 +288,13 @@ export default function Disclaimer({}: Props) {
                   company or service.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Investors should carefully consider the investment objectives,
                   risks, charges and expenses of the Investment.Yachts Fund
                   before investing.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   The prospectus for the Investment.Yachts Fund contains this
                   and other information about the Fund and can be obtained by
                   emailing diligence@investment.yachts or by referring to
@@ -293,33 +302,39 @@ export default function Disclaimer({}: Props) {
                   carefully before investing in the Fund.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Investments in the Fund are not bank deposits (and thus not
                   insured by the FDIC or by any other federal governmental
                   agency) and are not guaranteed by Investment.Yachts or any
                   other party.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   The securities described in the prospectus are not offered for
                   sale in the United States of America. No subscription for the
                   sale of Fund shares will be accepted from any person residing
                   or located in the USA.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   An investment in the Fund is not suitable for investors that
                   require short-term liquidity.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   The Fund&apos;s shares have no history of public trading, are
                   not publicly traded, and you should not expect to be able to
                   sell your shares regardless of how the Fund performs.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   The Fund&apos;s shares are currently not listed on any
                   securities exchange and there is no expectation that a
                   secondary market for the Fund&apos;s shares will develop in
                   the future.
                 </p>
                 <p>
+                  <sup className="sups text-[10px]">12</sup>
                   Pursuant to its Share Repurchase Program, the Fund intends to
                   periodically repurchase shares from the Fund&apos;s investors,
                   subject to the discretion of the Fund&apos;s Board of
