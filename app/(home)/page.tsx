@@ -23,7 +23,7 @@ export default function Home() {
       <Benefits />
       <HowGuaranteed />
       <WhoFor />
-      <Overview />
+      {/* <Overview /> */}
       <HowItWorks />
       <DetailsBlock />
       <IncomeDistribution />
