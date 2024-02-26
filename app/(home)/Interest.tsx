@@ -34,67 +34,76 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 type Props = {};
 
 export default function Overview({}: Props) {
-  const overview = [
-    {
-      title: "Stable Income",
-      description: (
-        <>
-          Seeks to generate quarterly income at a rate above inflation and
-          traditional fixed income.
-        </>
-      ),
-    },
-    {
-      title: "Principal Return",
-      description: (
-        <>
-          Investors are guaranteed to receive their principal back in full at
-          the end of the term, independent of the fund&apos;s performance.
-        </>
-      ),
-    },
-    {
-      title: "Diversified Portfolio",
-      description: (
-        <>
-          Each portfolio includes three different income notes tied to three
-          different stocks, allowing investors to diversify their risk.
-        </>
-      ),
-    },
-    {
-      title: "Diligent Investment Approach",
-      description: (
-        <>
-          Income structured notes are purchased based on a transparent process
-          that requires each underlying stock to meet certain criteria, which is
-          expected to minimize the likelihood of any significant price decline.
-        </>
-      ),
-    },
-  ];
+  const content = {
+    overview: [
+      {
+        title: "Stable Income",
+        description: (
+          <>
+            Seeks to generate quarterly income at a rate above inflation and
+            traditional fixed income.
+          </>
+        ),
+      },
+      {
+        title: "Principal Return",
+        description: (
+          <>
+            Investors are guaranteed to receive their principal back in full at
+            the end of the term, independent of the fund&apos;s performance.
+          </>
+        ),
+      },
+      {
+        title: "Diversified Portfolio",
+        description: (
+          <>
+            Each portfolio includes three different income notes tied to three
+            different stocks, allowing investors to diversify their risk.
+          </>
+        ),
+      },
+      {
+        title: "Diligent Investment Approach",
+        description: (
+          <>
+            Income structured notes are purchased based on a transparent process
+            that requires each underlying stock to meet certain criteria, which
+            is expected to minimize the likelihood of any significant price
+            decline.
+          </>
+        ),
+      },
+    ],
+  };
   return (
     <Wrapper className="py-[5vh] bg-white" id="overview">
-      <InnerWrap className="border border-slate-200 p-8 rounded-xl items-start justify-start w-full">
-        <Tabs defaultValue="account" className="w-full">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
-          </TabsList>
+      <InnerWrap className="border border-slate-200 rounded-xl items-start justify-start w-full">
+        <Tabs defaultValue="overview" className="w-full min-h-[20vh]">
+          <div className="bg-slate-100 flex w-full p-1">
+            <TabsList className="">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="details">Details</TabsTrigger>
+              <TabsTrigger value="strategy">Strategy</TabsTrigger>
+              <TabsTrigger value="market">Market</TabsTrigger>
+              <TabsTrigger value="cashflow">Cashflow</TabsTrigger>
+              <TabsTrigger value="access">Access</TabsTrigger>
+            </TabsList>
+          </div>
           <TabsContent
             value="overview"
-            className="grid grid-cols-1 md:grid-cols-2 w-full"
+            className="grid grid-cols-1 md:grid-cols-2 w-full p-8"
           >
-            <div className="flex flex-col items-start justify-start mt-4">
+            <div className="flex flex-col items-start justify-start">
               <h1 className="text-2xl font-medium">Overview</h1>
-              <h4 className="pt-2 text-lg">
+              <h4 className="pt-2 text-md">
                 In light of inflationary pressures, looming recession risks, and
                 global tensions, the conventional portfolio allocation of 60%
                 equities and 40% fixed income may no longer suffice for
                 achieving long-term investment objectives.
               </h4>
               <ul className="flex flex-col gap-4 pl-3 mt-4 text-md">
-                {overview.map((item, index) => (
+                {content.overview.map((item, index) => (
                   <li key={index} className="">
                     <p>
                       <span className="font-semibold">{item.title}: </span>
@@ -509,8 +518,8 @@ export function Benefits({}: Props) {
       icon: <TiChartPieOutline size={25} />,
       title: (
         <span>
-          <strong>Diversification</strong>: Spread your investments across a
-          variety of asset classes to reduce risk and enhance potential returns.
+          <strong>Inelastic demand</strong>: Demand for luxury charters has
+          proven to be resilient to market trends and even pandemics.
         </span>
       ),
     },
@@ -659,10 +668,9 @@ export function HowItWorks({}: Props) {
             <h4 className="mb-3 text-sm tracking-wide text-brand-p1">
               Interested in investing?
             </h4>
-            <h3 className="text-4xl font-title">How It Works</h3>
+            <h3 className="text-5xl font-title font-semibold">How It Works</h3>
             <p className="text-md mt-4 pr-12">
-              HelmShare, managed by seasoned experts, invests in luxury yachts
-              and real estate, earning through charters and development.
+              What to expect in our fund subscription process.
             </p>
           </div>
           <div className="flex items-center justify-center">

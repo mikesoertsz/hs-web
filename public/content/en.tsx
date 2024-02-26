@@ -175,7 +175,7 @@ export const homepage = {
         {
           question: "What are the benefits of investing a charter yacht fleet?",
           answer:
-            "Investing in guaranteed charter yacht revenues provides a stable and predictable income stream, as the charter company guarantees a fixed revenue regardless of the yacht's actual usage. This can be particularly attractive in the luxury vacation market where demand can fluctuate seasonally.",
+            "Investing in guaranteed charter yacht revenues provides a stable and predictable income stream, as our charter partner(s) guarantee a fixed revenue regardless of the yacht's actual usage. This can be particularly attractive in the luxury vacation market where demand can fluctuate seasonally.",
           value: "1",
         },
         {
@@ -187,7 +187,7 @@ export const homepage = {
         {
           question: "Can I access a yacht for personal usage?",
           answer:
-            "No, in this investment model, yachts are exclusively utilized as business assets to maximize profit generation and are operated year-round by the charter company. This is different from other yacht investment models where the owner can use the yacht for personal purposes, often called 'Fractional Owernship'. This model is designed to maximize the revenue potential of the yacht and provide a stable income stream to the investor without the downside of 'sharing' your fractional yacht in a time-share. This also negates the negative impact of charter usage on the yacht's condition and value, which can be a problem if it's 'your' yacht.",
+            "No. In this investment model, all yachts are exclusively utilized as business assets to maximize profit generation and are operated year-round by the charter company. This is different from other yacht investment models where the owner can use the yacht for personal purposes, often called 'Fractional Owernship'. This model is designed to maximize the revenue potential of the yacht and provide a stable income stream to the investor without the downside of 'sharing' your fractional yacht in a time-share. This also negates the negative impact of charter usage on the yacht's condition and value, which can be a problem if it's 'your' yacht.",
           value: "7",
         },
         {

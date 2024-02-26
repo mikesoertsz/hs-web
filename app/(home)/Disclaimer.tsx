@@ -16,15 +16,15 @@ export default function Disclaimer({}: Props) {
         <p className="text-sm font-medium">Disclaimers</p>
         <div className="flex items-start justify-start flex-col text-xs gap-3 mt-4">
           <p>
-            <sup className="sups text-[10px]">1</sup> Past performance is no
-            guarantee of future results. Any historical returns, expected
+            <sup className="sups text-[10px] pr-1">1</sup> Past performance is
+            no guarantee of future results. Any historical returns, expected
             returns, or probability projections may not reflect actual future
             performance. All securities involve risk and may result in
             significant losses.
           </p>
 
           <p>
-            <sup className="sups text-[10px]">2</sup> Represents an net
+            <sup className="sups text-[10px] pr-1">2</sup> Represents an net
             annualized return, using an internal rate of return (IRR)
             methodology, with respect to the matured investments, utilizing the
             effective dates and amounts of subscriptions and distributions to
@@ -34,7 +34,7 @@ export default function Disclaimer({}: Props) {
           </p>
 
           <p>
-            <sup className="sups text-[10px]">3</sup> Annual interest,
+            <sup className="sups text-[10px] pr-1">3</sup> Annual interest,
             Annualized Return or Target Returns represents a projected annual
             target rate of interest or annualized target return, and not returns
             or interest actually obtained by fund investors. Term represents the
@@ -65,9 +65,9 @@ export default function Disclaimer({}: Props) {
           </p>
 
           <p>
-            <sup className="sups text-[10px]">5</sup> Represents the sum of the
-            interest accrued in the statement period plus the interest paid in
-            the statement period.
+            <sup className="sups text-[10px] pr-1">5</sup> Represents the sum of
+            the interest accrued in the statement period plus the interest paid
+            in the statement period.
           </p>
           <AnimatePresence initial={false}>
             {isOpen && (
@@ -81,15 +81,16 @@ export default function Disclaimer({}: Props) {
                   collapsed: { opacity: 0, height: 0 },
                 }}
                 transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+                className="gap-3 flex flex-col items-start justify-center"
               >
                 <p>
-                  <sup className="sups text-[10px]">7</sup> Investors should
-                  carefully consider the investment objectives, risks, charges
-                  and expenses of the Investment.Yachts Alternative Income Fund
-                  before investing. The prospectus for the Investment.Yachts
-                  Alternative Income Fund contains this and other information
-                  about the Fund and can be obtained by emailing
-                  investments@Investment.Yachts.com or by referring to
+                  <sup className="sups text-[10px] pr-1">7</sup> Investors
+                  should carefully consider the investment objectives, risks,
+                  charges and expenses of the Investment.Yachts Alternative
+                  Income Fund before investing. The prospectus for the
+                  Investment.Yachts Alternative Income Fund contains this and
+                  other information about the Fund and can be obtained by
+                  emailing investments@Investment.Yachts.com or by referring to
                   helmshare.yachts/prospectus. The prospectus should be read
                   carefully before investing in the Fund. Investments in the
                   Fund are not bank deposits (and thus not insured by the FDIC
@@ -98,8 +99,8 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">8</sup> This tool is for
-                  informational purposes only. You should not construe any
+                  <sup className="sups text-[10px] pr-1">8</sup> This tool is
+                  for informational purposes only. You should not construe any
                   information provided here as investment advice or a
                   recommendation, endorsement or solicitation to buy any
                   securities offered on Investment.Yachts. Investment.Yachts is
@@ -113,23 +114,23 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">9</sup> No communication by
-                  Investment.Yachts Inc. or any of its affiliates (collectively,
-                  “Investment.Yachts™”), through this website or any other
-                  medium, should be construed or is intended to be a
-                  recommendation to purchase, sell or hold any security or
-                  otherwise to be investment, tax, financial, accounting, legal,
-                  regulatory or compliance advice, except for specific
-                  investment advice that may be provided by Investment.Yachts
-                  Management, LLC pursuant to a written advisory agreement
-                  between such entity and the recipient. Nothing on this website
-                  is intended as an offer to extend credit, an offer to purchase
-                  or sell securities or a solicitation of any securities
-                  transaction.
+                  <sup className="sups text-[10px] pr-1">9</sup> No
+                  communication by Investment.Yachts Inc. or any of its
+                  affiliates (collectively, “Investment.Yachts™”), through this
+                  website or any other medium, should be construed or is
+                  intended to be a recommendation to purchase, sell or hold any
+                  security or otherwise to be investment, tax, financial,
+                  accounting, legal, regulatory or compliance advice, except for
+                  specific investment advice that may be provided by
+                  Investment.Yachts Management, LLC pursuant to a written
+                  advisory agreement between such entity and the recipient.
+                  Nothing on this website is intended as an offer to extend
+                  credit, an offer to purchase or sell securities or a
+                  solicitation of any securities transaction.
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">10</sup> Any financial
+                  <sup className="sups text-[10px] pr-1">10</sup> Any financial
                   projections or returns shown on the website are estimated
                   predictions of performance only, are hypothetical, are not
                   based on actual investment results and are not guarantees of
@@ -150,20 +151,21 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">11</sup> Private placement
-                  investments are NOT bank deposits (and thus NOT insured by the
-                  FDIC or by any other federal governmental agency), are NOT
-                  guaranteed by Investment.Yachts or any other party, and MAY
-                  lose value. Neither the Securities and Exchange Commission nor
-                  any federal or state securities commission or regulatory
-                  authority has recommended or approved any investment or the
-                  accuracy or completeness of any of the information or
-                  materials provided by or through the website. Investors must
-                  be able to afford the loss of their entire investment.
+                  <sup className="sups text-[10px] pr-1">11</sup> Private
+                  placement investments are NOT bank deposits (and thus NOT
+                  insured by the FDIC or by any other federal governmental
+                  agency), are NOT guaranteed by Investment.Yachts or any other
+                  party, and MAY lose value. Neither the Securities and Exchange
+                  Commission nor any federal or state securities commission or
+                  regulatory authority has recommended or approved any
+                  investment or the accuracy or completeness of any of the
+                  information or materials provided by or through the website.
+                  Investors must be able to afford the loss of their entire
+                  investment.
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">12</sup>
                   Investments in private placements are speculative and involve
                   a high degree of risk and those investors who cannot afford to
                   lose their entire investment should not invest. Additionally,
@@ -176,7 +178,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">13</sup>
                   Alternative investments should only be part of your overall
                   investment portfolio. Further, the alternative investment
                   portion of your portfolio should include a balanced portfolio
@@ -184,7 +186,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">14</sup>
                   Articles or information from third-party media outside of this
                   domain may discuss Investment.Yachts or relate to information
                   contained herein, but Investment.Yachts does not approve and
@@ -195,7 +197,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">15</sup>
                   Investing in securities (the Securities) listed on
                   Investment.Yachts™ pose risks, including but not limited to
                   credit risk, interest rate risk, and the risk of losing some
@@ -211,7 +213,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">16</sup>
                   Investing in private placements requires long-term
                   commitments, the ability to afford to lose the entire
                   investment, and low liquidity needs. This website provides
@@ -231,7 +233,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">17</sup>
                   Investment.Yachts Inc. is the direct owner of
                   Investment.Yachts Management, LLC, which is an SEC-registered
                   investment adviser that manages the Investment.Yachts funds
@@ -253,7 +255,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">18</sup>
                   Investment.Yachts is not a bank. Certain services are offered
                   through Synapse Financial Technologies, Inc. and its
                   affiliates (collectively, “Synapse”) as well as certain
@@ -271,7 +273,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">19</sup>
                   Investment advisory services are only provided to clients of
                   Investment.Yachts Management, LLC, an investment advisor
                   registered with the Securities and Exchange Commission,
@@ -279,7 +281,7 @@ export default function Disclaimer({}: Props) {
                 </p>
 
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">20</sup>
                   Our site uses a third party service to match browser cookies
                   to your mailing address. We then use another company to send
                   special offers through the mail on our behalf. Our company
@@ -288,13 +290,13 @@ export default function Disclaimer({}: Props) {
                   company or service.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">21</sup>
                   Investors should carefully consider the investment objectives,
                   risks, charges and expenses of the Investment.Yachts Fund
                   before investing.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">22</sup>
                   The prospectus for the Investment.Yachts Fund contains this
                   and other information about the Fund and can be obtained by
                   emailing diligence@investment.yachts or by referring to
@@ -302,39 +304,39 @@ export default function Disclaimer({}: Props) {
                   carefully before investing in the Fund.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">23</sup>
                   Investments in the Fund are not bank deposits (and thus not
                   insured by the FDIC or by any other federal governmental
                   agency) and are not guaranteed by Investment.Yachts or any
                   other party.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">24</sup>
                   The securities described in the prospectus are not offered for
                   sale in the United States of America. No subscription for the
                   sale of Fund shares will be accepted from any person residing
                   or located in the USA.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">25</sup>
                   An investment in the Fund is not suitable for investors that
                   require short-term liquidity.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">26</sup>
                   The Fund&apos;s shares have no history of public trading, are
                   not publicly traded, and you should not expect to be able to
                   sell your shares regardless of how the Fund performs.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">27</sup>
                   The Fund&apos;s shares are currently not listed on any
                   securities exchange and there is no expectation that a
                   secondary market for the Fund&apos;s shares will develop in
                   the future.
                 </p>
                 <p>
-                  <sup className="sups text-[10px]">12</sup>
+                  <sup className="sups text-[10px] pr-1">28</sup>
                   Pursuant to its Share Repurchase Program, the Fund intends to
                   periodically repurchase shares from the Fund&apos;s investors,
                   subject to the discretion of the Fund&apos;s Board of

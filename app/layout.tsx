@@ -5,6 +5,7 @@ import Footer from "./(shared)/Footer";
 import Nav from "./(shared)/Nav";
 import "./globals.css";
 import { Drawer } from "@/components/ui/drawer";
+import GoogleAnalytics from "@/components/Analytics";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 const title = Playfair_Display({
@@ -24,6 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-G4BPMB4NGH" />
       <body
         className={`${body.className} ${title.variable} relative scroll-smooth`}
       >
