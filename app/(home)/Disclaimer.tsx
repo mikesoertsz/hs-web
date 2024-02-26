@@ -77,8 +77,8 @@ export default function Disclaimer({}: Props) {
                 animate="open"
                 exit="collapsed"
                 variants={{
-                  open: { opacity: 1, height: "auto" },
-                  collapsed: { opacity: 0, height: 0 },
+                  open: { opacity: 1, scaleY: 1, transformOrigin: "top" },
+                  collapsed: { opacity: 0, scaleY: 0, transformOrigin: "top" },
                 }}
                 transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
                 className="gap-3 flex flex-col items-start justify-center"
