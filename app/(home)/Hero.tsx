@@ -8,8 +8,8 @@ import tw from "tailwind-styled-components";
 
 type Props = {};
 
-const Left = tw.div`flex flex-col items-center justify-center w-1/2 min-h-full bg-brand-p2 text-white`;
-const Right = tw.div`relative flex items-center justify-center w-1/2 min-h-full`;
+const Left = tw.div`relative flex flex-col items-center justify-center w-1/2 min-h-full bg-brand-p2 text-white z-10`;
+const Right = tw.div`relative flex items-center justify-center w-1/2 min-h-full z-10`;
 
 export default function Hero({}: Props) {
   return (
@@ -102,7 +102,7 @@ const stats = [
 
 export function HeroSplit({}: Props) {
   return (
-    <Wrapper className="flex min-h-[75vh] z-20">
+    <Wrapper className="relative flex min-h-[75vh] z-10 px-0 mx-0">
       <Left>
         <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
           <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
@@ -111,7 +111,7 @@ export function HeroSplit({}: Props) {
           <h1 className="text-6xl font-medium text-white drop-shadow-lg font-title leading-tight">
             Earn 8% yield from a fleet of charter yachts.
           </h1>
-          <p className="mt-4 text-2xl font-light text-brand-p0 flex w-3/4">
+          <p className="mt-4 hidden text-2xl font-light text-brand-p0 w-3/4">
             Earn from a growing industry, without the high entry costs and risk.
           </p>
           <ul className="flex items-start justify-start w-full gap-6 mt-6">
@@ -132,7 +132,7 @@ export function HeroSplit({}: Props) {
               </li>
             ))}
           </ul>
-          <div className="flex flex-col items-center justify-between gap-2 bg-gray-900 mt-8 p-4 bg-opacity-30 rounded-lg px-6">
+          <div className="flex flex-col items-center justify-between gap-2 mt-12">
             <button className="px-12 py-3 transition duration-100 rounded-lg text-brand-p2 hover:bg-blue-700 bg-brand-p4 hover:text-white relative overflow-hidden">
               <a href="#" className="z-10 relative">
                 Register Interest Now
@@ -154,10 +154,10 @@ export function HeroSplit({}: Props) {
       </Left>
       <Right>
         <Image
-          src="/img/hero/hero10.jpg"
+          src="/img/hero/hero2.jpg"
           alt="hero"
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", objectPosition: "70%" }}
           className="absolute inset-0 w-full h-full flex z-90"
         />
       </Right>

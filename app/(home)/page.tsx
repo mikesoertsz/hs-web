@@ -11,6 +11,7 @@ import Overview, {
   IncomeDistribution,
 } from "./Interest";
 import WhoFor from "./WhoFor";
+import EarningsCalculator from "./Desire";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <HowItWorks />
       <DetailsBlock />
       <IncomeDistribution />
+      <EarningsCalculator />
       {/* <BehindTheInvestment /> */}
       <FAQ {...homepage.desire} />
       <Disclaimer />

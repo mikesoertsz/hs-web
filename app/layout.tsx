@@ -13,7 +13,7 @@ const title = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "investment.yachts | Guaranteed 8% yield: alternative asset fund.",
+  title: "HelmShare.yachts | Private market alternative asset fund.",
   description: "Invest in alternative assets with guaranteed 8% yield.",
 };
 

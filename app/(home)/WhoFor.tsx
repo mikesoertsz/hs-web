@@ -44,7 +44,7 @@ export default function WhoFor({}: Props) {
     <Wrapper className="py-[5vh]">
       <InnerWrap>
         <div className="bg-gray-900 flex w-full items-start justify-center p-12 rounded-xl gap-12">
-          <div className="flex flex-col items-start justify-start">
+          <div className="flex flex-col items-start justify-start basis-1/2">
             <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
               Interested in investing?
             </h4>
@@ -52,11 +52,12 @@ export default function WhoFor({}: Props) {
               See if you qualify.
             </h2>
             <p className="text-md text-white mt-4 mb-4">
-              This fund is specifically restricted to Accredited Investors
+              This fund is specifically restricted to non-US <br /> Accredited
+              Investors
               <sup>?</sup>.
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg">
+          <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg basis-1/2">
             <Form {...form}>
               <form className="grid grid-cols-1 gap-4">
                 <FormField

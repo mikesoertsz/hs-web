@@ -175,7 +175,7 @@ export function IncomeDistribution({}: Props) {
               {data.map((item, index) => (
                 <li
                   key={index}
-                  className="flex flex-col items-start justify-start w-full h-full p-8"
+                  className="relative flex flex-col items-start justify-start w-full h-full p-8"
                 >
                   <div className="flex flex-col items-start justify-start text-left grow">
                     {item.icon}
@@ -214,7 +214,7 @@ export function IncomeDistribution({}: Props) {
             </ul>
           </div>
           <div className="flex items-center justify-center max-w-2xl py-12 mt-12">
-            <div style={{ width: 250 }}>
+            {/* <div style={{ width: 250 }}>
               <SimplyDonut
                 data={data}
                 size="md"
@@ -224,7 +224,7 @@ export function IncomeDistribution({}: Props) {
             <div style={{ width: 250 }}>
               <h3>Legend</h3>
               <SimplyLegend data={data} />
-            </div>
+            </div> */}
           </div>
         </div>
         <p className="text-xs text-gray-400">
@@ -434,23 +434,48 @@ export function Benefits({}: Props) {
     },
     {
       icon: <PiShieldLight size={25} />,
-      title: "Enjoy the benefits of low-risk investment opportunities.",
+      title: (
+        <span>
+          <strong>Low Risk</strong>: Benefit from investment opportunities that
+          prioritize security and stability.
+        </span>
+      ),
     },
     {
       icon: <IoBoatOutline size={25} />,
-      title: "Earn from real assets with intrinsic value.",
+      title: (
+        <span>
+          <strong>Asset Backed</strong>: Invest in tangible assets that offer
+          cashflow and real book securitization.
+        </span>
+      ),
     },
     {
       icon: <PiClockClockwise size={25} />,
-      title: "Regular quarterly payouts to your bank account.",
+      title: (
+        <span>
+          <strong>Quarterly Payouts</strong>: Enjoy consistent returns with
+          regular quarterly distributions to your bank account.
+        </span>
+      ),
     },
     {
       icon: <AiOutlineDashboard size={25} />,
-      title: "Transparent and real-time asset performance tracking.",
+      title: (
+        <span>
+          <strong>Transparent</strong>: Track the performance of your assets in
+          real-time with complete transparency.
+        </span>
+      ),
     },
     {
       icon: <TiChartPieOutline size={25} />,
-      title: "Diversify your portfolio with alternative assets.",
+      title: (
+        <span>
+          <strong>Diversification</strong>: Spread your investments across a
+          variety of asset classes to reduce risk and enhance potential returns.
+        </span>
+      ),
     },
   ];
   return (
@@ -591,7 +616,7 @@ export function HowItWorks({}: Props) {
 
   return (
     <Wrapper className="py-[5vh] bg-white" id="how-it-works">
-      <InnerWrap className="border border-slate-200 p-8 rounded-xl">
+      <InnerWrap className=" p-8 rounded-xl border border-slate-200 bg-white">
         <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2">
           <div className="flex flex-col items-start justify-start h-full">
             <h4 className="mb-3 text-sm tracking-wide text-brand-p1">
@@ -599,12 +624,8 @@ export function HowItWorks({}: Props) {
             </h4>
             <h3 className="text-4xl font-title">How It Works</h3>
             <p className="text-md mt-4 pr-12">
-              Investment.yachts is a fund that invests in luxury charter yachts
-              and real estate development projects. The fund generates income
-              through chartering, and capital appreciation through real estate
-              development. The fund is managed by a team of experienced
-              professionals in the maritime, investment management, finance, and
-              technology sectors.
+              HelmShare, managed by seasoned experts, invests in luxury yachts
+              and real estate, earning through charters and development.
             </p>
           </div>
           <div className="flex items-center justify-center">
@@ -622,16 +643,16 @@ export function HowItWorks({}: Props) {
                             {event.date}
                           </div>
                         </div>
-                        <div className="grow pt-0.5">
-                          <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
-                            {item.icon}
+                        <div className="flex gap-6">
+                          <div className="">{item.icon}</div>
+                          <div className="flex flex-col items-start justify-start">
                             {item.title}
-                          </h3>
-                          {item.description && (
-                            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                              {item.description}
-                            </p>
-                          )}
+                            {item.description && (
+                              <p className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </li>
                     ))}
