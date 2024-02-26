@@ -85,7 +85,7 @@ export default function EarningsCalculator({}: Props) {
                   name="investmentAmountRange"
                   min={minInvestment.toString()}
                   max={maxInvestment.toString()}
-                  step="100000"
+                  step="25000"
                   value={investmentAmount}
                   onChange={handleInvestmentChange}
                   className="bg-white border-0 shadow-none"
@@ -96,7 +96,7 @@ export default function EarningsCalculator({}: Props) {
                   name="investmentAmount"
                   min={minInvestment}
                   max={maxInvestment}
-                  step="100000"
+                  step="25000"
                   placeholder="Enter amount"
                   value={`$${Math.round(investmentAmount).toLocaleString()}`}
                   onChange={handleInvestmentChange}
@@ -109,7 +109,7 @@ export default function EarningsCalculator({}: Props) {
             </div>
             <div className="basis-1/2 p-8">
               <div className="flex flex-col">
-                <h3 className="text-md font-medium">Earnings Projection</h3>
+                <h3 className="text-md font-medium">Schedule</h3>
 
                 <div className="flex justify-between mt-4">
                   <h3 className="text-md font-medium">
