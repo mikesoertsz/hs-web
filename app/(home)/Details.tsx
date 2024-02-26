@@ -187,7 +187,7 @@ export function DetailsBlock() {
         {
           label: "Estimated Fund Size",
           description: "",
-          value: "$ 5,000,000",
+          value: "$ 5M",
           icon: "",
         },
         {

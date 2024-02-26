@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch } from "@/components/ui/switch";
 import {
   Form,
@@ -13,10 +13,11 @@ import {
 } from "@/components/ui/form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { toast } from "@/components/ui/use-toast";
 
 type Props = {};
+type QuestionName = "income" | "assets" | "entity" | "license" | "none";
 
 const FormSchema = z.object({
   income: z.boolean(),
@@ -27,9 +28,58 @@ const FormSchema = z.object({
 });
 
 export default function WhoFor({}: Props) {
+  const questions: {
+    label: string;
+    description: string;
+    name: QuestionName;
+  }[] = [
+    {
+      label:
+        "Do you earn $200K+ yearly, or $300K+ with your spousal equivalent?",
+      description: "Indicate your annual income level.",
+      name: "income",
+    },
+    {
+      label: "Do you have $1M+ in assets, excluding your primary residence?",
+      description: "Indicate if your asset value exceeds $1 million.",
+      name: "assets",
+    },
+    {
+      label: "Do you own an entity (i.e., family office) with $5M+ in assets?",
+      description:
+        "Indicate if you own an entity with significant asset value.",
+      name: "entity",
+    },
+    {
+      label:
+        "Do you hold a Series 7, 65, or 82 license currently in good standing?",
+      description: "Indicate if you have a valid financial license.",
+      name: "license",
+    },
+    {
+      label: "None of the above",
+      description: "Select if none of the above options apply to you.",
+      name: "none",
+    },
+  ];
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
+
+  const noneSelected = useWatch({
+    control: form.control,
+    name: "none",
+  });
+
+  useEffect(() => {
+    if (noneSelected) {
+      form.setValue("income", false);
+      form.setValue("assets", false);
+      form.setValue("entity", false);
+      form.setValue("license", false);
+    }
+  }, [noneSelected, form]);
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
       title: "You submitted the following values:",
@@ -40,6 +90,7 @@ export default function WhoFor({}: Props) {
       ),
     });
   }
+
   return (
     <Wrapper className="py-[5vh]">
       <InnerWrap>
@@ -53,130 +104,52 @@ export default function WhoFor({}: Props) {
             </h2>
             <p className="text-md text-white mt-4 mb-4">
               This fund is specifically restricted to non-US <br /> Accredited
-              Investors
-              <sup>?</sup>.
+              Investors<sup>?</sup>.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg basis-1/2">
             <Form {...form}>
-              <form className="grid grid-cols-1 gap-4">
-                <FormField
-                  control={form.control}
-                  name="income"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
-                      <div className="space-y-0.5">
-                        <FormLabel className="">
-                          Do you earn $200K+ yearly, or $300K+ with your spousal
-                          equivalent?
-                        </FormLabel>
-                        <FormDescription>
-                          Indicate your annual income level.
-                        </FormDescription>
-                      </div>
-                      <FormControl>
-                        <Switch
-                          checked={field.value}
-                          onCheckedChange={(checked) => field.onChange(checked)}
-                          className="ml-8"
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="assets"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
-                      <div className="space-y-0.5">
-                        <FormLabel>
-                          Do you have $1M+ in assets, excluding your primary
-                          residence?
-                        </FormLabel>
-                        <FormDescription>
-                          Indicate if your asset value exceeds $1 million.
-                        </FormDescription>
-                      </div>
-                      <FormControl>
-                        <Switch
-                          checked={field.value}
-                          onCheckedChange={(checked) => field.onChange(checked)}
-                          className="ml-8"
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="entity"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
-                      <div className="space-y-0.5">
-                        <FormLabel>
-                          Do you own an entity (i.e., family office) with $5M+
-                          in assets?
-                        </FormLabel>
-                        <FormDescription>
-                          Indicate if you own an entity with significant asset
-                          value.
-                        </FormDescription>
-                      </div>
-                      <FormControl>
-                        <Switch
-                          checked={field.value}
-                          onCheckedChange={(checked) => field.onChange(checked)}
-                          className="ml-8"
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="license"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
-                      <div className="space-y-0.5">
-                        <FormLabel>
-                          Do you hold a Series 7, 65, or 82 license currently in
-                          good standing?
-                        </FormLabel>
-                        <FormDescription>
-                          Indicate if you have a valid financial license.
-                        </FormDescription>
-                      </div>
-                      <FormControl>
-                        <Switch
-                          checked={field.value}
-                          onCheckedChange={(checked) => field.onChange(checked)}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="none"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                      <div className="space-y-0.5">
-                        <FormLabel>None of the above</FormLabel>
-                        <FormDescription>
-                          Select if none of the above options apply to you.
-                        </FormDescription>
-                      </div>
-                      <FormControl>
-                        <Switch
-                          checked={field.value}
-                          onCheckedChange={(checked) => field.onChange(checked)}
-                          className="ml-8"
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
+              <form
+                className="grid grid-cols-1 gap-4"
+                onSubmit={form.handleSubmit(onSubmit)}
+              >
+                {questions.map((question) => (
+                  <FormField
+                    key={question.name}
+                    control={form.control}
+                    name={question.name}
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
+                        <div className="space-y-0.5">
+                          <FormLabel>{question.label}</FormLabel>
+                          <FormDescription>
+                            {question.description}
+                          </FormDescription>
+                        </div>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={(checked) => {
+                              if (question.name === "none") {
+                                if (checked) {
+                                  form.setValue("income", false);
+                                  form.setValue("assets", false);
+                                  form.setValue("entity", false);
+                                  form.setValue("license", false);
+                                }
+                              } else if (noneSelected) {
+                                field.onChange(false);
+                              } else {
+                                field.onChange(checked);
+                              }
+                            }}
+                            className="ml-8"
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                ))}
                 <Button variant="outline" type="submit" className="flex w-full">
                   Submit
                 </Button>
