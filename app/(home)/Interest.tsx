@@ -29,6 +29,7 @@ import { PiSignature } from "react-icons/pi";
 import { RiRefund2Fill } from "react-icons/ri";
 import { LuFileSignature } from "react-icons/lu";
 import { PiChatsTeardrop } from "react-icons/pi";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Props = {};
 
@@ -74,28 +75,64 @@ export default function Overview({}: Props) {
   ];
   return (
     <Wrapper className="py-[5vh] bg-white" id="overview">
-      <InnerWrap className="border border-slate-200 p-8 rounded-xl">
-        <div className="grid items-center justify-center w-full grid-cols-2">
-          <div className="flex flex-col items-start justify-start">
-            <h1 className="text-2xl font-medium">Overview</h1>
-            <h4 className="pt-2 text-lg">
-              In light of inflationary pressures, looming recession risks, and
-              global tensions, the conventional portfolio allocation of 60%
-              equities and 40% fixed income may no longer suffice for achieving
-              long-term investment objectives.
-            </h4>
-            <ul className="flex flex-col gap-4 pl-3 mt-4 text-md">
-              {overview.map((item, index) => (
-                <li key={index} className="">
-                  <p>
-                    <span className="font-semibold">{item.title}: </span>
-                    {item.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
+      <InnerWrap className="border border-slate-200 p-8 rounded-xl items-start justify-start w-full">
+        <Tabs defaultValue="account" className="w-full">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="password">Password</TabsTrigger>
+          </TabsList>
+          <TabsContent
+            value="overview"
+            className="grid grid-cols-1 md:grid-cols-2 w-full"
+          >
+            <div className="flex flex-col items-start justify-start mt-4">
+              <h1 className="text-2xl font-medium">Overview</h1>
+              <h4 className="pt-2 text-lg">
+                In light of inflationary pressures, looming recession risks, and
+                global tensions, the conventional portfolio allocation of 60%
+                equities and 40% fixed income may no longer suffice for
+                achieving long-term investment objectives.
+              </h4>
+              <ul className="flex flex-col gap-4 pl-3 mt-4 text-md">
+                {overview.map((item, index) => (
+                  <li key={index} className="">
+                    <p>
+                      <span className="font-semibold">{item.title}: </span>
+                      {item.description}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </TabsContent>
+          <TabsContent
+            value="password"
+            className="grid grid-cols-1 md:grid-cols-2 w-full"
+          >
+            Change your password here.
+          </TabsContent>
+        </Tabs>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function HowGuaranteed({}: Props) {
+  return (
+    <Wrapper className="py-4 bg-gray-900 text-gray-200">
+      <InnerWrap>
+        <div className="flex gap-2 items-center justify-center">
+          <h2 className="text-sm">How is the 8% income guaranteed?</h2>
+          <div className="flex rounded-full p-2 bg-black items-center justify-center">
+            <IoBoatOutline size={24} className="text-white" />
           </div>
-          <div className=""></div>
+          <h2 className="text-sm">
+            Through a{" "}
+            <span className="font-semibold text-brand-p3">
+              binding agreement
+            </span>{" "}
+            with our chartering partners.
+          </h2>
         </div>
       </InnerWrap>
     </Wrapper>

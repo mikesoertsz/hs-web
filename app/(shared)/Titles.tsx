@@ -8,7 +8,7 @@ const Icon = tw.div`flex items-start justify-start`;
 const ImageWrap = tw.div`relative w-10 h-10 py-4`;
 const TitleWrap = tw.div`flex flex-col items-center justify-center w-full`;
 
-export const PreHeading = tw.h4`text-sm text-gray-400 font-body text-center`;
+export const PreHeading = tw.h4`uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1`;
 export const Heading = tw.h2`max-w-2/3 tracking-tight font-title text-5xl my-3 text-center`;
 export const SubHeading = tw.h3`text-3xl md:text-2xl tracking-tight font-body max-w-3xl font-light mt-2 text-center`;
 export const Body = tw.p`max-w-prose text-md font-body font-light leading-relaxed text-center mx-auto px-4 md:px-0 py-4 text-gray-900`;
