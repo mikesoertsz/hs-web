@@ -17,7 +17,6 @@ import EarningsCalculator from "./Desire";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center fillscreen bg-slate-100">
-      <SubNav />
       <HeroSplit />
       <DetailsBar />
       <Benefits />

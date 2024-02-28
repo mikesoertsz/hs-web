@@ -86,7 +86,7 @@ export default function DetailsBar({}: Props) {
               <p className="text-[9px] uppercase font-semibold tracking-[0.1em] text-slate-600">
                 {item.pretitle}
               </p>
-              <div className="mt-2 text-lg font-medium">{item.title}</div>
+              <div className="mt-1 text-lg font-medium">{item.title}</div>
               <div className="text-xs text-left text-gray-500">
                 {item.description}
               </div>
