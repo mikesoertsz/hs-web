@@ -100,7 +100,7 @@ export default function EarningsCalculator({}: Props) {
                   placeholder="Enter amount"
                   value={`$${Math.round(investmentAmount).toLocaleString()}`}
                   onChange={handleInvestmentChange}
-                  className="bg-white font-semibold text-lg text-center"
+                  className="bg-white font-semibold text-xl text-center"
                 />
               </div>
               <p className="text-xs text-gray-400 mt-2">

@@ -574,7 +574,7 @@ export function HowItWorks({}: Props) {
         {
           title: "Consultation",
           description:
-            "Schedule an initial consultation with our fund manager to discuss your investment goals and risk tolerance, subscription process, payout process and principle return at fund maturity.",
+            "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
           icon: <PiChatsTeardrop size={22} />,
           person: {
             avatar: "/img/mike.jpg",
@@ -604,7 +604,7 @@ export function HowItWorks({}: Props) {
         {
           title: "Subscription",
           description:
-            "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
+            "Complete the subscription process by signing the investment agreement, getting qualified as an accreddited investor, and finally transferring funds to secure your position in the investment.",
           icon: <PiSignature size={22} />,
           person: {
             avatar: "/img/mike.jpg",
@@ -662,9 +662,9 @@ export function HowItWorks({}: Props) {
 
   return (
     <Wrapper className="py-[5vh] bg-white" id="how-it-works">
-      <InnerWrap className=" p-8 rounded-xl border border-slate-200 bg-white">
-        <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2">
-          <div className="flex flex-col items-start justify-start h-full">
+      <InnerWrap className="p-8 rounded-xl border border-slate-200 bg-white">
+        <div className="flex flex-col md:flex-row items-start justify-center gap-8 h-full p-8">
+          <div className="flex flex-col items-start justify-start h-full md:basis-1/2">
             <h4 className="mb-3 text-sm tracking-wide text-brand-p1">
               Interested in investing?
             </h4>
@@ -673,7 +673,7 @@ export function HowItWorks({}: Props) {
               What to expect in our fund subscription process.
             </p>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center md:basis-1/2">
             <div className="flex flex-col">
               {timelineEvents.map((event, index) => (
                 <div key={index} className="mb-4">
