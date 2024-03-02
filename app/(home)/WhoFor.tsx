@@ -116,8 +116,16 @@ export default function WhoFor({}: Props) {
               See if you qualify.
             </h2>
             <p className="text-md text-white mt-4 mb-4">
-              This fund is specifically restricted to non-US <br /> Accredited
+              This fund is specifically restricted to <br /> Accredited
               Investors<sup>?</sup>.
+            </p>
+            <p className="text-sm font-light text-gray-400 balanced pr-16 leading-relaxed">
+              Our fund is exclusively available to experienced, accredited
+              investors. Each potential investor will undergo a thorough vetting
+              process as part of our commitment to maintaining a secure and
+              compliant investment environment. It&apos;s important to us that
+              all members of our investment community are well-informed and meet
+              the necessary accreditation standards.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg basis-1/2">

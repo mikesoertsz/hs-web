@@ -105,19 +105,19 @@ export const banners = {
 
 export const homepage = {
   interest: {
-    disclaimer: {
-      terms: [
-        "No communication by Investment.Yachts Inc. or any of its affiliates (collectively, “Investment.Yachts™”), through this website or any other medium, should be construed or is intended to be a recommendation to purchase, sell or hold any security or otherwise to be investment, tax, financial, accounting, legal, regulatory or compliance advice, except for specific investment advice that may be provided by Investment.Yachts Management, LLC pursuant to a written advisory agreement between such entity and the recipient. Nothing on this website is intended as an offer to extend credit, an offer to purchase or sell securities or a solicitation of any securities transaction.",
-        "Any financial projections or returns shown on the website are estimated predictions of performance only, are hypothetical, are not based on actual investment results and are not guarantees of future results. Estimated projections do not represent or guarantee the actual results of any transaction, and no representation is made that any transaction will, or is likely to, achieve results or profits similar to those shown. In addition, other financial metrics and calculations shown on the website (including amounts of principal and interest repaid) have not been independently verified or audited and may differ from the actual financial metrics and calculations for any investment, which are contained in the investors’ portfolios. Any investment information contained herein has been secured from sources that Investment.Yachts believes are reliable, but we make no representations or warranties as to the accuracy of such information and accept no liability therefore.",
-        "Private placement investments are NOT bank deposits (and thus NOT insured by the FDIC or by any other federal governmental agency), are NOT guaranteed by Investment.Yachts or any other party, and MAY lose value. Investors must be able to afford the loss of their entire investment.",
-        "Investments in private placements are speculative and involve a high degree of risk and those investors who cannot afford to lose their entire investment should not invest. Additionally, investors may receive illiquid and/or restricted securities that may be subject to holding period requirements and/or liquidity concerns. Investments in private placements are highly illiquid and those investors who cannot hold an investment for the long term (at least 5-7 years) should not invest.",
-        "Alternative investments should only be part of your overall investment portfolio. Further, the alternative investment portion of your portfolio should include a balanced portfolio of different alternative investments.",
-        "Articles or information from third-party media outside of this domain may discuss Investment.Yachts or relate to information contained herein, but Investment.Yachts does not approve and is not responsible for such content. Hyperlinks to third-party sites, or reproduction of third-party articles, do not constitute an approval or endorsement by Investment.Yachts of the linked or reproduced content.",
-        'Investing in securities (the "Securities") listed on Investment.Yachts™ pose risks, including but not limited to credit risk, interest rate risk, and the risk of losing some or all of the money you invest. Before investing you should: (1) conduct your own investigation and analysis; (2) carefully consider the investment and all related charges, expenses, uncertainties and risks, including all uncertainties and risks described in offering materials; and (3) consult with your own investment, tax, financial and legal advisors. Such Securities are only suitable for accredited investors who understand and are willing and able to accept the high risks associated with private investments.',
-        "Investing in private placements requires long-term commitments, the ability to afford to lose the entire investment, and low liquidity needs. This website provides preliminary and general information about the Securities and is intended for initial reference purposes only. It does not summarize or compile all the applicable information. This website does not constitute an offer to sell or buy any securities. No offer or sale of any Securities will occur without the delivery of confidential offering materials and related documents. This information contained herein is qualified by and subject to more detailed information in the applicable offering materials. Investment.Yachts™ is not registered as a broker-dealer.",
-        "We prioritize your privacy and make best efforts to be GDPR compliant. Our site does not share your data with any other company or third party. We are committed to protecting your personal information and use only necessary cookies to enhance your experience.",
-      ],
-    },
+    // disclaimer: {
+    //   terms: [
+    //     "No communication by Investment.Yachts Inc. or any of its affiliates (collectively, “Investment.Yachts™”), through this website or any other medium, should be construed or is intended to be a recommendation to purchase, sell or hold any security or otherwise to be investment, tax, financial, accounting, legal, regulatory or compliance advice, except for specific investment advice that may be provided by Investment.Yachts Management, LLC pursuant to a written advisory agreement between such entity and the recipient. Nothing on this website is intended as an offer to extend credit, an offer to purchase or sell securities or a solicitation of any securities transaction.",
+    //     "Any financial projections or returns shown on the website are estimated predictions of performance only, are hypothetical, are not based on actual investment results and are not guarantees of future results. Estimated projections do not represent or guarantee the actual results of any transaction, and no representation is made that any transaction will, or is likely to, achieve results or profits similar to those shown. In addition, other financial metrics and calculations shown on the website (including amounts of principal and interest repaid) have not been independently verified or audited and may differ from the actual financial metrics and calculations for any investment, which are contained in the investors’ portfolios. Any investment information contained herein has been secured from sources that Investment.Yachts believes are reliable, but we make no representations or warranties as to the accuracy of such information and accept no liability therefore.",
+    //     "Private placement investments are NOT bank deposits (and thus NOT insured by the FDIC or by any other federal governmental agency), are NOT guaranteed by Investment.Yachts or any other party, and MAY lose value. Investors must be able to afford the loss of their entire investment.",
+    //     "Investments in private placements are speculative and involve a high degree of risk and those investors who cannot afford to lose their entire investment should not invest. Additionally, investors may receive illiquid and/or restricted securities that may be subject to holding period requirements and/or liquidity concerns. Investments in private placements are highly illiquid and those investors who cannot hold an investment for the long term (at least 5-7 years) should not invest.",
+    //     "Alternative investments should only be part of your overall investment portfolio. Further, the alternative investment portion of your portfolio should include a balanced portfolio of different alternative investments.",
+    //     "Articles or information from third-party media outside of this domain may discuss Investment.Yachts or relate to information contained herein, but Investment.Yachts does not approve and is not responsible for such content. Hyperlinks to third-party sites, or reproduction of third-party articles, do not constitute an approval or endorsement by Investment.Yachts of the linked or reproduced content.",
+    //     'Investing in securities (the "Securities") listed on Investment.Yachts™ pose risks, including but not limited to credit risk, interest rate risk, and the risk of losing some or all of the money you invest. Before investing you should: (1) conduct your own investigation and analysis; (2) carefully consider the investment and all related charges, expenses, uncertainties and risks, including all uncertainties and risks described in offering materials; and (3) consult with your own investment, tax, financial and legal advisors. Such Securities are only suitable for accredited investors who understand and are willing and able to accept the high risks associated with private investments.',
+    //     "Investing in private placements requires long-term commitments, the ability to afford to lose the entire investment, and low liquidity needs. This website provides preliminary and general information about the Securities and is intended for initial reference purposes only. It does not summarize or compile all the applicable information. This website does not constitute an offer to sell or buy any securities. No offer or sale of any Securities will occur without the delivery of confidential offering materials and related documents. This information contained herein is qualified by and subject to more detailed information in the applicable offering materials. Investment.Yachts™ is not registered as a broker-dealer.",
+    //     "We prioritize your privacy and make best efforts to be GDPR compliant. Our site does not share your data with any other company or third party. We are committed to protecting your personal information and use only necessary cookies to enhance your experience.",
+    //   ],
+    // },
     behindtheinvestment: {
       feestructure: {
         title: "Fee Structure",
@@ -160,6 +160,158 @@ export const homepage = {
         ],
       },
     },
+    // luxuryCharterMarket: [
+    //   {
+    //     title: "Market Size and Growth",
+    //     dataPoints: [
+    //       {
+    //         description:
+    //           "Global yacht charter market valued at approximately USD 7.22 billion in 2022.",
+    //         projection: "Projected to grow to USD 11.06 billion by 2030.",
+    //         cagr: "CAGR of around 5.5% from 2022 to 2030.",
+    //         source: "Fortune Business Insights",
+    //       },
+    //       {
+    //         description:
+    //           "Luxury yacht charter market expected to expand at CAGR of 4.1% from 2022 to 2031.",
+    //         projection:
+    //           "Projected market value of around USD 19.0 billion by 2031.",
+    //         source: "Transparency Market Research",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     title: "Yacht Types and Preferences",
+    //     dataPoints: [
+    //       {
+    //         description:
+    //           "Motor-yachts dominate the market, preferred for their power, speed, and shallow-draft navigation.",
+    //         source: "Grand View Research",
+    //       },
+    //       {
+    //         description:
+    //           "20-to-50-meter yacht segment most dominant, favored for lower maintenance and cost-effectiveness.",
+    //         source: "Grand View Research",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     title: "Regional Insights",
+    //     dataPoints: [
+    //       {
+    //         description: "Europe is the largest market for yacht charters.",
+    //         keyCountries: "Including Croatia, Greece, and France.",
+    //         source: "Fortune Business Insights",
+    //       },
+    //       {
+    //         description:
+    //           "Asia Pacific anticipated to be the fastest-growing region.",
+    //         source: "Fortune Business Insights",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     title: "Commercial vs. Private Use",
+    //     dataPoints: [
+    //       {
+    //         description:
+    //           "Commercial segment drives the luxury yacht market with charter services and corporate events.",
+    //         source: "IMARC Group",
+    //       },
+    //       {
+    //         description:
+    //           "Private segment caters to personalized yacht ownership experience.",
+    //         source: "IMARC Group",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     title: "Key Players and Competitive Landscape",
+    //     dataPoints: [
+    //       {
+    //         description:
+    //           "Major players include Northrop & Johnson, Yachtico Inc., Sailogy S.A., Burgess, Azimut Benetti.",
+    //         source: "Future Market Insights",
+    //       },
+    //       {
+    //         description:
+    //           "Italy and Taiwan emerging as significant players in yacht manufacturing.",
+    //         source: "Allied Market Research",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     title: "Market Challenges",
+    //     dataPoints: [
+    //       {
+    //         description:
+    //           "High costs associated with yacht charters, including taxes and insurance, pose barriers in developing countries.",
+    //         source: "Allied Market Research",
+    //       },
+    //     ],
+    //   },
+    // ],
+    corporatestructure: {
+      header: {
+        icon: "", // Placeholder for actual icon path
+        image: "", // Placeholder for actual image path
+        preheading: "Understanding Our Foundation",
+        heading: "Corporate Structure",
+        subheading: "Explore Our Organizational Framework",
+        body: "Learn about the entities that form our corporate structure and how they interconnect to sustain our business operations and growth.",
+      },
+      entities: [
+        {
+          title: "General Partner",
+          name: "TBA",
+          country: "Dubai",
+          compliance: ["Dubai Financial Services Authority (DFSA)"],
+        },
+        {
+          title: "Special Purpose Vehicle",
+          name: "TBA",
+          country: "Cayman Islands",
+          compliance: ["Cayman Islands Monetary Authority (CIMA)"],
+        },
+        {
+          title: "Trust",
+          name: "TBA",
+          country: "Dublin",
+          compliance: ["Central Bank of Ireland"],
+        },
+        {
+          title: "Audit Partner",
+          name: "Deloitte",
+          country: "Global",
+          compliance: [
+            "International Standards on Auditing (ISA)",
+            "Anti-Money Laundering (AML)",
+            "Know Your Customer (KYC)",
+          ],
+        },
+        {
+          title: "Payment Agent",
+          name: "TBA",
+          country: "Switzerland",
+          compliance: ["Swiss Financial Market Supervisory Authority (FINMA)"],
+        },
+        {
+          title: "Counsel - Offshore",
+          name: "TBA",
+          country: "Cayman Islands",
+          compliance: [
+            "Cayman Islands Legal Practitioners Association (CILPA)",
+          ],
+        },
+        {
+          title: "Counsel - Onshore",
+          name: "TBA",
+          country: "Dubai",
+          compliance: ["Dubai Legal Affairs Department"],
+        },
+      ],
+    },
+    advisors: [],
   },
   desire: {
     faq: {
@@ -219,7 +371,6 @@ export const homepage = {
             "No. This fund does not allow early redemption and is a fixed 6-year term, or the remaining tenure until December 31st, 2029.",
           value: "6",
         },
-
         {
           question:
             "Can I purchase tickets in the fund in order currencies other than USD?",

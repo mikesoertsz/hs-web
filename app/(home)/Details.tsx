@@ -53,7 +53,7 @@ export default function DetailsBar({}: Props) {
               2
             </a>
           </sup>{" "}
-          performance bonus of 9.5%-13% at end of term.
+          carried interest paid at end of term.
         </>
       ),
       icon: "",

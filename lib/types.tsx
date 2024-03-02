@@ -42,91 +42,34 @@ export type Attention = {
 };
 
 export type Interest = {
-  modules: {
-    header: Titles;
-    list: {
+  // disclaimer?: {
+  //   terms?: string[];
+  // };
+  behindtheinvestment: {
+    feestructure: {
       title: string;
-      subheading: string;
-      duration: number;
-    }[];
+      description: string;
+      percentage: number;
+      width: number;
+    };
   };
-  details: {
-    primary: {
-      label: string;
-      value: string;
-      icon: string | JSX.Element;
-    }[];
-    secondary: {
-      label: string;
-      value: string;
-      icon: string | JSX.Element;
-    }[];
-  };
-  testimonials: {
+  // luxuryCharterMarket: {
+  //   title: string | React.ReactNode;
+  //   dataPoints: {
+  //     description: string;
+  //     projection?: string;
+  //     cagr?: string;
+  //     source: string;
+  //     keyCountries?: string;
+  //   }[];
+  // };
+  corporatestructure: {
     header: Titles;
-    list: {
-      testimonial: string;
+    entities: {
+      title: string;
       name: string;
-      role: string;
-      company: string;
-      image: string;
-      age: string;
-      location: string;
-      motivation: string;
-    }[];
-  };
-  whofor: {
-    header: string | React.ReactNode;
-    list: {
-      icon: string | JSX.Element;
-      title: string;
-      description: string;
-    }[];
-  };
-  coursefiles: {
-    header: Titles;
-    list: {
-      icon?: string | JSX.Element;
-      title: string;
-      description: string;
-    }[];
-  };
-  whatyoulearn: {
-    title: string;
-    beginnerlist: string[] | JSX.Element[];
-    advancedlist: string[] | JSX.Element[];
-  };
-  requirements: {
-    title: string;
-    list: (string | JSX.Element)[];
-    recommended: {
-      icon: string | JSX.Element | React.ReactNode;
-      text: string;
-      url: string;
-      price: number;
-    }[];
-  };
-  instructor: {
-    header: Titles;
-    socials: {
-      icon: string | JSX.Element;
-      url: string;
-    }[];
-  };
-  syllabus: {
-    header: string | React.ReactNode;
-    chapters: {
-      free: boolean;
-      title: string;
-      description: string;
-      sections: {
-        preview: boolean;
-        previewlink: string;
-        type: string;
-        title: string;
-        duration: number;
-      }[];
-      totalduration: number;
+      country: string;
+      compliance: string[];
     }[];
   };
 };

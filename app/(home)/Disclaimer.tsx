@@ -16,6 +16,14 @@ export default function Disclaimer({}: Props) {
         <p className="text-sm font-medium">Disclaimers</p>
         <div className="flex items-start justify-start flex-col text-xs gap-3 mt-4">
           <p>
+            <sup className="sups text-[10px] pr-1">Important:</sup>HelmShare
+            permits solely accredited investors to make investments after they
+            have evaluated their investment goals and risk appetite, and have
+            procured independent counsel from professionals and specialists when
+            required.
+          </p>
+
+          <p>
             <sup className="sups text-[10px] pr-1">1</sup> Past performance is
             no guarantee of future results. Any historical returns, expected
             returns, or probability projections may not reflect actual future
@@ -254,7 +262,7 @@ export default function Disclaimer({}: Props) {
                   recommend, or place interests in the Investment.Yachts funds.
                 </p>
 
-                <p>
+                {/* <p>
                   <sup className="sups text-[10px] pr-1">18</sup>
                   Investment.Yachts is not a bank. Certain services are offered
                   through Synapse Financial Technologies, Inc. and its
@@ -270,17 +278,17 @@ export default function Disclaimer({}: Props) {
                   program, you acknowledge receipt of and accept Synapse’s Terms
                   of Service, Privacy Policy, and the applicable disclosures and
                   agreements available in Synapse’s Disclosure Library.
-                </p>
+                </p> */}
 
-                <p>
+                {/* <p>
                   <sup className="sups text-[10px] pr-1">19</sup>
                   Investment advisory services are only provided to clients of
                   Investment.Yachts Management, LLC, an investment advisor
                   registered with the Securities and Exchange Commission,
                   pursuant to a written advisory agreement.
-                </p>
+                </p> */}
 
-                <p>
+                {/* <p>
                   <sup className="sups text-[10px] pr-1">20</sup>
                   Our site uses a third party service to match browser cookies
                   to your mailing address. We then use another company to send
@@ -288,7 +296,7 @@ export default function Disclaimer({}: Props) {
                   never receives or stores any of this information and our third
                   parties do not provide or sell this information to any other
                   company or service.
-                </p>
+                </p> */}
                 <p>
                   <sup className="sups text-[10px] pr-1">21</sup>
                   Investors should carefully consider the investment objectives,
@@ -340,8 +348,7 @@ export default function Disclaimer({}: Props) {
                   Pursuant to its Share Repurchase Program, the Fund intends to
                   periodically repurchase shares from the Fund&apos;s investors,
                   subject to the discretion of the Fund&apos;s Board of
-                  Directors, but only a limited number of shares will be
-                  eligible for repurchase by the Fund.
+                  Directors.
                 </p>
               </motion.div>
             )}
