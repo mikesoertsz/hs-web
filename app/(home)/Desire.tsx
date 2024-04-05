@@ -109,7 +109,9 @@ export default function EarningsCalculator({}: Props) {
             </div>
             <div className="basis-1/2 p-8">
               <div className="flex flex-col">
-                <h3 className="text-md font-medium">Schedule</h3>
+                <h3 className="flex w-full border-t border-dashed border-gray-300 pt-8 mt-12 uppercase text-[11px] tracking-[0.1em] font-medium text-brand-g1">
+                  Annual Schedule
+                </h3>
 
                 <div className="flex justify-between mt-4">
                   <h3 className="text-md font-medium">
@@ -123,20 +125,17 @@ export default function EarningsCalculator({}: Props) {
 
                 <div className="flex justify-between mt-4">
                   <h3 className="text-md font-medium">
-                    Annual Payout ({guaranteedAnnualReturnRate * 100}%):
+                    Annual Payout
                     <sup className="text-green-600 pl-1">8%</sup>
                   </h3>
                   <p className="text-right">
                     ${Math.round(annualPayout).toLocaleString()}
                   </p>
                 </div>
-                <div className="justify-between hidden">
-                  <p className="text-left">Initial Investment Amount:</p>
-                  <p className="text-right">100% Return</p>
-                </div>
+
                 <div className="flex justify-between py-1 mt-3">
                   <p className="text-left">
-                    Project Performance Bonus:
+                    Target Annualized Yield
                     <sup className="text-green-600 pl-1">9.3%</sup>
                   </p>
                   <p className="text-right">
@@ -144,7 +143,10 @@ export default function EarningsCalculator({}: Props) {
                   </p>
                 </div>
 
-                <div className="flex justify-between mt-12 border-t border-dashed border-gray-300 pt-4">
+                <h2 className="flex w-full border-t border-dashed border-gray-300 pt-8 pb-4 mt-12 uppercase text-[11px] tracking-[0.1em] font-medium text-brand-g1">
+                  End of Term Yields
+                </h2>
+                <div className="flex justify-between ">
                   <h3 className="text-lg font-semibold">
                     Guaranteed{" "}
                     <span className="font-normal">Yield-on-Capital</span>
@@ -181,6 +183,13 @@ export default function EarningsCalculator({}: Props) {
                       )}
                       %
                     </sup>
+                  </p>
+                </div>
+                <div className="flex justify-between mt-4">
+                  <h3 className="text-lg font-semibold">Priciple Return</h3>
+                  <p className="text-right text-lg font-semibold">
+                    ${Math.round(investmentAmount).toLocaleString()}
+                    <sup className="text-green-600 pl-1">100%</sup>
                   </p>
                 </div>
               </div>

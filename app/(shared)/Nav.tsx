@@ -1,6 +1,7 @@
 "use client";
 import { NavigationMenuDemo } from "./nav-dropdown";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import { HiChevronDown } from "react-icons/hi2";
 
@@ -10,6 +11,13 @@ export default function Nav({}: Props) {
   return (
     <nav className="w-full flex justify-between items-center py-2 sticky top-0 left-0 right-0 h-12 overflow-hidden z-70 bg-white">
       <div className="flex items-center px-6">
+        <Image
+          src="/img/helmshare_favicon.svg"
+          alt="hero"
+          width={80}
+          height={80}
+          className="absolute inset-0 w-full h-full flex z-20 p-2"
+        />
         <h1>helmshare.yachts</h1>
         <div className="hidden md:hidden gap-9 text-xs font-medium transition-colors hover:text-accent-foreground focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 ml-12">
           <a href="#" className="">

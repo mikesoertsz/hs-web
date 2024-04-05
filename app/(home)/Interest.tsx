@@ -833,7 +833,7 @@ export function CorporateStructure({}: Props) {
           </h3>
           <Table>
             <TableCaption>
-              TBA<sup>*</sup> currently in progress.
+              <sup>*</sup>currently in progress.
             </TableCaption>
             <TableHeader>
               <TableRow>
@@ -850,7 +850,10 @@ export function CorporateStructure({}: Props) {
                   className="hover:bg-slate-50 transition duration-200 ease-in-out"
                 >
                   <TableCell>{entity.title}</TableCell>
-                  <TableCell>{entity.name}</TableCell>
+                  <TableCell>
+                    {entity.name}
+                    <sup>*</sup>
+                  </TableCell>
                   <TableCell>{entity.country}</TableCell>
                   <TableCell>
                     {entity.compliance.map((item, idx) => (

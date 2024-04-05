@@ -154,12 +154,21 @@ export function HeroSplit({}: Props) {
       </Left>
       <Right>
         <Image
-          src="/img/hero/hero2.jpg"
+          src="/img/hero/hero8.jpg"
           alt="hero"
           fill
           style={{ objectFit: "cover", objectPosition: "70%" }}
-          className="absolute inset-0 w-full h-full flex z-90"
+          className="absolute inset-0 w-full h-full flex z-20"
         />
+        <div className="mt-1 absolute top-4 left-4 z-30">
+          <Image
+            src="/img/helmshare_icon_large.svg"
+            alt="hero"
+            width={80}
+            height={80}
+            className="absolute inset-0 w-full h-full flex z-20"
+          />
+        </div>
       </Right>
     </Wrapper>
   );
