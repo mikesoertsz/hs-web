@@ -1,5 +1,4 @@
-import { Heading } from "@/app/(shared)/Titles";
-import { InnerWrap, Wrapper, SubHeading, PreHeading } from "@/lib/atoms";
+import { InnerWrap, Wrapper, SubHeading, PreHeading, Heading } from "@/lib/atoms";
 import React from "react";
 
 type Props = {};

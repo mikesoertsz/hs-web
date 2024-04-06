@@ -15,8 +15,8 @@ export default function PartnersPage({}: Props) {
   return (
     <main>
       <AttentionHero />
-      <AttentionStinger />
       <AttentionQualifier />
+      <AttentionStinger />
       <InterestBenefits />
       <InterestHowItWorks />
       <InterestAboutUs />

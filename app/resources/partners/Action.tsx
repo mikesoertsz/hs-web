@@ -48,22 +48,25 @@ export default function ActionCTA() {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <Wrapper className="py-[10vh] bg-[url('/img/bgs/water.webp')]">
-      <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-        <div className="flex flex-col justify-center items-start p-4">
+    <Wrapper className="py-[10vh] bg-[url('/img/bgs/watertile1.webp')]">
+      <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white">
+        <div className="flex flex-col justify-center items-start p-12 bg-slate-100 h-full">
           <PreHeading>Join Our Network</PreHeading>
           <Heading>Become a Partner</Heading>
           <SubHeading>Unlock New Earnings</SubHeading>
           <p className="mt-2 text-sm">
-            Have questions?{" "}
-            <a href="#inquiry" className="text-blue-500 underline">
-              Make an inquiry
+            Have another question?{" "}
+            <a
+              href="#inquiry"
+              className="text-blue-500 hover:underline transition duration-200 ease-in-out"
+            >
+              Get in touch
             </a>
           </p>
         </div>
         <div className="p-4">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
               <FormField
                 control={form.control}
                 name="name"
