@@ -38,7 +38,7 @@ export default function Nav({}: Props) {
       <div className="flex gap-2 items-center justify-center">
         <Link
           href="#"
-          className="hidden md:hidden text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium mr-3 items-center justify-center gap-1"
+          className="hidden md:flex text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium mr-3 items-center justify-center gap-1"
         >
           Resources
           <HiChevronDown className="inline-block ml-1" />
