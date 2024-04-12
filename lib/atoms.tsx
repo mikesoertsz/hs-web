@@ -11,4 +11,4 @@ export const ImageWrap = tw.div`relative w-10 h-10 py-4`;
 export const PreHeading = tw.h4`uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1`;
 export const Heading = tw.h2`max-w-4xl font-title font-light text-5xl balanced tracking-tight py-3`;
 export const SubHeading = tw.h3`text-2xl md:text-3xl tracking-tight balanced`;
-export const Body = tw.p`max-w-prose text-sm font-body leading-relaxed text-center mx-auto`;
+export const Body = tw.p`max-w-prose text-sm font-body leading-relaxed`;

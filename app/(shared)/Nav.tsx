@@ -35,7 +35,7 @@ export default function Nav({}: Props) {
           </Link>
         </div>
       </div>
-      <div className="flex gap-2 items-center justify-center">
+      <div className="gap-2 items-center justify-center hidden">
         <Link
           href="#"
           className="hidden md:flex text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium mr-3 items-center justify-center gap-1"

@@ -1,4 +1,11 @@
-import { InnerWrap, Wrapper, SubHeading, PreHeading, Heading } from "@/lib/atoms";
+import {
+  InnerWrap,
+  Wrapper,
+  SubHeading,
+  PreHeading,
+  Heading,
+} from "@/lib/atoms";
+import Image from "next/image";
 import React from "react";
 
 type Props = {};
@@ -6,10 +13,12 @@ type Props = {};
 export default function AttentionHero({}: Props) {
   const hero = {};
   return (
-    <Wrapper className="bg-brand-n4">
-      <InnerWrap>
-        <div className="flex text-white text-center p-10 lg:p-20 flex-col items-center justify-center">
-          <PreHeading>Affiliate Partner Program</PreHeading>
+    <Wrapper className="py-[10vh] min-h-[60vh] relative">
+      <InnerWrap className="items-start justify-end">
+        <div className="relative z-20 flex text-white text-left flex-col items-start justify-end">
+          <PreHeading className="text-sky-300">
+            Affiliate Partner Program
+          </PreHeading>
           <Heading>
             Unlock New Earnings: Partner with Our Yacht Investment Fund
           </Heading>
@@ -24,6 +33,15 @@ export default function AttentionHero({}: Props) {
           </a>
         </div>
       </InnerWrap>
+      <div className="absolute inset-0 bg-sky-50">
+        <Image
+          src="/img/hero/captain.webp"
+          alt=""
+          fill
+          className="absolute inset-0 z-10"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
     </Wrapper>
   );
 }

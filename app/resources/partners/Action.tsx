@@ -39,6 +39,7 @@ const formSchema = z.object({
   ]),
 });
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function ActionCTA() {
   const form = useForm({
@@ -48,9 +49,9 @@ export default function ActionCTA() {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <Wrapper className="py-[10vh] bg-[url('/img/bgs/watertile1.webp')]">
-      <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white">
-        <div className="flex flex-col justify-center items-start p-12 bg-slate-100 h-full">
+    <Wrapper className="py-[10vh] relative">
+      <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20">
+        <div className="flex flex-col justify-center items-start p-12 bg-slate-100 h-full shadow-lg">
           <PreHeading>Join Our Network</PreHeading>
           <Heading>Become a Partner</Heading>
           <SubHeading>Unlock New Earnings</SubHeading>
@@ -64,7 +65,7 @@ export default function ActionCTA() {
             </a>
           </p>
         </div>
-        <div className="p-4">
+        <div className="p-12">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
               <FormField
@@ -98,7 +99,7 @@ export default function ActionCTA() {
                 name="location"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Location</FormLabel>
+                    <FormLabel>Your Location</FormLabel>
                     <FormControl>
                       <Input placeholder="Location" {...field} />
                     </FormControl>
@@ -140,16 +141,22 @@ export default function ActionCTA() {
                   </FormItem>
                 )}
               />
-              <Button
-                type="submit"
-                className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Submit
+              <Button type="submit" className="w-full">
+                Apply to be an Affiliate
               </Button>
             </form>
           </Form>
         </div>
       </InnerWrap>
+      <div className="absolute inset-0 bg-sky-50">
+        <Image
+          src="/img/bgs/watertile1.webp"
+          alt=""
+          fill
+          className="absolute inset-0 z-10"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
     </Wrapper>
   );
 }
