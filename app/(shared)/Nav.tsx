@@ -9,8 +9,8 @@ type Props = {};
 
 export default function Nav({}: Props) {
   return (
-    <nav className="w-full flex justify-between items-center py-2 sticky top-0 left-0 right-0 h-12 overflow-hidden z-70 bg-white">
-      <div className="flex items-center px-6">
+    <nav className="w-full flex justify-between items-center py-2 sticky top-0 left-0 right-0 h-12 overflow-hidden bg-white z-20">
+      <div className=" relative flex items-center px-6">
         <Image
           src="/img/helmshare_favicon.svg"
           alt="hero"
@@ -35,13 +35,19 @@ export default function Nav({}: Props) {
           </Link>
         </div>
       </div>
-      <div className="gap-2 items-center justify-center hidden">
+      <div className="gap-2 items-center justify-center md:flex">
         <Link
           href="#"
-          className="hidden md:flex text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium mr-3 items-center justify-center gap-1"
+          className="hidden md:hidden text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium mr-3 items-center justify-center gap-1"
         >
           Resources
           <HiChevronDown className="inline-block ml-1" />
+        </Link>
+        <Link
+          href="/affiliates"
+          className="md:flex text-gray-700 hover:text-blue-400 duration-200 transition ease-in-out text-xs font-medium mr-3 items-center justify-center gap-1 hover:underline"
+        >
+          Affiliates
         </Link>
         <Link
           href="#"

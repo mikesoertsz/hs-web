@@ -11,9 +11,9 @@ import InterestBenefits, {
 
 type Props = {};
 
-export default function PartnersPage({}: Props) {
+export default function AffiliatesPage({}: Props) {
   return (
-    <main>
+    <main className="relative z-10">
       <AttentionHero />
       <AttentionQualifier />
       <AttentionStinger />

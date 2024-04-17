@@ -11,25 +11,32 @@ import React from "react";
 type Props = {};
 
 export default function AttentionHero({}: Props) {
-  const hero = {};
+  const hero = {
+    header: {
+      preheading: "Affiliate Partner Program",
+      heading: "Unlock New Earnings: Partner with Our Yacht Investment Fund",
+      subheading:
+        "Leverage your connections, earn with every successful referral",
+      cta1: {
+        text: "Become an Affiliate Partner",
+        href: "#join-our-network",
+      },
+    },
+  };
   return (
     <Wrapper className="py-[10vh] min-h-[60vh] relative">
       <InnerWrap className="items-start justify-end">
         <div className="relative z-20 flex text-white text-left flex-col items-start justify-end">
           <PreHeading className="text-sky-300">
-            Affiliate Partner Program
+            {hero.header.preheading}
           </PreHeading>
-          <Heading>
-            Unlock New Earnings: Partner with Our Yacht Investment Fund
-          </Heading>
-          <SubHeading>
-            Leverage your connections, earn with every successful referral
-          </SubHeading>
+          <Heading>{hero.header.heading}</Heading>
+          <SubHeading>{hero.header.subheading}</SubHeading>
           <a
-            href="#join-our-network"
+            href={hero.header.cta1.href}
             className="inline-block bg-white text-blue-500 font-bold rounded-lg px-6 py-3 transition duration-300 ease-in-out hover:bg-gray-100"
           >
-            Become an Affiliate Partner
+            {hero.header.cta1.text}
           </a>
         </div>
       </InnerWrap>

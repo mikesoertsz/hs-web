@@ -14,6 +14,7 @@ import Overview, {
 } from "./Interest";
 import WhoFor from "./WhoFor";
 import EarningsCalculator from "./Desire";
+import ActionCTA from "./Action";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       <EarningsCalculator />
       {/* <BehindTheInvestment /> */}
       <FAQ {...homepage.desire} />
+      <ActionCTA />
       <Disclaimer />
     </main>
   );
