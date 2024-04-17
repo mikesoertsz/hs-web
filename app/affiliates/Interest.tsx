@@ -1,8 +1,18 @@
 import { TitleBlock } from "@/app/(shared)/Titles";
-import { Wrapper, InnerWrap } from "@/lib/atoms";
+import {
+  Wrapper,
+  InnerWrap,
+  PreHeading,
+  Heading,
+  SubHeading,
+} from "@/lib/atoms";
+import Image from "next/image";
 import React from "react";
 
 type Props = {};
+
+
+}
 
 export default function InterestBenefits({}: Props) {
   const benefits = {
