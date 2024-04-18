@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "@/components/ui/use-toast";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { HeaderWrapLeft, InnerWrap, Wrapper } from "@/lib/atoms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
@@ -81,7 +81,7 @@ const FormSchema = z.object({
 });
 
 export default function InterestOverview({}: Props) {
-  const content = {
+  const overview = {
     overview: [
       {
         title: "Stable Income",
@@ -102,26 +102,102 @@ export default function InterestOverview({}: Props) {
         ),
       },
       {
-        title: "Diversified Portfolio",
+        title: "Tangible Assets",
         description: (
           <>
-            Each portfolio includes three different income notes tied to three
-            different stocks, allowing investors to diversify their risk.
+            The fund invests in cashflowing, hard assets with real tangible book
+            value which act as collateral for the investment.
           </>
         ),
       },
       {
-        title: "Diligent Investment Approach",
+        title: "Treasury Bond Substitute",
         description: (
           <>
-            Income structured notes are purchased based on a transparent process
-            that requires each underlying stock to meet certain criteria, which
-            is expected to minimize the likelihood of any significant price
-            decline.
+            The fund is designed to be a substitute for treasury bonds, with a
+            higher yield and lower volatility given the bond price projections
+            over the coming 24 months.
           </>
         ),
       },
     ],
+    premise: {
+      header: {
+        preheader: "",
+        heading: "Alternative Income Fund",
+        subheading:
+          "HelmShare's Alternative Income Fund is a product offered to investors with a guaranteed 8% yield from a fleet of charter yachts.",
+      },
+      content: [
+        {
+          title: "Details",
+          question: "What am I investing in?",
+          bullets: [
+            "HelmShare's Alternative Income Fund is a product offered to investors with a guaranteed 8% yield primarily from a fleet of charter yachts.",
+            "HelmShare permits solely accredited investors to make investments after they have evaluated their investment goals and risk appetite, and have procured independent counsel from professionals and specialists when required.",
+            "HelmShare primarily generates income through charter yachts & real estate purchased with your capital. Real estate and alternative assets add diversification while hedging against yacht depreciation.",
+            "The fund leverages asset equity to acquire high-yield, liquid bond assets through reputable partner funds.",
+            "Investors will be able to track the performance of their assets in real-time with complete transparency.",
+          ],
+        },
+        {
+          title: "Strategy",
+          question: "What is the value proposition?",
+          bullets: [
+            "The Alternative Income Fund was designed to provide a secure, stable-yield income stream over a 6 year term.",
+            "The fund offers a unique opportunity to invest in a diversified fleet of charter yachts, with a focus on the lucrative and growing Seychelles market.",
+          ],
+        },
+        {
+          title: "Behind the Investment",
+          question: "What is the fund's history and performance?",
+          bullets: [
+            "The flagship fund of the company is designed with a conservative risk appetite and a meticulously structured investment strategy.",
+            "Risk associated with inexperience is mitigated by leveraging the expertise of a seasoned advisory board.",
+            "Thorough due diligence in corporate and tax structuring has been conducted to ensure the fund's stability and compliance.",
+            "The investor base is limited to seasoned accredited investors to maintain a high level of financial acumen and risk awareness within the investment community.",
+            "The company collaborates with a leading charter partner, boasting a fleet of over 320+ yachts, further reducing the risk associated with the investment strategy.",
+          ],
+        },
+        {
+          title: "Market",
+          question:
+            "What are some of the reasons why you should consider the investment?",
+          bullets: [
+            "In this inflationary environment, optimizing cash returns is an important consideration for investors so that this portion of their portfolio does not drag down total portfolio returns.",
+            "Investing in tangible assets that offer cashflow and real securitization can potentially de-risk your portfolio during high levels of uncertainty and public equity drawdowns.",
+            "The Alternative Income Fund potentially offers a solution for investors who are looking to help de-risk their portfolio, but are not prepared to simply hold cash in traditional money market funds or CDs.",
+          ],
+        },
+      ],
+    },
+    essentials: {
+      header: {
+        preheader: "",
+        heading: "Essentials",
+        subheading: "",
+      },
+      content: [
+        {
+          title: "Capital Structure",
+          question: "What is the capital structure?",
+          bullets: [],
+        },
+        {
+          title: "Cashflow",
+          question: "How do I get paid?",
+          bullets: [],
+        },
+        {
+          title: "Eligibility",
+          question: "Who can invest?",
+          bullets: ["Eligible investors must be Accredited Investors."],
+        },
+      ],
+    },
+    market: {},
+    cashflow: {},
+    Access: {},
   };
   return (
     <Wrapper className="py-[5vh] bg-white" id="overview">
@@ -130,30 +206,32 @@ export default function InterestOverview({}: Props) {
           <div className="bg-slate-100 flex w-full p-1">
             <TabsList className="">
               <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="details">Details</TabsTrigger>
-              <TabsTrigger value="strategy">Strategy</TabsTrigger>
+              <TabsTrigger value="premise">Premise</TabsTrigger>
+              <TabsTrigger value="essentials">Essentials</TabsTrigger>
               <TabsTrigger value="market">Market</TabsTrigger>
               <TabsTrigger value="cashflow">Cashflow</TabsTrigger>
               <TabsTrigger value="access">Access</TabsTrigger>
             </TabsList>
           </div>
-          <TabsContent
-            value="overview"
-            className="grid grid-cols-1 md:grid-cols-2 w-full p-8"
-          >
-            <div className="flex flex-col items-start justify-start">
+          <TabsContent value="overview" className="p-12" defaultChecked>
+            <div className="flex flex-col">
               <h1 className="text-2xl font-medium">Overview</h1>
-              <h4 className="pt-2 text-md">
+              <h4 className="pt-2 text-md max-w-prose balanced">
                 In light of inflationary pressures, looming recession risks, and
                 global tensions, the conventional portfolio allocation of 60%
                 equities and 40% fixed income may no longer suffice for
                 achieving long-term investment objectives.
               </h4>
-              <ul className="flex flex-col gap-4 pl-3 mt-4 text-md">
-                {content.overview.map((item, index) => (
-                  <li key={index} className="">
-                    <p>
-                      <span className="font-semibold">{item.title}: </span>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full pt-6">
+                {overview.overview.map((item, index) => (
+                  <li
+                    key={index}
+                    className=" border rounded-lg p-4 bg-slate-50"
+                  >
+                    <p className="text-sm text-gray-600">
+                      <span className="font-semibold text-black">
+                        {item.title}:{" "}
+                      </span>
                       {item.description}
                     </p>
                   </li>
@@ -161,92 +239,61 @@ export default function InterestOverview({}: Props) {
               </ul>
             </div>
           </TabsContent>
-          <TabsContent
-            value="password"
-            className="grid grid-cols-1 md:grid-cols-2 w-full"
-          >
-            Change your password here.
+          <TabsContent value="premise" className="p-12">
+            <div className="flex flex-col">
+              <h1 className="text-2xl font-medium">Premise</h1>
+              <h4 className="text-md max-w-prose balanced">
+                {overview.premise.header.subheading}
+              </h4>
+              <ul className="grid grid-cols-1 md:grid-cols-1 gap-4 w-full pt-4">
+                {overview.premise.content.map((item, index) => (
+                  <li
+                    key={index}
+                    className=" border rounded-lg p-4 bg-slate-50"
+                  >
+                    <h3 className="font-medium text-black pb-2">
+                      {item.question}
+                    </h3>
+                    <ul className="text-md text-gray-700">
+                      {item.bullets.map((bullet, index) => (
+                        <li key={index} className="list-disc ml-4 text-md">
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </TabsContent>
+          <TabsContent value="essentials" className="p-12">
+            <div className="flex flex-col">
+              <h1 className="text-2xl font-medium">Essentials</h1>
+              <h4 className="text-md max-w-prose balanced">
+                {overview.essentials.header.subheading}
+              </h4>
+              <ul className="grid grid-cols-1 md:grid-cols-1 gap-4 w-full pt-4">
+                {overview.essentials.content.map((item, index) => (
+                  <li
+                    key={index}
+                    className=" border rounded-lg p-4 bg-slate-50"
+                  >
+                    <h3 className="font-medium text-black pb-2">
+                      {item.question}
+                    </h3>
+                    <ul className="text-md text-gray-700">
+                      {item.bullets.map((bullet, index) => (
+                        <li key={index} className="list-disc ml-4 text-md">
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </TabsContent>
         </Tabs>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
-
-export function InterestPremise() {
-  const premise = {
-    header: {
-      preheader: "Affiliate Partner Program",
-      heading: "Unlock New Earnings: Partner with Our Yacht Investment Fund",
-      subheading:
-        "Leverage your connections, earn with every successful referral",
-      cta1: {
-        text: "Become an Affiliate Partner",
-        href: "#join-our-network",
-      },
-    },
-    details: {
-      question: "What am I investing in?",
-      bullets: [],
-    },
-    strategy: {
-      question: "What is the value proposition?",
-      bullets: [],
-    },
-    behindtheinvestment: {
-      question: "How is the 8% income guaranteed?",
-      bullets: [],
-    },
-    market: {
-      question:
-        "What are some of the reasons why you should consider the investment?",
-      bullets: [],
-    },
-  };
-
-  return (
-    <Wrapper className="py-[10vh] min-h-[60vh] relative">
-      <InnerWrap className="items-start justify-end">
-        <div className="relative z-20 flex text-white text-left flex-col items-start justify-end">
-          <PreHeading className="text-sky-300">
-            {premise.header.preheader}
-          </PreHeading>
-          <Heading>{premise.header.heading}</Heading>
-          <SubHeading>{premise.header.subheading}</SubHeading>
-          <a
-            href={premise.header.cta1.href}
-            className="inline-block bg-white text-blue-500 font-bold rounded-lg px-6 py-3 transition duration-300 ease-in-out hover:bg-gray-100"
-          >
-            {premise.header.cta1.text}
-          </a>
-        </div>
-      </InnerWrap>
-      <div className="absolute inset-0 bg-sky-50">
-        <Image
-          src="/img/hero/captain.webp"
-          alt=""
-          fill
-          className="absolute inset-0 z-10"
-          style={{ objectFit: "cover" }}
-        />
-      </div>
-    </Wrapper>
-  );
-}
-
-export function InterestEssentials() {
-  const essentials = {
-    header: {
-      preheader: "Essentials",
-      heading: "Yacht Investment Fund",
-      subheading: "Earn 8% annual return on your investment",
-    },
-  };
-
-  return (
-    <Wrapper className="py-[5vh] bg-white">
-      <InnerWrap>
-        <div className="flex flex-col items-start justify-start"></div>
       </InnerWrap>
     </Wrapper>
   );
