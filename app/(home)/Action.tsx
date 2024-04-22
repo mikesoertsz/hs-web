@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,6 +24,9 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Switch } from "@/components/ui/switch";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -56,77 +60,182 @@ export default function ActionCTA() {
 
   return (
     <Wrapper className="py-[10vh] relative">
-      <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20">
-        <div className="flex flex-col justify-center items-start p-12 bg-slate-100 h-full shadow-lg">
+      <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20 rounded-xl overflow-hidden shadow-md">
+        <div className="flex flex-col justify-start items-start p-12 bg-slate-100 h-full shadow-lg">
           <PreHeading>{cta.header.preheading}</PreHeading>
           <Heading>{cta.header.heading}</Heading>
-          <SubHeading>{cta.header.subheading}</SubHeading>
-          <a
-            href={cta.header.cta1.href}
-            className="inline-block bg-white text-blue-500 font-bold rounded-lg px-6 py-3 transition duration-300 ease-in-out hover:bg-gray-100"
-          >
-            {cta.header.cta1.text}
-          </a>
+          <SubHeading className="max-w-xl">{cta.header.subheading}</SubHeading>
         </div>
         <div className="p-12">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="Email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="location"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Your Location</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Location" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="contactNumber"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Contact Number</FormLabel>
-                    <FormControl>
-                      <PhoneInput
-                        defaultCountry="us"
-                        value={phone}
-                        onChange={(phone) => setPhone(phone)}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <fieldset className="grid rounded-lg border p-6 gap-4">
+                <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
+                  Contact Information
+                </legend>
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="your@email.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="location"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Location</FormLabel>
+                      <FormControl>
+                        <Input placeholder="City, Country" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="contactNumber"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Contact Number</FormLabel>
+                      <FormControl>
+                        <PhoneInput
+                          defaultCountry="us"
+                          value={phone}
+                          onChange={(phone) => setPhone(phone)}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </fieldset>
+              <fieldset className="grid rounded-lg border p-6 gap-4">
+                <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
+                  Investment Preferences
+                </legend>
+                <FormField
+                  control={form.control}
+                  name="payoutFrequency"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="m-0">Payout Frequency</FormLabel>
+                      <p className="p-0 text-xs text-gray-400">
+                        How often would you like to be paid out your earnings?
+                      </p>
+                      <FormControl>
+                        <RadioGroup
+                          {...field}
+                          defaultValue="quarterly"
+                          className="grid grid-cols-3 gap-4"
+                        >
+                          <div>
+                            <RadioGroupItem value="quarterly" id="quarterly" className="peer sr-only" />
+                            <Label
+                              htmlFor="quarterly"
+                              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              Quarterly
+                            </Label>
+                          </div>
+                          <div>
+                            <RadioGroupItem value="yearly" id="yearly" className="peer sr-only" />
+                            <Label
+                              htmlFor="yearly"
+                              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              Yearly
+                            </Label>
+                          </div>
+                          <div>
+                            <RadioGroupItem value="endOfTerm" id="endOfTerm" className="peer sr-only" />
+                            <Label
+                              htmlFor="endOfTerm"
+                              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                            >
+                              End of Term
+                            </Label>
+                          </div>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </fieldset>
+              <fieldset className="grid rounded-lg border p-6 gap-4">
+                <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
+                  Contact preferences
+                </legend>
+                <FormField
+                  control={form.control}
+                  name="communication_emails"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                      <div className="space-y-0.5">
+                        <FormLabel className="text-base">
+                          Communication emails
+                        </FormLabel>
+                        <FormDescription>
+                          Receive emails about your account activity.
+                        </FormDescription>
+                      </div>
+                      <FormControl>
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="marketing_emails"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                      <div className="space-y-0.5">
+                        <FormLabel className="text-base">
+                          Marketing emails
+                        </FormLabel>
+                        <FormDescription>
+                          Receive emails about new products, features, and more.
+                        </FormDescription>
+                      </div>
+                      <FormControl>
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </fieldset>
               <Button type="submit" className="w-full">
                 Register Interest
               </Button>

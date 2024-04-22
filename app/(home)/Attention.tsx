@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { InnerWrap, Wrapper, Left, Right } from "@/lib/atoms";
+import { InnerWrap, Wrapper, Left, Right, PreHeading } from "@/lib/atoms";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,13 +32,13 @@ export default function AttentionHero() {
     },
   ];
   return (
-    <Wrapper className="relative flex min-h-[75vh] z-20 px-0 mx-0">
-      <Left>
+    <Wrapper className="relative flex min-h-[50vh] z-20 px-0 mx-0">
+      <Left className="bg-brand2-base1">
         <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
           <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
             Alternative Income Fund
           </h4>
-          <h1 className="text-6xl font-medium text-white drop-shadow-lg font-title leading-tight">
+          <h1 className="text-5xl font-medium text-white drop-shadow-lg font-title leading-tight">
             Earn 8% yield from a fleet of charter yachts.
           </h1>
           <p className="mt-4 hidden text-2xl font-light text-brand-p0 w-3/4">
@@ -63,14 +63,14 @@ export default function AttentionHero() {
             ))}
           </ul>
           <div className="flex flex-col items-center justify-between gap-2 mt-12">
-            <button className="px-12 py-3 transition duration-100 rounded-lg text-brand-p2 hover:bg-blue-700 bg-brand-p4 hover:text-white relative overflow-hidden">
+            <button className="px-12 py-3 transition duration-100 rounded-lg text-black hover:bg-brand2-g4 bg-brand2-g2  relative overflow-hidden">
               <a href="#" className="z-10 relative">
                 Register Interest Now
               </a>
             </button>
-            <div className="w-full h-1 mb-1 bg-white">
+            <div className="w-[80%] h-2 mb-1 bg-brand2-base2 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-green-500"
+                className="h-full bg-brand2-g3"
                 initial={{ width: 0 }}
                 animate={{ width: "15%" }}
                 transition={{ duration: 1 }}
@@ -134,7 +134,7 @@ export function AttentionDetailsBar() {
     },
     {
       pretitle: "Performance Yield",
-      title: "9.5% projected",
+      title: "11.5% projected",
       description: (
         <>
           Projected annualized
@@ -192,11 +192,24 @@ export function AttentionDetailsBar() {
 }
 
 export function AttentionStinger() {
+  const stinger = {
+    pretitle: "finally",
+    title: (
+      <>
+        <span className="text-brand2-g3">Profit</span> from yacht ownership.{" "}
+        <span>Without the pitfalls.</span>
+      </>
+    ),
+  };
+
   return (
-    <Wrapper className="py-[10vh] bg-gray-900 px-0 min-h-[400px] text-gray-100">
+    <Wrapper className="py-[10vh] bg-brand2-base1 px-0 min-h-[400px] text-gray-100">
       <InnerWrap>
+        <PreHeading className="text-brand-g1 pb-4">
+          {stinger.pretitle}
+        </PreHeading>
         <h1 className="text-7xl font-medium font-title tracking-tight my-3 text-center balanced max-w-5xl leading-[1.2]">
-          Profit from yacht ownership, without the pitfalls.
+          {stinger.title}
         </h1>
       </InnerWrap>
     </Wrapper>

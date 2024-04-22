@@ -10,7 +10,7 @@ type Props = {};
 
 export default function EarningsCalculator({}: Props) {
   const guaranteedAnnualReturnRate = 0.08;
-  const projectedTargetReturnRate = 0.093;
+  const projectedTargetReturnRate = 0.113;
   const termYears = 6;
   const minInvestment = 100000;
   const maxInvestment = 1000000;
@@ -108,91 +108,103 @@ export default function EarningsCalculator({}: Props) {
                 *Minimum investment USD100,000
               </p>
             </div>
-            <div className="basis-1/2 p-8">
+            <div className="basis-1/2 p-0">
               <div className="flex flex-col">
-                <h3 className="flex w-full border-t border-dashed border-gray-300 pt-8 mt-12 uppercase text-[11px] tracking-[0.1em] font-medium text-brand-g1">
-                  Annual Schedule
-                </h3>
+                <fieldset className="grid rounded-lg border p-6">
+                  <legend className="-ml-1 px-1 text-md text-brand-g1">
+                    Annual Schedule
+                  </legend>
+                  <div className="flex justify-between">
+                    <h3 className="text-md font-medium">
+                      Quarterly Payout
+                      <sup className="text-green-600 pl-1">2%</sup>
+                    </h3>
+                    <p className="text-right">
+                      ${Math.round(quarterlyPayout).toLocaleString()}
+                    </p>
+                  </div>
 
-                <div className="flex justify-between mt-4">
-                  <h3 className="text-md font-medium">
-                    Quarterly Payout
-                    <sup className="text-green-600 pl-1">2%</sup>
-                  </h3>
-                  <p className="text-right">
-                    ${Math.round(quarterlyPayout).toLocaleString()}
-                  </p>
-                </div>
+                  <div className="flex justify-between mt-4">
+                    <h3 className="text-md font-medium">
+                      Annual Payout
+                      <sup className="text-green-600 pl-1">{`${
+                        guaranteedAnnualReturnRate * 100
+                      }%`}</sup>
+                    </h3>
+                    <p className="text-right">
+                      ${Math.round(annualPayout).toLocaleString()}
+                    </p>
+                  </div>
 
-                <div className="flex justify-between mt-4">
-                  <h3 className="text-md font-medium">
-                    Annual Payout
-                    <sup className="text-green-600 pl-1">8%</sup>
-                  </h3>
-                  <p className="text-right">
-                    ${Math.round(annualPayout).toLocaleString()}
-                  </p>
-                </div>
+                  <div className="flex justify-between py-1 mt-3">
+                    <p className="text-left">
+                      Target Annualized Yield
+                      <sup className="text-green-600 pl-1">
+                        {`${projectedTargetReturnRate * 100}%`}
+                      </sup>
+                    </p>
+                    <p className="text-right">
+                      ${Math.round(endOfTermBonus).toLocaleString()}
+                    </p>
+                  </div>
+                </fieldset>
 
-                <div className="flex justify-between py-1 mt-3">
-                  <p className="text-left">
-                    Target Annualized Yield
-                    <sup className="text-green-600 pl-1">9.3%</sup>
-                  </p>
-                  <p className="text-right">
-                    ${Math.round(endOfTermBonus).toLocaleString()}
-                  </p>
-                </div>
-
-                <h2 className="flex w-full border-t border-dashed border-gray-300 pt-8 pb-4 mt-12 uppercase text-[11px] tracking-[0.1em] font-medium text-brand-g1">
-                  End of Term Yields
-                </h2>
-                <div className="flex justify-between ">
-                  <h3 className="text-lg font-semibold">
-                    Guaranteed{" "}
-                    <span className="font-normal">Yield-on-Capital</span>
-                  </h3>
-                  <p className="text-right text-lg font-semibold">
-                    $
-                    {Math.round(
-                      guaranteedAnnualReturnRate * investmentAmount * termYears
-                    ).toLocaleString()}
-                    <sup className="text-green-600 pl-1">
+                <fieldset className="grid rounded-lg border p-6 mt-8">
+                  <legend className="-ml-1 px-1 text-md text-brand-g1">
+                    End of Term Yields
+                  </legend>
+                  <div className="grid gap-3">
+                    <div className="flex justify-between">
+                      <h3 className="text-lg font-semibold">
+                        Guaranteed{" "}
+                        <span className="font-normal">Yield-on-Capital</span>
+                      </h3>
+                      <p className="text-right text-lg font-semibold">
+                        $
+                        {Math.round(
+                          guaranteedAnnualReturnRate *
+                            investmentAmount *
+                            termYears
+                        ).toLocaleString()}
+                        <sup className="text-green-600 pl-1">
+                          {Math.round(
+                            ((0.08 * investmentAmount * termYears) /
+                              investmentAmount) *
+                              100
+                          )}
+                          %
+                        </sup>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex justify-between mt-4">
+                    <h3 className="text-lg font-semibold">
+                      Target{" "}
+                      <span className="font-normal">Yield-on-Capital</span>
+                    </h3>
+                    <p className="text-right text-lg font-semibold">
+                      $
                       {Math.round(
-                        ((0.08 * investmentAmount * termYears) /
-                          investmentAmount) *
-                          100
-                      )}
-                      %
-                    </sup>
-                  </p>
-                </div>
-                <div className="flex justify-between mt-4">
-                  <h3 className="text-lg font-semibold">
-                    Target <span className="font-normal">Yield-on-Capital</span>
-                  </h3>
-                  <p className="text-right text-lg font-semibold">
-                    $
-                    {Math.round(
-                      0.093 * investmentAmount * termYears
-                    ).toLocaleString()}
-                    <sup className="text-green-600 pl-1">
-                      {Math.round(
-                        ((0.093 * investmentAmount * termYears) /
-                          investmentAmount) *
-                          100
-                      )}
-                      %
-                    </sup>
-                  </p>
-                </div>
-                <div className="flex justify-between mt-4">
-                  <h3 className="text-lg font-semibold">Priciple Return</h3>
-                  <p className="text-right text-lg font-semibold">
-                    ${Math.round(investmentAmount).toLocaleString()}
-                    <sup className="text-green-600 pl-1">100%</sup>
-                  </p>
-                </div>
+                        0.093 * investmentAmount * termYears
+                      ).toLocaleString()}
+                      <sup className="text-green-600 pl-1">
+                        {Math.round(
+                          ((0.093 * investmentAmount * termYears) /
+                            investmentAmount) *
+                            100
+                        )}
+                        %
+                      </sup>
+                    </p>
+                  </div>
+                  <div className="flex justify-between mt-4">
+                    <h3 className="text-lg font-semibold">Priciple Return</h3>
+                    <p className="text-right text-lg font-semibold">
+                      ${Math.round(investmentAmount).toLocaleString()}
+                      <sup className="text-green-600 pl-1">100%</sup>
+                    </p>
+                  </div>
+                </fieldset>
               </div>
             </div>
           </div>
