@@ -578,7 +578,7 @@ export function InterestBehindTheInvestment({}: Props) {
           )}
         </div>
 
-        <FundLeadership />
+        <InterestFundLeadership />
       </InnerWrap>
     </Wrapper>
   );

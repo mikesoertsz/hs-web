@@ -11,9 +11,6 @@ import React from "react";
 
 type Props = {};
 
-
-}
-
 export default function InterestBenefits({}: Props) {
   const benefits = {
     header: "Why Partner with Us",

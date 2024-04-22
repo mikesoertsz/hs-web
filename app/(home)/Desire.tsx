@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 import React, { useState } from "react";
 import { Slider } from "@/components/ui/slider";
+import Image from "next/image";
 
 type Props = {};
 
@@ -240,6 +241,20 @@ export function Essentials({}: Props) {
           <div className=""></div>
         </div>
       </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function DesireSeychelles() {
+  return (
+    <Wrapper className="ming-h-[400px] relative">
+      <Image
+        src="/images/hero/hero-split.jpg"
+        alt="Hero Image"
+        fill
+        className="absolute inset-0"
+        style={{ objectFit: "cover" }}
+      />
     </Wrapper>
   );
 }
