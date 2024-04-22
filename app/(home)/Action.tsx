@@ -1,4 +1,3 @@
-"use client";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,6 +22,7 @@ import {
 } from "@/lib/atoms";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -136,13 +136,23 @@ export default function ActionCTA() {
       </InnerWrap>
       <div className="absolute inset-0 bg-sky-50">
         <Image
-          src="/img/bgs/watertile1.webp"
+          src="/img/bgs/watertile4.webp"
           alt=""
           fill
           className="absolute inset-0 z-10"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "fill" }}
         />
       </div>
+    </Wrapper>
+  );
+}
+
+export function ActionMidCTA() {
+  return (
+    <Wrapper>
+      <InnerWrap>
+        <CTAButtonsBasic />
+      </InnerWrap>
     </Wrapper>
   );
 }

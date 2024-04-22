@@ -247,9 +247,9 @@ export function Essentials({}: Props) {
 
 export function DesireSeychelles() {
   return (
-    <Wrapper className="ming-h-[400px] relative">
+    <Wrapper className="min-h-[400px] relative">
       <Image
-        src="/images/hero/hero-split.jpg"
+        src="/img/hero/hero21.jpg"
         alt="Hero Image"
         fill
         className="absolute inset-0"

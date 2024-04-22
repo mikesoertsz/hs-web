@@ -9,8 +9,11 @@ export const SplitWrap = tw.div`mx-auto max-w-6xl px-6 md:px-0 w-full flex items
 export const Icon = tw.div`flex items-start justify-start mb-3`;
 export const ImageWrap = tw.div`relative w-10 h-10 py-4`;
 export const PreHeading = tw.h4`uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1`;
-export const Heading = tw.h2`max-w-4xl font-title font-light text-5xl balanced tracking-tight py-3`;
+export const Heading = tw.h2`max-w-xl font-title font-light text-4xl balanced tracking-tight py-3`;
 export const SubHeading = tw.h3`text-2xl md:text-3xl tracking-tight balanced`;
 export const Body = tw.p`max-w-prose text-sm font-body leading-relaxed`;
 
 export const HeaderWrapLeft = tw.div`flex flex-col items-start justify-center w-full`;
+
+export const Left = tw.div`relative flex flex-col items-center justify-center w-1/2 min-h-full bg-brand-p2 text-white z-10`;
+export const Right = tw.div`relative flex items-center justify-center w-1/2 min-h-full z-10`;

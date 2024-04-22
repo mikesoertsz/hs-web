@@ -6,11 +6,17 @@ import Nav from "./(shared)/Nav";
 import "./globals.css";
 import { Drawer } from "@/components/ui/drawer";
 import GoogleAnalytics from "@/components/Analytics";
+import localFont from "next/font/local";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
-const title = Playfair_Display({
-  subsets: ["latin"],
+// const title = Playfair_Display({
+//   subsets: ["latin"],
+//   variable: "--font-title",
+// });
+const title = localFont({
+  src: "../public/font/luxury.woff2",
   variable: "--font-title",
+  display: "swap",
 });
 
 export const metadata: Metadata = {

@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { InnerWrap, Wrapper, Left, Right } from "@/lib/atoms";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 type Props = {};
 type Painpoint = {
@@ -12,7 +13,197 @@ type Painpoint = {
   description: string;
 };
 
-export default function RiskFactors({}: Props) {
+export default function AttentionHero() {
+  const stats = [
+    {
+      title: "Annual Yield",
+      value: "8%",
+      subtitle: "Guaranteed",
+    },
+    // {
+    //   title: "Target Yield",
+    //   value: "9.5%",
+    //   subtitle: "Projected",
+    // },
+    {
+      title: "Fund Status",
+      value: "Pre-Raise",
+      subtitle: "Register early interest",
+    },
+  ];
+  return (
+    <Wrapper className="relative flex min-h-[75vh] z-20 px-0 mx-0">
+      <Left>
+        <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
+          <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
+            Alternative Income Fund
+          </h4>
+          <h1 className="text-6xl font-medium text-white drop-shadow-lg font-title leading-tight">
+            Earn 8% yield from a fleet of charter yachts.
+          </h1>
+          <p className="mt-4 hidden text-2xl font-light text-brand-p0 w-3/4">
+            Earn from a growing industry, without the high entry costs and risk.
+          </p>
+          <ul className="flex items-start justify-start w-full gap-6 mt-6">
+            {stats.map((item, index) => (
+              <li
+                key={index}
+                className="flex flex-col items-start justify-start"
+              >
+                <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
+                  {item.title}
+                </p>
+                <h3 className="mt-2 text-2xl font-light text-white">
+                  {item.value}
+                </h3>
+                <p className="pt-1 text-xs text-left text-white">
+                  {item.subtitle}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col items-center justify-between gap-2 mt-12">
+            <button className="px-12 py-3 transition duration-100 rounded-lg text-brand-p2 hover:bg-blue-700 bg-brand-p4 hover:text-white relative overflow-hidden">
+              <a href="#" className="z-10 relative">
+                Register Interest Now
+              </a>
+            </button>
+            <div className="w-full h-1 mb-1 bg-white">
+              <motion.div
+                className="h-full bg-green-500"
+                initial={{ width: 0 }}
+                animate={{ width: "15%" }}
+                transition={{ duration: 1 }}
+              />
+            </div>
+            <p className="mt-1 text-xs text-gray-400">
+              Accepting $100,000 - $1,000,000 investments
+            </p>
+          </div>
+        </div>
+      </Left>
+      <Right>
+        <Image
+          src="/img/hero/hero8.jpg"
+          alt="hero"
+          fill
+          style={{ objectFit: "cover", objectPosition: "70%" }}
+          className="absolute inset-0 w-full h-full flex z-20"
+        />
+        <div className="mt-1 absolute top-4 left-4 z-30">
+          <Image
+            src="/img/helmshare_icon_large.svg"
+            alt="hero"
+            width={80}
+            height={80}
+            className="absolute inset-0 w-full h-full flex z-20"
+          />
+        </div>
+      </Right>
+    </Wrapper>
+  );
+}
+
+export function AttentionDetailsBar() {
+  const details = [
+    {
+      pretitle: "risk class",
+      title: "Low Risk",
+      description: "Investment only into tangible, cashflowing assets.",
+      icon: "",
+      value: "",
+    },
+    {
+      pretitle: "Fixed Yield",
+      title: (
+        <>
+          8% Guaranteed
+          <sup>
+            <a
+              href="#disclaimer-section"
+              className="pl-[2px] text-brand-p1 text-xs"
+            >
+              1
+            </a>
+          </sup>
+        </>
+      ),
+      description: "Secure 8% returns, paid out regularly.",
+      icon: "",
+      value: "",
+    },
+    {
+      pretitle: "Performance Yield",
+      title: "9.5% projected",
+      description: (
+        <>
+          Projected annualized
+          <sup>
+            <a
+              href="#disclaimer-section"
+              className="pl-[2px] text-brand-p1 text-[9px]"
+            >
+              2
+            </a>
+          </sup>{" "}
+          carried interest paid at end of term.
+        </>
+      ),
+      icon: "",
+      value: "",
+    },
+    {
+      pretitle: "ticket size",
+      title: "$100,000",
+      description: "Investment entry at $100k minimum.",
+      icon: "",
+      value: "",
+    },
+    {
+      pretitle: "term",
+      title: "6 years",
+      description: "Standard closed-fund structure with long term stability.",
+      icon: "",
+      value: "",
+    },
+  ];
+  return (
+    <Wrapper className="py-8">
+      <InnerWrap>
+        <ul className="grid w-full grid-cols-2 gap-8 md:grid-cols-5">
+          {details.map((item, index) => (
+            <li
+              key={index}
+              className="flex flex-col items-start justify-start w-full"
+            >
+              <p className="text-[9px] uppercase font-semibold tracking-[0.1em] text-slate-600">
+                {item.pretitle}
+              </p>
+              <div className="mt-1 text-lg font-medium">{item.title}</div>
+              <div className="text-xs text-left text-gray-500">
+                {item.description}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function AttentionStinger() {
+  return (
+    <Wrapper className="py-[10vh] bg-gray-900 px-0 min-h-[400px] text-gray-100">
+      <InnerWrap>
+        <h1 className="text-7xl font-medium font-title tracking-tight my-3 text-center balanced max-w-5xl leading-[1.2]">
+          Profit from yacht ownership, without the pitfalls.
+        </h1>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function RiskFactors({}: Props) {
   const painpoints: Painpoint[] = [
     {
       title: "Operational Complexity",
