@@ -14,6 +14,7 @@ import InterestOverview, {
   InterestWhoFor,
   InterestPremise,
   InterestBehindTheInvestment,
+  InterestStrategy,
 } from "./Interest";
 import AttentionHero, {
   AttentionDetailsBar,
@@ -29,6 +30,7 @@ export default function Home() {
       <AttentionHero />
       <AttentionDetailsBar />
       <InterestPremise />
+      <InterestStrategy />
       <AttentionStinger />
       {/* <InterestOverview /> */}
       <CTAButtonsBasic variant="primary" />
