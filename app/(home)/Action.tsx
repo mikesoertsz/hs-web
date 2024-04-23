@@ -59,7 +59,7 @@ export default function ActionCTA() {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <Wrapper className="py-[10vh] relative">
+    <Wrapper className="py-[10vh] relative" id="register">
       <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20 rounded-xl overflow-hidden shadow-md">
         <div className="flex flex-col justify-start items-start p-12 bg-slate-100 h-full shadow-lg">
           <PreHeading>{cta.header.preheading}</PreHeading>
@@ -154,7 +154,11 @@ export default function ActionCTA() {
                           className="grid grid-cols-3 gap-4"
                         >
                           <div>
-                            <RadioGroupItem value="quarterly" id="quarterly" className="peer sr-only" />
+                            <RadioGroupItem
+                              value="quarterly"
+                              id="quarterly"
+                              className="peer sr-only"
+                            />
                             <Label
                               htmlFor="quarterly"
                               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
@@ -163,7 +167,11 @@ export default function ActionCTA() {
                             </Label>
                           </div>
                           <div>
-                            <RadioGroupItem value="yearly" id="yearly" className="peer sr-only" />
+                            <RadioGroupItem
+                              value="yearly"
+                              id="yearly"
+                              className="peer sr-only"
+                            />
                             <Label
                               htmlFor="yearly"
                               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
@@ -172,7 +180,11 @@ export default function ActionCTA() {
                             </Label>
                           </div>
                           <div>
-                            <RadioGroupItem value="endOfTerm" id="endOfTerm" className="peer sr-only" />
+                            <RadioGroupItem
+                              value="endOfTerm"
+                              id="endOfTerm"
+                              className="peer sr-only"
+                            />
                             <Label
                               htmlFor="endOfTerm"
                               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
@@ -260,7 +272,7 @@ export function ActionMidCTA() {
   return (
     <Wrapper>
       <InnerWrap>
-        <CTAButtonsBasic />
+        <CTAButtonsBasic variant="secondary" />
       </InnerWrap>
     </Wrapper>
   );
