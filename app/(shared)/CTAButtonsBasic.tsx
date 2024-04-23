@@ -36,7 +36,7 @@ const buttonStyles = cva(
       },
       variant: {
         primary: "bg-brand2-g3 hover:bg-brand2-g1",
-        secondary: "bg-green-500 hover:bg-green-700",
+        secondary: "bg-brand2-g3 hover:bg-brand2-g1",
         tertiary: "text-gray-700 hover:text-gray-900 hover:underline",
       },
     },

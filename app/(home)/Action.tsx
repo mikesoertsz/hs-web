@@ -248,7 +248,10 @@ export default function ActionCTA() {
                   )}
                 />
               </fieldset>
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full rounded-lg px-8 text-md text-black h-12 flex items-center gap-2 bg-brand2-g1 hover:bg-brand2-g3"
+              >
                 Register Interest
               </Button>
             </form>

@@ -395,23 +395,51 @@ export function InterestStrategy({}: Props) {
       heading: "Strategy",
       subheading: "What is the value proposition?",
     },
-    content: [],
-  content: [
-    {
-      section: "Investment Strategy",
-      details: [
-        "Yachts as an investment offer a unique opportunity for cash flow through charter operations, providing a stable and attractive income stream. Our yacht investment fund capitalizes on this by acquiring high-quality yachts that are then chartered to generate consistent revenue.",
-        "To ensure the safety and stability of the investment, the fund operates with a closed-fund structure, making it an appealing alternative to traditional bonds. This structure is designed to protect investors by limiting exposure and providing a predictable return on investment.",
-        "Understanding that yachts, like any physical asset, can depreciate over time, our strategy includes hedging against this depreciation. We achieve this by diversifying the fund's investments into real estate and leveraging alternative asset funds. These investments not only provide additional income streams but also serve to stabilize the fund's overall value.",
-        "The fund guarantees returns to investors through a combination of the steady income generated from yacht charters, the strategic sale of assets at optimal times, and income from diversified investments. This multi-pronged approach ensures that the fund can deliver on its promises to investors, even in fluctuating market conditions.",
-        "To further mitigate risk, the fund will never allocate more than 10% of its total capitalization to leveraged alternative asset funds. This cap is a safeguard against overexposure to volatile markets, ensuring that the fund remains stable and secure throughout its term.",
-        "Our closed-fund structure is specifically designed for investors seeking a safe, stable investment that offers a competitive return. By investing in tangible assets like yachts and real estate, and carefully managing alternative investments, we provide a solid value proposition for those looking to diversify their portfolio away from traditional stocks and bonds."
-      ],
-    },
-  ],
-    
+    content: [
+      {
+        section: "Investment Strategy",
+        details: [
+          "Yachts as an investment offer a unique opportunity for cash flow through charter operations, providing a stable and attractive income stream. Our yacht investment fund capitalizes on this by acquiring high-quality yachts that are then chartered to generate consistent revenue.",
+          "To ensure the safety and stability of the investment, the fund operates with a closed-fund structure, making it an appealing alternative to traditional bonds. This structure is designed to protect investors by limiting exposure and providing a predictable return on investment.",
+          "Understanding that yachts, like any physical asset, can depreciate over time, our strategy includes hedging against this depreciation. We achieve this by diversifying the fund's investments into real estate and leveraging alternative asset funds. These investments not only provide additional income streams but also serve to stabilize the fund's overall value.",
+          "The fund guarantees returns to investors through a combination of the steady income generated from yacht charters, the strategic sale of assets at optimal times, and income from diversified investments. This multi-pronged approach ensures that the fund can deliver on its promises to investors, even in fluctuating market conditions.",
+          "To further mitigate risk, the fund will never allocate more than 10% of its total capitalization to leveraged alternative asset funds. This cap is a safeguard against overexposure to volatile markets, ensuring that the fund remains stable and secure throughout its term.",
+          "Our closed-fund structure is specifically designed for investors seeking a safe, stable investment that offers a competitive return. By investing in tangible assets like yachts and real estate, and carefully managing alternative investments, we provide a solid value proposition for those looking to diversify their portfolio away from traditional stocks and bonds.",
+        ],
+      },
+    ],
   };
-  return <></>;
+  return (
+    <Wrapper className="bg-white" id="strategy">
+      <InnerWrap className="items-start justify-start w-full">
+        <div className="flex flex-col md:flex-row gap-12">
+          <div className="md:w-1/2 p-4">
+            <HeaderWrapLeft>
+              <Heading>{strategy.header.heading}</Heading>
+              <SubHeading>{strategy.header.subheading}</SubHeading>
+            </HeaderWrapLeft>
+            <ul className="list-disc pl-5 gap-2 mt-6 flex flex-col items-start justify-start">
+              {strategy.content.map((section, index) => (
+                <li key={index} className="text-md text-gray-800">
+                  <h3 className="font-medium text-black pb-2">{section.section}</h3>
+                  <ul className="text-md text-gray-700">
+                    {section.details.map((detail, detailIndex) => (
+                      <li key={detailIndex} className="list-disc ml-4 text-md">
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:w-1/2 p-4">
+            {/* Placeholder for potential content or images related to the strategy section */}
+          </div>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
 }
 
 export function InterestHowGuaranteed({}: Props) {

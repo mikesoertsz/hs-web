@@ -3,7 +3,7 @@ import { homepage } from "@/public/content/en";
 import FAQ from "../(shared)/FAQ";
 import ActionCTA from "./Action";
 import EarningsCalculator, { DesireSeychelles } from "./Desire";
-import { DetailsBlock } from "./Details";
+import { InvestmentSpecifics } from "./Specifics";
 import Disclaimer from "./Disclaimer";
 import InterestOverview, {
   InterestBenefits,
@@ -38,7 +38,7 @@ export default function Home() {
       <InterestHowGuaranteed />
       <InterestCorporateStructure />
       <InterestHowItWorks />
-      <DetailsBlock />
+      <InvestmentSpecifics />
       <InterestAssetDistribution />
       <EarningsCalculator />
       {/* <InterestBehindTheInvestment /> */}
