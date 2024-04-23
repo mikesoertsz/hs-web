@@ -32,7 +32,7 @@ export default function AttentionHero() {
     },
   ];
   return (
-    <Wrapper className="relative flex min-h-[50vh] z-20 px-0 mx-0">
+    <Wrapper className="relative flex flex-col min-h-[50vh] z-10 px-0 mx-0 md:flex-row">
       <Left className="bg-brand2-base1">
         <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
           <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
@@ -168,13 +168,13 @@ export function AttentionDetailsBar() {
     },
   ];
   return (
-    <Wrapper className="py-8">
+    <Wrapper className="lg:py-8 py-4">
       <InnerWrap>
-        <ul className="grid w-full grid-cols-2 gap-8 md:grid-cols-5">
+        <ul className="grid w-full grid-cols-2 gap-4 md:grid-cols-5">
           {details.map((item, index) => (
             <li
               key={index}
-              className="flex flex-col items-start justify-start w-full"
+              className="flex flex-col items-start justify-start w-full bg-slate-50 rounded-lg p-3"
             >
               <p className="text-[9px] uppercase font-semibold tracking-[0.1em] text-slate-600">
                 {item.pretitle}
@@ -203,12 +203,12 @@ export function AttentionStinger() {
   };
 
   return (
-    <Wrapper className="py-[10vh] bg-brand2-base1 px-0 min-h-[400px] text-gray-100">
+    <Wrapper className="py-[10vh] bg-brand2-base1 min-h-[400px] text-gray-100">
       <InnerWrap>
         <PreHeading className="text-brand-g1 pb-4">
           {stinger.pretitle}
         </PreHeading>
-        <h1 className="text-7xl font-medium font-title tracking-tight my-3 text-center balanced max-w-5xl leading-[1.2]">
+        <h1 className="text-5xl leading-1 px-3 lg:text-7xl font-medium font-title tracking-tight my-3 text-center balanced max-w-5xl lg:leading-[1.2]">
           {stinger.title}
         </h1>
       </InnerWrap>

@@ -55,25 +55,26 @@ export function InvestmentSpecifics() {
       details: [
         {
           label: "Entry Fee",
-          description: "",
+          description: "No subscription fee.",
           value: "None",
           icon: "",
         },
         {
           label: "Annual Management Fee",
-          description: "",
+          description: "Taken by Helmshares for assets under management.",
           value: "1.21%",
           icon: "",
         },
         {
           label: "Carried Interest",
-          description: "",
+          description:
+            "Taken by Helmshare for cashflows generated AFTER the 8% guarantee is paid.",
           value: "20%",
           icon: "",
         },
         {
           label: "Exit Fee",
-          description: "",
+          description: "No fees when exiting the fund.",
           value: "None",
           icon: "",
         },
@@ -84,13 +85,14 @@ export function InvestmentSpecifics() {
       details: [
         {
           label: "Payment schedule",
-          description: "",
+          description:
+            "Get paid every quarter or defer payments as you prefer.",
           value: "Quarterly",
           icon: "",
         },
         {
           label: "Fund Term",
-          description: "",
+          description: "Total timeline of the fund.",
           value: "6 years",
           icon: "",
         },
@@ -101,25 +103,25 @@ export function InvestmentSpecifics() {
       details: [
         {
           label: "Fund type",
-          description: "",
+          description: "SPV will be wound-up after 6 years.",
           value: "Closed-ended",
           icon: "",
         },
         {
           label: "Estimated Fund Size",
-          description: "",
+          description: "Total projected fund capitalization.",
           value: "$ 5M",
           icon: "",
         },
         {
           label: "Offering Structure",
-          description: "",
+          description: "Special Purpose Vehicle based in the Caymans.",
           value: "SPV",
           icon: "",
         },
         {
           label: "Annual Flat Fee",
-          description: "",
+          description: "No additional fees",
           value: "None",
           icon: "",
         },

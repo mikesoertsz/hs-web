@@ -16,5 +16,5 @@ export const Body = tw.p`max-w-prose text-sm font-body leading-relaxed text-cent
 
 export const HeaderWrapLeft = tw.div`flex flex-col items-start justify-center w-full`;
 
-export const Left = tw.div`relative flex flex-col items-center justify-center w-1/2 min-h-full bg-brand-p2 text-white z-10`;
-export const Right = tw.div`relative flex items-center justify-center w-1/2 min-h-full z-10`;
+export const Left = tw.div`relative flex flex-col items-center justify-center w-full xl:w-1/2 min-h-full bg-brand-p2 text-white z-10 py-8 xl:p-12`;
+export const Right = tw.div`relative flex items-center justify-center w-full xl:w-1/2 min-h-full z-10`;
