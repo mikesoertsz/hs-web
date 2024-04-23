@@ -10,34 +10,43 @@ import InterestOverview, {
   InterestCorporateStructure,
   InterestHowGuaranteed,
   InterestHowItWorks,
-  InterestIncomeDistribution,
+  InterestAssetDistribution,
   InterestWhoFor,
+  InterestPremise,
+  InterestBehindTheInvestment,
 } from "./Interest";
 import AttentionHero, {
   AttentionDetailsBar,
   AttentionStinger,
 } from "./Attention";
+import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
+import ScrollToTop from "react-scroll-to-top";
+import { BsArrowUpSquareFill } from "react-icons/bs";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center fillscreen bg-slate-100">
       <AttentionHero />
       <AttentionDetailsBar />
+      <InterestPremise />
       <AttentionStinger />
-      <InterestOverview />
+      {/* <InterestOverview /> */}
+      <CTAButtonsBasic variant="primary" />
       <InterestBenefits />
       <InterestHowGuaranteed />
-      <InterestWhoFor />
       <InterestCorporateStructure />
       <InterestHowItWorks />
       <DetailsBlock />
-      <InterestIncomeDistribution />
+      <InterestAssetDistribution />
       <EarningsCalculator />
-      {/* <BehindTheInvestment /> */}
+      {/* <InterestBehindTheInvestment /> */}
       <DesireSeychelles />
       <FAQ {...homepage.desire} />
+      <InterestWhoFor />
       <ActionCTA />
       <Disclaimer />
     </main>
   );
 }
+
+// component={<BsArrowUpSquareFill />}

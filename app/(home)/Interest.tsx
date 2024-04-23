@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -61,6 +60,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Heading, PreHeading, SubHeading } from "@/lib/atoms";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {};
 type QuestionName =
@@ -299,6 +299,95 @@ export default function InterestOverview({}: Props) {
   );
 }
 
+export function InterestPremise({}: Props) {
+  const premise = {
+    header: {
+      preheader: "",
+      heading: "Alternative Income Fund",
+      subheading:
+        "HelmShare's Alternative Income Fund is a product offered to investors with a guaranteed 8% annualized yield from a fleet of charter yachts.",
+    },
+    content: [
+      {
+        title: "Details",
+        question: "What am I investing in?",
+        bullets: [
+          "HelmShare's Alternative Income Fund is a product offered to investors with a guaranteed 8% yield primarily from cashflows of the year-round operation of a fleet of charter yachts.",
+          "HelmShare permits solely accredited investors to make investments after they have evaluated their investment goals and risk appetite, and have procured independent counsel from professionals and specialists when required.",
+          "HelmShare primarily generates income through charter yachts & real estate purchased with your capital. Real estate and alternative assets add diversification while hedging against yacht depreciation.",
+          "This fund controls a fleet of 3-5 yachts, with a focus on the lucrative and growing Seychelles charter tourism market.",
+        ],
+      },
+      {
+        title: "Strategy",
+        question: "What is the value proposition?",
+        bullets: [
+          "The Alternative Income Fund was designed to provide a secure, stable-yield income stream over a 6 year term.",
+          "HelmShare partners with the largest and best chartering companies globally, leveraging their existing network, infrastructure, and operations. This partnership guarantees income through already-signed agreements, ensuring a stable and reliable revenue stream for investors.",
+          "In the coming 3-5 years, bonds are expected to face increased uncertainty. Investing in tangible, cashflowing yacht charters presents a stable and low-risk alternative, offering a safeguard against this uncertainty in the low-risk portion of investor portfolios.",
+          "The fund offers a unique opportunity to invest in a diversified fleet of charter yachts, with a focus on the lucrative and growing Seychelles market.",
+        ],
+      },
+      {
+        title: "Behind the Investment",
+        question: "What is the fund's history and performance?",
+        bullets: [
+          "This flagship fund of the company is designed with a conservative risk appetite and a meticulously structured investment strategy.",
+          "Risk associated with inexperience is mitigated by leveraging the expertise of a seasoned advisory board.",
+          "Thorough due diligence in corporate and tax structuring has been conducted to ensure the fund's stability and compliance.",
+          "The investor base is limited to seasoned accredited investors to maintain a high level of financial acumen and risk awareness within the investment community.",
+          "The company collaborates with a leading charter partner, boasting a fleet of over 320+ yachts, further reducing the risk associated with the investment strategy.",
+        ],
+      },
+      {
+        title: "Market",
+        question:
+          "What are some of the reasons why you should consider the investment?",
+        bullets: [
+          "In this inflationary environment, optimizing cash returns is an important consideration for investors so that this portion of their portfolio does not drag down total portfolio returns.",
+          "Investing in tangible assets that offer cashflow and real securitization can potentially de-risk your portfolio during high levels of uncertainty and public equity drawdowns.",
+          "The Alternative Income Fund potentially offers a solution for investors who are looking to help de-risk their portfolio, but are not prepared to simply hold cash in traditional money market funds or CDs.",
+        ],
+      },
+    ],
+  };
+
+  return (
+    <Wrapper className="py-[5vh] bg-white" id="premise">
+      <InnerWrap className="items-start justify-start w-full">
+        <div className="flex flex-col md:flex-row gap-12">
+          <div className="md:w-1/2 p-4">
+            <HeaderWrapLeft>
+              <Heading>{premise.header.heading}</Heading>
+              <SubHeading>{premise.header.subheading}</SubHeading>
+            </HeaderWrapLeft>
+            <ul className="list-disc pl-5 gap-2 mt-6 flex flex-col items-start justify-start">
+              {premise.content[0].bullets.map((bullet, index) => (
+                <li key={index} className="text-md text-gray-800">
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:w-1/2 p-4">
+            <Image
+              alt="Expected development timeline"
+              className="w-full h-auto"
+              height={500}
+              src="/placeholder.svg"
+              style={{
+                aspectRatio: "600/350",
+                objectFit: "cover",
+              }}
+              width={700}
+            />
+          </div>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
 export function InterestHowGuaranteed({}: Props) {
   return (
     <Wrapper className="py-4 bg-gray-900 text-gray-200">
@@ -321,7 +410,7 @@ export function InterestHowGuaranteed({}: Props) {
   );
 }
 
-export function InterestIncomeDistribution({}: Props) {
+export function InterestAssetDistribution({}: Props) {
   const yachts = [
     {
       brand: "Fountaine Pajot",
@@ -932,8 +1021,9 @@ export function InterestCorporateStructure({}: Props) {
       icon: "", // Placeholder for actual icon path
       image: "", // Placeholder for actual image path
       preheading: "Understanding Our Foundation",
-      heading: "Corporate Structure",
-      subheading: "Explore Our Organizational Framework",
+      heading: "Corporate & Tax Structure",
+      subheading:
+        "Diligently structured to ease tax and administrative burdens.",
       body: "Learn about the entities that form our corporate structure and how they interconnect to sustain our business operations and growth.",
     },
     entities: [
@@ -990,12 +1080,15 @@ export function InterestCorporateStructure({}: Props) {
     <Wrapper className="my-[10vh]">
       <InnerWrap>
         <div className="flex flex-col p-8 rounded-2xl border-slate-200 border bg-white w-full">
-          <h3 className="font-title text-4xl tracking-tight font-medium pb-8 pl-1">
-            Corporate structure
-          </h3>
+          <HeaderWrapLeft className="mb-8">
+            <Heading>{corporatestructure.header.heading}</Heading>
+            <SubHeading>{corporatestructure.header.subheading}</SubHeading>
+          </HeaderWrapLeft>
           <Table>
             <TableCaption>
-              <sup>*</sup>currently in progress.
+              <Badge variant="secondary">
+                <sup>*</sup>currently in progress.
+              </Badge>
             </TableCaption>
             <TableHeader>
               <TableRow>

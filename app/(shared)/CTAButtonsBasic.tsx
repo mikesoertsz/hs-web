@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cva, type VariantProps } from "class-variance-authority";
 import { PiDownloadSimpleBold } from "react-icons/pi";
 import { FiAirplay } from "react-icons/fi";
+import { Wrapper } from "@/lib/atoms";
 
 type ButtonConfig = {
   href: string;
@@ -30,7 +31,7 @@ const buttonStyles = cva(
   {
     variants: {
       theme: {
-        light: "text-black ",
+        light: "text-black",
         dark: "text-white",
       },
       variant: {

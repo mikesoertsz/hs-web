@@ -84,7 +84,7 @@ export default function AttentionHero() {
       </Left>
       <Right>
         <Image
-          src="/img/hero/hero8.jpg"
+          src="/img/hero/hero2.jpg"
           alt="hero"
           fill
           style={{ objectFit: "cover", objectPosition: "70%" }}

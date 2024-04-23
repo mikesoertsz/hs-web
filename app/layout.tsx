@@ -16,6 +16,7 @@ const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 const title = localFont({
   src: "../public/font/luxury.woff2",
   variable: "--font-title",
+  // weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 

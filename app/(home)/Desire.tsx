@@ -261,7 +261,7 @@ export function DesireSeychelles() {
   return (
     <Wrapper className="min-h-[400px] relative">
       <Image
-        src="/img/hero/hero2.JPG"
+        src="/img/hero/hero21.JPG"
         alt="Hero Image"
         fill
         className="absolute inset-0"
