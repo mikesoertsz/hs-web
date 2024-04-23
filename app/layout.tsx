@@ -7,18 +7,19 @@ import "./globals.css";
 import { Drawer } from "@/components/ui/drawer";
 import GoogleAnalytics from "@/components/Analytics";
 import localFont from "next/font/local";
+import { title } from "@/lib/fonts";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 // const title = Playfair_Display({
 //   subsets: ["latin"],
 //   variable: "--font-title",
 // });
-const title = localFont({
-  src: "../public/font/luxury.woff2",
-  variable: "--font-title",
-  // weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
+// const title = localFont({
+//   src: "../public/font/glastone.woff2",
+//   variable: "--font-title",
+//   weight: "400",
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: "HelmShare.yachts | Private market alternative asset fund.",
@@ -34,7 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <GoogleAnalytics GA_MEASUREMENT_ID="G-G4BPMB4NGH" />
       <body
-        className={`${body.className} ${title.variable} relative scroll-smooth z-0`}
+        className={`${body.className} ${title.variable}  relative scroll-smooth z-0`}
       >
         <Drawer>
           <div className="fillscreen">

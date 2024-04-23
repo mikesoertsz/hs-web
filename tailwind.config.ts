@@ -20,7 +20,8 @@ const config = {
     extend: {
       fontFamily: {
         body: "var(--font-body)",
-        title: ["var(--font-title)", "sans-serif"],
+        title: ["var(--font-title)", "serif"],
+        medium: ["var(--font-medium)", "serif"],
       },
       colors: {
         brand: {

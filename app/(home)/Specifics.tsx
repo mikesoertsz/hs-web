@@ -37,7 +37,7 @@ export function InvestmentSpecifics() {
         {
           label: "Carried Interest",
           description:
-            "your share of cashflows generated AFTER guaranteed interest is paid.",
+            "Your share of cashflows generated AFTER guaranteed interest is paid.",
           value: "80%",
           icon: "",
         },
