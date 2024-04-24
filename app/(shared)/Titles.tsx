@@ -7,6 +7,7 @@ import { Body, Heading, PreHeading, SubHeading } from "@/lib/atoms";
 const Icon = tw.div`flex items-start justify-start`;
 const ImageWrap = tw.div`relative w-10 h-10 py-4`;
 const TitleWrap = tw.div`flex flex-col items-center justify-center w-full`;
+const TitleWrapLeft = tw.div`flex flex-col items-start justify-start w-full dark:text-white`;
 
 export function TitleBlock({
   icon,
@@ -43,8 +44,8 @@ export function TitleLeft({
   body,
 }: Titles) {
   return (
-    <div className="mb-8">
-      <TitleWrap>
+    <>
+      <TitleWrapLeft>
         {icon && <Icon>{icon}</Icon>}
         {image && (
           <ImageWrap>
@@ -55,7 +56,7 @@ export function TitleLeft({
         {heading && <Heading>{heading}</Heading>}
         {subheading && <SubHeading>{subheading}</SubHeading>}
         {body && <Body>{body}</Body>}
-      </TitleWrap>
-    </div>
+      </TitleWrapLeft>
+    </>
   );
 }

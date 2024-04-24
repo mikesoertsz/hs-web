@@ -3,7 +3,6 @@ import Link from "next/link";
 import { cva, type VariantProps } from "class-variance-authority";
 import { PiDownloadSimpleBold } from "react-icons/pi";
 import { FiAirplay } from "react-icons/fi";
-import { Wrapper } from "@/lib/atoms";
 
 type ButtonConfig = {
   href: string;
@@ -31,15 +30,47 @@ const buttonStyles = cva(
   {
     variants: {
       theme: {
-        light: "text-black",
-        dark: "text-white",
+        light: "text-black bg-brand2-g3 hover:bg-brand2-g1",
+        dark: "text-gray-200 hover:text-white",
       },
       variant: {
         primary: "bg-brand2-g3 hover:bg-brand2-g1",
-        secondary: "bg-brand2-g3 hover:bg-brand2-g1",
+        secondary: "bg-transparent text-brand2-g3 hover:text-brand2-g1",
         tertiary: "text-gray-700 hover:text-gray-900 hover:underline",
       },
     },
+    compoundVariants: [
+      {
+        theme: "light",
+        variant: "primary",
+        class: "text-black bg-brand2-g3 hover:bg-brand2-g1",
+      },
+      {
+        theme: "light",
+        variant: "secondary",
+        class: "bg-transparent text-brand2-g3 hover:text-brand2-g1",
+      },
+      {
+        theme: "light",
+        variant: "tertiary",
+        class: "text-gray-700 hover:text-gray-900 hover:underline",
+      },
+      {
+        theme: "dark",
+        variant: "primary",
+        class: "text-gray-200 bg-brand2-g3 hover:bg-brand2-g1",
+      },
+      {
+        theme: "dark",
+        variant: "secondary",
+        class: "text-gray-200 hover:text-white",
+      },
+      {
+        theme: "dark",
+        variant: "tertiary",
+        class: "text-gray-100 hover:text-gray-200",
+      },
+    ],
     defaultVariants: {
       theme: "light",
       variant: "primary",
@@ -79,6 +110,7 @@ const buttonConfigs: ButtonConfigs = {
 };
 
 type Props = VariantProps<typeof buttonStyles> & {
+  theme: "light" | "dark";
   variant: "primary" | "secondary" | "tertiary";
 };
 
@@ -92,7 +124,7 @@ export default function CTAButtonsBasic({
   const { primaryButton, textLinkButton } = buttonConfigs[variant];
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center gap-6 p-12">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-8">
       <Link
         href={primaryButton.href}
         className={`${primaryButtonClass} rounded-lg px-8 py-3 text-md flex items-center gap-2`}
@@ -113,3 +145,4 @@ export default function CTAButtonsBasic({
     </div>
   );
 }
+

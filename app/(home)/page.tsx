@@ -2,7 +2,7 @@
 import { homepage } from "@/public/content/en";
 import FAQ from "../(shared)/FAQ";
 import ActionCTA from "./Action";
-import EarningsCalculator, { DesireSeychelles } from "./Desire";
+import EarningsCalculator, { DesireSeychelles, DesireWhoFor } from "./Desire";
 import { InvestmentSpecifics } from "./Specifics";
 import Disclaimer from "./Disclaimer";
 import InterestOverview, {
@@ -11,7 +11,6 @@ import InterestOverview, {
   InterestHowGuaranteed,
   InterestHowItWorks,
   InterestAssetDistribution,
-  InterestWhoFor,
   InterestPremise,
   InterestBehindTheInvestment,
   InterestStrategy,
@@ -33,7 +32,6 @@ export default function Home() {
       <InterestStrategy />
       <AttentionStinger />
       {/* <InterestOverview /> */}
-      <CTAButtonsBasic variant="primary" />
       <InterestBenefits />
       <InterestHowGuaranteed />
       <InterestCorporateStructure />
@@ -44,7 +42,7 @@ export default function Home() {
       {/* <InterestBehindTheInvestment /> */}
       <DesireSeychelles />
       <FAQ {...homepage.desire} />
-      <InterestWhoFor />
+      <DesireWhoFor />
       <ActionCTA />
       <Disclaimer />
     </main>

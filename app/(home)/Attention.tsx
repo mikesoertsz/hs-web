@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
 
 type Props = {};
 type Painpoint = {
@@ -203,14 +204,15 @@ export function AttentionStinger() {
   };
 
   return (
-    <Wrapper className="py-[10vh] bg-brand2-base1 min-h-[400px] text-gray-100">
-      <InnerWrap>
-        <PreHeading className="text-brand-g1 pb-4">
+    <Wrapper className="py-[8vh] bg-brand2-base1 text-gray-100">
+      <InnerWrap className="flex items-center justify-center">
+        <p className="text-brand-g1 pb-4 uppercase tracking-widest text-sm">
           {stinger.pretitle}
-        </PreHeading>
+        </p>
         <h1 className="text-5xl leading-1 px-3 lg:text-7xl font-medium font-title tracking-tight my-3 text-center balanced max-w-5xl lg:leading-[1.2]">
           {stinger.title}
         </h1>
+        <CTAButtonsBasic variant="secondary" theme="dark" />
       </InnerWrap>
     </Wrapper>
   );

@@ -201,7 +201,7 @@ export function InvestmentSpecifics() {
             *Please refer to the offering memorandum for full details.
           </p>
         </div>
-        <CTAButtonsBasic variant="primary" />
+        <CTAButtonsBasic variant="primary" theme="light" />
       </InnerWrap>
     </Wrapper>
   );

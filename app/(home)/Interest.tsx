@@ -61,24 +61,9 @@ import {
 } from "@/components/ui/table";
 import { Heading, PreHeading, SubHeading } from "@/lib/atoms";
 import { Badge } from "@/components/ui/badge";
+import { TitleLeft } from "../(shared)/Titles";
 
 type Props = {};
-type QuestionName =
-  | "income"
-  | "assets"
-  | "entity"
-  | "license"
-  | "noteligible"
-  | "score";
-
-const FormSchema = z.object({
-  income: z.boolean(),
-  assets: z.boolean(),
-  entity: z.boolean(),
-  license: z.boolean(),
-  noteligible: z.boolean(),
-  score: z.number(),
-});
 
 export default function InterestOverview({}: Props) {
   const overview = {
@@ -357,10 +342,10 @@ export function InterestPremise({}: Props) {
       <InnerWrap className="items-start justify-start w-full">
         <div className="flex flex-col md:flex-row gap-12">
           <div className="md:w-1/2 p-4">
-            <HeaderWrapLeft>
-              <Heading>{premise.header.heading}</Heading>
-              <SubHeading>{premise.header.subheading}</SubHeading>
-            </HeaderWrapLeft>
+            <TitleLeft
+              heading={premise.header.heading}
+              subheading={premise.header.subheading}
+            />
             <ul className="list-disc pl-5 gap-2 mt-6 flex flex-col items-start justify-start">
               {premise.content[0].bullets.map((bullet, index) => (
                 <li key={index} className="text-md text-gray-800">
@@ -946,128 +931,6 @@ export function InterestBenefits({}: Props) {
   );
 }
 
-export function InterestHowItWorks({}: Props) {
-  const timelineEvents = [
-    {
-      date: "Step 1",
-      items: [
-        {
-          title: "Consultation",
-          description:
-            "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
-          icon: <PiChatsTeardrop size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 2",
-      items: [
-        {
-          title: "Qualification",
-          description:
-            "Register your interest in the fund and submit docs to validate Accredited Investor status according to RegD 506(c) guidelines (usually a 10minute process). You will be contacted by our fund manager when the official fundraise begins.",
-          icon: <LuFileSignature size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 3",
-      items: [
-        {
-          title: "Subscription",
-          description:
-            "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
-          icon: <PiSignature size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 4",
-      items: [
-        {
-          title: "Fund Payouts",
-          description:
-            "Receive quarterly payouts from the fund's cashflow-generating activities, such as chartering yachts and real estate rentals.",
-          icon: <RiMoneyEuroCircleLine size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 5",
-      items: [
-        {
-          title: "Quarterly Reports",
-          description:
-            "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis. Reports contain up to the minute sales data from asset performance.",
-          icon: <TbReportAnalytics size={22} />,
-        },
-      ],
-    },
-    {
-      date: "CLOSE",
-      items: [
-        {
-          title: "Principle Payback",
-          description:
-            "At the end of the 6-year investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
-          icon: <RiRefund2Fill size={22} />,
-        },
-      ],
-    },
-  ];
-
-  return (
-    <Wrapper className="py-[5vh] bg-slate-100" id="how-it-works">
-      <InnerWrap className="p-8 rounded-xl border border-slate-200 bg-white">
-        <div className="flex flex-col md:flex-row items-start justify-center gap-8 h-full p-8">
-          <div className="flex flex-col items-start justify-start h-full md:basis-1/2">
-            <h4 className="mb-3 text-sm tracking-wide text-brand-p1">
-              Interested in investing?
-            </h4>
-            <h3 className="text-5xl font-title font-semibold">How It Works</h3>
-            <p className="text-md mt-4 pr-12">
-              What to expect in our fund subscription process.
-            </p>
-          </div>
-          <div className="flex items-center justify-center md:basis-1/2">
-            <div className="flex flex-col">
-              {timelineEvents.map((event, index) => (
-                <div key={index} className="mb-4">
-                  <ul className="flex flex-col items-start justify-start">
-                    {event.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex gap-4">
-                        <div className="flex items-start justify-start h-full mt-1">
-                          <div className="relative z-10">
-                            <div className="h-2 w-2 hidden rounded-full bg-gray-800 dark:bg-gray-900 mt-[3px]"></div>
-                          </div>
-                          <div className="text-xs font-medium uppercase text-gray-600 dark:text-gray-400 pl-1 w-12">
-                            {event.date}
-                          </div>
-                        </div>
-                        <div className="flex gap-6">
-                          <div className="">{item.icon}</div>
-                          <div className="flex flex-col items-start justify-start">
-                            {item.title}
-                            {item.description && (
-                              <p className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">
-                                {item.description}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
-
 export function InterestCorporateStructure({}: Props) {
   const leads = [
     "https://www.heritage.ch/en/fund-representation-swiss-paying-agent",
@@ -1181,147 +1044,163 @@ export function InterestCorporateStructure({}: Props) {
   );
 }
 
-export function InterestWhoFor({}: Props) {
-  const questions: {
-    label: string;
-    description: string;
-    name: QuestionName;
-    score: number;
-  }[] = [
+export function InterestHowItWorks({}: Props) {
+  const timelineEvents = [
     {
-      label:
-        "Do you earn $200K+ yearly, or $300K+ with your spousal equivalent?",
-      description: "Indicate your annual income level.",
-      name: "income",
-      score: 50,
+      date: "Step 1",
+      items: [
+        {
+          title: "Consultation",
+          description:
+            "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
+          icon: <PiChatsTeardrop size={22} />,
+        },
+      ],
     },
     {
-      label: "Do you have $1M+ in assets, excluding your primary residence?",
-      description: "Indicate if your asset value exceeds $1 million.",
-      name: "assets",
-      score: 50,
+      date: "Step 2",
+      items: [
+        {
+          title: "Qualification",
+          description:
+            "Register your interest in the fund and submit docs to validate Accredited Investor status according to RegD 506(c) guidelines (usually a 10minute process). You will be contacted by our fund manager when the official fundraise begins.",
+          icon: <LuFileSignature size={22} />,
+        },
+      ],
     },
     {
-      label: "Do you own an entity (i.e., family office) with $5M+ in assets?",
-      description:
-        "Indicate if you own an entity with significant asset value.",
-      name: "entity",
-      score: 50,
+      date: "Step 3",
+      items: [
+        {
+          title: "Subscription",
+          description:
+            "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
+          icon: <PiSignature size={22} />,
+        },
+      ],
     },
     {
-      label:
-        "Do you hold a Series 7, 65, or 82 license currently in good standing?",
-      description: "Indicate if you have a valid financial license.",
-      name: "license",
-      score: 50,
+      date: "Step 4",
+      items: [
+        {
+          title: "Fund Payouts",
+          description:
+            "Receive quarterly payouts from the fund's cashflow-generating activities, such as chartering yachts and real estate rentals.",
+          icon: <RiMoneyEuroCircleLine size={22} />,
+        },
+      ],
     },
     {
-      label: "None of the above",
-      description: "Select if none of the above options apply to you.",
-      name: "noteligible",
-      score: 50,
+      date: "Step 5",
+      items: [
+        {
+          title: "Quarterly Reports",
+          description:
+            "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis. Reports contain up to the minute sales data from asset performance.",
+          icon: <TbReportAnalytics size={22} />,
+        },
+      ],
+    },
+    {
+      date: "CLOSE",
+      items: [
+        {
+          title: "Principle Payback",
+          description:
+            "At the end of the 6-year investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
+          icon: <RiRefund2Fill size={22} />,
+        },
+      ],
     },
   ];
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  });
 
-  const noneSelected = useWatch({
-    control: form.control,
-    name: "noteligible",
-  });
-
-  useEffect(() => {
-    if (noneSelected) {
-      form.setValue("income", false);
-      form.setValue("assets", false);
-      form.setValue("entity", false);
-      form.setValue("license", false);
-    }
-  }, [noneSelected, form]);
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  const howitworks = {
+    header: {
+      preheading: "Interested in investing?",
+      heading: "How It Works",
+      subheading: "What to expect in our fund subscription process.",
+    },
+    timeline: [
+      {
+        date: "Step 1",
+        title: "Consultation",
+        description:
+          "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
+      },
+      {
+        date: "Step 2",
+        title: "Qualification",
+        description:
+          "Register your interest in the fund and submit docs to validate Accredited Investor status according to RegD 506(c) guidelines (usually a 10minute process). You will be contacted by our fund manager when the official fundraise begins.",
+      },
+      {
+        date: "Step 3",
+        title: "Subscription",
+        description:
+          "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
+      },
+      {
+        date: "Step 4",
+        title: "Fund Payouts",
+        description:
+          "Receive quarterly payouts from the fund's cashflow-generating activities, such as chartering yachts and real estate rentals.",
+      },
+      {
+        date: "Step 5",
+        title: "Quarterly Reports",
+        description:
+          "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis. Reports contain up to the minute sales data from asset performance.",
+      },
+      {
+        date: "CLOSE",
+        title: "Principle Payback",
+        description:
+          "At the end of the 6-year investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
+      },
+    ],
+  };
 
   return (
-    <Wrapper className="py-[5vh]">
-      <InnerWrap>
-        <div className="bg-gray-900 flex w-full items-start justify-center p-12 rounded-xl gap-12">
-          <div className="flex flex-col items-start justify-start basis-1/2">
-            <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
-              Interested in investing?
-            </h4>
-            <h2 className="text-4xl font-medium text-white font-title">
-              See if you qualify.
-            </h2>
-            <p className="text-md text-white mt-4 mb-4">
-              This fund is exclusively for <br /> Accredited Investors
-              <sup>?</sup>.
-            </p>
-            <p className="text-sm font-light text-gray-400 balanced pr-16 leading-relaxed">
-              HelmShare is an exclusive fund available only to experienced,
-              accredited investors. Each potential investor will undergo a
-              standard vetting process through our partner InvestorVerify.com.
-            </p>
-          </div>
-          <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg basis-1/2">
-            <div className="hidden">Congrats you qualify</div>
-            <Form {...form}>
-              <form
-                className="grid grid-cols-1 gap-4"
-                onSubmit={form.handleSubmit(onSubmit)}
-              >
-                {questions.map(({ label, description, name }) => {
-                  if (name === "score") return null; // Do not render a Switch for 'score'
-                  return (
-                    <FormField
-                      key={name}
-                      control={form.control}
-                      name={name}
-                      render={({ field }) => (
-                        <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
-                          <div className="space-y-0.5">
-                            <FormLabel>{label}</FormLabel>
-                            <FormDescription>{description}</FormDescription>
-                          </div>
-                          <FormControl>
-                            <Switch
-                              checked={field.value === true} // Ensure the value is a boolean
-                              onCheckedChange={(checked) => {
-                                if (name === "noteligible") {
-                                  if (checked) {
-                                    form.setValue("income", false);
-                                    form.setValue("assets", false);
-                                    form.setValue("entity", false);
-                                    form.setValue("license", false);
-                                  }
-                                } else if (noneSelected) {
-                                  field.onChange(false);
-                                } else {
-                                  field.onChange(checked);
-                                }
-                              }}
-                              className="ml-8"
-                            />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                  );
-                })}
-                <Button variant="outline" type="submit" className="flex w-full">
-                  Submit
-                </Button>
-              </form>
-            </Form>
+    <Wrapper className="py-[5vh] bg-slate-100" id="how-it-works">
+      <InnerWrap className="p-8 rounded-xl border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2">
+        <div className="flex h-full p-4">
+          <TitleLeft
+            preheading={howitworks.header.preheading}
+            heading={howitworks.header.heading}
+            subheading={howitworks.header.subheading}
+          />
+        </div>
+        <div className="flex items-center justify-center md:basis-1/2 mt-4 md:mt-0">
+          <div className="flex flex-col">
+            {timelineEvents.map((event, index) => (
+              <div key={index} className="mb-4">
+                <ul className="flex flex-col items-start justify-start">
+                  {event.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="flex gap-4">
+                      <div className="flex items-start justify-start h-full mt-1">
+                        <div className="relative z-10">
+                          <div className="h-2 w-2 hidden rounded-full bg-gray-800 dark:bg-gray-900 mt-[3px]"></div>
+                        </div>
+                        <div className="text-xs font-medium uppercase text-gray-600 dark:text-gray-400 pl-1 w-12">
+                          {event.date}
+                        </div>
+                      </div>
+                      <div className="flex gap-6">
+                        <div className="">{item.icon}</div>
+                        <div className="flex flex-col items-start justify-start">
+                          {item.title}
+                          {item.description && (
+                            <p className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">
+                              {item.description}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </InnerWrap>

@@ -18,6 +18,7 @@ import {
   HeaderWrapLeft,
   Heading,
   InnerWrap,
+  Left,
   PreHeading,
   SubHeading,
   Wrapper,
@@ -28,6 +29,7 @@ import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
+import { TitleLeft } from "../(shared)/Titles";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -60,13 +62,15 @@ export default function ActionCTA() {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <Wrapper className="py-[10vh] relative" id="register">
+    <Wrapper className="md:py-[10vh] relative" id="register">
       <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20 rounded-xl overflow-hidden shadow-md">
-        <HeaderWrapLeft className="p-12 h-full">
-          <PreHeading>{cta.header.preheading}</PreHeading>
-          <Heading className="">{cta.header.heading}</Heading>
-          <SubHeading className="max-w-xl">{cta.header.subheading}</SubHeading>
-        </HeaderWrapLeft>
+        <div className="flex h-full p-12">
+          <TitleLeft
+            preheading={cta.header.preheading}
+            heading={cta.header.heading}
+            subheading={cta.header.subheading}
+          />
+        </div>
         <div className="p-12 bg-slate-100">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -152,7 +156,7 @@ export default function ActionCTA() {
                         <RadioGroup
                           {...field}
                           defaultValue="quarterly"
-                          className="grid grid-cols-3 gap-4"
+                          className="grid grid-cols-1 md:grid-cols-3 gap-4"
                         >
                           <div>
                             <RadioGroupItem
@@ -276,7 +280,7 @@ export function ActionMidCTA() {
   return (
     <Wrapper>
       <InnerWrap>
-        <CTAButtonsBasic variant="secondary" />
+        <CTAButtonsBasic variant="secondary" theme="light" />
       </InnerWrap>
     </Wrapper>
   );
