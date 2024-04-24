@@ -71,7 +71,7 @@ export default function ActionCTA() {
             subheading={cta.header.subheading}
           />
         </div>
-        <div className="p-12 bg-slate-100">
+        <div className="p-4 md:p-12 bg-slate-100">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
               <fieldset className="grid rounded-lg border p-6 gap-4 bg-white">

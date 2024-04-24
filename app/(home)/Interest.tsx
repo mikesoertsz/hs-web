@@ -999,10 +999,12 @@ export function InterestCorporateStructure({}: Props) {
     <Wrapper className="my-[10vh]">
       <InnerWrap>
         <div className="flex flex-col p-8 rounded-2xl border-slate-200 border bg-white w-full">
-          <HeaderWrapLeft className="mb-8">
-            <Heading>{corporatestructure.header.heading}</Heading>
-            <SubHeading>{corporatestructure.header.subheading}</SubHeading>
-          </HeaderWrapLeft>
+          <div className="flex h-full pb-8 pl-2">
+            <TitleLeft
+              heading={corporatestructure.header.heading}
+              subheading={corporatestructure.header.subheading}
+            />
+          </div>
           <Table>
             <TableCaption>
               <Badge variant="secondary">
