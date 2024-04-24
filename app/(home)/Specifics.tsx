@@ -129,7 +129,7 @@ export function InvestmentSpecifics() {
     },
   ];
   return (
-    <Wrapper className="py-8 bg-slate-100 border-t border-slate-200">
+    <Wrapper className="py-8 bg-slate-100 border-t border-slate-200 hidden lg:flex">
       <InnerWrap>
         <div className="flex flex-col items-center justify-center text-center my-12">
           <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
@@ -159,7 +159,7 @@ export function InvestmentSpecifics() {
                 {item.details.map((detail, index) => (
                   <li
                     key={index}
-                    className="flex w-full items-center justify-between"
+                    className="flex flex-col md:flex-row text-left w-full items-center justify-between"
                   >
                     <TooltipProvider>
                       <Tooltip>

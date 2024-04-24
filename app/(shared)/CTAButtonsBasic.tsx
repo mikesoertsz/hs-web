@@ -92,7 +92,7 @@ export default function CTAButtonsBasic({
   const { primaryButton, textLinkButton } = buttonConfigs[variant];
 
   return (
-    <div className="flex items-center justify-center gap-6 p-12">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-6 p-12">
       <Link
         href={primaryButton.href}
         className={`${primaryButtonClass} rounded-lg px-8 py-3 text-md flex items-center gap-2`}

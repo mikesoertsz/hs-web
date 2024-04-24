@@ -15,6 +15,7 @@ import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { useState } from "react";
 import {
+  HeaderWrapLeft,
   Heading,
   InnerWrap,
   PreHeading,
@@ -61,15 +62,15 @@ export default function ActionCTA() {
   return (
     <Wrapper className="py-[10vh] relative" id="register">
       <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20 rounded-xl overflow-hidden shadow-md">
-        <div className="flex flex-col justify-start items-start p-12 bg-slate-100 h-full shadow-lg">
+        <HeaderWrapLeft className="p-12 h-full">
           <PreHeading>{cta.header.preheading}</PreHeading>
-          <Heading>{cta.header.heading}</Heading>
+          <Heading className="">{cta.header.heading}</Heading>
           <SubHeading className="max-w-xl">{cta.header.subheading}</SubHeading>
-        </div>
-        <div className="p-12">
+        </HeaderWrapLeft>
+        <div className="p-12 bg-slate-100">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-              <fieldset className="grid rounded-lg border p-6 gap-4">
+              <fieldset className="grid rounded-lg border p-6 gap-4 bg-white">
                 <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
                   Contact Information
                 </legend>
@@ -134,7 +135,7 @@ export default function ActionCTA() {
                   )}
                 />
               </fieldset>
-              <fieldset className="grid rounded-lg border p-6 gap-4">
+              <fieldset className="grid rounded-lg border p-6 gap-4 bg-white">
                 <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
                   Investment Preferences
                 </legend>
@@ -199,7 +200,7 @@ export default function ActionCTA() {
                   )}
                 />
               </fieldset>
-              <fieldset className="grid rounded-lg border p-6 gap-4">
+              <fieldset className="grid rounded-lg border p-6 gap-4 bg-white">
                 <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
                   Contact preferences
                 </legend>
