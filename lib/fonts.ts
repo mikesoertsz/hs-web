@@ -28,7 +28,7 @@ export const title2 = localFont({
 });
 
 export const title = localFont({
-  src: "../public/font/glastone.woff2",
+  src: "../public/font/luxury.woff2",
   variable: "--font-title",
   display: "swap",
 });

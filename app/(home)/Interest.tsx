@@ -1,19 +1,4 @@
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { Switch } from "@/components/ui/switch";
-import { toast } from "@/components/ui/use-toast";
-import { HeaderWrapLeft, InnerWrap, Wrapper } from "@/lib/atoms";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
-import { useForm, useWatch } from "react-hook-form";
-import { z } from "zod";
+"use client";
 import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
@@ -21,6 +6,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { HeaderWrapLeft, InnerWrap, Wrapper } from "@/lib/atoms";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { homepage } from "@/public/content/en";
@@ -50,6 +36,7 @@ import {
 import { TbReportAnalytics } from "react-icons/tb";
 import { TiChartPieOutline } from "react-icons/ti";
 
+import { Badge } from "@/components/ui/badge";
 import {
   Table,
   TableBody,
@@ -59,9 +46,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Heading, PreHeading, SubHeading } from "@/lib/atoms";
-import { Badge } from "@/components/ui/badge";
-import { TitleLeft } from "../(shared)/Titles";
+import { Heading, SubHeading } from "@/lib/atoms";
+import { TitleBlock } from "@/components/ui/titleblock";
 
 type Props = {};
 
@@ -342,9 +328,11 @@ export function InterestPremise({}: Props) {
       <InnerWrap className="items-start justify-start w-full">
         <div className="flex flex-col md:flex-row gap-12">
           <div className="md:w-1/2 p-4">
-            <TitleLeft
+            <TitleBlock
               heading={premise.header.heading}
               subheading={premise.header.subheading}
+              theme="light"
+              orientation="left"
             />
             <ul className="list-disc pl-5 gap-2 mt-6 flex flex-col items-start justify-start">
               {premise.content[0].bullets.map((bullet, index) => (
@@ -399,10 +387,12 @@ export function InterestStrategy({}: Props) {
       <InnerWrap className="items-start justify-start w-full">
         <div className="flex flex-col md:flex-row gap-12">
           <div className="md:w-1/2 p-4">
-            <HeaderWrapLeft>
-              <Heading>{strategy.header.heading}</Heading>
-              <SubHeading>{strategy.header.subheading}</SubHeading>
-            </HeaderWrapLeft>
+            <TitleBlock
+              heading={strategy.header.heading}
+              subheading={strategy.header.subheading}
+              theme="light"
+              orientation="left"
+            />
             <ul className="list-disc pl-5 gap-2 mt-6 flex flex-col items-start justify-start pb-8">
               {strategy.content.map((section, index) => (
                 <li key={index} className="text-md text-gray-800">
@@ -429,11 +419,110 @@ export function InterestStrategy({}: Props) {
   );
 }
 
+export function InterestBenefits({}: Props) {
+  const benefits = [
+    {
+      icon: <PiPiggyBank size={25} />,
+      title: (
+        <span>
+          <strong>Guaranteed Yield</strong>: Receive guaranteed return from your
+          investment.
+        </span>
+      ),
+    },
+    {
+      icon: <PiShieldLight size={25} />,
+      title: (
+        <span>
+          <strong>Low Risk</strong>: Funds are invested into cashflowing, hard
+          assets with real tangible value.
+        </span>
+      ),
+    },
+    {
+      icon: <IoBoatOutline size={25} />,
+      title: (
+        <span>
+          <strong>Asset Backed</strong>: Invest in tangible assets that offer
+          cashflow and real securitization.
+        </span>
+      ),
+    },
+    {
+      icon: <PiClockClockwise size={25} />,
+      title: (
+        <span>
+          <strong>Quarterly Payouts</strong>: Enjoy consistent returns with
+          regular quarterly distributions to your bank account.
+        </span>
+      ),
+    },
+    {
+      icon: <AiOutlineDashboard size={25} />,
+      title: (
+        <span>
+          <strong>Transparent</strong>: Track the performance of your assets in
+          real-time with complete transparency.
+        </span>
+      ),
+    },
+    {
+      icon: <TiChartPieOutline size={25} />,
+      title: (
+        <span>
+          <strong>Inelastic demand</strong>: Demand for luxury charters has
+          proven to be resilient to market trends and even pandemics.
+        </span>
+      ),
+    },
+  ];
+  return (
+    <Wrapper className="bg-white py-[10vh]">
+      <InnerWrap>
+        <h1 className="text-5xl font-title tracking-tight">
+          Why invest in a charter fleet?
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full pt-8 gap-4 mt-12">
+          <ul className="flex flex-col items-center justify-center w-full gap-4">
+            {benefits.slice(0, 3).map((item, index) => (
+              <li
+                key={index}
+                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
+              >
+                <div className="w-10 flex h-full items-center justify-center">
+                  {item.icon}
+                </div>
+                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center justify-center">
+            <Image src="/img/tanna47.png" alt="hero" width={300} height={300} />
+          </div>
+          <ul className="flex flex-col items-center justify-center w-full gap-4">
+            {benefits.slice(3, 6).map((item, index) => (
+              <li
+                key={index}
+                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
+              >
+                <div className="w-10 flex h-full items-center justify-center">
+                  {item.icon}
+                </div>
+                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
 export function InterestHowGuaranteed({}: Props) {
   return (
-    <Wrapper className="py-4 bg-gray-900 text-gray-200">
+    <Wrapper className="py-8 md:py-4 bg-gray-900 text-gray-200">
       <InnerWrap>
-        <div className="flex gap-2 items-center justify-center">
+        <div className="flex flex-col md:flex-row gap-2 items-center justify-center">
           <h2 className="text-sm">How is the 8% income guaranteed?</h2>
           <div className="flex rounded-full p-2 bg-black items-center justify-center">
             <IoBoatOutline size={24} className="text-white" />
@@ -451,27 +540,298 @@ export function InterestHowGuaranteed({}: Props) {
   );
 }
 
-export function InterestAssetDistribution({}: Props) {
-  const yachts = [
+export function InterestCorporateStructure({}: Props) {
+  const leads = [
+    "https://www.heritage.ch/en/fund-representation-swiss-paying-agent",
+  ];
+  const corporatestructure = {
+    header: {
+      icon: "", // Placeholder for actual icon path
+      image: "", // Placeholder for actual image path
+      preheading: "Understanding Our Foundation",
+      heading: "Corporate & Tax Structure",
+      subheading:
+        "Diligently structured to ease tax and administrative burdens.",
+      body: "Learn about the entities that form our corporate structure and how they interconnect to sustain our business operations and growth.",
+    },
+    entities: [
+      {
+        title: "General Partner",
+        name: "HelmShare LLC",
+        country: "Dubai, UAE",
+        compliance: ["Dubai Financial Services Authority (DFSA)"],
+      },
+      {
+        title: "Special Purpose Vehicle (SPV)",
+        name: "HelmShare Prime LLC",
+        country: "Cayman Islands",
+        compliance: ["Cayman Islands Monetary Authority (CIMA)"],
+      },
+      {
+        title: "Trust Issuer",
+        name: "TBA",
+        country: "Dublin, Ireland",
+        compliance: ["Central Bank of Ireland"],
+      },
+
+      {
+        title: "Payment Agent",
+        name: "TBA",
+        country: "Zurich, Switzerland",
+        compliance: ["Swiss Financial Market Supervisory Authority (FINMA)"],
+      },
+      {
+        title: "Counsel - Onshore",
+        name: "TBA",
+        country: "Dubai, UAE",
+        compliance: ["Dubai Legal Affairs Department"],
+      },
+      {
+        title: "Counsel - Offshore",
+        name: "TBA",
+        country: "Cayman Islands",
+        compliance: ["Cayman Islands Legal Practitioners Association (CILPA)"],
+      },
+      {
+        title: "Audit Partner",
+        name: "Deloitte",
+        country: "Global",
+        compliance: [
+          "International Standards on Auditing (ISA)",
+          "Anti-Money Laundering (AML)",
+          "Know Your Customer (KYC)",
+        ],
+      },
+    ],
+  };
+  return (
+    <Wrapper className="my-[10vh]">
+      <InnerWrap>
+        <div className="flex flex-col p-8 rounded-2xl border-slate-200 border bg-white w-full">
+          <div className="flex h-full pb-8 pl-2">
+            <TitleBlock
+              heading={corporatestructure.header.heading}
+              subheading={corporatestructure.header.subheading}
+              theme="light"
+              orientation="left"
+            />
+          </div>
+          <Table>
+            <TableCaption>
+              <Badge variant="secondary">
+                <sup>*</sup>currently in progress.
+              </Badge>
+            </TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Type</TableHead>
+                <TableHead>Entity</TableHead>
+                <TableHead>Country</TableHead>
+                <TableHead>Compliance Standards</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {corporatestructure.entities.map((entity, index) => (
+                <TableRow
+                  key={index}
+                  className="hover:bg-slate-50 transition duration-200 ease-in-out"
+                >
+                  <TableCell>{entity.title}</TableCell>
+                  <TableCell>
+                    {entity.name}
+                    <sup>*</sup>
+                  </TableCell>
+                  <TableCell>{entity.country}</TableCell>
+                  <TableCell>
+                    {entity.compliance.map((item, idx) => (
+                      <div key={idx}>{item}</div>
+                    ))}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function InterestHowItWorks({}: Props) {
+  const timelineEvents = [
     {
-      brand: "Fountaine Pajot",
-      model: "Tanna 47",
-      imageurl: "/img/yachts/tanna47.png",
-      stats: [],
+      date: "Step 1",
+      items: [
+        {
+          title: "Consultation",
+          description:
+            "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
+          icon: <PiChatsTeardrop size={22} />,
+        },
+      ],
     },
     {
-      brand: "Lagoon",
-      model: "Lagoon 46",
-      imageurl: "/img/yachts/lagoon46.png",
-      stats: [],
+      date: "Step 2",
+      items: [
+        {
+          title: "Qualification",
+          description:
+            "Register your interest in the fund and submit docs to validate Accredited Investor status according to RegD 506(c) guidelines (usually a 10minute process). You will be contacted by our fund manager when the official fundraise begins.",
+          icon: <LuFileSignature size={22} />,
+        },
+      ],
     },
     {
-      brand: "Bali",
-      model: "Bali 4.6",
-      imageurl: "/img/yachts/bali46.png",
-      stats: [],
+      date: "Step 3",
+      items: [
+        {
+          title: "Subscription",
+          description:
+            "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
+          icon: <PiSignature size={22} />,
+        },
+      ],
+    },
+    {
+      date: "Step 4",
+      items: [
+        {
+          title: "Fund Payouts",
+          description:
+            "Receive quarterly payouts from the fund's cashflow-generating activities, such as chartering yachts and real estate rentals.",
+          icon: <RiMoneyEuroCircleLine size={22} />,
+        },
+      ],
+    },
+    {
+      date: "Step 5",
+      items: [
+        {
+          title: "Quarterly Reports",
+          description:
+            "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis. Reports contain up to the minute sales data from asset performance.",
+          icon: <TbReportAnalytics size={22} />,
+        },
+      ],
+    },
+    {
+      date: "CLOSE",
+      items: [
+        {
+          title: "Principle Payback",
+          description:
+            "At the end of the 6-year investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
+          icon: <RiRefund2Fill size={22} />,
+        },
+      ],
     },
   ];
+
+  const howitworks = {
+    header: {
+      preheading: "Interested in investing?",
+      heading: "How It Works",
+      subheading: "What to expect in our fund subscription process.",
+    },
+    timeline: [
+      {
+        date: "Step 1",
+        title: "Consultation",
+        description:
+          "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
+      },
+      {
+        date: "Step 2",
+        title: "Qualification",
+        description:
+          "Register your interest in the fund and submit docs to validate Accredited Investor status according to RegD 506(c) guidelines (usually a 10minute process). You will be contacted by our fund manager when the official fundraise begins.",
+      },
+      {
+        date: "Step 3",
+        title: "Subscription",
+        description:
+          "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
+      },
+      {
+        date: "Step 4",
+        title: "Fund Payouts",
+        description:
+          "Receive quarterly payouts from the fund's cashflow-generating activities, such as chartering yachts and real estate rentals.",
+      },
+      {
+        date: "Step 5",
+        title: "Quarterly Reports",
+        description:
+          "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis. Reports contain up to the minute sales data from asset performance.",
+      },
+      {
+        date: "CLOSE",
+        title: "Principle Payback",
+        description:
+          "At the end of the 6-year investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
+      },
+    ],
+  };
+
+  return (
+    <Wrapper className="py-[5vh] bg-slate-100" id="how-it-works">
+      <InnerWrap className="p-8 rounded-xl border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2">
+        <div className="flex h-full p-4">
+          <TitleBlock
+            preheading={howitworks.header.preheading}
+            heading={howitworks.header.heading}
+            subheading={howitworks.header.subheading}
+            theme="light"
+            orientation="left"
+          />
+        </div>
+        <div className="flex items-center justify-center md:basis-1/2 mt-4 md:mt-0">
+          <div className="flex flex-col">
+            {timelineEvents.map((event, index) => (
+              <div key={index} className="mb-4">
+                <ul className="flex flex-col items-start justify-start">
+                  {event.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="flex gap-4">
+                      <div className="flex items-start justify-start h-full mt-1">
+                        <div className="relative z-10">
+                          <div className="h-2 w-2 hidden rounded-full bg-gray-800 dark:bg-gray-900 mt-[3px]"></div>
+                        </div>
+                        <div className="text-xs font-medium uppercase text-gray-600 dark:text-gray-400 pl-1 w-12">
+                          {event.date}
+                        </div>
+                      </div>
+                      <div className="flex gap-6">
+                        <div className="">{item.icon}</div>
+                        <div className="flex flex-col items-start justify-start">
+                          {item.title}
+                          {item.description && (
+                            <p className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">
+                              {item.description}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function InterestAssetDistribution({}: Props) {
+  const strategy = {
+    header: {
+      preheader: "fund strategy",
+      heading: "Capital Distribution",
+      subheading: "",
+      body: "HelmShare primarily generates income through charter yachts & real estate purchased with your capital. Real estate and alternative assets add diversification while hedging against yacht depreciation.",
+    },
+  };
   const data = [
     {
       value: 70,
@@ -523,132 +883,132 @@ export function InterestAssetDistribution({}: Props) {
       reasons: ["Liquid", "High yield", "Asset diversification"],
     },
   ];
-  return (
-    <Wrapper className="py-[5vh]" id="opportunity">
-      <InnerWrap className="py-12 border rounded-xl border-slate-300 bg-white">
-        <div className="flex flex-col items-center justify-center w-full gap-12">
-          <div className="flex flex-col items-center justify-center text-center">
-            <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
-              fund asset strategy
-            </p>
-            <h1 className="text-4xl font-medium font-title tracking-tight my-3">
-              Stable income from tangible assets
-            </h1>
-            <h4 className="max-w-prose">
-              HelmShare primarily generates income through charter yachts & real
-              estate purchased with your capital. Real estate and a alternative
-              assets add diversification while hedging against yacht
-              depreciation.
-            </h4>
-            <ul className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 items-start h-[120px] px-12">
-              {data.map((item, index) => (
-                <li
-                  key={index}
-                  className="relative flex flex-col items-start justify-start w-full h-full p-8"
-                >
-                  <div className="flex flex-col items-start justify-start text-left grow">
-                    {item.icon}
-                    <h3 className="font-semibold">{item.name}</h3>
-                    <p className="text-sm text-gray-600">{item.description}</p>
-                  </div>
-                  <Separator className="my-4" />
-                  <div className="flex gap-4 items-start justify-start">
-                    <h3 className="text-2xl font-semibold text-black">
-                      {item.statvalue}
-                    </h3>
-                    <Separator orientation="vertical" />
-                    <div className="flex flex-col items-start justify-start text-left">
-                      <p className="text-xs text-gray-600 pb-1">
-                        <span className="font-semibold pr-1">Why:</span>
-                        {item.statlabel}
-                      </p>
-                      <ul>
-                        {item.reasons.map((reason, index) => (
-                          <li
-                            key={index}
-                            className="text-xs text-gray-500 flex items-start justify-start gap-1"
-                          >
-                            <IoIosCheckmark
-                              size={15}
-                              className="text-green-600"
-                            />
-                            {reason}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex items-center justify-center max-w-2xl py-12 mt-12">
-            {/* <div style={{ width: 250 }}>
-              <SimplyDonut
-                data={data}
-                size="md"
-                inset={{ color: "#fff", size: 20 }}
-              />
-            </div>
-            <div style={{ width: 250 }}>
-              <h3>Legend</h3>
-              <SimplyLegend data={data} />
-            </div> */}
-          </div>
-        </div>
 
-        <div className="flex flex-col items-center justify-center">
-          <h3 className="font-title text-4xl tracking-tight py-4">
-            Which yachts?
-          </h3>
-          <h4 className="balanced max-w-2xl text-center">
-            Helmshare fleets are comprised of 40-60ft sailing catamarans from
-            only the best production brands. These are chosen for their
-            popularity, flexibility, quality, and low depreciation.
-          </h4>
-          <ul className="md:flex items-center justify-center gap-8 mt-12 hidden">
-            {yachts.map((yacht, index) => (
-              <li
-                className="flex flex-col items-center justify-center"
-                key={index}
-              >
-                <div className="flex relative h-[300px] w-[300px]">
-                  <Image
-                    src={yacht.imageurl}
-                    alt={yacht.model}
-                    fill
-                    className="absolute inset-0"
-                    style={{ objectFit: "contain" }}
-                  />
+  return (
+    <Wrapper className="py-[5vh]" id="strategy">
+      <InnerWrap className="flex flex-col py-12 border rounded-xl border-slate-300 bg-white">
+        <TitleBlock
+          preheading={strategy.header.preheader}
+          heading={strategy.header.heading}
+          subheading={strategy.header.subheading}
+          body={strategy.header.body}
+          theme="light"
+          orientation="center"
+        />
+        <ul className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 items-start px-12">
+          {data.map((item, index) => (
+            <li
+              key={index}
+              className="relative flex flex-col items-start justify-start w-full h-full p-8"
+            >
+              <div className="flex flex-col items-start justify-start text-left grow">
+                {item.icon}
+                <h3 className="font-semibold">{item.name}</h3>
+                <p className="text-sm text-gray-600">{item.description}</p>
+              </div>
+              <Separator className="my-4" />
+              <div className="flex gap-4 items-start justify-start">
+                <h3 className="text-2xl font-semibold text-black">
+                  {item.statvalue}
+                </h3>
+                <Separator orientation="vertical" />
+                <div className="flex flex-col items-start justify-start text-left">
+                  <p className="text-xs text-gray-600 pb-1">
+                    <span className="font-semibold pr-1">Why:</span>
+                    {item.statlabel}
+                  </p>
+                  <ul>
+                    {item.reasons.map((reason, index) => (
+                      <li
+                        key={index}
+                        className="text-xs text-gray-500 flex items-start justify-start gap-1"
+                      >
+                        <IoIosCheckmark size={15} className="text-green-600" />
+                        {reason}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-sm font-semibold mt-3">{yacht.brand}</p>
-                <p className="text-xs font-normal pt-1">{yacht.model}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-        {/* <div className="relative rounded-lg overflow-clip my-12 flex w-full">
-          <div className="flex w-full min-h-[400px] relative z-10 ">
-            <Image
-              src="/img/hero/hero20.jpg"
-              alt="image"
-              fill
-              style={{ objectFit: "cover" }}
-              className="absolute inset-0 p-12"
-            />
-          </div>
-        </div> */}
-        <p className="text-xs text-gray-400 mt-12">
-          As of{" "}
-          {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString(
-            "en-GB",
-            { day: "2-digit", month: "2-digit", year: "numeric" }
-          )}
-          . Percentages are based on total investment activities and subject to
-          change.
-        </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <InterestWhichYachts />
       </InnerWrap>
     </Wrapper>
+  );
+}
+
+export function InterestWhichYachts({}: Props) {
+  const yachts = {
+    header: {
+      preheader: "Fleet Overview",
+      heading: "Which yachts?",
+      subheading:
+        "Helmshare fleets are comprised of 40-60ft sailing catamarans from only the best production brands. These are chosen for their popularity, flexibility, quality, and low depreciation.",
+    },
+    list: [
+      {
+        brand: "Fountaine Pajot",
+        model: "Tanna 47",
+        imageurl: "/img/yachts/tanna47.png",
+        stats: [],
+      },
+      {
+        brand: "Lagoon",
+        model: "Lagoon 46",
+        imageurl: "/img/yachts/lagoon46.png",
+        stats: [],
+      },
+      {
+        brand: "Bali",
+        model: "Bali 4.6",
+        imageurl: "/img/yachts/bali46.png",
+        stats: [],
+      },
+    ],
+  };
+  return (
+    <div className="flex flex-col items-center justify-center mt-12">
+      <div className="flex items-center justify-center w-full">
+        <TitleBlock
+          heading={yachts.header.heading}
+          subheading={yachts.header.subheading}
+          theme="light"
+          orientation="center"
+        />
+      </div>
+      <ul className="md:flex items-center justify-center gap-8 mt-12 hidden">
+        {yachts.list.map((yacht, index) => (
+          <li className="flex flex-col items-center justify-center" key={index}>
+            <div className="flex relative h-[300px] w-[300px]">
+              <Image
+                src={yacht.imageurl}
+                alt={yacht.model}
+                fill
+                className="absolute inset-0"
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <p className="text-sm font-semibold mt-3">{yacht.brand}</p>
+            <p className="text-xs font-normal pt-1">{yacht.model}</p>
+          </li>
+        ))}
+      </ul>
+      <p className="text-xs text-gray-400 mt-12">
+        As of{" "}
+        {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString(
+          "en-GB",
+          {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          }
+        )}
+        . Percentages are based on total investment activities and subject to
+        change.
+      </p>
+    </div>
   );
 }
 
@@ -825,384 +1185,6 @@ export function InterestRiskProfile({}: Props) {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
-
-export function InterestBenefits({}: Props) {
-  const benefits = [
-    {
-      icon: <PiPiggyBank size={25} />,
-      title: (
-        <span>
-          <strong>Guaranteed Yield</strong>: Receive guaranteed return from your
-          investment.
-        </span>
-      ),
-    },
-    {
-      icon: <PiShieldLight size={25} />,
-      title: (
-        <span>
-          <strong>Low Risk</strong>: Funds are invested into cashflowing, hard
-          assets with real tangible value.
-        </span>
-      ),
-    },
-    {
-      icon: <IoBoatOutline size={25} />,
-      title: (
-        <span>
-          <strong>Asset Backed</strong>: Invest in tangible assets that offer
-          cashflow and real securitization.
-        </span>
-      ),
-    },
-    {
-      icon: <PiClockClockwise size={25} />,
-      title: (
-        <span>
-          <strong>Quarterly Payouts</strong>: Enjoy consistent returns with
-          regular quarterly distributions to your bank account.
-        </span>
-      ),
-    },
-    {
-      icon: <AiOutlineDashboard size={25} />,
-      title: (
-        <span>
-          <strong>Transparent</strong>: Track the performance of your assets in
-          real-time with complete transparency.
-        </span>
-      ),
-    },
-    {
-      icon: <TiChartPieOutline size={25} />,
-      title: (
-        <span>
-          <strong>Inelastic demand</strong>: Demand for luxury charters has
-          proven to be resilient to market trends and even pandemics.
-        </span>
-      ),
-    },
-  ];
-  return (
-    <Wrapper className="bg-white py-[10vh]">
-      <InnerWrap>
-        <h1 className="text-5xl font-title tracking-tight">
-          Why invest in a charter fleet?
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 w-full pt-8 gap-4 mt-12">
-          <ul className="flex flex-col items-center justify-center w-full gap-4">
-            {benefits.slice(0, 3).map((item, index) => (
-              <li
-                key={index}
-                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
-              >
-                <div className="w-10 flex h-full items-center justify-center">
-                  {item.icon}
-                </div>
-                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center justify-center">
-            <Image src="/img/tanna47.png" alt="hero" width={300} height={300} />
-          </div>
-          <ul className="flex flex-col items-center justify-center w-full gap-4">
-            {benefits.slice(3, 6).map((item, index) => (
-              <li
-                key={index}
-                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
-              >
-                <div className="w-10 flex h-full items-center justify-center">
-                  {item.icon}
-                </div>
-                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
-
-export function InterestCorporateStructure({}: Props) {
-  const leads = [
-    "https://www.heritage.ch/en/fund-representation-swiss-paying-agent",
-  ];
-  const corporatestructure = {
-    header: {
-      icon: "", // Placeholder for actual icon path
-      image: "", // Placeholder for actual image path
-      preheading: "Understanding Our Foundation",
-      heading: "Corporate & Tax Structure",
-      subheading:
-        "Diligently structured to ease tax and administrative burdens.",
-      body: "Learn about the entities that form our corporate structure and how they interconnect to sustain our business operations and growth.",
-    },
-    entities: [
-      {
-        title: "General Partner",
-        name: "HelmShare LLC",
-        country: "Dubai, UAE",
-        compliance: ["Dubai Financial Services Authority (DFSA)"],
-      },
-      {
-        title: "Special Purpose Vehicle (SPV)",
-        name: "HelmShare Prime LLC",
-        country: "Cayman Islands",
-        compliance: ["Cayman Islands Monetary Authority (CIMA)"],
-      },
-      {
-        title: "Trust Issuer",
-        name: "TBA",
-        country: "Dublin, Ireland",
-        compliance: ["Central Bank of Ireland"],
-      },
-
-      {
-        title: "Payment Agent",
-        name: "TBA",
-        country: "Zurich, Switzerland",
-        compliance: ["Swiss Financial Market Supervisory Authority (FINMA)"],
-      },
-      {
-        title: "Counsel - Onshore",
-        name: "TBA",
-        country: "Dubai, UAE",
-        compliance: ["Dubai Legal Affairs Department"],
-      },
-      {
-        title: "Counsel - Offshore",
-        name: "TBA",
-        country: "Cayman Islands",
-        compliance: ["Cayman Islands Legal Practitioners Association (CILPA)"],
-      },
-      {
-        title: "Audit Partner",
-        name: "Deloitte",
-        country: "Global",
-        compliance: [
-          "International Standards on Auditing (ISA)",
-          "Anti-Money Laundering (AML)",
-          "Know Your Customer (KYC)",
-        ],
-      },
-    ],
-  };
-  return (
-    <Wrapper className="my-[10vh]">
-      <InnerWrap>
-        <div className="flex flex-col p-8 rounded-2xl border-slate-200 border bg-white w-full">
-          <div className="flex h-full pb-8 pl-2">
-            <TitleLeft
-              heading={corporatestructure.header.heading}
-              subheading={corporatestructure.header.subheading}
-            />
-          </div>
-          <Table>
-            <TableCaption>
-              <Badge variant="secondary">
-                <sup>*</sup>currently in progress.
-              </Badge>
-            </TableCaption>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Type</TableHead>
-                <TableHead>Entity</TableHead>
-                <TableHead>Country</TableHead>
-                <TableHead>Compliance Standards</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {corporatestructure.entities.map((entity, index) => (
-                <TableRow
-                  key={index}
-                  className="hover:bg-slate-50 transition duration-200 ease-in-out"
-                >
-                  <TableCell>{entity.title}</TableCell>
-                  <TableCell>
-                    {entity.name}
-                    <sup>*</sup>
-                  </TableCell>
-                  <TableCell>{entity.country}</TableCell>
-                  <TableCell>
-                    {entity.compliance.map((item, idx) => (
-                      <div key={idx}>{item}</div>
-                    ))}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
-
-export function InterestHowItWorks({}: Props) {
-  const timelineEvents = [
-    {
-      date: "Step 1",
-      items: [
-        {
-          title: "Consultation",
-          description:
-            "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
-          icon: <PiChatsTeardrop size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 2",
-      items: [
-        {
-          title: "Qualification",
-          description:
-            "Register your interest in the fund and submit docs to validate Accredited Investor status according to RegD 506(c) guidelines (usually a 10minute process). You will be contacted by our fund manager when the official fundraise begins.",
-          icon: <LuFileSignature size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 3",
-      items: [
-        {
-          title: "Subscription",
-          description:
-            "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
-          icon: <PiSignature size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 4",
-      items: [
-        {
-          title: "Fund Payouts",
-          description:
-            "Receive quarterly payouts from the fund's cashflow-generating activities, such as chartering yachts and real estate rentals.",
-          icon: <RiMoneyEuroCircleLine size={22} />,
-        },
-      ],
-    },
-    {
-      date: "Step 5",
-      items: [
-        {
-          title: "Quarterly Reports",
-          description:
-            "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis. Reports contain up to the minute sales data from asset performance.",
-          icon: <TbReportAnalytics size={22} />,
-        },
-      ],
-    },
-    {
-      date: "CLOSE",
-      items: [
-        {
-          title: "Principle Payback",
-          description:
-            "At the end of the 6-year investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
-          icon: <RiRefund2Fill size={22} />,
-        },
-      ],
-    },
-  ];
-
-  const howitworks = {
-    header: {
-      preheading: "Interested in investing?",
-      heading: "How It Works",
-      subheading: "What to expect in our fund subscription process.",
-    },
-    timeline: [
-      {
-        date: "Step 1",
-        title: "Consultation",
-        description:
-          "Schedule an initial consultation with our fund manager to discuss your investment goal, investor qualification and risk tolerance, subscription process, payout process and principle return at fund maturity.",
-      },
-      {
-        date: "Step 2",
-        title: "Qualification",
-        description:
-          "Register your interest in the fund and submit docs to validate Accredited Investor status according to RegD 506(c) guidelines (usually a 10minute process). You will be contacted by our fund manager when the official fundraise begins.",
-      },
-      {
-        date: "Step 3",
-        title: "Subscription",
-        description:
-          "Complete the subscription process by signing the investment agreement and transferring funds to secure your position in the investment.",
-      },
-      {
-        date: "Step 4",
-        title: "Fund Payouts",
-        description:
-          "Receive quarterly payouts from the fund's cashflow-generating activities, such as chartering yachts and real estate rentals.",
-      },
-      {
-        date: "Step 5",
-        title: "Quarterly Reports",
-        description:
-          "Review quarterly reports detailing the fund's performance, asset management strategies, and market analysis. Reports contain up to the minute sales data from asset performance.",
-      },
-      {
-        date: "CLOSE",
-        title: "Principle Payback",
-        description:
-          "At the end of the 6-year investment term, receive a 100% payback of your principal investment amount as outlined in the fund's terms.",
-      },
-    ],
-  };
-
-  return (
-    <Wrapper className="py-[5vh] bg-slate-100" id="how-it-works">
-      <InnerWrap className="p-8 rounded-xl border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2">
-        <div className="flex h-full p-4">
-          <TitleLeft
-            preheading={howitworks.header.preheading}
-            heading={howitworks.header.heading}
-            subheading={howitworks.header.subheading}
-          />
-        </div>
-        <div className="flex items-center justify-center md:basis-1/2 mt-4 md:mt-0">
-          <div className="flex flex-col">
-            {timelineEvents.map((event, index) => (
-              <div key={index} className="mb-4">
-                <ul className="flex flex-col items-start justify-start">
-                  {event.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex gap-4">
-                      <div className="flex items-start justify-start h-full mt-1">
-                        <div className="relative z-10">
-                          <div className="h-2 w-2 hidden rounded-full bg-gray-800 dark:bg-gray-900 mt-[3px]"></div>
-                        </div>
-                        <div className="text-xs font-medium uppercase text-gray-600 dark:text-gray-400 pl-1 w-12">
-                          {event.date}
-                        </div>
-                      </div>
-                      <div className="flex gap-6">
-                        <div className="">{item.icon}</div>
-                        <div className="flex flex-col items-start justify-start">
-                          {item.title}
-                          {item.description && (
-                            <p className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">
-                              {item.description}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </div>
       </InnerWrap>

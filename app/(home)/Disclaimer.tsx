@@ -1,8 +1,7 @@
 "use client";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { useState } from "react";
 
 type Props = {};
 
@@ -115,11 +114,12 @@ export default function Disclaimer({}: Props) {
               {disclaimer.text}
             </li>
           ))}
-          {isOpen && disclaimers.slice(5).map((disclaimer) => (
-            <li key={disclaimer.id} className="ml-4 pt-2">
-              {disclaimer.text}
-            </li>
-          ))}
+          {isOpen &&
+            disclaimers.slice(5).map((disclaimer) => (
+              <li key={disclaimer.id} className="ml-4 pt-2">
+                {disclaimer.text}
+              </li>
+            ))}
         </ol>
         <Button
           onClick={toggleOpen}

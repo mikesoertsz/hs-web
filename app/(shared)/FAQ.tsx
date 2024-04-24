@@ -8,13 +8,11 @@ import {
 
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 import { Desire } from "../../lib/types";
-import { TitleBlock } from "./Titles";
 
 export default function FAQ({ faq }: Desire) {
   return (
     <Wrapper id="faqs" className="bg-slate-50 py-[5vh]">
       <InnerWrap className="flex max-w-4xl">
-        <TitleBlock {...faq.header} />
         <Accordion type="single" collapsible className="w-full pt-12">
           {faq.questions.slice(0, 7).map((item, index) => (
             <AccordionItem

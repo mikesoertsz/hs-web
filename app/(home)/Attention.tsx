@@ -33,74 +33,77 @@ export default function AttentionHero() {
     },
   ];
   return (
-    <Wrapper className="relative flex flex-col min-h-[50vh] z-10 px-0 mx-0 md:flex-row">
-      <Left className="bg-brand2-base1">
-        <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
-          <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
-            Alternative Income Fund
-          </h4>
-          <h1 className="text-5xl font-medium text-white drop-shadow-lg font-title leading-tight">
-            Earn 8% yield from a fleet of charter yachts.
-          </h1>
-          <p className="mt-4 hidden text-2xl font-light text-brand-p0 w-3/4">
-            Earn from a growing industry, without the high entry costs and risk.
-          </p>
-          <ul className="flex items-start justify-start w-full gap-6 mt-6">
-            {stats.map((item, index) => (
-              <li
-                key={index}
-                className="flex flex-col items-start justify-start"
-              >
-                <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
-                  {item.title}
-                </p>
-                <h3 className="mt-2 text-2xl font-light text-white">
-                  {item.value}
-                </h3>
-                <p className="pt-1 text-xs text-left text-white">
-                  {item.subtitle}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-col items-center justify-between gap-2 mt-12">
-            <button className="px-12 py-3 transition duration-100 rounded-lg text-black hover:bg-brand2-g4 bg-brand2-g2  relative overflow-hidden">
-              <a href="#" className="z-10 relative">
-                Register Interest Now
-              </a>
-            </button>
-            <div className="w-[80%] h-2 mb-1 bg-brand2-base2 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-brand2-g3"
-                initial={{ width: 0 }}
-                animate={{ width: "15%" }}
-                transition={{ duration: 1 }}
-              />
-            </div>
-            <p className="mt-1 text-xs text-gray-400">
-              Accepting $100,000 - $1,000,000 investments
+    <Wrapper className="relative flex min-h-[60vh] z-10 px-0 mx-0 ">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <Left className="bg-brand2-base1">
+          <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
+            <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
+              Alternative Income Fund
+            </h4>
+            <h1 className="text-5xl font-medium text-white drop-shadow-lg font-title leading-tight">
+              Earn 8% yield from a fleet of charter yachts.
+            </h1>
+            <p className="mt-4 hidden text-2xl font-light text-brand-p0 w-3/4">
+              Earn from a growing industry, without the high entry costs and
+              risk.
             </p>
+            <ul className="flex items-start justify-start w-full gap-6 mt-6">
+              {stats.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex flex-col items-start justify-start"
+                >
+                  <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
+                    {item.title}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-light text-white">
+                    {item.value}
+                  </h3>
+                  <p className="pt-1 text-xs text-left text-white">
+                    {item.subtitle}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col items-center justify-between gap-2 mt-12">
+              <button className="px-12 py-3 transition duration-100 rounded-lg text-black hover:bg-brand2-g4 bg-brand2-g2  relative overflow-hidden">
+                <a href="#" className="z-10 relative">
+                  Register Interest Now
+                </a>
+              </button>
+              <div className="w-[80%] h-2 mb-1 bg-brand2-base2 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-brand2-g3"
+                  initial={{ width: 0 }}
+                  animate={{ width: "15%" }}
+                  transition={{ duration: 1 }}
+                />
+              </div>
+              <p className="mt-1 text-xs text-gray-400">
+                Accepting $100,000 - $1,000,000 investments
+              </p>
+            </div>
           </div>
-        </div>
-      </Left>
-      <Right>
-        <Image
-          src="/img/hero/hero2.jpg"
-          alt="hero"
-          fill
-          style={{ objectFit: "cover", objectPosition: "70%" }}
-          className="absolute inset-0 w-full h-full flex z-20"
-        />
-        <div className="mt-1 absolute top-4 left-4 z-30">
+        </Left>
+        <Right>
           <Image
-            src="/img/helmshare_icon_large.svg"
+            src="/img/hero/hero2.jpg"
             alt="hero"
-            width={80}
-            height={80}
+            fill
+            style={{ objectFit: "cover", objectPosition: "70%" }}
             className="absolute inset-0 w-full h-full flex z-20"
           />
-        </div>
-      </Right>
+          <div className="mt-1 absolute top-4 left-4 z-30">
+            <Image
+              src="/img/helmshare_icon_large.svg"
+              alt="hero"
+              width={80}
+              height={80}
+              className="absolute inset-0 w-full h-full flex z-20"
+            />
+          </div>
+        </Right>
+      </div>
     </Wrapper>
   );
 }
@@ -169,7 +172,7 @@ export function AttentionDetailsBar() {
     },
   ];
   return (
-    <Wrapper className="lg:py-8 py-4">
+    <Wrapper className="py-4">
       <InnerWrap>
         <ul className="grid w-full grid-cols-2 gap-4 md:grid-cols-5">
           {details.map((item, index) => (

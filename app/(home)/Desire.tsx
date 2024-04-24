@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -17,13 +18,142 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { TitleBlock, TitleLeft } from "../(shared)/Titles";
-import { Slider } from "@/components/ui/slider"
-
+import { Slider } from "@/components/ui/slider";
+import { TitleBlock } from "@/components/ui/titleblock";
 
 type QuestionName = "income" | "assets" | "entity" | "license" | "score";
 
 type Props = {};
+
+export function DesireWhoFor({}: Props) {
+  const FormSchema = z.object({
+    income: z.boolean(),
+    assets: z.boolean(),
+    entity: z.boolean(),
+    license: z.boolean(),
+    score: z.number(),
+  });
+
+  const questions: {
+    label: string;
+    description: string;
+    name: QuestionName;
+    score: number;
+  }[] = [
+    {
+      label:
+        "Do you earn $200K+ yearly, or $300K+ with your spousal equivalent?",
+      description: "Indicate your annual income level.",
+      name: "income",
+      score: 50,
+    },
+    {
+      label: "Do you have $1M+ in assets, excluding your primary residence?",
+      description: "Indicate if your asset value exceeds $1 million.",
+      name: "assets",
+      score: 50,
+    },
+    {
+      label: "Do you own an entity (i.e., family office) with $5M+ in assets?",
+      description:
+        "Indicate if you own an entity with significant asset value.",
+      name: "entity",
+      score: 50,
+    },
+    {
+      label:
+        "Do you hold a Series 7, 65, or 82 license currently in good standing?",
+      description: "Indicate if you have a valid financial license.",
+      name: "license",
+      score: 50,
+    },
+  ];
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+  });
+
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+    });
+  }
+
+  const qualifier = {
+    header: {
+      preheading: "Interested in investing?",
+      heading: "See if you qualify.",
+      subheading: "This fund is exclusively for Accredited Investors.",
+      body: "HelmShare is an exclusive fund available only to experienced, accredited investors. Each potential investor will undergo a standard vetting process through our partner InvestorVerify.com.",
+      icon: "",
+      image: "",
+    },
+  };
+
+  return (
+    <Wrapper className="py-[5vh]">
+      <InnerWrap>
+        <div className="bg-gray-900 grid grid-cols-1 md:grid-cols-2 w-full p-5 md:p-12 rounded-xl gap-12">
+          <div className="flex p-4 h-full">
+            <TitleBlock
+              preheading={qualifier.header.preheading}
+              heading={qualifier.header.heading}
+              subheading={qualifier.header.subheading}
+              body={qualifier.header.body}
+              theme="dark"
+              orientation="left"
+            />
+          </div>
+          <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg basis-1/2">
+            <div className="hidden">Congrats you qualify</div>
+            <Form {...form}>
+              <form
+                className="grid grid-cols-1 gap-4"
+                onSubmit={form.handleSubmit(onSubmit)}
+              >
+                {questions.map(({ label, description, name }) => (
+                  <FormField
+                    key={name}
+                    control={form.control}
+                    name={name}
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
+                        <div className="space-y-0.5">
+                          <FormLabel>{label}</FormLabel>
+                          <FormDescription>{description}</FormDescription>
+                        </div>
+                        <FormControl>
+                          <Switch
+                            checked={field.value === true} // Ensure the value is a boolean
+                            onCheckedChange={(checked) =>
+                              field.onChange(checked)
+                            }
+                            className="ml-8"
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                ))}
+                <Button
+                  variant="outline"
+                  type="submit"
+                  className="w-full hidden"
+                >
+                  Submit
+                </Button>
+              </form>
+            </Form>
+          </div>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
 
 export default function EarningsCalculator({}: Props) {
   const guaranteedAnnualReturnRate = 0.08;
@@ -94,6 +224,8 @@ export default function EarningsCalculator({}: Props) {
               preheading={earningscalculator.header.preheading}
               heading={earningscalculator.header.heading}
               subheading={earningscalculator.header.subheading}
+              theme="light"
+              orientation="center"
             />
           </div>
 
@@ -110,7 +242,11 @@ export default function EarningsCalculator({}: Props) {
                   defaultValue={[investmentAmount]}
                   max={maxInvestment}
                   step={25000}
-                  onValueChange={(values) => handleInvestmentChange({ target: { value: values[0].toString() } } as any)}
+                  onValueChange={(values) =>
+                    handleInvestmentChange({
+                      target: { value: values[0].toString() },
+                    } as any)
+                  }
                 />
                 <Input
                   type="text"
@@ -234,49 +370,6 @@ export default function EarningsCalculator({}: Props) {
     </Wrapper>
   );
 }
-export function Opportunity({}: Props) {
-  return (
-    <Wrapper className="pt-[10vh]">
-      <InnerWrap>
-        <div className="flex border rounded-xl border-slate-200 bg-slate-50 min-h-[30vh]">
-          <div className="flex items-start justify-center">
-            <h1>Earnings Calculator</h1>
-            <h4>subheading</h4>
-            <ul>
-              <li>item 1</li>
-              <li>item 2</li>
-              <li>item 3</li>
-              <li>item 4</li>
-            </ul>
-          </div>
-          <div className=""></div>
-        </div>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
-
-export function Essentials({}: Props) {
-  return (
-    <Wrapper className="pt-[10vh]">
-      <InnerWrap>
-        <div className="flex border rounded-xl border-slate-200 bg-slate-50 min-h-[30vh]">
-          <div className="flex items-start justify-center">
-            <h3>Who can invest?</h3>
-            <h4>subheading</h4>
-            <ul>
-              <li>item 1</li>
-              <li>item 2</li>
-              <li>item 3</li>
-              <li>item 4</li>
-            </ul>
-          </div>
-          <div className=""></div>
-        </div>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
 
 export function DesireSeychelles() {
   return (
@@ -288,133 +381,6 @@ export function DesireSeychelles() {
         className="absolute inset-0"
         style={{ objectFit: "cover" }}
       />
-    </Wrapper>
-  );
-}
-
-export function DesireWhoFor({}: Props) {
-  const FormSchema = z.object({
-    income: z.boolean(),
-    assets: z.boolean(),
-    entity: z.boolean(),
-    license: z.boolean(),
-    score: z.number(),
-  });
-
-  const questions: {
-    label: string;
-    description: string;
-    name: QuestionName;
-    score: number;
-  }[] = [
-    {
-      label:
-        "Do you earn $200K+ yearly, or $300K+ with your spousal equivalent?",
-      description: "Indicate your annual income level.",
-      name: "income",
-      score: 50,
-    },
-    {
-      label: "Do you have $1M+ in assets, excluding your primary residence?",
-      description: "Indicate if your asset value exceeds $1 million.",
-      name: "assets",
-      score: 50,
-    },
-    {
-      label: "Do you own an entity (i.e., family office) with $5M+ in assets?",
-      description:
-        "Indicate if you own an entity with significant asset value.",
-      name: "entity",
-      score: 50,
-    },
-    {
-      label:
-        "Do you hold a Series 7, 65, or 82 license currently in good standing?",
-      description: "Indicate if you have a valid financial license.",
-      name: "license",
-      score: 50,
-    },
-  ];
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
-
-  const qualifier = {
-    header: {
-      preheading: "Interested in investing?",
-      heading: "See if you qualify.",
-      subheading: "This fund is exclusively for Accredited Investors.",
-      icon: "",
-      image: "",
-    },
-  };
-
-  return (
-    <Wrapper className="py-[5vh]">
-      <InnerWrap>
-        <div className="bg-gray-900 grid grid-cols-1 md:grid-cols-2 w-full p-5 md:p-12 rounded-xl gap-12">
-          <div className="flex p-4 h-full">
-            <TitleLeft
-              preheading="Interested in investing?"
-              heading="See if you qualify."
-              subheading="This fund is exclusively for Accredited Investors."
-              body="HelmShare is an exclusive fund available only to experienced, accredited investors. Each potential investor will undergo a standard vetting process through our partner InvestorVerify.com."
-            />
-          </div>
-          <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg basis-1/2">
-            <div className="hidden">Congrats you qualify</div>
-            <Form {...form}>
-              <form
-                className="grid grid-cols-1 gap-4"
-                onSubmit={form.handleSubmit(onSubmit)}
-              >
-                {questions.map(({ label, description, name }) => (
-                  <FormField
-                    key={name}
-                    control={form.control}
-                    name={name}
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
-                        <div className="space-y-0.5">
-                          <FormLabel>{label}</FormLabel>
-                          <FormDescription>{description}</FormDescription>
-                        </div>
-                        <FormControl>
-                          <Switch
-                            checked={field.value === true} // Ensure the value is a boolean
-                            onCheckedChange={(checked) =>
-                              field.onChange(checked)
-                            }
-                            className="ml-8"
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                ))}
-                <Button
-                  variant="outline"
-                  type="submit"
-                  className="w-full hidden"
-                >
-                  Submit
-                </Button>
-              </form>
-            </Form>
-          </div>
-        </div>
-      </InnerWrap>
     </Wrapper>
   );
 }

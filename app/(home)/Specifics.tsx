@@ -1,19 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
-import React from "react";
-import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
 
 type Props = {};
 

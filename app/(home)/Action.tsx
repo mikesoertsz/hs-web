@@ -1,3 +1,4 @@
+"use client";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +30,7 @@ import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
-import { TitleLeft } from "../(shared)/Titles";
+import { TitleBlock } from "@/components/ui/titleblock";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -62,13 +63,15 @@ export default function ActionCTA() {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <Wrapper className="md:py-[10vh] relative" id="register">
+    <Wrapper className="md:py-[10vh] relative py-8" id="register">
       <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20 rounded-xl overflow-hidden shadow-md">
         <div className="flex h-full p-12">
-          <TitleLeft
+          <TitleBlock
             preheading={cta.header.preheading}
             heading={cta.header.heading}
             subheading={cta.header.subheading}
+            theme="light"
+            orientation="left"
           />
         </div>
         <div className="p-4 md:p-12 bg-slate-100">

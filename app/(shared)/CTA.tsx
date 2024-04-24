@@ -1,4 +1,3 @@
-import { TitleBlock } from "@/app/(shared)/Titles";
 import { Action } from "@/lib/types";
 import type { CTASmall } from "@/lib/types";
 import tw from "tailwind-styled-components";
@@ -10,10 +9,16 @@ const ColWrapper = tw.div`grid grid-cols-1 md:grid-cols-2 w-full mt-8 md:flex-ro
 const Column = tw.div`flex flex-col items-center justify-center p-6 px-8 text-center rounded-lg bg-gray-50 min-h-[450px] shadow-lg`;
 
 export default function CTA({ cta }: Action) {
+  const ctacontent = {
+    header: {
+      preheading: "Ready to get started?",
+      heading: "Join the next webinar",
+      subheading: "Get to know the instructor and ask questions.",
+    },
+  };
   return (
     <Wrapper className="bg-gray-900 pb-[10vh]">
       <InnerWrap>
-        <TitleBlock {...cta.header} />
         <ColWrapper>
           <Column>Talk to the instructor</Column>
           <Column>Attend a webinar</Column>
