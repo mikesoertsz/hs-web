@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+
 import {
   Form,
   FormControl,
@@ -10,13 +11,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "@/components/ui/use-toast";
-import { HeaderWrapLeft, InnerWrap, Wrapper } from "@/lib/atoms";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { TitleLeft } from "../(shared)/Titles";
+import { TitleBlock, TitleLeft } from "../(shared)/Titles";
+import { Slider } from "@/components/ui/slider"
+
 
 type QuestionName = "income" | "assets" | "entity" | "license" | "score";
 
@@ -72,38 +75,42 @@ export default function EarningsCalculator({}: Props) {
     calculatePayouts(amount);
   };
 
+  const earningscalculator = {
+    header: {
+      preheading: "How much you earn",
+      heading: "Earnings Projection",
+      subheading: "Set your investment amount",
+      icon: "",
+      image: "",
+    },
+  };
+
   return (
     <Wrapper className="pb-[5vh]">
       <InnerWrap className="w-full">
         <div className="flex flex-col border rounded-xl border-slate-300 bg-white w-full p-8">
           <div className="flex flex-col items-center justify-center text-center">
-            <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
-              how much you earn
-            </p>
-            <h1 className="text-4xl font-medium font-title tracking-tight mt-3">
-              Earnings Projection
-            </h1>
+            <TitleBlock
+              preheading={earningscalculator.header.preheading}
+              heading={earningscalculator.header.heading}
+              subheading={earningscalculator.header.subheading}
+            />
           </div>
 
-          <div className="flex mt-12 gap-12">
-            <div className="flex flex-col items-center justify-center basis-1/2 rounded-lg bg-slate-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-12 gap-12">
+            <div className="flex flex-col items-center justify-center basis-1/2 rounded-lg bg-slate-100 p-4">
               <h3 className=" text-lg font-medium text-gray-700">
                 Set your investment amount
               </h3>
               <p className="text-sm text-brand-p0">
                 Drag the slider to see your investment return.
               </p>
-              <div className="flex items-center justify-center gap-4 basis-1/2 p-12 py-4">
-                <Input
-                  type="range"
-                  id="investmentAmountRange"
-                  name="investmentAmountRange"
-                  min={minInvestment.toString()}
-                  max={maxInvestment.toString()}
-                  step="25000"
-                  value={investmentAmount}
-                  onChange={handleInvestmentChange}
-                  className="bg-white border-0 shadow-none"
+              <div className="flex flex-col lg:flex-row items-center justify-center gap-4 basis-1/2 p-12 py-4">
+                <Slider
+                  defaultValue={[investmentAmount]}
+                  max={maxInvestment}
+                  step={25000}
+                  onValueChange={(values) => handleInvestmentChange({ target: { value: values[0].toString() } } as any)}
                 />
                 <Input
                   type="text"
