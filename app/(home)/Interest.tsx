@@ -989,7 +989,7 @@ export function InterestWhichYachts({}: Props) {
       preheader: "Fleet Overview",
       heading: "Which yachts?",
       subheading:
-        "Helmshare fleets are comprised of 40-60ft sailing catamarans from only the best production brands. These are chosen for their popularity, flexibility, quality, and low depreciation.",
+        "HelmShare fleets are comprised of 40-60ft sailing catamarans from only the best production brands. These are chosen for their popularity, flexibility, quality, and low depreciation.",
     },
     list: [
       {

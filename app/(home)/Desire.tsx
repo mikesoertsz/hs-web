@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-
 import {
   Form,
   FormControl,
@@ -15,7 +14,7 @@ import { toast } from "@/components/ui/use-toast";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Slider } from "@/components/ui/slider";
@@ -26,6 +25,7 @@ type QuestionName = "income" | "assets" | "entity" | "license" | "score";
 type Props = {};
 
 export function DesireWhoFor({}: Props) {
+  const [qualifies, setQualifies] = useState(false);
   const FormSchema = z.object({
     income: z.boolean(),
     assets: z.boolean(),
@@ -72,6 +72,12 @@ export function DesireWhoFor({}: Props) {
     resolver: zodResolver(FormSchema),
   });
 
+  // Function to check if any of the form values are true
+  const checkQualification = (data: z.infer<typeof FormSchema>) => {
+    const qualifies = Object.values(data).some((value) => value === true);
+    setQualifies(qualifies);
+  };
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
       title: "You submitted the following values:",
@@ -92,6 +98,19 @@ export function DesireWhoFor({}: Props) {
       icon: "",
       image: "",
     },
+    qualifiedHeader: {
+      preheading: "Congratulations!",
+      heading: "You Qualify",
+      subheading: "",
+      body: (
+        <>
+          You meet the criteria for an accredited investor. <br />
+          Register below & we'll reach out to you with more information.
+        </>
+      ),
+      icon: "",
+      image: "",
+    },
   };
 
   return (
@@ -100,10 +119,26 @@ export function DesireWhoFor({}: Props) {
         <div className="grid w-full grid-cols-1 gap-12 p-5 bg-gray-900 md:grid-cols-2 md:p-12 rounded-xl">
           <div className="flex h-full p-4">
             <TitleBlock
-              preheading={qualifier.header.preheading}
-              heading={qualifier.header.heading}
-              subheading={qualifier.header.subheading}
-              body={qualifier.header.body}
+              preheading={
+                qualifies
+                  ? qualifier.qualifiedHeader.preheading
+                  : qualifier.header.preheading
+              }
+              heading={
+                qualifies
+                  ? qualifier.qualifiedHeader.heading
+                  : qualifier.header.heading
+              }
+              subheading={
+                qualifies
+                  ? qualifier.qualifiedHeader.subheading
+                  : qualifier.header.subheading
+              }
+              body={
+                qualifies
+                  ? qualifier.qualifiedHeader.body
+                  : qualifier.header.body
+              }
               theme="dark"
               orientation="left"
             />
@@ -121,7 +156,13 @@ export function DesireWhoFor({}: Props) {
                     control={form.control}
                     name={name}
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-center justify-between p-3 transition duration-200 ease-in-out border rounded-lg shadow-sm hover:bg-slate-50 hover:border-slate-300">
+                      <FormItem
+                        className={`flex flex-row items-center justify-between p-3 transition duration-200 ease-in-out border rounded-lg shadow-sm ${
+                          field.value === true
+                            ? "bg-green-100 hover:border-green-400"
+                            : "hover:bg-slate-50"
+                        } border-slate-300`}
+                      >
                         <div className="space-y-0.5">
                           <FormLabel>{label}</FormLabel>
                           <FormDescription>{description}</FormDescription>
@@ -129,9 +170,13 @@ export function DesireWhoFor({}: Props) {
                         <FormControl>
                           <Switch
                             checked={field.value === true} // Ensure the value is a boolean
-                            onCheckedChange={(checked) =>
-                              field.onChange(checked)
-                            }
+                            onCheckedChange={(checked) => {
+                              field.onChange(checked);
+                              checkQualification({
+                                ...form.getValues(),
+                                [name]: checked,
+                              }); // Update qualification state on switch toggle
+                            }}
                             className="ml-8"
                           />
                         </FormControl>

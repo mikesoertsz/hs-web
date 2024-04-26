@@ -54,14 +54,14 @@ export function InvestmentSpecifics() {
         },
         {
           label: "Annual Management Fee",
-          description: "Taken by Helmshares for assets under management.",
+          description: "Taken by HelmShare for assets under management.",
           value: "1.21%",
           icon: "",
         },
         {
           label: "Carried Interest",
           description:
-            "Taken by Helmshare for cashflows generated AFTER the 8% guarantee is paid.",
+            "Taken by HelmShare for cashflows generated AFTER the 8% guarantee is paid.",
           value: "20%",
           icon: "",
         },
@@ -122,41 +122,41 @@ export function InvestmentSpecifics() {
     },
   ];
   return (
-    <Wrapper className="py-8 bg-slate-100 border-t border-slate-200 hidden lg:flex">
+    <Wrapper className="hidden py-8 border-t bg-slate-100 border-slate-200 lg:flex">
       <InnerWrap>
-        <div className="flex flex-col items-center justify-center text-center my-12">
+        <div className="flex flex-col items-center justify-center my-12 text-center">
           <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
             fund details
           </p>
-          <h1 className="text-5xl font-medium font-title tracking-tight my-3">
+          <h1 className="my-3 text-5xl font-medium tracking-tight font-title">
             Investment Specifics
           </h1>
-          <h4 className="max-w-prose text-center mt-4">
+          <h4 className="mt-4 text-center max-w-prose">
             Our fund offers a unique opportunity to invest in a diversified
             fleet of charter yachts, with a focus on the lucrative and growing
             Seychelles market. Our investment strategy is designed to provide a
             secure, stable-yield income stream over a 6 year term.
           </h4>
         </div>
-        <ul className="grid w-full grid-cols-2 gap-4 md:grid-cols-4 mt-1">
+        <ul className="grid w-full grid-cols-2 gap-4 mt-1 md:grid-cols-4">
           {specifics.map((item, index) => (
             <li
               key={index}
-              className="flex flex-col items-start justify-start w-full bg-white border border-zinc-300 rounded-lg shadow-sm"
+              className="flex flex-col items-start justify-start w-full bg-white border rounded-lg shadow-sm border-zinc-300"
             >
               <p className="text-[10px] uppercase font-semibold tracking-[0.1em] text-slate-600 px-4 py-2">
                 {item.title}
               </p>
               <Separator />
-              <ul className="flex w-full flex-col py-3">
+              <ul className="flex flex-col w-full py-3">
                 {item.details.map((detail, index) => (
                   <li
                     key={index}
-                    className="flex flex-col md:flex-row text-left w-full items-center justify-between"
+                    className="flex flex-col items-center justify-between w-full text-left md:flex-row"
                   >
                     <TooltipProvider>
                       <Tooltip>
-                        <TooltipTrigger className="flex item-center justify-between text-sm mt-1 hover:bg-slate-100 rounded-sm py-1 cursor-pointer mx-2 px-3 w-full">
+                        <TooltipTrigger className="flex justify-between w-full px-3 py-1 mx-2 mt-1 text-sm rounded-sm cursor-pointer item-center hover:bg-slate-100">
                           <p> {detail.label}</p>
                           <p className="text-sm font-normal text-green-700">
                             {detail.value}
@@ -171,9 +171,9 @@ export function InvestmentSpecifics() {
             </li>
           ))}
         </ul>
-        <div className="mt-8 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center mt-8">
           <h4 className="text-xs">Reasons to invest:</h4>
-          <ul className="my-2 gap-2 flex items-center justify-center ">
+          <ul className="flex items-center justify-center gap-2 my-2 ">
             <li>
               <Badge variant="outline">Income Guarantee</Badge>
             </li>
