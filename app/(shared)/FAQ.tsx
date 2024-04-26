@@ -11,9 +11,10 @@ import { Desire } from "../../lib/types";
 
 export default function FAQ({ faq }: Desire) {
   return (
-    <Wrapper id="faqs" className="bg-slate-50 py-[5vh]">
+    <Wrapper id="faqs" className=" pt-[5vh]">
       <InnerWrap className="flex max-w-4xl">
-        <Accordion type="single" collapsible className="w-full pt-12">
+        <h2 className="pt-3 text-4xl font-title">FAQs</h2>
+        <Accordion type="single" collapsible className="w-full pt-8">
           {faq.questions.slice(0, 7).map((item, index) => (
             <AccordionItem
               key={index}
@@ -39,7 +40,7 @@ export default function FAQ({ faq }: Desire) {
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-blue-700 tranistion duration-200 ease-in-out"
+            className="underline duration-200 ease-in-out hover:text-blue-700 tranistion"
           >
             please download here
           </a>

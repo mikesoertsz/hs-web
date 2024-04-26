@@ -2,10 +2,11 @@
 import React from "react";
 import { InnerWrap, Wrapper, Left, Right, PreHeading } from "@/lib/atoms";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
+import { CgSpinner } from "react-icons/cg";
 
 type Props = {};
 type Painpoint = {
@@ -15,6 +16,18 @@ type Painpoint = {
 };
 
 export default function AttentionHero() {
+  const [fundsRaisedPercentage, setFundsRaisedPercentage] =
+    useState<number>(15);
+  const [Loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Adjust the timeout duration as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const stats = [
     {
       title: "Annual Yield",
@@ -33,17 +46,17 @@ export default function AttentionHero() {
     },
   ];
   return (
-    <Wrapper className="relative flex min-h-[60vh] z-10 px-0 mx-0 ">
-      <div className="grid grid-cols-1 md:grid-cols-2">
+    <Wrapper className="relative flex min-h-[50vh] z-10 mx-auto px-0">
+      <div className="grid w-full grid-cols-1 md:grid-cols-2">
         <Left className="bg-brand2-base1">
-          <div className="flex flex-col items-start justify-center h-full w-3/4 slide-center">
+          <div className="flex flex-col items-start justify-center w-3/4 h-full slide-center">
             <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
               Alternative Income Fund
             </h4>
-            <h1 className="text-5xl font-medium text-white drop-shadow-lg font-title leading-tight">
+            <h1 className="text-6xl font-medium leading-tight text-white drop-shadow-lg font-title">
               Earn 8% yield from a fleet of charter yachts.
             </h1>
-            <p className="mt-4 hidden text-2xl font-light text-brand-p0 w-3/4">
+            <p className="hidden w-3/4 mt-4 text-2xl font-light text-brand-p0">
               Earn from a growing industry, without the high entry costs and
               risk.
             </p>
@@ -56,53 +69,72 @@ export default function AttentionHero() {
                   <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
                     {item.title}
                   </p>
-                  <h3 className="mt-2 text-2xl font-light text-white">
+                  <h3 className="h-8 mt-2 text-2xl font-light text-white">
                     {item.value}
                   </h3>
-                  <p className="pt-1 text-xs text-left text-white">
+                  <p className="pt-1 text-xs text-left text-gray-400">
                     {item.subtitle}
                   </p>
                 </li>
               ))}
+              <li className="flex flex-col items-start justify-start">
+                <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
+                  status
+                </p>
+                <div className="flex h-10 w-[200px] items-center justify-start">
+                  <div className="w-[80%] h-4 mt-3 bg-brand2-base2 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-brand2-g3"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${fundsRaisedPercentage}%` }}
+                      transition={{ duration: 1 }}
+                    />
+                  </div>
+                  {Loading && (
+                    <div className="flex items-center justify-start mt-3 ml-1">
+                      <CgSpinner
+                        className="text-slate-500 animate-spin"
+                        size={18}
+                      />
+                    </div>
+                  )}
+                </div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={!Loading ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.5 }}
+                >
+                  <p className="pt-[4px] text-xs text-left text-gray-400">
+                    <span className="font-medium text-brand-g1">
+                      {fundsRaisedPercentage}%
+                    </span>{" "}
+                    raised
+                  </p>
+                </motion.div>
+              </li>
             </ul>
             <div className="flex flex-col items-center justify-between gap-2 mt-12">
-              <button className="px-12 py-3 transition duration-100 rounded-lg text-black hover:bg-brand2-g4 bg-brand2-g2  relative overflow-hidden">
-                <a href="#" className="z-10 relative">
+              <button className="relative px-12 py-3 overflow-hidden text-black transition duration-100 rounded-lg hover:bg-brand2-g4 bg-brand2-g2">
+                <a href="#" className="relative z-10">
                   Register Interest Now
                 </a>
               </button>
-              <div className="w-[80%] h-2 mb-1 bg-brand2-base2 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-brand2-g3"
-                  initial={{ width: 0 }}
-                  animate={{ width: "15%" }}
-                  transition={{ duration: 1 }}
-                />
-              </div>
+
               <p className="mt-1 text-xs text-gray-400">
                 Accepting $100,000 - $1,000,000 investments
               </p>
             </div>
           </div>
         </Left>
-        <Right>
+        <div className="relative z-10">
           <Image
             src="/img/hero/hero2.jpg"
             alt="hero"
             fill
             style={{ objectFit: "cover", objectPosition: "70%" }}
-            className="absolute inset-0 w-full h-full flex z-20"
+            className="absolute inset-0 z-20"
           />
-          <div className="mt-1 absolute top-4 left-4 z-30">
-            <Image
-              src="/img/helmshare_icon_large.svg"
-              alt="hero"
-              width={80}
-              height={80}
-              className="absolute inset-0 w-full h-full flex z-20"
-            />
-          </div>
-        </Right>
+        </div>
       </div>
     </Wrapper>
   );
@@ -178,7 +210,7 @@ export function AttentionDetailsBar() {
           {details.map((item, index) => (
             <li
               key={index}
-              className="flex flex-col items-start justify-start w-full bg-slate-50 rounded-lg p-3"
+              className="flex flex-col items-start justify-start w-full p-3 rounded-lg bg-slate-50"
             >
               <p className="text-[9px] uppercase font-semibold tracking-[0.1em] text-slate-600">
                 {item.pretitle}
@@ -209,7 +241,7 @@ export function AttentionStinger() {
   return (
     <Wrapper className="py-[8vh] bg-brand2-base1 text-gray-100">
       <InnerWrap className="flex items-center justify-center">
-        <p className="text-brand-g1 pb-4 uppercase tracking-widest text-sm">
+        <p className="pb-4 text-sm tracking-widest uppercase text-brand-g1">
           {stinger.pretitle}
         </p>
         <h1 className="text-5xl leading-1 px-3 lg:text-7xl font-medium font-title tracking-tight my-3 text-center balanced max-w-5xl lg:leading-[1.2]">
@@ -346,13 +378,13 @@ export function RiskFactors({}: Props) {
   };
 
   return (
-    <Wrapper className="py-8 bg-white px-0" id="risks">
+    <Wrapper className="px-0 py-8 bg-white" id="risks">
       <InnerWrap className="px-0">
         <div className="flex flex-col items-center justify-center text-center">
           <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
             hassle-free yacht investment
           </p>
-          <h1 className="text-4xl font-medium font-title tracking-tight my-3">
+          <h1 className="my-3 text-4xl font-medium tracking-tight font-title">
             Fractional yachts ownership income. Without the pitfalls.
           </h1>
           <h4 className="max-w-prose">
@@ -364,9 +396,9 @@ export function RiskFactors({}: Props) {
           </h4>
         </div>
 
-        <div className="w-full mt-12 flex justify-center items-center pt-3">
-          <ul className="flex items-center justify-center gap-3 max-w-screen overflow-x-scroll">
-            <h4 className="text-xs text-gray-400 font-medium">Risks:</h4>
+        <div className="flex items-center justify-center w-full pt-3 mt-12">
+          <ul className="flex items-center justify-center gap-3 overflow-x-scroll max-w-screen">
+            <h4 className="text-xs font-medium text-gray-400">Risks:</h4>
             {categories.map((category, index) => (
               <li key={index} className="w-full">
                 <Button
@@ -399,7 +431,7 @@ export function RiskFactors({}: Props) {
         </div>
         <AnimatePresence>
           <motion.ul
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 gap-x-10"
+            className="grid grid-cols-2 gap-6 mt-8 md:grid-cols-4 gap-x-10"
             initial="hidden"
             animate="visible"
             exit="hidden"

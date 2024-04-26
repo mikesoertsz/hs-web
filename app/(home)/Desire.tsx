@@ -97,8 +97,8 @@ export function DesireWhoFor({}: Props) {
   return (
     <Wrapper className="py-[5vh]">
       <InnerWrap>
-        <div className="bg-gray-900 grid grid-cols-1 md:grid-cols-2 w-full p-5 md:p-12 rounded-xl gap-12">
-          <div className="flex p-4 h-full">
+        <div className="grid w-full grid-cols-1 gap-12 p-5 bg-gray-900 md:grid-cols-2 md:p-12 rounded-xl">
+          <div className="flex h-full p-4">
             <TitleBlock
               preheading={qualifier.header.preheading}
               heading={qualifier.header.heading}
@@ -108,7 +108,7 @@ export function DesireWhoFor({}: Props) {
               orientation="left"
             />
           </div>
-          <div className="flex flex-col items-center justify-center bg-white p-8 rounded-lg basis-1/2">
+          <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg basis-1/2">
             <div className="hidden">Congrats you qualify</div>
             <Form {...form}>
               <form
@@ -121,7 +121,7 @@ export function DesireWhoFor({}: Props) {
                     control={form.control}
                     name={name}
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition duration-200 ease-in-out">
+                      <FormItem className="flex flex-row items-center justify-between p-3 transition duration-200 ease-in-out border rounded-lg shadow-sm hover:bg-slate-50 hover:border-slate-300">
                         <div className="space-y-0.5">
                           <FormLabel>{label}</FormLabel>
                           <FormDescription>{description}</FormDescription>
@@ -142,7 +142,7 @@ export function DesireWhoFor({}: Props) {
                 <Button
                   variant="outline"
                   type="submit"
-                  className="w-full hidden"
+                  className="hidden w-full"
                 >
                   Submit
                 </Button>
@@ -155,7 +155,7 @@ export function DesireWhoFor({}: Props) {
   );
 }
 
-export default function EarningsCalculator({}: Props) {
+export default function DesireEarningsCalculator({}: Props) {
   const guaranteedAnnualReturnRate = 0.08;
   const projectedTargetReturnRate = 0.113;
   const termYears = 6;
@@ -216,9 +216,9 @@ export default function EarningsCalculator({}: Props) {
   };
 
   return (
-    <Wrapper className="pb-[5vh]">
+    <Wrapper className="pt-[5vh] bg-gray-900">
       <InnerWrap className="w-full">
-        <div className="flex flex-col border rounded-xl border-slate-300 bg-white w-full p-8">
+        <div className="flex flex-col w-full p-8 bg-white border rounded-xl border-slate-300">
           <div className="flex flex-col items-center justify-center text-center">
             <TitleBlock
               preheading={earningscalculator.header.preheading}
@@ -229,15 +229,15 @@ export default function EarningsCalculator({}: Props) {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 mt-12 gap-12">
-            <div className="flex flex-col items-center justify-center basis-1/2 rounded-lg bg-slate-100 p-4">
-              <h3 className=" text-lg font-medium text-gray-700">
+          <div className="grid grid-cols-1 gap-12 mt-12 md:grid-cols-2">
+            <div className="flex flex-col items-center justify-center p-4 rounded-lg basis-1/2 bg-slate-100">
+              <h3 className="text-lg font-medium text-gray-700 ">
                 Set your investment amount
               </h3>
               <p className="text-sm text-brand-p0">
                 Drag the slider to see your investment return.
               </p>
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-4 basis-1/2 p-12 py-4">
+              <div className="flex flex-col items-center justify-center gap-4 p-12 py-4 lg:flex-row basis-1/2">
                 <Slider
                   defaultValue={[investmentAmount]}
                   max={maxInvestment}
@@ -258,23 +258,23 @@ export default function EarningsCalculator({}: Props) {
                   placeholder="Enter amount"
                   value={`$${Math.round(investmentAmount).toLocaleString()}`}
                   onChange={handleInvestmentChange}
-                  className="bg-white font-semibold text-xl text-center"
+                  className="text-xl font-semibold text-center bg-white"
                 />
               </div>
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="mt-2 text-xs text-gray-400">
                 *Minimum investment USD100,000
               </p>
             </div>
-            <div className="basis-1/2 p-0">
+            <div className="p-0 basis-1/2">
               <div className="flex flex-col">
-                <fieldset className="grid rounded-lg border p-6">
-                  <legend className="-ml-1 px-1 text-md text-brand-g1">
+                <fieldset className="grid p-6 border rounded-lg">
+                  <legend className="px-1 -ml-1 text-md text-brand-g1">
                     Annual Schedule
                   </legend>
                   <div className="flex justify-between">
-                    <h3 className="text-md font-medium">
+                    <h3 className="font-medium text-md">
                       Quarterly Payout
-                      <sup className="text-green-600 pl-1">2%</sup>
+                      <sup className="pl-1 text-green-600">2%</sup>
                     </h3>
                     <p className="text-right">
                       ${Math.round(quarterlyPayout).toLocaleString()}
@@ -282,9 +282,9 @@ export default function EarningsCalculator({}: Props) {
                   </div>
 
                   <div className="flex justify-between mt-4">
-                    <h3 className="text-md font-medium">
+                    <h3 className="font-medium text-md">
                       Annual Payout
-                      <sup className="text-green-600 pl-1">{`${
+                      <sup className="pl-1 text-green-600">{`${
                         guaranteedAnnualReturnRate * 100
                       }%`}</sup>
                     </h3>
@@ -296,7 +296,7 @@ export default function EarningsCalculator({}: Props) {
                   <div className="flex justify-between py-1 mt-3">
                     <p className="text-left">
                       Target Annualized Yield
-                      <sup className="text-green-600 pl-1">
+                      <sup className="pl-1 text-green-600">
                         {`${projectedTargetReturnRate * 100}%`}
                       </sup>
                     </p>
@@ -306,8 +306,8 @@ export default function EarningsCalculator({}: Props) {
                   </div>
                 </fieldset>
 
-                <fieldset className="grid rounded-lg border p-6 mt-8">
-                  <legend className="-ml-1 px-1 text-md text-brand-g1">
+                <fieldset className="grid p-6 mt-8 border rounded-lg">
+                  <legend className="px-1 -ml-1 text-md text-brand-g1">
                     End of Term Yields
                   </legend>
                   <div className="grid gap-3">
@@ -316,14 +316,14 @@ export default function EarningsCalculator({}: Props) {
                         Guaranteed{" "}
                         <span className="font-normal">Yield-on-Capital</span>
                       </h3>
-                      <p className="text-right text-lg font-semibold">
+                      <p className="text-lg font-semibold text-right">
                         $
                         {Math.round(
                           guaranteedAnnualReturnRate *
                             investmentAmount *
                             termYears
                         ).toLocaleString()}
-                        <sup className="text-green-600 pl-1">
+                        <sup className="pl-1 text-green-600">
                           {Math.round(
                             ((0.08 * investmentAmount * termYears) /
                               investmentAmount) *
@@ -339,12 +339,12 @@ export default function EarningsCalculator({}: Props) {
                       Target{" "}
                       <span className="font-normal">Yield-on-Capital</span>
                     </h3>
-                    <p className="text-right text-lg font-semibold">
+                    <p className="text-lg font-semibold text-right">
                       $
                       {Math.round(
                         0.093 * investmentAmount * termYears
                       ).toLocaleString()}
-                      <sup className="text-green-600 pl-1">
+                      <sup className="pl-1 text-green-600">
                         {Math.round(
                           ((0.093 * investmentAmount * termYears) /
                             investmentAmount) *
@@ -356,9 +356,9 @@ export default function EarningsCalculator({}: Props) {
                   </div>
                   <div className="flex justify-between mt-4">
                     <h3 className="text-lg font-semibold">Priciple Return</h3>
-                    <p className="text-right text-lg font-semibold">
+                    <p className="text-lg font-semibold text-right">
                       ${Math.round(investmentAmount).toLocaleString()}
-                      <sup className="text-green-600 pl-1">100%</sup>
+                      <sup className="pl-1 text-green-600">100%</sup>
                     </p>
                   </div>
                 </fieldset>

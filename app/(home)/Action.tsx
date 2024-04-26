@@ -63,8 +63,8 @@ export default function ActionCTA() {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <Wrapper className="md:py-[10vh] relative py-8" id="register">
-      <InnerWrap className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full bg-white relative z-20 rounded-xl overflow-hidden shadow-md">
+    <Wrapper className="md:py-[5vh] relative py-8 bg-gray-900" id="register">
+      <InnerWrap className="relative z-20 grid w-full grid-cols-1 gap-4 overflow-hidden bg-white shadow-md md:grid-cols-2 rounded-xl">
         <div className="flex h-full p-12">
           <TitleBlock
             preheading={cta.header.preheading}
@@ -77,8 +77,8 @@ export default function ActionCTA() {
         <div className="p-4 md:p-12 bg-slate-100">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-              <fieldset className="grid rounded-lg border p-6 gap-4 bg-white">
-                <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
+              <fieldset className="grid gap-4 p-6 bg-white border rounded-lg">
+                <legend className="px-1 -ml-1 text-sm font-medium text-brand2-base1">
                   Contact Information
                 </legend>
                 <FormField
@@ -142,8 +142,8 @@ export default function ActionCTA() {
                   )}
                 />
               </fieldset>
-              <fieldset className="grid rounded-lg border p-6 gap-4 bg-white">
-                <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
+              <fieldset className="grid gap-4 p-6 bg-white border rounded-lg">
+                <legend className="px-1 -ml-1 text-sm font-medium text-brand2-base1">
                   Investment Preferences
                 </legend>
                 <FormField
@@ -159,13 +159,13 @@ export default function ActionCTA() {
                         <RadioGroup
                           {...field}
                           defaultValue="quarterly"
-                          className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                          className="grid grid-cols-1 gap-4 md:grid-cols-3"
                         >
                           <div>
                             <RadioGroupItem
                               value="quarterly"
                               id="quarterly"
-                              className="peer sr-only"
+                              className="sr-only peer"
                             />
                             <Label
                               htmlFor="quarterly"
@@ -178,7 +178,7 @@ export default function ActionCTA() {
                             <RadioGroupItem
                               value="yearly"
                               id="yearly"
-                              className="peer sr-only"
+                              className="sr-only peer"
                             />
                             <Label
                               htmlFor="yearly"
@@ -191,7 +191,7 @@ export default function ActionCTA() {
                             <RadioGroupItem
                               value="endOfTerm"
                               id="endOfTerm"
-                              className="peer sr-only"
+                              className="sr-only peer"
                             />
                             <Label
                               htmlFor="endOfTerm"
@@ -207,15 +207,15 @@ export default function ActionCTA() {
                   )}
                 />
               </fieldset>
-              <fieldset className="grid rounded-lg border p-6 gap-4 bg-white">
-                <legend className="-ml-1 px-1 text-sm text-brand2-base1 font-medium">
+              <fieldset className="grid gap-4 p-6 bg-white border rounded-lg">
+                <legend className="px-1 -ml-1 text-sm font-medium text-brand2-base1">
                   Contact preferences
                 </legend>
                 <FormField
                   control={form.control}
                   name="communication_emails"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <FormItem className="flex flex-row items-center justify-between p-4 border rounded-lg">
                       <div className="space-y-0.5">
                         <FormLabel className="text-base">
                           Communication emails
@@ -237,7 +237,7 @@ export default function ActionCTA() {
                   control={form.control}
                   name="marketing_emails"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <FormItem className="flex flex-row items-center justify-between p-4 border rounded-lg">
                       <div className="space-y-0.5">
                         <FormLabel className="text-base">
                           Marketing emails
@@ -258,7 +258,7 @@ export default function ActionCTA() {
               </fieldset>
               <Button
                 type="submit"
-                className="w-full rounded-lg px-8 text-md text-black h-12 flex items-center gap-2 bg-brand2-g1 hover:bg-brand2-g3"
+                className="flex items-center w-full h-12 gap-2 px-8 text-black rounded-lg text-md bg-brand2-g1 hover:bg-brand2-g3"
               >
                 Register Interest
               </Button>
@@ -266,7 +266,7 @@ export default function ActionCTA() {
           </Form>
         </div>
       </InnerWrap>
-      <div className="absolute inset-0 bg-sky-50">
+      <div className="absolute inset-0 hidden bg-sky-50">
         <Image
           src="/img/bgs/watertile4.webp"
           alt=""

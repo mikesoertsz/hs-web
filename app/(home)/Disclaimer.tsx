@@ -22,7 +22,7 @@ export default function Disclaimer({}: Props) {
     },
     {
       id: 4,
-      text: "Annual interest, Annualized Return or Target Returns represents a projected annual target rate of interest or annualized target return, and not returns or interest actually obtained by fund investors. Term represents the estimated term of the investment; the term of the fund is generally at the discretion of the fund's manager, and may exceed the estimated term by a significant amount of time. Unless otherwise specified on the fund's offering page, target interest or returns are based on an analysis performed by Investment.Yachts of the potential inflows and outflows related to the transactions in which the strategy or fund has engaged and/or is anticipated to engage in over the estimated term of the fund. There is no guarantee that targeted interest or returns will be realized or achieved or that an investment will be successful. Actual performance may deviate from these expectations materially, including due to market or economic factors, portfolio management decisions, modelling error, or other reasons.",
+      text: "Annual interest, Annualized Return or Target Returns represents a projected annual target rate of interest or annualized target return, and not returns or interest actually obtained by fund investors. Term represents the estimated term of the investment; the term of the fund is generally at the discretion of the fund's manager, and may exceed the estimated term by a significant amount of time. Unless otherwise specified on the fund's offering page, target interest or returns are based on an analysis performed by HelmShare of the potential inflows and outflows related to the transactions in which the strategy or fund has engaged and/or is anticipated to engage in over the estimated term of the fund. There is no guarantee that targeted interest or returns will be realized or achieved or that an investment will be successful. Actual performance may deviate from these expectations materially, including due to market or economic factors, portfolio management decisions, modelling error, or other reasons.",
     },
     {
       id: 5,
@@ -30,23 +30,23 @@ export default function Disclaimer({}: Props) {
     },
     {
       id: 6,
-      text: "Investors should carefully consider the investment objectives, risks, charges and expenses of the Investment.Yachts Alternative Income Fund before investing. The prospectus for the Investment.Yachts Alternative Income Fund contains this and other information about the Fund and can be obtained by emailing investments@Investment.Yachts.com or by referring to helmshare.yachts/prospectus. The prospectus should be read carefully before investing in the Fund. Investments in the Fund are not bank deposits (and thus not insured by the FDIC or by any other federal governmental agency) and are not guaranteed by Investment.Yachts or any other party.",
+      text: "Investors should carefully consider the investment objectives, risks, charges and expenses of the HelmShare Alternative Income Fund before investing. The prospectus for the HelmShare Alternative Income Fund contains this and other information about the Fund and can be obtained by emailing investments@HelmShare.com or by referring to HelmShare.yachts/prospectus. The prospectus should be read carefully before investing in the Fund. Investments in the Fund are not bank deposits (and thus not insured by the FDIC or by any other federal governmental agency) and are not guaranteed by HelmShare or any other party.",
     },
     {
       id: 7,
-      text: "This tool is for informational purposes only. You should not construe any information provided here as investment advice or a recommendation, endorsement or solicitation to buy any securities offered on Investment.Yachts. Investment.Yachts is not a fiduciary by virtue of any person's use of or access to this tool. The information provided here is of a general nature and does not address the circumstances of any particular individual or entity. You alone assume the sole responsibility of evaluating the merits and risks associated with the use of this information before making any decisions based on such information.",
+      text: "This tool is for informational purposes only. You should not construe any information provided here as investment advice or a recommendation, endorsement or solicitation to buy any securities offered on HelmShare. HelmShare is not a fiduciary by virtue of any person's use of or access to this tool. The information provided here is of a general nature and does not address the circumstances of any particular individual or entity. You alone assume the sole responsibility of evaluating the merits and risks associated with the use of this information before making any decisions based on such information.",
     },
     {
       id: 8,
-      text: "No communication by Investment.Yachts Inc. or any of its affiliates (collectively, “Investment.Yachts™”), through this website or any other medium, should be construed or is intended to be a recommendation to purchase, sell or hold any security or otherwise to be investment, tax, financial, accounting, legal, regulatory or compliance advice, except for specific investment advice that may be provided by Investment.Yachts Management, LLC pursuant to a written advisory agreement between such entity and the recipient. Nothing on this website is intended as an offer to extend credit, an offer to purchase or sell securities or a solicitation of any securities transaction.",
+      text: "No communication by HelmShare Inc. or any of its affiliates (collectively, “HelmShare™”), through this website or any other medium, should be construed or is intended to be a recommendation to purchase, sell or hold any security or otherwise to be investment, tax, financial, accounting, legal, regulatory or compliance advice, except for specific investment advice that may be provided by HelmShare Management, LLC pursuant to a written advisory agreement between such entity and the recipient. Nothing on this website is intended as an offer to extend credit, an offer to purchase or sell securities or a solicitation of any securities transaction.",
     },
     {
       id: 9,
-      text: "Any financial projections or returns shown on the website are estimated predictions of performance only, are hypothetical, are not based on actual investment results and are not guarantees of future results. Estimated projections do not represent or guarantee the actual results of any transaction, and no representation is made that any transaction will, or is likely to, achieve results or profits similar to those shown. In addition, other financial metrics and calculations shown on the website (including amounts of principal and interest repaid) have not been independently verified or audited and may differ from the actual financial metrics and calculations for any investment, which are contained in the investors’ portfolios. Any investment information contained herein has been secured from sources that Investment.Yachts believes are reliable, but we make no representations or warranties as to the accuracy of such information and accept no liability therefore.",
+      text: "Any financial projections or returns shown on the website are estimated predictions of performance only, are hypothetical, are not based on actual investment results and are not guarantees of future results. Estimated projections do not represent or guarantee the actual results of any transaction, and no representation is made that any transaction will, or is likely to, achieve results or profits similar to those shown. In addition, other financial metrics and calculations shown on the website (including amounts of principal and interest repaid) have not been independently verified or audited and may differ from the actual financial metrics and calculations for any investment, which are contained in the investors’ portfolios. Any investment information contained herein has been secured from sources that HelmShare believes are reliable, but we make no representations or warranties as to the accuracy of such information and accept no liability therefore.",
     },
     {
       id: 10,
-      text: "Private placement investments are NOT bank deposits (and thus NOT insured by the FDIC or by any other federal governmental agency), are NOT guaranteed by Investment.Yachts or any other party, and MAY lose value. Neither the Securities and Exchange Commission nor any federal or state securities commission or regulatory authority has recommended or approved any investment or the accuracy or completeness of any of the information or materials provided by or through the website. Investors must be able to afford the loss of their entire investment.",
+      text: "Private placement investments are NOT bank deposits (and thus NOT insured by the FDIC or by any other federal governmental agency), are NOT guaranteed by HelmShare or any other party, and MAY lose value. Neither the Securities and Exchange Commission nor any federal or state securities commission or regulatory authority has recommended or approved any investment or the accuracy or completeness of any of the information or materials provided by or through the website. Investors must be able to afford the loss of their entire investment.",
     },
     {
       id: 11,
@@ -58,27 +58,23 @@ export default function Disclaimer({}: Props) {
     },
     {
       id: 13,
-      text: "Articles or information from third-party media outside of this domain may discuss Investment.Yachts or relate to information contained herein, but Investment.Yachts does not approve and is not responsible for such content. Hyperlinks to third-party sites, or reproduction of third-party articles, do not constitute an approval or endorsement by Investment.Yachts of the linked or reproduced content.",
+      text: "Articles or information from third-party media outside of this domain may discuss HelmShare or relate to information contained herein, but HelmShare does not approve and is not responsible for such content. Hyperlinks to third-party sites, or reproduction of third-party articles, do not constitute an approval or endorsement by HelmShare of the linked or reproduced content.",
     },
     {
       id: 14,
-      text: "Investing in securities (the Securities) listed on Investment.Yachts™ pose risks, including but not limited to credit risk, interest rate risk, and the risk of losing some or all of the money you invest. Before investing you should: (1) conduct your own investigation and analysis; (2) carefully consider the investment and all related charges, expenses, uncertainties and risks, including all uncertainties and risks described in offering materials; and (3) consult with your own investment, tax, financial and legal advisors. Such Securities are only suitable for accredited investors who understand and are willing and able to accept the high risks associated with private investments.",
+      text: "Investing in securities (the Securities) listed on HelmShare™ pose risks, including but not limited to credit risk, interest rate risk, and the risk of losing some or all of the money you invest. Before investing you should: (1) conduct your own investigation and analysis; (2) carefully consider the investment and all related charges, expenses, uncertainties and risks, including all uncertainties and risks described in offering materials; and (3) consult with your own investment, tax, financial and legal advisors. Such Securities are only suitable for accredited investors who understand and are willing and able to accept the high risks associated with private investments.",
     },
     {
       id: 15,
-      text: "Investing in private placements requires long-term commitments, the ability to afford to lose the entire investment, and low liquidity needs. This website provides preliminary and general information about the Securities and is intended for initial reference purposes only. It does not summarize or compile all the applicable information. This website does not constitute an offer to sell or buy any securities. No offer or sale of any Securities will occur without the delivery of confidential offering materials and related documents. This information contained herein is qualified by and subject to more detailed information in the applicable offering materials. Investment.Yachts™ is not registered as a broker-dealer. Investment.Yachts™ does not make any representation or warranty to any prospective investor regarding the legality of an investment in any Investment.Yachts Securities.",
-    },
-    {
-      id: 16,
-      text: "Investment.Yachts Inc. is the direct owner of Investment.Yachts Management, LLC, which is an SEC-registered investment adviser that manages the Investment.Yachts funds and provides investment advice to the Investment.Yachts funds, and in certain cases, to retail investors. RealCadre LLC is also indirectly owned by Investment.Yachts Inc. RealCadre LLC is a broker-dealer registered with the Securities and Exchange Commission (“SEC”) and a member of the Financial Industry Regulatory Authority (“FINRA”) and the Securities Investor Protection Corporation (“SIPC”). Information on all FINRA registered broker-dealers can be found on FINRA’s BrokerCheck. Despite its affiliation with Investment.Yachts Management, LLC, RealCadre LLC has no role in the investment advisory services received by Investment.Yachts clients or the management or distribution of the Investment.Yachts funds or other securities offered on our through Investment.Yachts and its personnel. RealCadre LLC does not solicit, sell, recommend, or place interests in the Investment.Yachts funds.",
+      text: "Investing in private placements requires long-term commitments, the ability to afford to lose the entire investment, and low liquidity needs. This website provides preliminary and general information about the Securities and is intended for initial reference purposes only. It does not summarize or compile all the applicable information. This website does not constitute an offer to sell or buy any securities. No offer or sale of any Securities will occur without the delivery of confidential offering materials and related documents. This information contained herein is qualified by and subject to more detailed information in the applicable offering materials. HelmShare™ is not registered as a broker-dealer. HelmShare™ does not make any representation or warranty to any prospective investor regarding the legality of an investment in any HelmShare Securities.",
     },
     {
       id: 17,
-      text: "Investors should carefully consider the investment objectives, risks, charges and expenses of the Investment.Yachts Fund before investing. The prospectus for the Investment.Yachts Fund contains this and other information about the Fund and can be obtained by emailing diligence@investment.yachts or by referring to www.Investment.Yachts/diligence The prospectus should be read carefully before investing in the Fund.",
+      text: "Investors should carefully consider the investment objectives, risks, charges and expenses of the HelmShare Fund before investing. The prospectus for the HelmShare Fund contains this and other information about the Fund and can be obtained by emailing diligence@helmshare.yachts or by referring to www.helmshare.yachts/diligence The prospectus should be read carefully before investing in the Fund.",
     },
     {
       id: 18,
-      text: "Investments in the Fund are not bank deposits (and thus not insured by the FDIC or by any other federal governmental agency) and are not guaranteed by Investment.Yachts or any other party.",
+      text: "Investments in the Fund are not bank deposits (and thus not insured by the FDIC or by any other federal governmental agency) and are not guaranteed by HelmShare or any other party.",
     },
     {
       id: 19,
@@ -98,7 +94,7 @@ export default function Disclaimer({}: Props) {
     },
     {
       id: 23,
-      text: "Pursuant to its Share Repurchase Program, the Fund intends to periodically repurchase shares from the Fund's investors, subject to the discretion of the Fund's Board of Directors.",
+      text: "Pursuant to its Share Repurchase Program, the Fund intends to periodically repurchase shares from the Fund's investors, subject to the discretion of the Fund's Board of Directors, Board of Trustees or Management Committee.",
     },
   ];
 
@@ -106,24 +102,24 @@ export default function Disclaimer({}: Props) {
 
   return (
     <Wrapper className="min-h-[30vh] py-[5vh]">
-      <InnerWrap className="text-xs flex items-start w-full justify-start text-left rounded-xl bg-white p-8 shadow-sm border border-slate-200">
+      <InnerWrap className="flex items-start justify-start w-full p-8 text-xs text-left bg-white border shadow-sm rounded-xl border-slate-200">
         <p className="text-sm font-medium">Disclaimers</p>
-        <ol className="columns-1 sm:columns-2 gap-3 mt-4 list-decimal">
+        <ol className="gap-3 mt-4 list-decimal columns-1 sm:columns-2">
           {disclaimers.slice(0, 5).map((disclaimer) => (
-            <li key={disclaimer.id} className="ml-4 pt-2">
+            <li key={disclaimer.id} className="pt-2 ml-4">
               {disclaimer.text}
             </li>
           ))}
           {isOpen &&
             disclaimers.slice(5).map((disclaimer) => (
-              <li key={disclaimer.id} className="ml-4 pt-2">
+              <li key={disclaimer.id} className="pt-2 ml-4">
                 {disclaimer.text}
               </li>
             ))}
         </ol>
         <Button
           onClick={toggleOpen}
-          className="mt-8 w-full"
+          className="w-full mt-8"
           variant="secondary"
         >
           {isOpen ? "View less" : "View all"}

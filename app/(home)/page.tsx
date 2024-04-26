@@ -5,7 +5,10 @@ import AttentionHero, {
   AttentionDetailsBar,
   AttentionStinger,
 } from "./Attention";
-import EarningsCalculator, { DesireSeychelles, DesireWhoFor } from "./Desire";
+import DesireEarningsCalculator, {
+  DesireSeychelles,
+  DesireWhoFor,
+} from "./Desire";
 import Disclaimer from "./Disclaimer";
 import {
   InterestAssetDistribution,
@@ -15,16 +18,18 @@ import {
   InterestHowItWorks,
   InterestPremise,
   InterestStrategy,
+  InterestMarket,
 } from "./Interest";
 import { InvestmentSpecifics } from "./Specifics";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center fillscreen bg-slate-100">
+    <main className="flex flex-col items-center justify-center mx-auto fillscreen bg-slate-100">
       <AttentionHero />
       <AttentionDetailsBar />
       <InterestPremise />
       <InterestStrategy />
+      <InterestMarket />
       <AttentionStinger />
       <InterestBenefits />
       <InterestHowGuaranteed />
@@ -32,11 +37,11 @@ export default function Home() {
       <InterestHowItWorks />
       <InvestmentSpecifics />
       <InterestAssetDistribution />
-      <EarningsCalculator />
       <DesireSeychelles />
-      <FAQ {...homepage.desire} />
       <DesireWhoFor />
+      <DesireEarningsCalculator />
       <ActionCTA />
+      <FAQ {...homepage.desire} />
       <Disclaimer />
     </main>
   );

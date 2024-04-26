@@ -47,6 +47,9 @@ import {
 } from "@/components/ui/table";
 import { Heading, SubHeading } from "@/lib/atoms";
 import { TitleBlock } from "@/components/ui/titleblock";
+import { BarChart } from "@mui/x-charts/BarChart";
+import { MarketChart } from "./marketchart";
+import { MdSafetyCheck } from "react-icons/md";
 
 type Props = {};
 
@@ -171,9 +174,9 @@ export default function InterestOverview({}: Props) {
   };
   return (
     <Wrapper className="py-[5vh] bg-white" id="overview">
-      <InnerWrap className="border border-slate-200 rounded-xl items-start justify-start w-full">
+      <InnerWrap className="items-start justify-start w-full border border-slate-200 rounded-xl">
         <Tabs defaultValue="overview" className="w-full min-h-[20vh]">
-          <div className="bg-slate-100 flex w-full p-1">
+          <div className="flex w-full p-1 bg-slate-100">
             <TabsList className="">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="premise">Premise</TabsTrigger>
@@ -192,12 +195,9 @@ export default function InterestOverview({}: Props) {
                 equities and 40% fixed income may no longer suffice for
                 achieving long-term investment objectives.
               </h4>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full pt-6">
+              <ul className="grid w-full grid-cols-1 gap-4 pt-6 md:grid-cols-2">
                 {overview.overview.map((item, index) => (
-                  <li
-                    key={index}
-                    className=" border rounded-lg p-4 bg-slate-50"
-                  >
+                  <li key={index} className="p-4 border rounded-lg bg-slate-50">
                     <p className="text-sm text-gray-600">
                       <span className="font-semibold text-black">
                         {item.title}:{" "}
@@ -215,18 +215,15 @@ export default function InterestOverview({}: Props) {
               <h4 className="text-md max-w-prose balanced">
                 {overview.premise.header.subheading}
               </h4>
-              <ul className="grid grid-cols-1 md:grid-cols-1 gap-4 w-full pt-4">
+              <ul className="grid w-full grid-cols-1 gap-4 pt-4 md:grid-cols-1">
                 {overview.premise.content.map((item, index) => (
-                  <li
-                    key={index}
-                    className=" border rounded-lg p-4 bg-slate-50"
-                  >
-                    <h3 className="font-medium text-black pb-2">
+                  <li key={index} className="p-4 border rounded-lg bg-slate-50">
+                    <h3 className="pb-2 font-medium text-black">
                       {item.question}
                     </h3>
-                    <ul className="text-md text-gray-700">
+                    <ul className="text-gray-700 text-md">
                       {item.bullets.map((bullet, index) => (
-                        <li key={index} className="list-disc ml-4 text-md">
+                        <li key={index} className="ml-4 list-disc text-md">
                           {bullet}
                         </li>
                       ))}
@@ -242,18 +239,15 @@ export default function InterestOverview({}: Props) {
               <h4 className="text-md max-w-prose balanced">
                 {overview.essentials.header.subheading}
               </h4>
-              <ul className="grid grid-cols-1 md:grid-cols-1 gap-4 w-full pt-4">
+              <ul className="grid w-full grid-cols-1 gap-4 pt-4 md:grid-cols-1">
                 {overview.essentials.content.map((item, index) => (
-                  <li
-                    key={index}
-                    className=" border rounded-lg p-4 bg-slate-50"
-                  >
-                    <h3 className="font-medium text-black pb-2">
+                  <li key={index} className="p-4 border rounded-lg bg-slate-50">
+                    <h3 className="pb-2 font-medium text-black">
                       {item.question}
                     </h3>
-                    <ul className="text-md text-gray-700">
+                    <ul className="text-gray-700 text-md">
                       {item.bullets.map((bullet, index) => (
-                        <li key={index} className="list-disc ml-4 text-md">
+                        <li key={index} className="ml-4 list-disc text-md">
                           {bullet}
                         </li>
                       ))}
@@ -273,9 +267,9 @@ export function InterestPremise({}: Props) {
   const premise = {
     header: {
       preheader: "",
-      heading: "Premise",
-      subheading:
-        "HelmShare's Alternative Income Fund is a product offered to investors with a guaranteed 8% annualized yield from a fleet of charter yachts.",
+      heading: "",
+      subheading: "Premise",
+      body: "What am I investing in?",
     },
     content: [
       {
@@ -285,75 +279,40 @@ export function InterestPremise({}: Props) {
           "HelmShare's Alternative Income Fund is a product offered to investors with a guaranteed 8% yield primarily from cashflows of the year-round operation of a fleet of charter yachts.",
           "HelmShare permits solely accredited investors to make investments after they have evaluated their investment goals and risk appetite, and have procured independent counsel from professionals and specialists when required.",
           "HelmShare primarily generates income through charter yachts & real estate purchased with your capital. Real estate and alternative assets add diversification while hedging against yacht depreciation.",
-          "This fund controls a fleet of 3-5 yachts, with a focus on the lucrative and growing Seychelles charter tourism market.",
-        ],
-      },
-      {
-        title: "Strategy",
-        question: "What is the value proposition?",
-        bullets: [
-          "The Alternative Income Fund was designed to provide a secure, stable-yield income stream over a 6 year term.",
-          "HelmShare partners with the largest and best chartering companies globally, leveraging their existing network, infrastructure, and operations. This partnership guarantees income through already-signed agreements, ensuring a stable and reliable revenue stream for investors.",
-          "In the coming 3-5 years, bonds are expected to face increased uncertainty. Investing in tangible, cashflowing yacht charters presents a stable and low-risk alternative, offering a safeguard against this uncertainty in the low-risk portion of investor portfolios.",
-          "The fund offers a unique opportunity to invest in a diversified fleet of charter yachts, with a focus on the lucrative and growing Seychelles market.",
-        ],
-      },
-      {
-        title: "Behind the Investment",
-        question: "What is the fund's history and performance?",
-        bullets: [
-          "This flagship fund of the company is designed with a conservative risk appetite and a meticulously structured investment strategy.",
-          "Risk associated with inexperience is mitigated by leveraging the expertise of a seasoned advisory board.",
-          "Thorough due diligence in corporate and tax structuring has been conducted to ensure the fund's stability and compliance.",
-          "The investor base is limited to seasoned accredited investors to maintain a high level of financial acumen and risk awareness within the investment community.",
-          "The company collaborates with a leading charter partner, boasting a fleet of over 320+ yachts, further reducing the risk associated with the investment strategy.",
-        ],
-      },
-      {
-        title: "Market",
-        question:
-          "What are some of the reasons why you should consider the investment?",
-        bullets: [
-          "In this inflationary environment, optimizing cash returns is an important consideration for investors so that this portion of their portfolio does not drag down total portfolio returns.",
-          "Investing in tangible assets that offer cashflow and real securitization can potentially de-risk your portfolio during high levels of uncertainty and public equity drawdowns.",
-          "The Alternative Income Fund potentially offers a solution for investors who are looking to help de-risk their portfolio, but are not prepared to simply hold cash in traditional money market funds or CDs.",
+          "Each SPV controls a fleet of 3-5 yachts operating in popular markets (i.e. Seychelles).",
         ],
       },
     ],
   };
 
   return (
-    <Wrapper className="py-[5vh] bg-white" id="premise">
-      <InnerWrap className="items-start justify-start w-full">
-        <div className="flex flex-col md:flex-row gap-12">
-          <div className="md:w-1/2 p-4">
-            <TitleBlock
-              heading={premise.header.heading}
-              subheading={premise.header.subheading}
-              theme="light"
-              orientation="left"
-            />
-            <ul className="list-disc pl-5 gap-2 mt-6 flex flex-col items-start justify-start">
-              {premise.content[0].bullets.map((bullet, index) => (
-                <li key={index} className="text-md text-gray-800">
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="md:w-1/2 p-4">
-            <Image
-              alt="Expected development timeline"
-              className="w-full h-auto"
-              height={500}
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "600/350",
-                objectFit: "cover",
-              }}
-              width={700}
-            />
-          </div>
+    <Wrapper className="p-0 bg-white border-t border-gray-200" id="premise">
+      <InnerWrap className="grid w-full grid-cols-1 p-0 md:grid-cols-5">
+        <div className="col-span-3 p-12">
+          <TitleBlock
+            subheading={premise.header.subheading}
+            body={premise.header.body}
+            theme="light"
+            orientation="left"
+          />
+          <ul className="flex flex-col items-start justify-start gap-2 pb-8 pl-5 mt-3 list-disc">
+            {premise.content[0].bullets.map((bullet, index) => (
+              <li key={index} className="ml-4 text-sm text-gray-700 list-disc">
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="relative z-10 col-span-2 overflow-hidden aspect-square">
+          <Image
+            src="/img/hero/hero11.jpg"
+            alt="Yacht at anchor"
+            fill
+            className="absolute inset-0 right-0 z-10"
+            style={{
+              objectFit: "cover",
+            }}
+          />
         </div>
       </InnerWrap>
     </Wrapper>
@@ -364,55 +323,141 @@ export function InterestStrategy({}: Props) {
   const strategy = {
     header: {
       preheader: "",
-      heading: "Strategy",
-      subheading: "What is the value proposition?",
+      heading: "",
+      subheading: "Strategy",
+      body: "What is the value proposition?",
     },
     content: [
       {
-        section: "Investment Strategy",
         details: [
-          "Yacht charters offer a stable cash flow, with our fund acquiring premium yachts for consistent revenue.",
-          "Our closed-fund structure limits exposure and ensures predictable ROI, presenting a solid alternative to traditional bonds.",
-          "To counter yacht depreciation, we diversify into real estate and alternative assets, stabilizing and enhancing fund value.",
-          "Guaranteed returns stem from yacht charter income, strategic asset sales, and diversified investments, ensuring performance in varied markets.",
-          "Risk is minimized by capping leveraged asset fund investments at 10% of total capital, maintaining fund stability.",
-          "Designed for those seeking secure, competitive returns, our fund invests in tangible assets and manages alternative investments for portfolio diversification.",
+          "Luxury yacht charters provide a demand-inelastic, stable cash flow.",
+          "Investments backed by tangible assets mitigate bond market volatility.",
+          "A closed-fund structure ensures a predictable yield on capital.",
+          "Real estate diversification hedges against yacht depreciation.",
+          "Charters and diversified assets offer guaranteed returns.",
+          "Global operations across a diverse yacht portfolio.",
+          "Stability through a 10% cap on leveraged investments.",
+          "Tangible assets yield secure, competitive returns.",
+          "Partnerships with leading charter companies ensure reliable revenue streams.",
+          "Focus on eco-friendly yachts aligns with growing market demand.",
+          "Expansion into emerging markets to capture growth opportunities.",
+        ],
+      },
+    ],
+    grid: [
+      {
+        title: "Cashflow",
+        subheading: "Stable Income",
+        tooltip: "Consistent, predictable cash flow from charters.",
+        icon: "/ico/cashflow-icon.svg",
+      },
+      {
+        title: "Illiquid Assets",
+        subheading: "Tangible Value",
+        tooltip: "Investments in physical yachts ensure asset-backed security.",
+        icon: "/ico/illiquid-icon.svg",
+      },
+      {
+        title: "Tax Optimized",
+        subheading: "Efficiency",
+        tooltip: "Structured for tax efficiency to maximize returns.",
+        icon: "/ico/tax-icon.svg",
+      },
+      {
+        title: "Low-Risk Profile",
+        subheading: "Security",
+        tooltip: "Focused on low-risk assets for guaranteed yield.",
+        icon: "/ico/low-risk-icon.svg",
+      },
+    ],
+  };
+  return (
+    <Wrapper className="pt-8 bg-white border-t border-gray-200" id="strategy">
+      <InnerWrap className="grid w-full grid-cols-1 md:grid-cols-5">
+        <div className="flex flex-col col-span-3 p-12">
+          <TitleBlock
+            subheading={strategy.header.subheading}
+            body={strategy.header.body}
+            theme="light"
+            orientation="left"
+          />
+          <ul className="flex flex-col items-start justify-start gap-2 pb-8 pl-5 mt-3 list-disc">
+            {strategy.content[0].details.map((detail, index) => (
+              <li key={index} className="ml-4 text-sm text-gray-700 list-disc">
+                {detail}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex w-full h-full col-span-2 pb-8">
+          <fieldset className="w-full px-5 py-4 border rounded-lg">
+            <legend className="px-1 -ml-1 text-sm font-medium text-brand-n4">
+              Strategy
+            </legend>
+            <ul className="grid w-full h-full grid-cols-2 gap-4 p-3">
+              {strategy.grid.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex flex-col items-center justify-center w-full h-full p-4 text-center border rounded-lg bg-slate-50"
+                >
+                  <div className="flex items-center justify-center w-10 h-10 p-2 bg-gray-200 rounded-full">
+                    <Image src={item.icon} alt="icon" width={40} height={40} />
+                  </div>
+                  <div className="flex flex-col mt-4">
+                    <h3 className="text-sm font-semibold">{item.title}</h3>
+                    <p className="text-xs text-gray-700">{item.subheading}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </fieldset>
+        </div>
+      </InnerWrap>
+    </Wrapper>
+  );
+}
+
+export function InterestMarket({}: Props) {
+  const strategy = {
+    header: {
+      preheader: "",
+      heading: "Market Overview",
+      subheading: "Market Overview",
+      body: "Charter Market Insights",
+    },
+    content: [
+      {
+        details: [
+          "2018-2023 CAGR: 5.4%, market growth from USD 6.5B to USD 8.5B.",
+          "2024-2032 forecast: 12.2% CAGR, reaching USD 19.78B by 2032.",
+          "Motor Yachts dominate; Sailing Yachts gain on eco-friendly appeal.",
+          "Europe leads; Asia-Pacific fastest growing due to rising incomes, policy support.",
+          "Growth drivers: High-net-worth individuals, tech advancements, eco-friendly yachts.",
+          "Challenges: High operational costs, luxury spending's economic sensitivity.",
+          "Opportunities: Expansion in Asia, Latin America; yacht design innovations.",
         ],
       },
     ],
   };
   return (
-    <Wrapper className="bg-white" id="strategy">
-      <InnerWrap className="items-start justify-start w-full">
-        <div className="flex flex-col md:flex-row gap-12">
-          <div className="md:w-1/2 p-4">
-            <TitleBlock
-              heading={strategy.header.heading}
-              subheading={strategy.header.subheading}
-              theme="light"
-              orientation="left"
-            />
-            <ul className="list-disc pl-5 gap-2 mt-6 flex flex-col items-start justify-start pb-8">
-              {strategy.content.map((section, index) => (
-                <li key={index} className="text-md text-gray-800">
-                  <h3 className="font-medium text-black pb-2">
-                    {section.section}
-                  </h3>
-                  <ul className="text-md text-gray-700 flex flex-col gap-2">
-                    {section.details.map((detail, detailIndex) => (
-                      <li key={detailIndex} className="list-disc ml-4 text-sm">
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="md:w-1/2 p-4">
-            {/* Placeholder for potential content or images related to the strategy section */}
-          </div>
+    <Wrapper className="p-8 bg-white border-t border-gray-200" id="strategy">
+      <InnerWrap className="grid w-full grid-cols-1 md:grid-cols-5">
+        <div className="flex flex-col col-span-3 p-12">
+          <TitleBlock
+            subheading={strategy.header.subheading}
+            body={strategy.header.body}
+            theme="light"
+            orientation="left"
+          />
+          <ul className="flex flex-col items-start justify-start gap-2 pb-8 pl-5 mt-3 list-disc">
+            {strategy.content[0].details.map((detail, index) => (
+              <li key={index} className="ml-4 text-sm text-gray-700 list-disc">
+                {detail}
+              </li>
+            ))}
+          </ul>
         </div>
+        <div className="flex col-span-2 p-12">{/* <MarketChart /> */}</div>
       </InnerWrap>
     </Wrapper>
   );
@@ -478,20 +523,20 @@ export function InterestBenefits({}: Props) {
   return (
     <Wrapper className="bg-white py-[10vh]">
       <InnerWrap>
-        <h1 className="text-5xl font-title tracking-tight">
+        <h1 className="text-5xl tracking-tight font-title">
           Why invest in a charter fleet?
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 w-full pt-8 gap-4 mt-12">
+        <div className="grid w-full grid-cols-1 gap-4 pt-8 mt-12 md:grid-cols-3">
           <ul className="flex flex-col items-center justify-center w-full gap-4">
             {benefits.slice(0, 3).map((item, index) => (
               <li
                 key={index}
-                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
+                className="flex items-start justify-center w-full gap-4 p-4 pr-6 border-slate-200 rounded-xl"
               >
-                <div className="w-10 flex h-full items-center justify-center">
+                <div className="flex items-center justify-center w-10 h-full">
                   {item.icon}
                 </div>
-                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
+                <h3 className="flex w-full text-sm text-left">{item.title}</h3>
               </li>
             ))}
           </ul>
@@ -502,12 +547,12 @@ export function InterestBenefits({}: Props) {
             {benefits.slice(3, 6).map((item, index) => (
               <li
                 key={index}
-                className="flex items-start justify-center gap-4 w-full  border-slate-200 p-4 rounded-xl pr-6"
+                className="flex items-start justify-center w-full gap-4 p-4 pr-6 border-slate-200 rounded-xl"
               >
-                <div className="w-10 flex h-full items-center justify-center">
+                <div className="flex items-center justify-center w-10 h-full">
                   {item.icon}
                 </div>
-                <h3 className="flex text-sm text-left w-full">{item.title}</h3>
+                <h3 className="flex w-full text-sm text-left">{item.title}</h3>
               </li>
             ))}
           </ul>
@@ -519,11 +564,11 @@ export function InterestBenefits({}: Props) {
 
 export function InterestHowGuaranteed({}: Props) {
   return (
-    <Wrapper className="py-8 md:py-4 bg-gray-900 text-gray-200">
+    <Wrapper className="py-8 text-gray-200 bg-gray-900 md:py-4">
       <InnerWrap>
-        <div className="flex flex-col md:flex-row gap-2 items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-2 md:flex-row">
           <h2 className="text-sm">How is the 8% income guaranteed?</h2>
-          <div className="flex rounded-full p-2 bg-black items-center justify-center">
+          <div className="flex items-center justify-center p-2 bg-black rounded-full">
             <IoBoatOutline size={24} className="text-white" />
           </div>
           <h2 className="text-sm">
@@ -606,7 +651,7 @@ export function InterestCorporateStructure({}: Props) {
   return (
     <Wrapper className="my-[10vh]">
       <InnerWrap>
-        <div className="flex flex-col p-8 rounded-2xl border-slate-200 border bg-white w-full">
+        <div className="flex flex-col w-full p-8 bg-white border rounded-2xl border-slate-200">
           <div className="flex h-full pb-8 pl-2">
             <TitleBlock
               heading={corporatestructure.header.heading}
@@ -633,7 +678,7 @@ export function InterestCorporateStructure({}: Props) {
               {corporatestructure.entities.map((entity, index) => (
                 <TableRow
                   key={index}
-                  className="hover:bg-slate-50 transition duration-200 ease-in-out"
+                  className="transition duration-200 ease-in-out hover:bg-slate-50"
                 >
                   <TableCell>{entity.title}</TableCell>
                   <TableCell>
@@ -774,7 +819,7 @@ export function InterestHowItWorks({}: Props) {
 
   return (
     <Wrapper className="py-[5vh] bg-slate-100" id="how-it-works">
-      <InnerWrap className="p-8 rounded-xl border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-2">
+      <InnerWrap className="grid grid-cols-1 p-8 bg-white border rounded-xl border-slate-200 md:grid-cols-2">
         <div className="flex h-full p-4">
           <TitleBlock
             preheading={howitworks.header.preheading}
@@ -784,7 +829,7 @@ export function InterestHowItWorks({}: Props) {
             orientation="left"
           />
         </div>
-        <div className="flex items-center justify-center md:basis-1/2 mt-4 md:mt-0">
+        <div className="flex items-center justify-center mt-4 md:basis-1/2 md:mt-0">
           <div className="flex flex-col">
             {timelineEvents.map((event, index) => (
               <div key={index} className="mb-4">
@@ -795,7 +840,7 @@ export function InterestHowItWorks({}: Props) {
                         <div className="relative z-10">
                           <div className="h-2 w-2 hidden rounded-full bg-gray-800 dark:bg-gray-900 mt-[3px]"></div>
                         </div>
-                        <div className="text-xs font-medium uppercase text-gray-600 dark:text-gray-400 pl-1 w-12">
+                        <div className="w-12 pl-1 text-xs font-medium text-gray-600 uppercase dark:text-gray-400">
                           {event.date}
                         </div>
                       </div>
@@ -885,7 +930,7 @@ export function InterestAssetDistribution({}: Props) {
 
   return (
     <Wrapper className="py-[5vh]" id="strategy">
-      <InnerWrap className="flex flex-col py-12 border rounded-xl border-slate-300 bg-white">
+      <InnerWrap className="flex flex-col py-12 bg-white border rounded-xl border-slate-300">
         <TitleBlock
           preheading={strategy.header.preheader}
           heading={strategy.header.heading}
@@ -894,7 +939,7 @@ export function InterestAssetDistribution({}: Props) {
           theme="light"
           orientation="center"
         />
-        <ul className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 items-start px-12">
+        <ul className="grid items-start w-full grid-cols-1 gap-4 px-12 md:grid-cols-3">
           {data.map((item, index) => (
             <li
               key={index}
@@ -906,21 +951,21 @@ export function InterestAssetDistribution({}: Props) {
                 <p className="text-sm text-gray-600">{item.description}</p>
               </div>
               <Separator className="my-4" />
-              <div className="flex gap-4 items-start justify-start">
+              <div className="flex items-start justify-start gap-4">
                 <h3 className="text-2xl font-semibold text-black">
                   {item.statvalue}
                 </h3>
                 <Separator orientation="vertical" />
                 <div className="flex flex-col items-start justify-start text-left">
-                  <p className="text-xs text-gray-600 pb-1">
-                    <span className="font-semibold pr-1">Why:</span>
+                  <p className="pb-1 text-xs text-gray-600">
+                    <span className="pr-1 font-semibold">Why:</span>
                     {item.statlabel}
                   </p>
                   <ul>
                     {item.reasons.map((reason, index) => (
                       <li
                         key={index}
-                        className="text-xs text-gray-500 flex items-start justify-start gap-1"
+                        className="flex items-start justify-start gap-1 text-xs text-gray-500"
                       >
                         <IoIosCheckmark size={15} className="text-green-600" />
                         {reason}
@@ -977,7 +1022,7 @@ export function InterestWhichYachts({}: Props) {
           orientation="center"
         />
       </div>
-      <ul className="md:flex items-center justify-center gap-8 mt-12 hidden">
+      <ul className="items-center justify-center hidden gap-8 mt-12 md:flex">
         {yachts.list.map((yacht, index) => (
           <li className="flex flex-col items-center justify-center" key={index}>
             <div className="flex relative h-[300px] w-[300px]">
@@ -989,12 +1034,12 @@ export function InterestWhichYachts({}: Props) {
                 style={{ objectFit: "contain" }}
               />
             </div>
-            <p className="text-sm font-semibold mt-3">{yacht.brand}</p>
-            <p className="text-xs font-normal pt-1">{yacht.model}</p>
+            <p className="mt-3 text-sm font-semibold">{yacht.brand}</p>
+            <p className="pt-1 text-xs font-normal">{yacht.model}</p>
           </li>
         ))}
       </ul>
-      <p className="text-xs text-gray-400 mt-12">
+      <p className="mt-12 text-xs text-gray-400">
         As of{" "}
         {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString(
           "en-GB",
@@ -1021,9 +1066,9 @@ export function InterestBehindTheInvestment({}: Props) {
 
   return (
     <Wrapper className="pb-[5vh] " id="structure">
-      <InnerWrap className="border rounded-xl border-slate-300 px-12 relative bg-white">
-        <ul className="flex items-center justify-center absolute right-3 top-3 text-xs font-medium gap-3 bg-slate-100 rounded-md border-slate-300 border">
-          <li className="bg-slate-200 p-2">
+      <InnerWrap className="relative px-12 bg-white border rounded-xl border-slate-300">
+        <ul className="absolute flex items-center justify-center gap-3 text-xs font-medium border rounded-md right-3 top-3 bg-slate-100 border-slate-300">
+          <li className="p-2 bg-slate-200">
             <HiOutlineArrowLeftCircle size={18} />
           </li>
           <li className="">Structure</li>
@@ -1031,17 +1076,17 @@ export function InterestBehindTheInvestment({}: Props) {
           <li className="">Leadership</li>
           <li className="">Advisors</li>
           <li className="">Partners</li>
-          <li className="bg-slate-200 p-2">
+          <li className="p-2 bg-slate-200">
             <HiOutlineArrowRightCircle size={18} />
           </li>
         </ul>
         <div className="flex mt-16">structure</div>
-        <div className="flex justify-between items-center p-4 w-full">
+        <div className="flex items-center justify-between w-full p-4">
           {homepage.interest.behindtheinvestment.feestructure.feeschedule.map(
             (fee, index) => (
               <motion.div
                 key={index}
-                className="text-center p-2 flex-col items-center justify-center gap-1"
+                className="flex-col items-center justify-center gap-1 p-2 text-center"
                 whileHover={{ scale: 1.1 }}
                 tabIndex={0} // for accessibility
               >
@@ -1054,7 +1099,7 @@ export function InterestBehindTheInvestment({}: Props) {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
-                        <RiQuestionLine className="pl-1 w-4 h-4" />
+                        <RiQuestionLine className="w-4 h-4 pl-1" />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p className="max-w-[250px]">{fee.description}</p>
@@ -1086,7 +1131,7 @@ export function InterestFundLeadership({}: Props) {
   return (
     <>
       <Separator />
-      <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2 m-12">
+      <div className="grid items-center justify-center w-full grid-cols-1 gap-12 m-12 md:grid-cols-2">
         <div className="flex flex-col items-start justify-start">
           <h1 className="text-2xl font-medium">Fund Leadership</h1>
           <p>
@@ -1102,7 +1147,7 @@ export function InterestFundLeadership({}: Props) {
             {leadership.map((item, index) => (
               <li
                 key={index}
-                className="flex flex-col items-start justify-start overflow-hidden border rounded-xl border-slate-200 w-full"
+                className="flex flex-col items-start justify-start w-full overflow-hidden border rounded-xl border-slate-200"
               >
                 <div className="">
                   <Image
@@ -1119,7 +1164,7 @@ export function InterestFundLeadership({}: Props) {
                   <p className="text-sm text-left text-gray-700">
                     {item.details}
                   </p>
-                  <p className="text-xs text-left text-gray-500 pt-1">
+                  <p className="pt-1 text-xs text-left text-gray-500">
                     {item.location}
                   </p>
                 </div>
@@ -1143,7 +1188,7 @@ export function InterestRiskProfile({}: Props) {
   ];
   return (
     <Wrapper className="py-[5vh] bg-white">
-      <InnerWrap className="border border-slate-200 p-8 rounded-xl">
+      <InnerWrap className="p-8 border border-slate-200 rounded-xl">
         <div className="grid items-center justify-center w-full grid-cols-1 gap-12 md:grid-cols-2">
           <div className="flex flex-col items-start justify-start">
             <h1 className="text-2xl font-medium">Fund Leadership</h1>
@@ -1160,7 +1205,7 @@ export function InterestRiskProfile({}: Props) {
               {leadership.map((item, index) => (
                 <li
                   key={index}
-                  className="flex flex-col items-start justify-start overflow-hidden border rounded-xl border-slate-200 w-full"
+                  className="flex flex-col items-start justify-start w-full overflow-hidden border rounded-xl border-slate-200"
                 >
                   <div className="">
                     <Image
@@ -1177,7 +1222,7 @@ export function InterestRiskProfile({}: Props) {
                     <p className="text-sm text-left text-gray-700">
                       {item.details}
                     </p>
-                    <p className="text-xs text-left text-gray-500 pt-1">
+                    <p className="pt-1 text-xs text-left text-gray-500">
                       {item.location}
                     </p>
                   </div>
