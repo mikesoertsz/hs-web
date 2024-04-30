@@ -457,7 +457,9 @@ export function InterestMarket({}: Props) {
             ))}
           </ul>
         </div>
-        <div className="flex col-span-2 p-12">{/* <MarketChart /> */}</div>
+        <div className="flex col-span-2 p-12">
+          <MarketChart />
+        </div>
       </InnerWrap>
     </Wrapper>
   );

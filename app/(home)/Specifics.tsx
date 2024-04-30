@@ -55,7 +55,7 @@ export function InvestmentSpecifics() {
         {
           label: "Annual Management Fee",
           description: "Taken by HelmShare for assets under management.",
-          value: "1.21%",
+          value: "1.5%",
           icon: "",
         },
         {
