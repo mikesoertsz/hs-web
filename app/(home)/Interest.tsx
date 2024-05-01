@@ -50,6 +50,9 @@ import { TitleBlock } from "@/components/ui/titleblock";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { MarketChart } from "./marketchart";
 import { MdSafetyCheck } from "react-icons/md";
+import { TbReceiptTax, TbSailboat } from "react-icons/tb";
+import { MdAttachMoney } from "react-icons/md";
+import { AiOutlineSafety } from "react-icons/ai";
 
 type Props = {};
 
@@ -288,7 +291,7 @@ export function InterestPremise({}: Props) {
   return (
     <Wrapper className="p-0 bg-white border-t border-gray-200" id="premise">
       <InnerWrap className="grid w-full grid-cols-1 p-0 md:grid-cols-5">
-        <div className="col-span-3 p-12">
+        <div className="col-span-5 p-12">
           <TitleBlock
             subheading={premise.header.subheading}
             body={premise.header.body}
@@ -297,13 +300,13 @@ export function InterestPremise({}: Props) {
           />
           <ul className="flex flex-col items-start justify-start gap-2 pb-8 pl-5 mt-3 list-disc">
             {premise.content[0].bullets.map((bullet, index) => (
-              <li key={index} className="ml-4 text-sm text-gray-700 list-disc">
+              <li key={index} className="ml-4 text-gray-700 list-disc text-md">
                 {bullet}
               </li>
             ))}
           </ul>
         </div>
-        <div className="relative z-10 col-span-2 overflow-hidden aspect-square">
+        <div className="relative z-10 hidden col-span-2 overflow-hidden aspect-square">
           <Image
             src="/img/hero/hero11.jpg"
             alt="Yacht at anchor"
@@ -347,27 +350,27 @@ export function InterestStrategy({}: Props) {
     grid: [
       {
         title: "Cashflow",
-        subheading: "Stable Income",
+        subheading: "Guaranteed Stable Charter Income",
         tooltip: "Consistent, predictable cash flow from charters.",
-        icon: "/ico/cashflow-icon.svg",
+        icon: <MdAttachMoney size={30} />,
       },
       {
         title: "Illiquid Assets",
-        subheading: "Tangible Value",
+        subheading: "Secure Asset-Backed Investments",
         tooltip: "Investments in physical yachts ensure asset-backed security.",
-        icon: "/ico/illiquid-icon.svg",
+        icon: <TbSailboat size={30} />,
       },
       {
         title: "Tax Optimized",
-        subheading: "Efficiency",
+        subheading: "Maximized Returns via Tax Efficiency",
         tooltip: "Structured for tax efficiency to maximize returns.",
-        icon: "/ico/tax-icon.svg",
+        icon: <TbReceiptTax size={30} />,
       },
       {
         title: "Low-Risk Profile",
-        subheading: "Security",
+        subheading: "Guaranteed Yield with Low Risk",
         tooltip: "Focused on low-risk assets for guaranteed yield.",
-        icon: "/ico/low-risk-icon.svg",
+        icon: <AiOutlineSafety size={30} />,
       },
     ],
   };
@@ -398,14 +401,16 @@ export function InterestStrategy({}: Props) {
               {strategy.grid.map((item, index) => (
                 <li
                   key={index}
-                  className="flex flex-col items-center justify-center w-full h-full p-4 text-center border rounded-lg bg-slate-50"
+                  className="flex flex-col items-center justify-center w-full h-full p-4 text-center border rounded-lg group bg-slate-50"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 p-2 bg-gray-200 rounded-full">
-                    <Image src={item.icon} alt="icon" width={40} height={40} />
+                  <div className="flex items-center justify-center w-12 h-12 p-3 bg-gray-200 rounded-full">
+                    {item.icon}
                   </div>
-                  <div className="flex flex-col mt-4">
+                  <div className="flex flex-col px-6 mt-3">
                     <h3 className="text-sm font-semibold">{item.title}</h3>
-                    <p className="text-xs text-gray-700">{item.subheading}</p>
+                    <p className="pt-1 text-xs text-gray-700 transition duration-200 ease-in-out transform">
+                      {item.subheading}
+                    </p>
                   </div>
                 </li>
               ))}
