@@ -51,7 +51,7 @@ interface TitleBlockProps extends Titles {
   preheading?: string;
   heading?: string;
   subheading?: string;
-  body?: string;
+  body?: string | React.ReactNode;
   theme: "light" | "dark";
   orientation: "center" | "left";
 }

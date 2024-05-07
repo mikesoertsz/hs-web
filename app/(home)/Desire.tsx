@@ -105,7 +105,7 @@ export function DesireWhoFor({}: Props) {
       body: (
         <>
           You meet the criteria for an accredited investor. <br />
-          Register below & we'll reach out to you with more information.
+          Register below & we&apos;ll reach out to you with more information.
         </>
       ),
       icon: "",
