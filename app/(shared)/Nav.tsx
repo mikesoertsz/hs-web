@@ -43,7 +43,7 @@ export default function Nav({}: Props) {
           Resources
           <HiChevronDown className="inline-block ml-1" />
         </Link>
-        <Link
+        {/* <Link
           href="/affiliates"
           className="md:flex text-gray-700 hover:text-blue-400 duration-200 transition ease-in-out text-xs font-medium mr-3 items-center justify-center gap-1 hover:underline"
         >
@@ -60,7 +60,7 @@ export default function Nav({}: Props) {
         </Button>
         <Button variant="secondary" className="text-xs mr-2">
           Signup
-        </Button>
+        </Button> */}
       </div>
     </nav>
   );
