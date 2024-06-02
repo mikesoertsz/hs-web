@@ -340,7 +340,7 @@ export default function DesireEarningsCalculator({}: Props) {
 
                   <div className="flex justify-between py-1 mt-3">
                     <p className="text-left">
-                      Target Annualized Yield
+                      Target Annualized Yield (End of Term)
                       <sup className="pl-1 text-green-600">
                         {`${projectedTargetReturnRate * 100}%`}
                       </sup>
