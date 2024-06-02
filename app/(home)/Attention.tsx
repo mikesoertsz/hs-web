@@ -77,7 +77,7 @@ export default function AttentionHero() {
                   </p>
                 </li>
               ))}
-              <li className="flex flex-col items-start justify-start">
+              <li className="flex-col items-start justify-start hidden">
                 <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
                   status
                 </p>
