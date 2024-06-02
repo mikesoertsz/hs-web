@@ -170,7 +170,7 @@ export function AttentionDetailsBar() {
     },
     {
       pretitle: "Performance Yield",
-      title: "11.5% projected",
+      title: "9.75% projected",
       description: (
         <>
           Projected annualized
