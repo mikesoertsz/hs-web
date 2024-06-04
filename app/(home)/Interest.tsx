@@ -903,7 +903,7 @@ export function InterestAssetDistribution({}: Props) {
       value: 20,
       name: "Real Estate",
       description:
-        "A portion of the portfolio is allocated to real estate development projects in Portugal for cashflow and gapital gains.",
+        "A portion of the portfolio is allocated to real estate development projects in Portugal for cashflow and capital gains.",
       icon: "", // Placeholder for icon path or component
       statlabel: "Captal Appreciation",
       statvalue: "20%",
