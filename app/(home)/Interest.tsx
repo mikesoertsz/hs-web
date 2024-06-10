@@ -825,7 +825,7 @@ export function InterestHowItWorks({}: Props) {
   };
 
   return (
-    <Wrapper className="py-[5vh] bg-slate-100" id="how-it-works">
+    <Wrapper className="py-[5vh] bg-slate-100" id="howitworks">
       <InnerWrap className="grid grid-cols-1 p-8 bg-white border rounded-xl border-slate-200 md:grid-cols-2">
         <div className="flex h-full p-4">
           <TitleBlock

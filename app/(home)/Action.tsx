@@ -31,6 +31,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
 import { TitleBlock } from "@/components/ui/titleblock";
+import { GoBlocked } from "react-icons/go";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -74,13 +75,10 @@ export default function ActionCTA() {
             orientation="left"
           />
         </div>
-        <div className="p-4 md:p-12 bg-slate-100">
+        <div className="p-4 md:p-12 bg-brand2-base1">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
               <fieldset className="grid gap-4 p-6 bg-white border rounded-lg">
-                <legend className="px-1 -ml-1 text-sm font-medium text-brand2-base1">
-                  Contact Information
-                </legend>
                 <FormField
                   control={form.control}
                   name="name"
@@ -130,11 +128,12 @@ export default function ActionCTA() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Contact Number</FormLabel>
-                      <FormControl>
+                      <FormControl className="w-full">
                         <PhoneInput
                           defaultCountry="us"
                           value={phone}
                           onChange={(phone) => setPhone(phone)}
+                          className="w-full"
                         />
                       </FormControl>
                       <FormMessage />
@@ -143,9 +142,6 @@ export default function ActionCTA() {
                 />
               </fieldset>
               <fieldset className="grid gap-4 p-6 bg-white border rounded-lg">
-                <legend className="px-1 -ml-1 text-sm font-medium text-brand2-base1">
-                  Investment Preferences
-                </legend>
                 <FormField
                   control={form.control}
                   name="payoutFrequency"
@@ -208,9 +204,6 @@ export default function ActionCTA() {
                 />
               </fieldset>
               <fieldset className="grid gap-4 p-6 bg-white border rounded-lg">
-                <legend className="px-1 -ml-1 text-sm font-medium text-brand2-base1">
-                  Contact preferences
-                </legend>
                 <FormField
                   control={form.control}
                   name="communication_emails"
@@ -243,7 +236,8 @@ export default function ActionCTA() {
                           Marketing emails
                         </FormLabel>
                         <FormDescription>
-                          Receive emails about new products, features, and more.
+                          Receive occasional emails about new products,
+                          features, and more.
                         </FormDescription>
                       </div>
                       <FormControl>
@@ -258,9 +252,9 @@ export default function ActionCTA() {
               </fieldset>
               <Button
                 type="submit"
-                className="flex items-center w-full h-12 gap-2 px-8 text-black rounded-lg text-md bg-brand2-g1 hover:bg-brand2-g3"
+                className="flex disabled items-center justify-center gap-2 w-full h-12 px-8 text-black rounded-lg text-md bg-brand2-g2"
               >
-                Register Interest
+                <GoBlocked size={20} /> Registration not yet open.
               </Button>
             </form>
           </Form>

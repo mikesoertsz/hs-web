@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="en">
       <GoogleAnalytics GA_MEASUREMENT_ID="G-G4BPMB4NGH" />
       <body
-        className={`${body.className} ${title.variable}  relative scroll-smooth z-0`}
+        className={`${body.className} ${title.variable} relative scroll-smooth z-0 antialiased`}
       >
         <Drawer>
           <div className="fillscreen">

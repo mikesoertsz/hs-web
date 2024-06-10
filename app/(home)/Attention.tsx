@@ -115,7 +115,7 @@ export default function AttentionHero() {
             </ul>
             <div className="flex flex-col items-center justify-between gap-2 mt-12">
               <button className="relative px-12 py-3 overflow-hidden text-black transition duration-100 rounded-lg hover:bg-brand2-g4 bg-brand2-g2">
-                <a href="#" className="relative z-10">
+                <a href="#register" className="relative z-10">
                   Register Interest Now
                 </a>
               </button>
@@ -210,13 +210,13 @@ export function AttentionDetailsBar() {
           {details.map((item, index) => (
             <li
               key={index}
-              className="flex flex-col items-start justify-start w-full p-3 rounded-lg bg-slate-50"
+              className="flex flex-col items-start justify-start w-full p-3 rounded-lg "
             >
               <p className="text-[9px] uppercase font-semibold tracking-[0.1em] text-slate-600">
                 {item.pretitle}
               </p>
               <div className="mt-1 text-lg font-medium">{item.title}</div>
-              <div className="text-xs text-left text-gray-500">
+              <div className="text-xs text-left text-gray-600">
                 {item.description}
               </div>
             </li>
