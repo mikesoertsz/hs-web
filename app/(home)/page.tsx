@@ -21,8 +21,7 @@ import {
   InterestMarket,
 } from "./Interest";
 import { InvestmentSpecifics } from "./Specifics";
-
-
+import ImageWide from "../(shared)/ImageWide";
 
 export default function Home() {
   return (
@@ -45,6 +44,7 @@ export default function Home() {
       <ActionCTA />
       <FAQ {...homepage.desire} />
       <Disclaimer />
+      <ImageWide image="/img/hero/lagoon46wide.jpg" />
     </main>
   );
 }
