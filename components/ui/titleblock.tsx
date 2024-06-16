@@ -81,7 +81,7 @@ export function TitleBlock({
           {preheading}
         </PreHeading>
       )}
-      {heading && <Heading>{heading}</Heading>}
+      {heading && <Heading className="">{heading}</Heading>}
       {subheading && <SubHeading>{subheading}</SubHeading>}
       {body && (
         <Body className={theme === "dark" ? darkModeStyles.body : ""}>

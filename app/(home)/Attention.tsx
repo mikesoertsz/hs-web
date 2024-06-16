@@ -48,7 +48,7 @@ export default function AttentionHero() {
   return (
     <Wrapper className="relative flex min-h-[50vh] z-10 mx-auto px-0">
       <div className="grid w-full grid-cols-1 md:grid-cols-2">
-        <Left className="bg-brand2-base1">
+        <Left className="bg-brand2-base1 min-h-[50dvh]">
           <div className="flex flex-col items-start justify-center w-3/4 h-full slide-center">
             <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
               Alternative Income Fund
@@ -126,7 +126,7 @@ export default function AttentionHero() {
             </div>
           </div>
         </Left>
-        <div className="relative z-10">
+        <div className="relative z-10 min-h-[50dvh] md:flex">
           <Image
             src="/img/hero/hero2.jpg"
             alt="hero"
@@ -204,13 +204,13 @@ export function AttentionDetailsBar() {
     },
   ];
   return (
-    <Wrapper className="py-4">
-      <InnerWrap>
+    <Wrapper className="py-4 bg-white">
+      <InnerWrap className="bg-slate-50 border border-slate-200 rounded-lg p-4">
         <ul className="grid w-full grid-cols-2 gap-4 md:grid-cols-5">
           {details.map((item, index) => (
             <li
               key={index}
-              className="flex flex-col items-start justify-start w-full p-3 rounded-lg "
+              className="flex flex-col items-start justify-start w-full p-3 rounded-lg border-r border-slate-300 last:border-0"
             >
               <p className="text-[9px] uppercase font-semibold tracking-[0.1em] text-slate-600">
                 {item.pretitle}

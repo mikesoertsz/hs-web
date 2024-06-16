@@ -3,28 +3,28 @@ import localFont from "next/font/local";
 export const title2 = localFont({
   src: [
     {
-      path: "../public/font/Megafield-Regular.woff2",
+      path: "../public/font/Behind-The-Nineties-Rg.woff2",
       weight: "400",
-      style: "normal",
+      style: "regular",
     },
     {
-      path: "../public/font/Megafield-Medium.woff2",
+      path: "../public/font/Behind-The-Nineties-Md.woff2",
       weight: "500",
       style: "medium",
     },
     {
-      path: "../public/font/Megafield-Light.woff2",
-      weight: "300",
-      style: "light",
-    },
-    {
-      path: "../public/font/Megafield-SemiBold.woff2",
+      path: "../public/font/Behind-The-Nineties-Smbd.woff2",
       weight: "600",
       style: "semibold",
     },
+    {
+      path: "../public/font/Behind-The-Nineties-Bd.woff2",
+      weight: "700",
+      style: "bold",
+    },
   ],
   display: "swap",
-  variable: "--font-title",
+  variable: "--font-title2",
 });
 
 export const title = localFont({

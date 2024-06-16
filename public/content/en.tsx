@@ -386,8 +386,8 @@ export const homepage = {
           value: "9",
         },
         {
-          question: "What is investment.yachts fund?",
-          answer: "",
+          question: "What happens to the yachts at the end of the term?",
+          answer: "At the end of the term, the yachts will be sold on the secondary market at fair market value for the highest possible price. The proceeds from these sales will be used to return the principal back to the investors.",
           value: "11",
         },
         {

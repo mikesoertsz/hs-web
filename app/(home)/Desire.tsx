@@ -116,8 +116,8 @@ export function DesireWhoFor({}: Props) {
   return (
     <Wrapper className="py-[5vh]">
       <InnerWrap>
-        <div className="grid w-full grid-cols-1 gap-12 p-5 bg-gray-900 md:grid-cols-2 md:p-12 rounded-xl">
-          <div className="flex h-full p-4">
+        <div className="grid w-full grid-cols-1 gap-12 p-5 bg-gray-900 md:grid-cols-2 md:p-12 rounded-xl overflow-hidden">
+          <div className="flex p-4">
             <TitleBlock
               preheading={
                 qualifies
@@ -143,8 +143,7 @@ export function DesireWhoFor({}: Props) {
               orientation="left"
             />
           </div>
-          <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg basis-1/2">
-            <div className="hidden">Congrats you qualify</div>
+          <div className="flex flex-col items-center justify-start p-8 bg-white rounded-lg">
             <Form {...form}>
               <form
                 className="grid grid-cols-1 gap-4"
@@ -184,13 +183,6 @@ export function DesireWhoFor({}: Props) {
                     )}
                   />
                 ))}
-                <Button
-                  variant="outline"
-                  type="submit"
-                  className="hidden w-full"
-                >
-                  Submit
-                </Button>
               </form>
             </Form>
           </div>

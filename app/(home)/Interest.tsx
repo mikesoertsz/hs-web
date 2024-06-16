@@ -289,7 +289,7 @@ export function InterestPremise({}: Props) {
   };
 
   return (
-    <Wrapper className="p-0 bg-white border-t border-gray-200" id="premise">
+    <Wrapper className="p-0 bg-white " id="premise">
       <InnerWrap className="grid w-full grid-cols-1 p-0 md:grid-cols-5">
         <div className="col-span-5 p-12">
           <TitleBlock
@@ -426,9 +426,11 @@ export function InterestMarket({}: Props) {
   const strategy = {
     header: {
       preheader: "",
-      heading: "Market Overview",
-      subheading: "Market Overview",
-      body: "Charter Market Insights",
+      heading: "Charter Market Overview",
+      subheading: "Charter Market Overview",
+      body: "The charter industry has shown remarkable growth and resilience over the past decade, with a steady CAGR of 5.4% from 2018 to 2023. Looking ahead, the industry is projected to continue its robust expansion, with an impressive forecasted CAGR as markets rebound & recover from recent turmiol.",
+      description:
+        "The charter industry has shown remarkable growth and resilience over the past decade, with a steady CAGR of 5.4% from 2018 to 2023. Looking ahead, the industry is projected to continue its robust expansion, with an impressive forecasted CAGR as markets rebound & recover from recent turmiol.",
     },
     content: [
       {
@@ -445,7 +447,7 @@ export function InterestMarket({}: Props) {
     ],
   };
   return (
-    <Wrapper className="p-8 bg-white border-t border-gray-200" id="strategy">
+    <Wrapper className="p-8 bg-white border-t border-gray-200" id="market">
       <InnerWrap className="grid w-full grid-cols-1 md:grid-cols-5">
         <div className="flex flex-col col-span-3 p-12">
           <TitleBlock
@@ -530,7 +532,7 @@ export function InterestBenefits({}: Props) {
   return (
     <Wrapper className="bg-white py-[10vh]">
       <InnerWrap>
-        <h1 className="text-5xl tracking-tight font-title">
+        <h1 className="text-5xl tracking-tight font-title text-center md:text-left">
           Why invest in a charter fleet?
         </h1>
         <div className="grid w-full grid-cols-1 gap-4 pt-8 mt-12 md:grid-cols-3">
@@ -936,7 +938,7 @@ export function InterestAssetDistribution({}: Props) {
   ];
 
   return (
-    <Wrapper className="py-[5vh]" id="strategy">
+    <Wrapper className="py-[5vh]" id="distribution">
       <InnerWrap className="flex flex-col py-12 bg-white border rounded-xl border-slate-300">
         <TitleBlock
           preheading={strategy.header.preheader}
@@ -946,11 +948,11 @@ export function InterestAssetDistribution({}: Props) {
           theme="light"
           orientation="center"
         />
-        <ul className="grid items-start w-full grid-cols-1 gap-4 px-12 md:grid-cols-3">
+        <ul className="grid items-start w-full grid-cols-1 gap-4 px-8 md:grid-cols-3">
           {data.map((item, index) => (
             <li
               key={index}
-              className="relative flex flex-col items-start justify-start w-full h-full p-8"
+              className="relative flex flex-col items-start justify-start w-full p-8 py-4 first:mt-8 md:mt-0 border rounded-lg md:border-0"
             >
               <div className="flex flex-col items-start justify-start text-left grow">
                 {item.icon}
@@ -958,7 +960,7 @@ export function InterestAssetDistribution({}: Props) {
                 <p className="text-sm text-gray-600">{item.description}</p>
               </div>
               <Separator className="my-4" />
-              <div className="flex items-start justify-start gap-4">
+              <div className="flex items-start justify-start gap-4 text-black">
                 <h3 className="text-2xl font-semibold text-black">
                   {item.statvalue}
                 </h3>
@@ -1020,46 +1022,51 @@ export function InterestWhichYachts({}: Props) {
     ],
   };
   return (
-    <div className="flex flex-col items-center justify-center mt-12">
-      <div className="flex items-center justify-center w-full">
-        <TitleBlock
-          heading={yachts.header.heading}
-          subheading={yachts.header.subheading}
-          theme="light"
-          orientation="center"
-        />
+    <>
+      <div className="flex flex-col items-center justify-center mt-12 px-8 md:px-0">
+        <div className="flex items-center justify-center w-full">
+          <TitleBlock
+            heading={yachts.header.heading}
+            subheading={yachts.header.subheading}
+            theme="light"
+            orientation="center"
+          />
+        </div>
+        <ul className="items-center justify-center hidden gap-8 mt-12 md:flex">
+          {yachts.list.map((yacht, index) => (
+            <li
+              className="flex flex-col items-center justify-center"
+              key={index}
+            >
+              <div className="flex relative h-[300px] w-[300px]">
+                <Image
+                  src={yacht.imageurl}
+                  alt={yacht.model}
+                  fill
+                  className="absolute inset-0"
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+              <p className="mt-3 text-sm font-semibold">{yacht.brand}</p>
+              <p className="pt-1 text-xs font-normal">{yacht.model}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-12 text-xs text-gray-400 text-center">
+          As of{" "}
+          {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString(
+            "en-GB",
+            {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            }
+          )}
+          . Percentages are rough indicators and may deviate slightly according
+          to fund activities.
+        </p>
       </div>
-      <ul className="items-center justify-center hidden gap-8 mt-12 md:flex">
-        {yachts.list.map((yacht, index) => (
-          <li className="flex flex-col items-center justify-center" key={index}>
-            <div className="flex relative h-[300px] w-[300px]">
-              <Image
-                src={yacht.imageurl}
-                alt={yacht.model}
-                fill
-                className="absolute inset-0"
-                style={{ objectFit: "contain" }}
-              />
-            </div>
-            <p className="mt-3 text-sm font-semibold">{yacht.brand}</p>
-            <p className="pt-1 text-xs font-normal">{yacht.model}</p>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-12 text-xs text-gray-400">
-        As of{" "}
-        {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString(
-          "en-GB",
-          {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-          }
-        )}
-        . Percentages are based on total investment activities and subject to
-        change.
-      </p>
-    </div>
+    </>
   );
 }
 
