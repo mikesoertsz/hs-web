@@ -25,7 +25,7 @@ import ImageWide from "../(shared)/ImageWide";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center mx-auto fillscreen bg-slate-100">
+    <main className="flex flex-col items-center justify-center mx-auto fillscreen bg-slate-100 antialiased">
       <AttentionHero />
       <AttentionDetailsBar />
       <InterestPremise />

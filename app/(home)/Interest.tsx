@@ -53,6 +53,7 @@ import { MdSafetyCheck } from "react-icons/md";
 import { TbReceiptTax, TbSailboat } from "react-icons/tb";
 import { MdAttachMoney } from "react-icons/md";
 import { AiOutlineSafety } from "react-icons/ai";
+import InterestMarketChart from "./interest-market-chart";
 
 type Props = {};
 
@@ -465,7 +466,8 @@ export function InterestMarket({}: Props) {
           </ul>
         </div>
         <div className="flex col-span-2 p-12">
-          <MarketChart />
+          {/* <MarketChart /> */}
+          <InterestMarketChart />
         </div>
       </InnerWrap>
     </Wrapper>
@@ -948,11 +950,11 @@ export function InterestAssetDistribution({}: Props) {
           theme="light"
           orientation="center"
         />
-        <ul className="grid items-start w-full grid-cols-1 gap-4 px-8 md:grid-cols-3">
+        <ul className="grid items-start w-full grid-cols-1 gap-4 px-8 md:grid-cols-3 mt-4">
           {data.map((item, index) => (
             <li
               key={index}
-              className="relative flex flex-col items-start justify-start w-full p-8 py-4 first:mt-8 md:mt-0 border rounded-lg md:border-0"
+              className="relative flex flex-col items-start justify-start w-full p-8 py-4  md:mt-0 border rounded-lg md:border-0"
             >
               <div className="flex flex-col items-start justify-start text-left grow">
                 {item.icon}
@@ -974,7 +976,7 @@ export function InterestAssetDistribution({}: Props) {
                     {item.reasons.map((reason, index) => (
                       <li
                         key={index}
-                        className="flex items-start justify-start gap-1 text-xs text-gray-500"
+                        className="flex items-start justify-start gap-1 text-xs text-gray-600"
                       >
                         <IoIosCheckmark size={15} className="text-green-600" />
                         {reason}
