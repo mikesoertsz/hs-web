@@ -17,7 +17,7 @@ type Painpoint = {
 
 export default function AttentionHero() {
   const [fundsRaisedPercentage, setFundsRaisedPercentage] =
-    useState<number>(15);
+    useState<number>(38);
   const [Loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -46,14 +46,14 @@ export default function AttentionHero() {
     },
   ];
   return (
-    <Wrapper className="relative flex min-h-[50vh] z-10 mx-auto px-0">
-      <div className="grid w-full grid-cols-1 md:grid-cols-2">
-        <Left className="bg-brand2-base1 min-h-[50dvh]">
+    <Wrapper className="relative flex min-h-[50vh] z-10 mx-auto items-center justify-center py-12">
+      <div className="grid w-full grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden">
+        <Left className="bg-brand2-base1 min-h-[50dvh] aspect-square">
           <div className="flex flex-col items-start justify-center w-3/4 h-full slide-center">
             <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
               Alternative Income Fund
             </h4>
-            <h1 className="text-6xl font-medium leading-tight text-white drop-shadow-lg font-title">
+            <h1 className="text-6xl font-medium leading-tight text-white drop-shadow-md font-title">
               Earn 8% yield from a fleet of charter yachts.
             </h1>
             <p className="hidden w-3/4 mt-4 text-2xl font-light text-brand-p0">
@@ -66,7 +66,7 @@ export default function AttentionHero() {
                   key={index}
                   className="flex flex-col items-start justify-start"
                 >
-                  <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
+                  <p className="text-[9px] uppercase font-bold tracking-[0.3em] text-brand-g1">
                     {item.title}
                   </p>
                   <h3 className="h-8 mt-2 text-2xl font-light text-white">
@@ -77,9 +77,9 @@ export default function AttentionHero() {
                   </p>
                 </li>
               ))}
-              <li className="flex-col items-start justify-start hidden">
-                <p className="text-[9px] uppercase font-semibold tracking-[0.3em] text-brand-g1">
-                  status
+              <li className="flex-col items-start justify-start">
+                <p className="text-[9px] uppercase font-bold tracking-[0.3em] text-brand-g1">
+                  2024 status
                 </p>
                 <div className="flex h-10 w-[200px] items-center justify-start">
                   <div className="w-[80%] h-4 mt-3 bg-brand2-base2 rounded-full overflow-hidden">
@@ -108,7 +108,7 @@ export default function AttentionHero() {
                     <span className="font-medium text-brand-g1">
                       {fundsRaisedPercentage}%
                     </span>{" "}
-                    raised
+                    pre-subscribed
                   </p>
                 </motion.div>
               </li>
@@ -128,11 +128,11 @@ export default function AttentionHero() {
         </Left>
         <div className="relative z-10 min-h-[50dvh] md:flex">
           <Image
-            src="/img/hero/hero2.jpg"
+            src="/img/hero/wheelhero.png"
             alt="hero"
             fill
             style={{ objectFit: "cover", objectPosition: "70%" }}
-            className="absolute inset-0 z-20"
+            className="absolute inset-0 z-20 bg-blue-950 saturate-75"
           />
         </div>
       </div>

@@ -253,7 +253,7 @@ export default function DesireEarningsCalculator({}: Props) {
   };
 
   return (
-    <Wrapper className="pt-[5vh] bg-gray-900">
+    <Wrapper className="pt-[5vh] bg-gray-900" id="earnings">
       <InnerWrap className="w-full">
         <div className="flex flex-col w-full p-8 bg-white border rounded-xl border-slate-300">
           <div className="flex flex-col items-center justify-center text-center">

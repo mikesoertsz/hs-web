@@ -35,9 +35,6 @@ export const RegisterForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
         <fieldset className="grid gap-4 p-6 bg-white border rounded-lg">
-          <legend className="px-1 -ml-1 text-sm font-medium text-brand2-base1">
-            Contact Information
-          </legend>
           <FormField
             control={form.control}
             name="name"
@@ -88,6 +85,7 @@ export const RegisterForm = () => {
                     defaultCountry="us"
                     value={phone}
                     onChange={(phone) => setPhone(phone)}
+                    className="w-full"
                   />
                 </FormControl>
                 <FormMessage />
@@ -95,7 +93,12 @@ export const RegisterForm = () => {
             )}
           />
         </fieldset>
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          className="flex w-full py-6 text-md font-semibold"
+        >
+          Register Interest
+        </Button>
       </form>
     </Form>
   );

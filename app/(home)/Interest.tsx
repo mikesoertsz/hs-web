@@ -532,7 +532,7 @@ export function InterestBenefits({}: Props) {
     },
   ];
   return (
-    <Wrapper className="bg-white py-[10vh]">
+    <Wrapper className="bg-white py-[10vh]" id="whyhelmshare">
       <InnerWrap>
         <h1 className="text-5xl tracking-tight font-title text-center md:text-left">
           Why invest in a charter fleet?
