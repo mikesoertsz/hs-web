@@ -8,6 +8,7 @@ import { Drawer } from "@/components/ui/drawer";
 import GoogleAnalytics from "@/components/Analytics";
 import localFont from "next/font/local";
 import { title, title2 } from "@/lib/fonts";
+import { Toaster } from "@/components/ui/sonner";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 // const title = Playfair_Display({
@@ -57,6 +58,7 @@ export default function RootLayout({
             <Footer content={footer} />
           </div>
         </Drawer>
+        <Toaster />
       </body>
     </html>
   );

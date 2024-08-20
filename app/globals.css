@@ -107,6 +107,6 @@
     padding-right: 15px;
   }
   .fillscreen {
-    min-height: calc(100vh - 43px);
+    min-height: calc(95dvh - 43px);
   }
 }
