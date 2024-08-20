@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/supabase/supabase";
 import { toast } from "sonner";
 import { Copy, Share2 } from "react-feather";
+import Confetti from "react-dom-confetti";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
@@ -26,9 +27,21 @@ const formSchema = z.object({
   // contactNumber: z.string().min(1, "Contact number is required."),
 });
 
+const confettiConfig = {
+  angle: 90,
+  spread: 180,
+  startVelocity: 30,
+  elementCount: 200,
+  decay: 0.95,
+  width: "8px",
+  height: "7px",
+  colors: ["#900C3F", "#C70039", "#F94C10", "#F8DE22"],
+};
+
 export const RegisterForm = () => {
   const [phone, setPhone] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,6 +71,7 @@ export const RegisterForm = () => {
         console.log("Data inserted successfully");
         toast.success("Data inserted successfully");
         setIsSubmitted(true);
+        setShowConfetti(true);
       }
     } catch (error: any) {
       console.error("Unexpected error:", error);
@@ -67,6 +81,7 @@ export const RegisterForm = () => {
 
   const resetForm = () => {
     setIsSubmitted(false);
+    setShowConfetti(false);
     form.reset();
   };
 
@@ -77,28 +92,54 @@ export const RegisterForm = () => {
 
   const sharePage = () => {
     if (navigator.share) {
-      navigator.share({
-        title: document.title,
-        url: window.location.href,
-      }).catch((error) => console.error("Error sharing:", error));
+      navigator
+        .share({
+          title: document.title,
+          url: window.location.href,
+        })
+        .catch((error) => console.error("Error sharing:", error));
     } else {
       toast.error("Share not supported on this browser.");
     }
   };
 
+  useEffect(() => {
+    if (isSubmitted) {
+      setShowConfetti(true);
+    }
+  }, [isSubmitted]);
+
   return (
     <Form {...form}>
       {isSubmitted ? (
-        <div className="space-y-3 p-6 bg-white border rounded-lg">
-          <p className="text-center text-lg font-semibold">Submission Successful!</p>
+        <div className="space-y-3 p-4 pt-8 bg-white border rounded-lg">
+          <Confetti active={showConfetti} config={confettiConfig} />
+          <p className="text-center text-lg font-semibold">
+            Submission Successful! 🎉
+          </p>
           <div className="flex justify-center space-x-4">
-            <Button onClick={resetForm} className="text-md font-semibold">
+            <Button
+              onClick={resetForm}
+              className=""
+              variant="secondary"
+              size="sm"
+            >
               Reset Form
             </Button>
-            <Button onClick={sharePage} className="text-md font-semibold">
+            <Button
+              onClick={sharePage}
+              className=""
+              variant="outline"
+              size="sm"
+            >
               Share <Share2 className="ml-2" size={16} />
             </Button>
-            <Button onClick={copyToClipboard} className="text-md font-semibold">
+            <Button
+              onClick={copyToClipboard}
+              className=""
+              variant="outline"
+              size="sm"
+            >
               Copy Link <Copy className="ml-2" size={16} />
             </Button>
           </div>
@@ -126,7 +167,11 @@ export const RegisterForm = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="your@email.com" {...field} />
+                    <Input
+                      type="email"
+                      placeholder="your@email.com"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -42,6 +42,35 @@ export default function Page({}: Props) {
       setLoading(false);
     }
     getData();
+
+    const updateChannel = supabase
+      .channel("custom-update-channel")
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "investor_submissions" },
+        (payload) => {
+          console.log("Change received!", payload);
+          getData(); // Fetch data again on update
+        }
+      )
+      .subscribe();
+
+    const insertChannel = supabase
+      .channel("custom-insert-channel")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "investor_submissions" },
+        (payload) => {
+          console.log("Change received!", payload);
+          getData(); // Fetch data again on insert
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(updateChannel);
+      supabase.removeChannel(insertChannel);
+    };
   }, []);
 
   if (loading) {
