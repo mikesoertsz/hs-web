@@ -689,7 +689,7 @@ export function InterestCorporateStructure({}: Props) {
               {corporatestructure.entities.map((entity, index) => (
                 <TableRow
                   key={index}
-                  className="transition duration-200 ease-in-out hover:bg-slate-50"
+                  className="transition duration-200 ease-in-out hover:bg-slate-50 text-xs md:text-sm"
                 >
                   <TableCell>{entity.title}</TableCell>
                   <TableCell>

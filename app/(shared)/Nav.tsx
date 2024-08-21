@@ -58,40 +58,42 @@ export default function Nav({}: Props) {
       </div>
       <div className="gap-9 text-xs font-medium hidden md:flex"></div>
       <div className="gap-6 items-center justify-center md:flex">
-        {navigation.map((item, index) =>
-          item.subLinks ? (
-            <div key={index} className="relative">
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium"
+        <ul className="items-center justify-center md:flex hidden">
+          {navigation.map((item, index) =>
+            item.subLinks ? (
+              <li key={index} className="relative">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="flex items-center text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium"
+                >
+                  {item.title}
+                  <ChevronDown className="ml-1" size={16} />
+                </button>
+                {isDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg">
+                    {item.subLinks.map((subLink, subIndex) => (
+                      <Link
+                        key={subIndex}
+                        href={subLink.href}
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      >
+                        {subLink.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ) : (
+              <a
+                key={index}
+                href={item.href}
+                className="text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium"
               >
                 {item.title}
-                <ChevronDown className="ml-1" size={16} />
-              </button>
-              {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg">
-                  {item.subLinks.map((subLink, subIndex) => (
-                    <Link
-                      key={subIndex}
-                      href={subLink.href}
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                    >
-                      {subLink.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : (
-            <a
-              key={index}
-              href={item.href}
-              className="text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium"
-            >
-              {item.title}
-            </a>
-          )
-        )}
+              </a>
+            )
+          )}
+        </ul>
         <Button variant="secondary" className="text-xs mr-2 hover:bg-brand2-g3">
           <a href="#register">Register Interest</a>
         </Button>

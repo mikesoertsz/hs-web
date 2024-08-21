@@ -44,11 +44,11 @@ export const RegisterForm = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "Mike Soertsz",
-      email: "mike@helmshare.yachts",
-      location: "Porto, Portugal",
-    },
+    // defaultValues: {
+    //   name: "Mike Soertsz",
+    //   email: "mike@helmshare.yachts",
+    //   location: "Porto, Portugal",
+    // },
   });
 
   const onSubmit = async (data: any) => {
