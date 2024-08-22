@@ -1,5 +1,3 @@
-"use client";
-
 import Breadcrumbs from "@/app/(shared)/Breadcrumbs";
 import React from "react";
 import tw from "tailwind-styled-components";
