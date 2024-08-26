@@ -75,7 +75,9 @@ export default function QualifierForm({}: Props) {
   const checkQualification = (data: z.infer<typeof FormSchema>) => {
     const qualifies = Object.values(data).some((value) => value === true);
     setQualifies(qualifies);
-    setAccredited(qualifies); // Update zustand state based on qualification
+    if (qualifies) {
+      setAccredited(true); // Update zustand state
+    }
   };
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -141,11 +143,10 @@ export default function QualifierForm({}: Props) {
                       checked={field.value === true} // Ensure the value is a boolean
                       onCheckedChange={(checked) => {
                         field.onChange(checked);
-                        const updatedValues = {
+                        checkQualification({
                           ...form.getValues(),
                           [name]: checked,
-                        };
-                        checkQualification(updatedValues); // Update qualification state on switch toggle
+                        }); // Update qualification state on switch toggle
                       }}
                       className="ml-8"
                     />

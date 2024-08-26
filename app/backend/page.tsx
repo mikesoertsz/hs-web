@@ -11,6 +11,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Slider } from "@/components/ui/slider";
+import { InvestmentAmountSlider } from "@/components/forms/investmentamount-slider";
 
 type Props = {};
 
@@ -117,6 +119,9 @@ export default function Page({}: Props) {
                 </TableBody>
               </Table>
             )}
+          </div>
+          <div className="max-w-3xl">
+            <InvestmentAmountSlider />
           </div>
         </InnerWrap>
       </Wrapper>
