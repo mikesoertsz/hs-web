@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
+import { useStore } from "@/lib/store"; // Import the store
 
 type Props = {};
 
@@ -26,6 +27,8 @@ const navigation: NavigationItem[] = [
 ];
 
 export default function Nav({}: Props) {
+  const accredited = useStore((state) => state.accredited); // Get the accredited state
+
   return (
     <nav className="w-full flex justify-between items-center py-2 sticky top-0 left-0 right-0 h-14 overflow-hidden bg-white z-30">
       <div className="relative flex items-center justify-between px-3 pl-6">
@@ -53,7 +56,12 @@ export default function Nav({}: Props) {
             </li>
           ))}
         </ul>
-        <Button variant="secondary" className="text-xs mr-2 hover:bg-brand2-g3">
+        <Button
+          variant="secondary"
+          className={`text-xs mr-2 hover:bg-brand2-g3 ${
+            accredited ? "bg-green-300" : ""
+          }`}
+        >
           <a href="#register">Register Interest</a>
         </Button>
       </div>

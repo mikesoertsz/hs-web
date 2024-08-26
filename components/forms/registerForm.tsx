@@ -69,7 +69,9 @@ export const RegisterForm = () => {
         toast.error("Error inserting data: " + error.message);
       } else {
         console.log("Data inserted successfully");
-        toast.success("Data inserted successfully");
+        toast.success(
+          "We recieved your submission. Check your email for further instructions"
+        );
         setIsSubmitted(true);
         setShowConfetti(true);
       }

@@ -1,86 +1,38 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { toast } from "@/components/ui/use-toast";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Slider } from "@/components/ui/slider";
-import { TitleBlock } from "@/components/ui/titleblock";
 import EarningsCalculatorForm from "@/components/forms/earningsCalculatorForm";
 import QualifierForm from "@/components/forms/qualifierForm";
+import { TitleBlock } from "@/components/ui/titleblock";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { useStore } from "@/lib/store"; // Import the store
+import Image from "next/image";
+import { useEffect, useState } from "react"; // Import useEffect and useState
 
 type QuestionName = "income" | "assets" | "entity" | "license" | "score";
+import Confetti from "react-dom-confetti";
+
+const confettiConfig = {
+  angle: 90,
+  spread: 180,
+  startVelocity: 30,
+  elementCount: 200,
+  decay: 0.95,
+  width: "8px",
+  height: "7px",
+  colors: ["#00CC00", "#00CCCC", "#0066FF", "#66FF66"],
+};
 
 type Props = {};
 
 export function DesireWhoFor({}: Props) {
-  const [qualifies, setQualifies] = useState(false);
-  const FormSchema = z.object({
-    income: z.boolean(),
-    assets: z.boolean(),
-    entity: z.boolean(),
-    license: z.boolean(),
-    score: z.number(),
-  });
+  const accredited = useStore((state) => state.accredited);
+  const [showConfetti, setShowConfetti] = useState(false);
 
-  const questions: {
-    label: string;
-    description: string;
-    name: QuestionName;
-    score: number;
-  }[] = [
-    {
-      label:
-        "Do you earn $200K+ yearly, or $300K+ with your spousal equivalent?",
-      description: "Indicate your annual income level.",
-      name: "income",
-      score: 50,
-    },
-    {
-      label: "Do you have $1M+ in assets, excluding your primary residence?",
-      description: "Indicate if your asset value exceeds $1 million.",
-      name: "assets",
-      score: 50,
-    },
-    {
-      label: "Do you own an entity (i.e., family office) with $5M+ in assets?",
-      description:
-        "Indicate if you own an entity with significant asset value.",
-      name: "entity",
-      score: 50,
-    },
-    {
-      label:
-        "Do you hold a Series 7, 65, or 82 license currently in good standing?",
-      description: "Indicate if you have a valid financial license.",
-      name: "license",
-      score: 50,
-    },
-  ];
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  useEffect(() => {
+    if (accredited) {
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000); // Stop confetti after 5 seconds
+    }
+  }, [accredited]);
 
   const qualifier = {
     header: {
@@ -113,28 +65,31 @@ export function DesireWhoFor({}: Props) {
           <div className="flex p-4">
             <TitleBlock
               preheading={
-                qualifies
+                accredited
                   ? qualifier.qualifiedHeader.preheading
                   : qualifier.header.preheading
               }
               heading={
-                qualifies
+                accredited
                   ? qualifier.qualifiedHeader.heading
                   : qualifier.header.heading
               }
               subheading={
-                qualifies
+                accredited
                   ? qualifier.qualifiedHeader.subheading
                   : qualifier.header.subheading
               }
               body={
-                qualifies
+                accredited
                   ? qualifier.qualifiedHeader.body
                   : qualifier.header.body
               }
               theme="dark"
               orientation="left"
             />
+            <div>
+              <Confetti active={showConfetti} config={confettiConfig} />
+            </div>
           </div>
           <div className="flex flex-col items-center justify-start p-8 bg-white rounded-lg">
             <QualifierForm />

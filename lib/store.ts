@@ -9,14 +9,18 @@ interface PromoCode {
 }
 
 interface StoreState {
+  offerEndDate: number;
   offerEndDateAIBeginner: number;
   setOfferEndDate: (date: number) => void;
   promoCodes: Record<string, PromoCode>;
   getEndDateForPromo: (promoCode: string) => number | null;
+  accredited: boolean;
+  setAccredited: (status: boolean) => void;
 }
 
-export const useStore = create((set, get) => ({
+export const useStore = create<StoreState>((set, get) => ({
   offerEndDateAIBeginner: new Date("Feb 7, 2024 00:00:00").getTime(),
+  offerEndDate: new Date("Feb 7, 2024 00:00:00").getTime(),
   setOfferEndDate: (date: number) => set({ offerEndDate: date }),
   promoCodes: {
     EARLY: {
@@ -49,7 +53,9 @@ export const useStore = create((set, get) => ({
     },
   },
   getEndDateForPromo: (promoCode: string) => {
-    const promo = (get() as StoreState).promoCodes[promoCode.toUpperCase()];
+    const promo = get().promoCodes[promoCode.toUpperCase()];
     return promo ? promo.endDate.getTime() : null;
   },
+  accredited: false,
+  setAccredited: (status: boolean) => set({ accredited: status }),
 }));

@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -8,18 +7,13 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "@/components/ui/use-toast";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { useStore } from "@/lib/store";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Slider } from "@/components/ui/slider";
-import { TitleBlock } from "@/components/ui/titleblock";
-import EarningsCalculatorForm from "@/components/forms/earningsCalculatorForm";
 
 type QuestionName = "income" | "assets" | "entity" | "license" | "score";
 
@@ -27,6 +21,10 @@ type Props = {};
 
 export default function QualifierForm({}: Props) {
   const [qualifies, setQualifies] = useState(false);
+  const { setAccredited } = useStore() as {
+    setAccredited: (value: boolean) => void;
+  };
+
   const FormSchema = z.object({
     income: z.boolean(),
     assets: z.boolean(),
@@ -77,6 +75,7 @@ export default function QualifierForm({}: Props) {
   const checkQualification = (data: z.infer<typeof FormSchema>) => {
     const qualifies = Object.values(data).some((value) => value === true);
     setQualifies(qualifies);
+    setAccredited(qualifies); // Update zustand state based on qualification
   };
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -142,10 +141,11 @@ export default function QualifierForm({}: Props) {
                       checked={field.value === true} // Ensure the value is a boolean
                       onCheckedChange={(checked) => {
                         field.onChange(checked);
-                        checkQualification({
+                        const updatedValues = {
                           ...form.getValues(),
                           [name]: checked,
-                        }); // Update qualification state on switch toggle
+                        };
+                        checkQualification(updatedValues); // Update qualification state on switch toggle
                       }}
                       className="ml-8"
                     />
