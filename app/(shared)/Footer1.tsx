@@ -1,4 +1,4 @@
-import { Wrapper } from "@/lib/atoms";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
 import Link from "next/link";
 import tw from "tailwind-styled-components";
 
@@ -33,55 +33,27 @@ type Props = {
   };
 };
 
-export const footer = {
-  text: {
-    title: "HelmShare",
-    subtitle: "",
-    description: "",
-    trademark: "All rights reserved.",
-    drifter: {
-      title: "Drifter",
-      url: "https://www.drifter.agency",
-    },
-  },
-  links: [
-    // {
-    //   text: "Jobs",
-    //   url: "/jobs",
-    // },
-    {
-      text: "Terms",
-      url: "/legal/terms",
-    },
-    {
-      text: "Refunds",
-      url: "/legal/refunds",
-    },
-    {
-      text: "Privacy",
-      url: "/legal/privacy",
-    },
-    {
-      text: "GDPR",
-      url: "/legal/gdpr",
-    },
-  ],
-};
-
 const Description = tw.span`text-xs text-gray-500 dark:text-gray-500 sm:text-center mr-1`;
-export default function Footer() {
+export default function Footer({ content }: Footer) {
   return (
-    <Wrapper className="border border-t-2 border-slate-100">
-      <div className="grid w-full grid-cols-1 px-4 text-xs text-gray-400 md:grid-cols-3 h-[40px] items-center py-4 gap-4 lg:py-0">
+    <Wrapper className="p-0 px-4 py-3 border border-t-2 border-slate-100">
+      <div className="grid w-full grid-cols-1 px-4 text-xs text-gray-500 md:grid-cols-3">
         <div className="flex flex-row items-center justify-center w-full md:justify-start md:items-start group">
+          {/* <Image
+              src="/img/logo_drifter_icon.svg"
+              alt=""
+              className="mb-2 img-responsive h-9 w-9"
+              width={15}
+              height={15}
+            /> */}
           <Description>
-            {footer.text.title} &copy;{new Date().getFullYear()}.
+            {content.text.title} &copy;{new Date().getFullYear()}.
           </Description>
-          <p>{footer.text.trademark}</p>
+          <p>{content.text.trademark}</p>
         </div>
-        <div className="items-center justify-center hidden w-full mx-auto md:flex ">
+        <div className="flex items-center justify-center w-full mx-auto ">
           <ul className="flex flex-row items-center justify-center gap-1 my-2 md:my-0">
-            {footer.links?.map((link, index) => (
+            {content.links?.map((link, index) => (
               <li key={index}>
                 <Link
                   href={link.url}
@@ -93,7 +65,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="items-center justify-center hidden md:flex md:justify-end">
+        <div className="flex items-center justify-center md:justify-end">
           <p>
             A{" "}
             <a

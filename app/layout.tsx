@@ -1,7 +1,7 @@
 import { footer } from "@/public/content/en";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import Footer from "./(shared)/Footer";
+import Footer from "./(shared)/Footer1";
 import Nav from "./(shared)/Nav";
 import "./globals.css";
 import { Drawer } from "@/components/ui/drawer";
