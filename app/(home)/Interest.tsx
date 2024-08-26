@@ -429,9 +429,9 @@ export function InterestMarket({}: Props) {
       preheader: "",
       heading: "Charter Market Overview",
       subheading: "Charter Market Overview",
-      body: "The charter industry has shown remarkable growth and resilience over the past decade, with a steady CAGR of 5.4% from 2018 to 2023. Looking ahead, the industry is projected to continue its robust expansion, with an impressive forecasted CAGR as markets rebound & recover from recent turmiol.",
+      body: "The charter industry has shown remarkable growth and resilience over the past decade, with a steady CAGR of 5.4% from 2018 to 2023. Looking ahead, the industry is projected to continue its robust expansion, with an impressive forecasted CAGR as markets rebound & recover from recent turmoil.",
       description:
-        "The charter industry has shown remarkable growth and resilience over the past decade, with a steady CAGR of 5.4% from 2018 to 2023. Looking ahead, the industry is projected to continue its robust expansion, with an impressive forecasted CAGR as markets rebound & recover from recent turmiol.",
+        "The charter industry has shown remarkable growth and resilience over the past decade, with a steady CAGR of 5.4% from 2018 to 2023. Looking ahead, the industry is projected to continue its robust expansion, with an impressive forecasted CAGR as markets rebound & recover from recent turmoil.",
     },
     content: [
       {
