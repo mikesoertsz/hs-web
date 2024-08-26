@@ -1,7 +1,6 @@
-import Image from "next/image";
-import { cva, type VariantProps } from "class-variance-authority";
-import type { Titles } from "../../lib/types";
 import { Body, Heading, PreHeading, SubHeading } from "@/lib/atoms";
+import { cva } from "class-variance-authority";
+import type { Titles } from "../../lib/types";
 
 const titleStyles = cva("flex w-full max-w-3xl", {
   variants: {
@@ -10,8 +9,9 @@ const titleStyles = cva("flex w-full max-w-3xl", {
       dark: "text-white",
     },
     orientation: {
-      center: "flex-col items-center justify-center w-full text-center",
-      left: "flex-col items-start justify-start w-full text-left",
+      center:
+        "flex-col items-center justify-center w-full text-center gap-2 mb-6",
+      left: "flex-col items-start justify-start w-full text-left gap-2",
     },
   },
   compoundVariants: [
@@ -73,7 +73,6 @@ export function TitleBlock({
 
   return (
     <div className={titleStyles({ theme, orientation })}>
-      {/* Conditional rendering and styling for PreHeading and Body based on theme */}
       {preheading && (
         <PreHeading
           className={theme === "dark" ? darkModeStyles.preHeading : ""}
@@ -81,7 +80,11 @@ export function TitleBlock({
           {preheading}
         </PreHeading>
       )}
-      {heading && <Heading className="">{heading}</Heading>}
+      {heading && (
+        <Heading className="font-newsreader text-4xl md:text-[2.5em] font-medium tracking-tight">
+          {heading}
+        </Heading>
+      )}
       {subheading && <SubHeading>{subheading}</SubHeading>}
       {body && (
         <Body className={theme === "dark" ? darkModeStyles.body : ""}>

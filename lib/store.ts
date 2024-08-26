@@ -16,6 +16,8 @@ interface StoreState {
   getEndDateForPromo: (promoCode: string) => number | null;
   accredited: boolean;
   setAccredited: (status: boolean) => void;
+  investmentAmount: number;
+  setInvestmentAmount: (amount: number) => void;
 }
 
 export const useStore = create<StoreState>((set, get) => ({
@@ -58,4 +60,6 @@ export const useStore = create<StoreState>((set, get) => ({
   },
   accredited: false,
   setAccredited: (status: boolean) => set({ accredited: status }),
+  investmentAmount: 100000,
+  setInvestmentAmount: (amount: number) => set({ investmentAmount: amount }),
 }));

@@ -3,9 +3,9 @@ import EarningsCalculatorForm from "@/components/forms/earningsCalculatorForm";
 import QualifierForm from "@/components/forms/qualifierForm";
 import { TitleBlock } from "@/components/ui/titleblock";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
-import { useStore } from "@/lib/store"; // Import the store
+import { useStore } from "@/lib/store";
 import Image from "next/image";
-import { useEffect, useState } from "react"; // Import useEffect and useState
+import { useEffect, useState } from "react";
 
 type QuestionName = "income" | "assets" | "entity" | "license" | "score";
 import Confetti from "react-dom-confetti";
@@ -30,7 +30,7 @@ export function DesireWhoFor({}: Props) {
   useEffect(() => {
     if (accredited) {
       setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 5000); // Stop confetti after 5 seconds
+      setTimeout(() => setShowConfetti(false), 5000);
     }
   }, [accredited]);
 
@@ -44,7 +44,7 @@ export function DesireWhoFor({}: Props) {
       image: "",
     },
     qualifiedHeader: {
-      preheading: "Congratulations!",
+      preheading: "🎉 Congratulations!",
       heading: "You Qualify",
       subheading: "",
       body: (

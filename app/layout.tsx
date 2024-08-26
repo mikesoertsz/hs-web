@@ -1,37 +1,23 @@
+import GoogleAnalytics from "@/components/Analytics";
+import { Drawer } from "@/components/ui/drawer";
+import { Toaster } from "@/components/ui/sonner";
+import { body, newsreader, title } from "@/lib/fonts";
 import { footer } from "@/public/content/en";
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import Footer from "./(shared)/Footer1";
 import Nav from "./(shared)/Nav";
 import "./globals.css";
-import { Drawer } from "@/components/ui/drawer";
-import GoogleAnalytics from "@/components/Analytics";
-import localFont from "next/font/local";
-import { title, title2 } from "@/lib/fonts";
-import { Toaster } from "@/components/ui/sonner";
-
-const body = Inter({ subsets: ["latin"], variable: "--font-body" });
-// const title = Playfair_Display({
-//   subsets: ["latin"],
-//   variable: "--font-title",
-// });
-// const title = localFont({
-//   src: "../public/font/glastone.woff2",
-//   variable: "--font-title",
-//   weight: "400",
-//   display: "swap",
-// });
 
 export const metadata: Metadata = {
   title: "HelmShare.yachts | Private market alternative asset fund.",
   description: "Invest in alternative assets with guaranteed 8% yield.",
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true,
     googleBot: {
       index: true,
-      follow: false,
+      follow: true,
       noimageindex: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
@@ -49,7 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <GoogleAnalytics GA_MEASUREMENT_ID="G-G4BPMB4NGH" />
       <body
-        className={`${body.className} ${title.variable} ${title2.variable} relative scroll-smooth z-0 antialiased`}
+        className={`${newsreader.variable} ${body.className} ${title.variable} relative scroll-smooth z-0 antialiased`}
       >
         <Drawer>
           <div className="fillscreen">

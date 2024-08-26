@@ -21,7 +21,7 @@ const config = {
       fontFamily: {
         body: "var(--font-body)",
         title: ["var(--font-title)", "serif"],
-        title2: ["var(--font-title2)", "serif"],
+        newsreader: ["var(--font-newsreader)", "serif"],
       },
       colors: {
         brand: {

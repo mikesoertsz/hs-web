@@ -1,37 +1,40 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
+import { useStore } from "@/lib/store"; // Import the store
 import tw from "tailwind-styled-components";
 
-const EarningsCalculatorForm: React.FC = () => {
+type SliderProps = React.ComponentProps<typeof Slider>;
+
+export default function EarningsCalculatorForm({ ...props }: SliderProps) {
   const guaranteedAnnualReturnRate = 0.08;
   const projectedTargetReturnRate = 0.113;
   const termYears = 6;
   const minInvestment = 100000;
   const maxInvestment = 1000000;
 
-  const [investmentAmount, setInvestmentAmount] =
-    useState<number>(minInvestment);
-  const [quarterlyPayout, setQuarterlyPayout] = useState<number>(
-    (minInvestment * guaranteedAnnualReturnRate) / 4
-  );
-  const [annualPayout, setAnnualPayout] = useState<number>(
-    minInvestment * guaranteedAnnualReturnRate
-  );
-  const [endOfTermBonus, setEndOfTermBonus] = useState<number>(
-    minInvestment *
-      (projectedTargetReturnRate - guaranteedAnnualReturnRate) *
-      termYears
-  );
-  const [totalYieldOnCapital, setTotalYieldOnCapital] = useState<number>(
-    minInvestment * guaranteedAnnualReturnRate * termYears +
-      minInvestment *
-        (projectedTargetReturnRate - guaranteedAnnualReturnRate) *
-        termYears
-  );
+  const investmentAmount = useStore((state) => state.investmentAmount);
+  const setInvestmentAmount = useStore((state) => state.setInvestmentAmount);
 
-  const calculatePayouts = (amount: number) => {
+  const [investmentDetails, setInvestmentDetails] = useState(() => {
+    const quarterly = (investmentAmount * guaranteedAnnualReturnRate) / 4;
+    const annual = investmentAmount * guaranteedAnnualReturnRate;
+    const bonus =
+      investmentAmount *
+      (projectedTargetReturnRate - guaranteedAnnualReturnRate) *
+      termYears;
+    const totalYield = annual * termYears + bonus;
+
+    return {
+      quarterlyPayout: quarterly,
+      annualPayout: annual,
+      endOfTermBonus: bonus,
+      totalYieldOnCapital: totalYield,
+    };
+  });
+
+  const calculateInvestmentDetails = (amount: number) => {
     const quarterly = (amount * guaranteedAnnualReturnRate) / 4;
     const annual = amount * guaranteedAnnualReturnRate;
     const bonus =
@@ -40,29 +43,36 @@ const EarningsCalculatorForm: React.FC = () => {
       termYears;
     const totalYield = annual * termYears + bonus;
 
-    setQuarterlyPayout(quarterly);
-    setAnnualPayout(annual);
-    setEndOfTermBonus(bonus);
-    setTotalYieldOnCapital(totalYield);
+    return {
+      quarterlyPayout: quarterly,
+      annualPayout: annual,
+      endOfTermBonus: bonus,
+      totalYieldOnCapital: totalYield,
+    };
   };
+
+  useEffect(() => {
+    setInvestmentDetails(calculateInvestmentDetails(investmentAmount));
+  }, [investmentAmount]);
 
   const handleSliderChange = (values: number[]) => {
     const amount = values[0];
     setInvestmentAmount(amount);
-    calculatePayouts(amount);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+    const value = e.target.value.replace(/[^0-9]/g, "");
     const amount = parseFloat(value);
     if (!isNaN(amount)) {
       setInvestmentAmount(amount);
-      calculatePayouts(amount);
     }
   };
 
   const Left = tw.div`flex flex-col items-center justify-center gap-2`;
   const Right = tw.div`flex flex-col items-center justify-center gap-2 bg-white rounded-lg border border-slate-300 shadow-md`;
+
+  const { quarterlyPayout, annualPayout, endOfTermBonus, totalYieldOnCapital } =
+    investmentDetails;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 p-4 rounded-lg bg-slate-100 mt-4">
@@ -79,7 +89,8 @@ const EarningsCalculatorForm: React.FC = () => {
             max={maxInvestment}
             step={25000}
             onValueChange={handleSliderChange}
-            draggable // Enable dragging
+            {...props}
+            onMouseDown={(e) => e.stopPropagation()} // Prevent deselect on mouse down
           />
           <Input
             type="text"
@@ -167,6 +178,4 @@ const EarningsCalculatorForm: React.FC = () => {
       </Right>
     </div>
   );
-};
-
-export default EarningsCalculatorForm;
+}

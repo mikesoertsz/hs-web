@@ -534,9 +534,11 @@ export function InterestBenefits({}: Props) {
   return (
     <Wrapper className="bg-white py-[10vh]" id="whyhelmshare">
       <InnerWrap>
-        <h1 className="text-5xl tracking-tight font-title text-center md:text-left">
-          Why invest in a charter fleet?
-        </h1>
+        <TitleBlock
+          heading="Why invest in a charter fleet?"
+          theme="light"
+          orientation="center"
+        />
         <div className="grid w-full grid-cols-1 gap-4 pt-8 mt-12 md:grid-cols-3">
           <ul className="flex flex-col items-center justify-center w-full gap-4">
             {benefits.slice(0, 3).map((item, index) => (
@@ -663,14 +665,12 @@ export function InterestCorporateStructure({}: Props) {
     <Wrapper className="my-[10vh]">
       <InnerWrap>
         <div className="flex flex-col w-full p-8 bg-white border rounded-2xl border-slate-200">
-          <div className="flex h-full pb-8 pl-2">
-            <TitleBlock
-              heading={corporatestructure.header.heading}
-              subheading={corporatestructure.header.subheading}
-              theme="light"
-              orientation="left"
-            />
-          </div>
+          <TitleBlock
+            heading={corporatestructure.header.heading}
+            subheading={corporatestructure.header.subheading}
+            theme="light"
+            orientation="center"
+          />
           <Table>
             <TableCaption>
               <Badge variant="secondary">

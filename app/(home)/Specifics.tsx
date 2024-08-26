@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { TitleBlock } from "@/components/ui/titleblock";
 import {
   Tooltip,
   TooltipContent,
@@ -124,20 +125,21 @@ export function InvestmentSpecifics() {
   return (
     <Wrapper className="hidden py-8 border-t bg-slate-100 border-slate-200 lg:flex">
       <InnerWrap>
-        <div className="flex flex-col items-center justify-center my-12 text-center">
-          <p className="uppercase text-[11px] tracking-[0.2em] font-medium text-brand-p1">
-            fund details
-          </p>
-          <h1 className="my-3 text-5xl font-medium tracking-tight font-title">
-            Investment Specifics
-          </h1>
-          <h4 className="mt-4 text-center max-w-prose">
-            Our fund offers a unique opportunity to invest in a diversified
-            fleet of charter yachts, with a focus on the lucrative and growing
-            Seychelles market. Our investment strategy is designed to provide a
-            secure, stable-yield income stream over a 6 year term.
-          </h4>
-        </div>
+        <TitleBlock
+          preheading="fund details"
+          heading="Investment Specifics"
+          subheading=""
+          body={
+            <>
+              Our fund offers a unique opportunity to invest in a diversified
+              fleet of charter yachts, with a focus on the lucrative and growing
+              Seychelles market. Our investment strategy is designed to provide
+              a secure, stable-yield income stream over a 6 year term.
+            </>
+          }
+          theme="light"
+          orientation="center"
+        />
         <ul className="grid w-full grid-cols-2 gap-4 mt-1 md:grid-cols-4">
           {specifics.map((item, index) => (
             <li
