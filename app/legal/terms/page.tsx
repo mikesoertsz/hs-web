@@ -7,15 +7,15 @@ type legal = {
   content?: string;
 }[];
 
-export default function page() {
-  const Wrapper = tw.div`flex flex-col text-center items-start justify-center px-10 mx-auto text-left max-w-prose py-24`;
-  const Preheading = tw.h4`uppercase tracking-[2px] text-xs font-medium pt-4 text-left text-gray-700`;
-  const Heading = tw.h1`text-3xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl`;
-  const SubHeading = tw.h2`text-md font-medium text-gray-900 pt-3`;
-  const Body = tw.div`mt-1 max-w-prose text-left text-xs text-gray-800 leading-relaxed tracking-wide`;
-  const ColWrapper = tw.div`flex flex-row w-full mx-auto gap-10`;
-  const LeftNav = tw.div`hidden sticky top-0 lg:block lg:col-span-3 xl:col-span-2`;
+const Wrapper = tw.div`flex flex-col text-center items-start justify-center px-10 mx-auto text-left max-w-prose py-24`;
+const Preheading = tw.h4`uppercase tracking-[2px] text-xs font-medium pt-4 text-left text-gray-700`;
+const Heading = tw.h1`text-3xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl`;
+const SubHeading = tw.h2`text-md font-medium text-gray-900 pt-3`;
+const Body = tw.div`mt-1 max-w-prose text-left text-xs text-gray-800 leading-relaxed tracking-wide`;
+const ColWrapper = tw.div`flex flex-row w-full mx-auto gap-10`;
+const LeftNav = tw.div`hidden sticky top-0 lg:block lg:col-span-3 xl:col-span-2`;
 
+export default function page() {
   return (
     <section className="flex flex-col w-full mx-auto">
       <Breadcrumbs content={breadcrumbs} />
