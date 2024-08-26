@@ -93,7 +93,9 @@ export default function EarningsStatement({}: Props) {
         </div>
       </div>
       <div className="p-6 border rounded-lg flex w-full flex-col">
-        <h3 className="text-md text-brand-g1 mb-4">End of Term Yields</h3>
+        <h3 className="text-md text-brand-g1 mb-4">
+          Cumulated End of Term Yields
+        </h3>
         <div className="flex justify-between">
           <h3 className="text-lg font-semibold">
             Guaranteed <span className="font-normal">Yield-on-Capital</span>

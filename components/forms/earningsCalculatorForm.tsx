@@ -18,6 +18,8 @@ import { z } from "zod";
 import EarningsStatement from "../ui/earnings-statement";
 import { toast } from "sonner"; // Import sonner
 import { Slider } from "@nextui-org/slider";
+import { PiSpinnerGapLight } from "react-icons/pi";
+import { useState } from "react";
 
 const FormSchema = z.object({
   investmentAmount: z
@@ -29,6 +31,7 @@ const FormSchema = z.object({
 export default function EarningsCalculatorForm() {
   const investmentAmount = useStore((state) => state.investmentAmount);
   const setInvestmentAmount = useStore((state) => state.setInvestmentAmount);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -38,8 +41,12 @@ export default function EarningsCalculatorForm() {
   });
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    setInvestmentAmount(data.investmentAmount);
-    toast.success(`Investment amount set to: ${data.investmentAmount}`);
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setInvestmentAmount(data.investmentAmount);
+      toast.success(`Investment amount set to: ${data.investmentAmount}`);
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   const Left = tw.div`flex flex-col items-center justify-center gap-2`;
@@ -65,12 +72,12 @@ export default function EarningsCalculatorForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div className="flex flex-row items-center gap-4 my-8">
+                    <div className="flex flex-row items-center justify-between w-full gap-4 my-8">
                       <Slider
                         step={25000}
                         size="lg"
                         classNames={{
-                          base: "max-w-md gap-3 bg-slate-300 rounded-full border border-slate-300 p-0",
+                          base: "max-w-md gap-3 bg-slate-300 rounded-full border border-slate-300 p-0 flex",
                           track: "ml-1",
                           filler: "bg-gray-900",
                         }}
@@ -94,24 +101,41 @@ export default function EarningsCalculatorForm() {
                         value={field.value}
                         onChange={(e) => field.onChange(Number(e.target.value))}
                       />
-                      <div className="text-3xl">
-                        {field.value.toLocaleString("en-US", {
+                      <div className="text-2xl font-semibold tracking-tight flex items-center justify-end text-right">
+                        {field.value.toLocaleString("en-EU", {
                           style: "currency",
-                          currency: "USD",
+                          currency: "EUR",
                           minimumFractionDigits: 0,
                           maximumFractionDigits: 0,
                         })}
                       </div>
                     </div>
                   </FormControl>
-                  <FormDescription className="flex w-full text-center items-center justify-center mt-6">
-                    Minimum investment USD100,000
-                  </FormDescription>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <div className="flex flex-col w-full items-center justify-center">
+              <Button
+                type="submit"
+                size="lg"
+                className="rounded-full px-4 mb-2 flex items-center justify-center min-w-[150px]"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <PiSpinnerGapLight
+                    className="animate-spin text-gray-100"
+                    size={20}
+                  />
+                ) : (
+                  "Re-Calculate"
+                )}
+              </Button>
+              <p className="flex opacity-60 w-full text-center items-center justify-center text-xs">
+                Minimum investment USD100,000
+              </p>
+            </div>
           </form>
         </Form>
       </Left>
