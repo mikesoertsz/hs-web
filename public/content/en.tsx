@@ -104,6 +104,7 @@ export const banners = {
 };
 
 export const homepage = {
+  
   interest: {
     // disclaimer: {
     //   terms: [

@@ -100,27 +100,6 @@ export function DesireWhoFor({}: Props) {
   );
 }
 
-export default function DesireEarningsCalculator({}: Props) {
-  return (
-    <Wrapper className="pt-[5vh] bg-gray-900" id="earnings">
-      <InnerWrap className="w-full">
-        <div className="flex flex-col w-full p-8 bg-white border rounded-xl border-slate-300">
-          <div className="flex flex-col items-center justify-center text-center">
-            <TitleBlock
-              preheading="How much you earn"
-              heading="Earnings Projection"
-              subheading="Use the calculator below to see your guaranteed and projected earnings."
-              theme="light"
-              orientation="center"
-            />
-          </div>
-          <EarningsCalculatorForm />
-        </div>
-      </InnerWrap>
-    </Wrapper>
-  );
-}
-
 export function DesireSeychelles() {
   return (
     <Wrapper className="min-h-[400px] relative">

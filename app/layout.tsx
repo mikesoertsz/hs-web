@@ -41,7 +41,7 @@ export default function RootLayout({
           <div className="fillscreen">
             <Nav />
             {children}
-            <Footer content={footer} />
+            <Footer />
           </div>
         </Drawer>
         <Toaster />

@@ -1,27 +1,25 @@
 import { homepage } from "@/public/content/en";
 import FAQ from "../(shared)/FAQ";
+import ImageWide from "../(shared)/ImageWide";
 import ActionCTA from "./Action";
 import AttentionHero, {
   AttentionDetailsBar,
   AttentionStinger,
 } from "./Attention";
-import DesireEarningsCalculator, {
-  DesireSeychelles,
-  DesireWhoFor,
-} from "./Desire";
+import { DesireSeychelles, DesireWhoFor } from "./Desire";
 import Disclaimer from "./Disclaimer";
+import EarningsCalculator from "./earnings-calculator";
 import {
   InterestAssetDistribution,
   InterestBenefits,
   InterestCorporateStructure,
   InterestHowGuaranteed,
   InterestHowItWorks,
+  InterestMarket,
   InterestPremise,
   InterestStrategy,
-  InterestMarket,
 } from "./Interest";
 import { InvestmentSpecifics } from "./Specifics";
-import ImageWide from "../(shared)/ImageWide";
 
 export default function Home() {
   return (
@@ -40,7 +38,7 @@ export default function Home() {
       <InterestAssetDistribution />
       <DesireSeychelles />
       <DesireWhoFor />
-      <DesireEarningsCalculator />
+      <EarningsCalculator />
       <ActionCTA />
       <FAQ {...homepage.desire} />
       <Disclaimer />
