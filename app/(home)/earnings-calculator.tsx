@@ -186,7 +186,7 @@ export default function EarningsCalculator({}: Props) {
                       )}
                     </Button>
                     <p className="flex opacity-60 w-full text-center items-center justify-center text-xs">
-                      Minimum investment USD100,000
+                      Minimum investment €100,000
                     </p>
                   </div>
                 </form>
