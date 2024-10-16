@@ -104,7 +104,7 @@ export function InvestmentSpecifics() {
         {
           label: "Estimated Fund Size",
           description: "Total projected fund capitalization.",
-          value: "$ 5M",
+          value: "€ 5M",
           icon: "",
         },
         {

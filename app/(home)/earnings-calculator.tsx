@@ -201,7 +201,7 @@ export default function EarningsCalculator({}: Props) {
                     <sup className="pl-1 text-green-600">2%</sup>
                   </h3>
                   <p className="text-right">
-                    ${Math.round(quarterlyPayout).toLocaleString()}
+                    €{Math.round(quarterlyPayout).toLocaleString()}
                   </p>
                 </div>
                 <div className="flex justify-between mt-4">
@@ -212,7 +212,7 @@ export default function EarningsCalculator({}: Props) {
                     }%`}</sup>
                   </h3>
                   <p className="text-right">
-                    ${Math.round(annualPayout).toLocaleString()}
+                    €{Math.round(annualPayout).toLocaleString()}
                   </p>
                 </div>
                 <div className="flex justify-between py-1 mt-3">
@@ -223,7 +223,7 @@ export default function EarningsCalculator({}: Props) {
                     </sup>
                   </p>
                   <p className="text-right">
-                    ${Math.round(endOfTermBonus).toLocaleString()}
+                    €{Math.round(endOfTermBonus).toLocaleString()}
                   </p>
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function EarningsCalculator({}: Props) {
                     <span className="font-normal">Yield-on-Capital</span>
                   </h3>
                   <p className="text-lg font-semibold text-right">
-                    $
+                    €
                     {Math.round(
                       guaranteedAnnualReturnRate * investmentAmount * termYears
                     ).toLocaleString()}
@@ -249,7 +249,7 @@ export default function EarningsCalculator({}: Props) {
                     <span className="font-normal">Yield-on-Capital</span>
                   </h3>
                   <p className="text-lg font-semibold text-right">
-                    ${Math.round(totalYieldOnCapital).toLocaleString()}
+                    €{Math.round(totalYieldOnCapital).toLocaleString()}
                   </p>
                 </div>
               </div>

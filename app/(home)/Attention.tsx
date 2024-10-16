@@ -121,7 +121,7 @@ export default function AttentionHero() {
               </button>
 
               <p className="mt-1 text-xs text-gray-400">
-                Accepting $100,000 - $1,000,000 investments
+                Accepting €100,000 - €1,000,000 investments
               </p>
             </div>
           </div>
@@ -190,8 +190,8 @@ export function AttentionDetailsBar() {
     },
     {
       pretitle: "ticket size",
-      title: "$100,000",
-      description: "Investment entry at $100k minimum.",
+      title: "€100,000",
+      description: "Investment entry at €100k minimum.",
       icon: "",
       value: "",
     },
