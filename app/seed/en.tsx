@@ -7,18 +7,18 @@ export const seed_page = {
         "Be at the forefront of a groundbreaking venture that aims to reshape the financial landscape.",
       buttonText: "Invest Now",
       buttonLink: "#invest",
-      investmentRange: "Target Raise: $100,000",
-      imageSrc: "/img/hero/seedround.png",
+      investmentRange: "Target Raise: €100,000",
+      imageSrc: "/img/hero/hero-seed.png",
       imageAlt: "hero",
       stats: [
         {
           title: "Target Raise",
-          value: "$100,000",
+          value: "€100,000",
           subtitle: "Debt Note",
         },
         {
           title: "Return on Investment",
-          value: "16%",
+          value: "18%",
           subtitle: "Fixed Returns",
         },
       ],
@@ -36,7 +36,7 @@ export const seed_page = {
     questions: [
       {
         question: "What is the minimum investment amount?",
-        answer: "The minimum investment amount for our seed round is $10,000.",
+        answer: "The minimum investment amount for our seed round is €10,000.",
         value: "1",
       },
       {
@@ -48,7 +48,7 @@ export const seed_page = {
       {
         question: "What is the expected return on investment?",
         answer:
-          "You will receive your principal investment back along with a 16% interest payment upon reaching our fund milestone of $5 million.",
+          "You will receive your principal investment back along with a 18% interest payment upon reaching our fund milestone of €5 million.",
         value: "3",
       },
       {

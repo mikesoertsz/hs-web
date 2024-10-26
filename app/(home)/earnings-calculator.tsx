@@ -18,7 +18,7 @@ export default function EarningsCalculator() {
     termYears: 6,
   };
 
-  const calculateReturns = (investmentAmount) => {
+  const calculateReturns = (investmentAmount: number) => {
     const newAdjustedAmount = Math.round(investmentAmount / 25000) * 25000;
     setAdjustedAmount(newAdjustedAmount);
 

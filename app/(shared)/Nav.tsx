@@ -14,15 +14,15 @@ type NavigationItem = {
 const navigation: NavigationItem[] = [
   {
     title: "Why Helmshare",
-    href: "#whyhelmshare",
+    href: "/#whyhelmshare",
   },
   {
     title: "How It Works",
-    href: "#howitworks",
+    href: "/#howitworks",
   },
   {
     title: "Earnings",
-    href: "#earnings",
+    href: "/#earnings",
   },
 ];
 

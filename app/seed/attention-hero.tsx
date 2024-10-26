@@ -37,7 +37,9 @@ export default function AttentionHero({ hero }: HeroProps) {
                 </a>
               </button>
 
-              <p className="mt-1 text-xs text-gray-400">{hero.investmentRange}</p>
+              <p className="mt-1 text-xs text-gray-400">
+                {hero.investmentRange}
+              </p>
             </div>
           </div>
         </Left>
@@ -47,7 +49,7 @@ export default function AttentionHero({ hero }: HeroProps) {
             alt={hero.imageAlt}
             fill
             style={{ objectFit: "cover", objectPosition: "70%" }}
-            className="absolute inset-0 z-20 bg-blue-950 saturate-75"
+            className="absolute inset-0 z-20 bg-blue-950 saturate-50"
           />
         </div>
       </div>

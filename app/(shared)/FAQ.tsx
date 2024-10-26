@@ -12,7 +12,7 @@ import { TitleBlock } from "@/components/ui/titleblock";
 
 export default function FAQ({ faq }: Desire) {
   return (
-    <Wrapper id="faqs" className=" pt-[5vh]">
+    <Wrapper id="faqs" className="py-[5vh]">
       <InnerWrap className="flex max-w-4xl">
         <TitleBlock
           preheading=""
@@ -45,10 +45,9 @@ export default function FAQ({ faq }: Desire) {
         <p className="text-xs tect-gray-400 mt-9">
           For a more comprehensive list of FAQs,{" "}
           <a
-            href="/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline duration-200 ease-in-out hover:text-blue-700 tranistion"
+            href="/path/to/faq.pdf"
+            download
+            className="underline duration-200 ease-in-out hover:text-blue-700 transition"
           >
             please download here
           </a>
