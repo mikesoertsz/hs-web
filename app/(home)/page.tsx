@@ -23,7 +23,7 @@ import { InvestmentSpecifics } from "./Specifics";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center mx-auto fillscreen bg-slate-100 antialiased">
+    <main className="flex flex-col items-center justify-center mx-auto fillscreen bg-slate-100 subpixel-antialiased">
       <AttentionHero />
       <AttentionDetailsBar />
       <InterestPremise />

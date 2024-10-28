@@ -21,7 +21,7 @@ export default function SeedDetails({}: Props) {
 
         terms: [
           {
-            label: "Investment Ticket",
+            label: "Round Size",
             value: "€100,000",
           },
           {

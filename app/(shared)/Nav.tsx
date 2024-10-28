@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
 import { useStore } from "@/lib/store"; // Import the store
+import Link from "next/link";
 
 type Props = {};
 
@@ -33,13 +34,15 @@ export default function Nav({}: Props) {
     <nav className="w-full flex justify-between items-center py-2 sticky top-0 left-0 right-0 h-14 overflow-hidden bg-white z-30">
       <div className="relative flex items-center justify-between px-3 pl-6">
         <div className="flex w-[400px] py-1">
-          <Image
-            src="/img/logowide.svg"
-            alt="helmshare logo wide version"
-            width={170}
-            height={70}
-            className=""
-          />
+          <Link href="/">
+            <Image
+              src="/img/logowide.svg"
+              alt="helmshare logo wide version"
+              width={170}
+              height={70}
+              className=""
+            />
+          </Link>
         </div>
       </div>
       <div className="gap-9 text-xs font-medium hidden md:flex"></div>

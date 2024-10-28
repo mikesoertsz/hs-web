@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -10,9 +10,10 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { PhoneInput } from "react-international-phone";
+import { Switch } from "@/components/ui/switch";
 import "react-international-phone/style.css";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/supabase/supabase";
@@ -24,7 +25,7 @@ const formSchema = z.object({
   name: z.string().min(1, "Name is required."),
   email: z.string().email("Invalid email address."),
   location: z.string().min(1, "Location is required."),
-  // contactNumber: z.string().min(1, "Contact number is required."),
+  accredited_investor: z.boolean().default(false).optional(),
 });
 
 const confettiConfig = {
@@ -44,11 +45,6 @@ export const RegisterForm = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
-    // defaultValues: {
-    //   name: "Mike Soertsz",
-    //   email: "mike@helmshare.yachts",
-    //   location: "Porto, Portugal",
-    // },
   });
 
   const onSubmit = async (data: any) => {
@@ -58,7 +54,7 @@ export const RegisterForm = () => {
           name: data.name,
           email: data.email,
           location: data.location,
-          // contactNumber: data.contactNumber,
+          accredited_investor: data.accredited_investor,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         },
@@ -70,7 +66,7 @@ export const RegisterForm = () => {
       } else {
         console.log("Data inserted successfully");
         toast.success(
-          "We recieved your submission. Check your email for further instructions"
+          "We received your submission. Check your email for further instructions"
         );
         setIsSubmitted(true);
         setShowConfetti(true);
@@ -154,9 +150,9 @@ export const RegisterForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>FullName</FormLabel>
                   <FormControl>
-                    <Input placeholder="Name" {...field} />
+                    <Input placeholder="Your full name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -192,28 +188,39 @@ export const RegisterForm = () => {
                 </FormItem>
               )}
             />
-            {/* <FormField
+            <FormField
               control={form.control}
-              name="contactNumber"
+              name="accredited_investor"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Contact Number</FormLabel>
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-base">
+                      Are you an accredited investor?
+                    </FormLabel>
+                  </div>
                   <FormControl>
-                    <PhoneInput
-                      defaultCountry="us"
-                      value={phone}
-                      onChange={(phone) => setPhone(phone)}
-                      className="w-full"
-                    />
+                    <div className="flex items-center">
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                      <span className="ml-2 text-sm">
+                        {field.value ? "Yes" : "No"}
+                      </span>
+                    </div>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
-            /> */}
+            />
+            <p className="text-xs text-gray-500 mt-4">
+              By submitting this form, you agree to our Terms and Conditions and
+              Privacy Policy.
+            </p>
           </fieldset>
           <Button
             type="submit"
-            className="flex w-full py-6 text-md font-semibold"
+            className="flex w-full py-6 text-md font-medium"
+            disabled={!form.watch("accredited_investor")}
           >
             Register Interest
           </Button>

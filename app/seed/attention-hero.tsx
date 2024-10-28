@@ -30,14 +30,14 @@ export default function AttentionHero({ hero }: HeroProps) {
             <p className="hidden w-3/4 mt-4 text-2xl font-light text-brand-p0">
               {hero.subheading}
             </p>
-            <div className="flex flex-col items-center justify-between gap-2 mt-12">
+            <div className="flex flex-col items-start justify-between gap-2 mt-12">
               <button className="relative px-12 py-3 overflow-hidden text-black transition duration-100 rounded-lg hover:bg-brand2-g4 bg-brand2-g2">
                 <a href={hero.buttonLink} className="relative z-10">
                   {hero.buttonText}
                 </a>
               </button>
 
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-xs font-medium text-gray-200 text-left">
                 {hero.investmentRange}
               </p>
             </div>

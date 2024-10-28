@@ -10,7 +10,7 @@ type Props = {};
 
 export default function page({}: Props) {
   return (
-    <main className="flex flex-col items-center justify-center mx-auto fillscreen bg-slate-100 antialiased">
+    <main className="flex flex-col items-center justify-center mx-auto fillscreen bg-slate-100 subpixel-antialiased">
       <AttentionHero hero={seed_page.attention.hero} />
       <SeedDetails />
       <BookCallCTA />
