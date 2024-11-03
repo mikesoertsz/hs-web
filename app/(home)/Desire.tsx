@@ -26,13 +26,15 @@ type Props = {};
 export function DesireWhoFor({}: Props) {
   const accredited = useStore((state) => state.accredited);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [previouslyAccredited, setPreviouslyAccredited] = useState(false);
 
   useEffect(() => {
-    if (accredited) {
+    if (accredited && !previouslyAccredited) {
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 5000);
     }
-  }, [accredited]);
+    setPreviouslyAccredited(accredited);
+  }, [accredited, previouslyAccredited]);
 
   const qualifier = {
     header: {

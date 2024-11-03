@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -16,7 +16,6 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import "react-international-phone/style.css";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/supabase/supabase";
 import { toast } from "sonner";
 import { Copy, Share2 } from "react-feather";
 import Confetti from "react-dom-confetti";
@@ -47,30 +46,31 @@ export const RegisterForm = () => {
     resolver: zodResolver(formSchema),
   });
 
+  const emailValue = useWatch({
+    control: form.control,
+    name: "email",
+  });
+
+  const isValidEmail = formSchema.safeParse({ email: emailValue }).success;
+
   const onSubmit = async (data: any) => {
     try {
-      const { error } = await supabase.from("investor_submissions").insert([
+      await fetch(
+        "https://hook.eu2.make.com/2f8wfyklrsm88mxrf348rsqb6lgjhdk2",
         {
-          name: data.name,
-          email: data.email,
-          location: data.location,
-          accredited_investor: data.accredited_investor,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        },
-      ]);
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
-      if (error) {
-        console.error("Error inserting data:", error);
-        toast.error("Error inserting data: " + error.message);
-      } else {
-        console.log("Data inserted successfully");
-        toast.success(
-          "We received your submission. Check your email for further instructions"
-        );
-        setIsSubmitted(true);
-        setShowConfetti(true);
-      }
+      toast.success(
+        "We received your submission. Check your email for further instructions"
+      );
+      setIsSubmitted(true);
+      setShowConfetti(true);
     } catch (error: any) {
       console.error("Unexpected error:", error);
       toast.error("Unexpected error: " + error.message);
@@ -111,10 +111,13 @@ export const RegisterForm = () => {
     <Form {...form}>
       {isSubmitted ? (
         <div className="space-y-3 p-4 pt-8 bg-white border rounded-lg">
-          <Confetti active={showConfetti} config={confettiConfig} />
-          <p className="text-center text-lg font-semibold">
-            Submission Successful! 🎉
-          </p>
+          <div className="flex flex-col items-center justify-center gap-4 py-12">
+            <Confetti active={showConfetti} config={confettiConfig} />
+            <span className="text-4xl">🎉</span>
+            <p className="text-center text-lg font-semibold">
+              Submission Successful!
+            </p>
+          </div>
           <div className="flex justify-center space-x-4">
             <Button
               onClick={resetForm}
