@@ -61,7 +61,7 @@ export function DesireWhoFor({}: Props) {
   };
 
   return (
-    <Wrapper className="py-[5vh]">
+    <Wrapper className="py-[5vh]" id="whofor">
       <InnerWrap>
         <div className="grid w-full grid-cols-1 gap-12 p-5 bg-gray-900 md:grid-cols-2 md:p-12 rounded-xl overflow-hidden">
           <div className="flex p-4">
