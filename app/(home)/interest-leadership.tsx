@@ -12,7 +12,7 @@ export function InterestFundLeadership({}: Props) {
     {
       name: "Mike Soertsz",
       image: "/img/mike.jpg",
-      details: "Principle Fund Manager, Investor",
+      details: "Principle Fund Manager, Investor, Yachting Enthusiast",
       location: "Portugal",
       role: "principle",
       social: [
@@ -71,7 +71,7 @@ export function InterestFundLeadership({}: Props) {
   ];
 
   return (
-    <Wrapper>
+    <Wrapper className="pt-[5dvh]" id="team">
       <InnerWrap className="flex flex-col w-full p-8 py-12 bg-white border rounded-2xl border-slate-200">
         <TitleBlock
           preheading="Fund Advisory Board"
