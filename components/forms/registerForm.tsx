@@ -42,6 +42,7 @@ export const RegisterForm = () => {
   const [phone, setPhone] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
   });
@@ -54,8 +55,9 @@ export const RegisterForm = () => {
   const isValidEmail = formSchema.safeParse({ email: emailValue }).success;
 
   const onSubmit = async (data: any) => {
+    setLoading(true);
     try {
-      await fetch(
+      const response = await fetch(
         "https://hook.eu2.make.com/2f8wfyklrsm88mxrf348rsqb6lgjhdk2",
         {
           method: "POST",
@@ -66,6 +68,10 @@ export const RegisterForm = () => {
         }
       );
 
+      if (!response.ok) {
+        throw new Error("Load failed");
+      }
+
       toast.success(
         "We received your submission. Check your email for further instructions"
       );
@@ -74,6 +80,8 @@ export const RegisterForm = () => {
     } catch (error: any) {
       console.error("Unexpected error:", error);
       toast.error("Unexpected error: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -198,7 +206,14 @@ export const RegisterForm = () => {
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">
-                      Are you an accredited investor?
+                      Are you an accredited investor? <br />{" "}
+                      <span className="text-xs font-base text-gray-800">
+                        Not sure,{" "}
+                        <a href="#whofor" className="text-blue-700 text-xs">
+                          check here
+                        </a>
+                        .
+                      </span>
                     </FormLabel>
                   </div>
                   <FormControl>
@@ -223,9 +238,9 @@ export const RegisterForm = () => {
           <Button
             type="submit"
             className="flex w-full py-6 text-md font-medium"
-            disabled={!form.watch("accredited_investor")}
+            disabled={!form.watch("accredited_investor") || loading}
           >
-            Register Interest
+            {loading ? "Submitting..." : "Register Interest"}
           </Button>
         </form>
       )}
