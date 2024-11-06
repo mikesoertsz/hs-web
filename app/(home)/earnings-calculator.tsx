@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Slider } from "@nextui-org/slider";
 import { TitleBlock } from "@/components/ui/titleblock";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { Separator } from "@/components/ui/separator";
+import { Calculator } from "lucide-react";
 
 export default function EarningsCalculator() {
   const [investmentAmount, setInvestmentAmount] = useState(100000);
@@ -14,7 +16,7 @@ export default function EarningsCalculator() {
 
   const rates = {
     guaranteedAnnualReturnRate: 0.08,
-    projectedTargetReturnRate: 0.113,
+    projectedTargetReturnRate: 0.0975,
     termYears: 6,
   };
 
@@ -62,6 +64,48 @@ export default function EarningsCalculator() {
   );
   const formattedTotalYieldOnCapital = formatCurrency(totalYieldOnCapital);
 
+  const guaranteedYieldPercentage = `${(
+    rates.guaranteedAnnualReturnRate *
+    100 *
+    rates.termYears
+  ).toFixed(2)}%`;
+  const totalYieldPercentage = `${(
+    rates.projectedTargetReturnRate *
+    100 *
+    rates.termYears
+  ).toFixed(2)}%`;
+
+  const payoutData = [
+    {
+      label: "Quarterly Payout",
+      value: formattedQuarterlyPayout,
+      percentage: "2%",
+    },
+    {
+      label: "Annual Payout",
+      value: formattedAnnualPayout,
+      percentage: `${rates.guaranteedAnnualReturnRate * 100}%`,
+    },
+    {
+      label: "Target Annualized Yield",
+      value: formattedEndOfTermBonus,
+      percentage: `${rates.projectedTargetReturnRate * 100}%`,
+    },
+  ];
+
+  const yieldData = [
+    {
+      label: "Guaranteed Yield-on-Capital",
+      value: formattedGuaranteedYieldOnCapital,
+      percentage: guaranteedYieldPercentage,
+    },
+    {
+      label: "Projected Net Yield-on-Capital",
+      value: formattedTotalYieldOnCapital,
+      percentage: totalYieldPercentage,
+    },
+  ];
+
   return (
     <Wrapper className="pt-[5vh] bg-gray-900" id="earnings">
       <InnerWrap className="w-full">
@@ -75,7 +119,7 @@ export default function EarningsCalculator() {
               orientation="center"
             />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 p-4 rounded-lg bg-slate-100 mt-4">
+          <div className="grid grid-cols-1 p-4 mt-4 rounded-lg md:grid-cols-2 bg-slate-100">
             <div
               style={{
                 display: "flex",
@@ -85,11 +129,12 @@ export default function EarningsCalculator() {
                 gap: "0.5rem",
               }}
             >
+              <Calculator size={24} className="" />
               <h3 className="text-lg font-medium text-gray-700 ">
                 Set your investment amount
               </h3>
               <p className="text-sm text-brand-p0">
-                Enter an amount to see your investment return.
+                Drag the slider to see your investment return.
               </p>
               <div className="w-2/3 space-y-6">
                 <div className="flex flex-row items-center justify-between w-full gap-4 my-8">
@@ -111,13 +156,13 @@ export default function EarningsCalculator() {
                       }
                     }}
                     classNames={{
-                      base: "bg-white rounded-full border border-slate-300 w-[500px]",
-                      filler: "bg-brand-g1 rounded-full ml-5",
+                      base: "bg-white rounded-full border border-slate-300 w-[500px] mr-5",
+                      filler: "bg-brand-g1 rounded-full ml-4",
                       labelWrapper: "mb-2",
                       label: "font-medium text-default-700 text-medium",
                       value: "font-medium text-default-500 text-small",
                       thumb: [
-                        "transition-size ml-2",
+                        "transition-size ml-1",
                         "bg-gradient-to-r from-secondary-400 to-primary-500",
                         "data-[dragging=true]:shadow-lg data-[dragging=true]:shadow-black/20",
                         "data-[dragging=true]:w-7 data-[dragging=true]:h-7 data-[dragging=true]:after:h-6 data-[dragging=true]:after:w-6",
@@ -125,15 +170,13 @@ export default function EarningsCalculator() {
                       step: "data-[in-range=true]:bg-black/30 dark:data-[in-range=true]:bg-white/50",
                     }}
                   />
-                  <div className="text-xl font-semibold tracking-tight items-center justify-end text-right flex w-[100px]">
+                  <div className="text-xl font-semibold tracking-tight items-center justify-end text-right flex w-[100px] pl-8">
                     {formattedInvestmentAmount}
                   </div>
                 </div>
-                <div className="flex flex-col w-full items-center justify-center">
-                  <p className="flex opacity-60 w-full text-center items-center justify-center text-xs">
-                    Minimum investment €100,000
-                  </p>
-                </div>
+                <p className="flex items-center justify-center w-full text-xs italic text-center opacity-60">
+                  *Minimum investment €100,000
+                </p>
               </div>
             </div>
             <div
@@ -149,56 +192,46 @@ export default function EarningsCalculator() {
                 boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
               }}
             >
-              <div className="p-6 flex w-full flex-col rounded-lg">
-                <h3 className="text-md text-brand-g1 mb-4">Annual Schedule</h3>
-                <div className="flex justify-between">
-                  <h3 className="font-medium text-md">
-                    Quarterly Payout
-                    <sup className="pl-1 text-green-600">2%</sup>
-                  </h3>
-                  <p className="text-right">{formattedQuarterlyPayout}</p>
-                </div>
-                <div className="flex justify-between mt-4">
-                  <h3 className="font-medium text-md">
-                    Annual Payout
-                    <sup className="pl-1 text-green-600">{`${
-                      rates.guaranteedAnnualReturnRate * 100
-                    }%`}</sup>
-                  </h3>
-                  <p className="text-right">{formattedAnnualPayout}</p>
-                </div>
-                <div className="flex justify-between py-1 mt-3">
-                  <p className="text-left">
-                    Target Annualized Yield
-                    <sup className="pl-1 text-green-600">
-                      {`${rates.projectedTargetReturnRate * 100}%`}
-                    </sup>
-                  </p>
-                  <p className="text-right">{formattedEndOfTermBonus}</p>
-                </div>
+              <div className="flex flex-col w-full p-6 rounded-lg">
+                <h3 className="text-md text-brand-g1">Annual Schedule</h3>
+                <p className="pt-1 pb-3 text-xs text-gray-600">
+                  What payments to expect on your investment.
+                </p>
+                {payoutData.map((item, index) => (
+                  <div className="flex justify-between mt-4" key={index}>
+                    <h3 className="font-medium text-md">{item.label}</h3>
+                    <div className="flex items-center justify-end gap-2">
+                      <p className="text-right">{item.value}</p>
+                      <p className="text-gray-300">/</p>
+                      <p className="text-green-600">{item.percentage}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="p-6 border rounded-lg flex w-full flex-col">
-                <h3 className="text-md text-brand-g1 mb-4">
+              <div className="flex flex-col w-full p-6 border rounded-lg">
+                <h3 className="text-md text-brand-g1">
                   Cumulated End of Term Yields
                 </h3>
-                <div className="flex justify-between">
-                  <h3 className="text-lg font-semibold">
-                    Guaranteed{" "}
-                    <span className="font-normal">Yield-on-Capital</span>
-                  </h3>
-                  <p className="text-lg font-semibold text-right">
-                    {formattedGuaranteedYieldOnCapital}
-                  </p>
-                </div>
-                <div className="flex justify-between mt-4">
-                  <h3 className="text-lg font-semibold">
-                    Projected Net{" "}
-                    <span className="font-normal">Yield-on-Capital</span>
-                  </h3>
-                  <p className="text-lg font-semibold text-right">
-                    {formattedTotalYieldOnCapital}
-                  </p>
-                </div>
+                <p className="pt-1 pb-3 text-xs text-gray-600">
+                  Earnings at the end of the 6-year term.
+                </p>
+                {yieldData.map((item, index) => (
+                  <div className="flex justify-between mt-4" key={index}>
+                    <h3 className="text-lg font-semibold">
+                      {item.label.split(" ")[0]}{" "}
+                      <span className="font-normal">
+                        {item.label.split(" ").slice(1).join(" ")}
+                      </span>
+                    </h3>
+                    <div className="flex items-center justify-end gap-2">
+                      <p className="text-lg font-semibold text-right">
+                        {item.value}
+                      </p>
+                      <p className="text-gray-300">/</p>
+                      <p className="text-green-600">{item.percentage}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

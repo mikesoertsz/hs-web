@@ -31,7 +31,7 @@ export default function Nav({}: Props) {
   const accredited = useStore((state) => state.accredited); // Get the accredited state
 
   return (
-    <nav className="w-full flex justify-between items-center py-2 sticky top-0 left-0 right-0 h-14 overflow-hidden bg-white z-30">
+    <nav className="sticky top-0 left-0 right-0 z-30 flex items-center justify-between w-full py-2 overflow-hidden bg-white h-14">
       <div className="relative flex items-center justify-between px-3 pl-6">
         <div className="flex w-[400px] py-1">
           <Link href="/">
@@ -45,14 +45,14 @@ export default function Nav({}: Props) {
           </Link>
         </div>
       </div>
-      <div className="gap-9 text-xs font-medium hidden md:flex"></div>
-      <div className="gap-6 items-center justify-center md:flex">
-        <ul className="items-center justify-center md:flex hidden gap-5">
+      <div className="hidden text-xs font-medium gap-9 md:flex"></div>
+      <div className="items-center justify-center gap-6 md:flex">
+        <ul className="items-center justify-center hidden gap-5 md:flex">
           {navigation.map((item, index) => (
             <li key={index} className="relative">
               <a
                 href={item.href}
-                className="text-gray-700 hover:text-gray-900 duration-100 transition ease-in-out text-xs font-medium"
+                className="text-xs font-medium text-gray-700 transition duration-100 ease-in-out hover:text-gray-900"
               >
                 {item.title}
               </a>
@@ -61,7 +61,7 @@ export default function Nav({}: Props) {
         </ul>
         <Button
           variant="secondary"
-          className={`text-xs mr-2 hover:bg-brand2-g3 ${
+          className={`text-xs mr-3 bg-brand2-g3 hover:bg-brand2-g4 ${
             accredited ? "bg-green-300" : ""
           }`}
         >

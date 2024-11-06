@@ -689,7 +689,7 @@ export function InterestCorporateStructure({}: Props) {
               {corporatestructure.entities.map((entity, index) => (
                 <TableRow
                   key={index}
-                  className="transition duration-200 ease-in-out hover:bg-slate-50 text-xs md:text-sm"
+                  className="text-xs transition duration-200 ease-in-out hover:bg-slate-50 md:text-sm"
                 >
                   <TableCell>{entity.title}</TableCell>
                   <TableCell>
@@ -950,11 +950,11 @@ export function InterestAssetDistribution({}: Props) {
           theme="light"
           orientation="center"
         />
-        <ul className="grid items-start w-full grid-cols-1 gap-4 px-8 md:grid-cols-3 mt-4">
+        <ul className="grid items-start w-full grid-cols-1 gap-4 px-8 mt-4 md:grid-cols-3">
           {data.map((item, index) => (
             <li
               key={index}
-              className="relative flex flex-col items-start justify-start w-full p-8 py-4  md:mt-0 border rounded-lg md:border-0"
+              className="relative flex flex-col items-start justify-start w-full p-8 py-4 border rounded-lg md:mt-0 md:border-0"
             >
               <div className="flex flex-col items-start justify-start text-left grow">
                 {item.icon}
@@ -1025,7 +1025,7 @@ export function InterestWhichYachts({}: Props) {
   };
   return (
     <>
-      <div className="flex flex-col items-center justify-center mt-12 px-8 md:px-0">
+      <div className="flex flex-col items-center justify-center px-8 mt-12 md:px-0">
         <div className="flex items-center justify-center w-full">
           <TitleBlock
             heading={yachts.header.heading}
@@ -1054,7 +1054,7 @@ export function InterestWhichYachts({}: Props) {
             </li>
           ))}
         </ul>
-        <p className="mt-12 text-xs text-gray-400 text-center">
+        <p className="mt-12 text-xs text-center text-gray-400">
           As of{" "}
           {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString(
             "en-GB",
