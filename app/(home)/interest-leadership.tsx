@@ -12,7 +12,7 @@ export function InterestFundLeadership({}: Props) {
     {
       name: "Mike Soertsz",
       image: "/img/mike.jpg",
-      details: "Fund Manager / Principle",
+      details: "Principle Fund Manager, Investor",
       location: "Portugal",
       role: "principle",
       social: [
@@ -23,7 +23,7 @@ export function InterestFundLeadership({}: Props) {
         { href: "https://www.mikesoertsz.com/", icon: GoLinkExternal },
       ],
       experience: [
-        "More than a 15 years experience in Startups & Tech, including building technology and models for the Banking & Finance sectors.",
+        "15+ years in Startups & Tech, building technology & models for Banking & Finance.",
         "Over 10 years experience with Venture Capital fundraising & HNWI fundraising.",
         "International compliance and corporate structuring experience.",
         "10+ years experience sailing and chartering yachts.",
@@ -62,17 +62,17 @@ export function InterestFundLeadership({}: Props) {
         { href: "https://andrewmelnik.com/", icon: GoLinkExternal },
       ],
       experience: [
-        "Over 15 years in corporate banking and venture capital investments.",
-        "Years of experience and over $200M in startups development, including real estate and exclusive tourism.",
-        "Many years of experience and networking in family offices, private investments, UHNWI.",
-        "More than 10 years of project development on touristic islands and in exotic locations (MENA, LatAm, Carib, etc.).",
+        "15+ years in corporate banking and venture capital.",
+        "Over $200M in startup development, including real estate and exclusive tourism.",
+        "Extensive networking in family offices, private investments, UHNWI.",
+        "10+ years in project development on touristic islands and exotic locations (MENA, LatAm, Carib, etc.).",
       ],
     },
   ];
 
   return (
     <Wrapper>
-      <InnerWrap className="flex flex-col w-full p-8 bg-white border rounded-2xl border-slate-200">
+      <InnerWrap className="flex flex-col w-full p-8 py-12 bg-white border rounded-2xl border-slate-200">
         <TitleBlock
           preheading="Fund Advisory Board"
           heading="Meet the Team"
@@ -81,11 +81,11 @@ export function InterestFundLeadership({}: Props) {
           theme="light"
           orientation="center"
         />
-        <ul className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-5">
+        <ul className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-4">
           {leadership.map((item, index) => (
             <li
               key={index}
-              className="flex flex-col items-start justify-between w-full h-full overflow-hidden border rounded-xl border-slate-300 bg-slate-50"
+              className="relative flex flex-col items-start justify-between w-full h-full overflow-hidden border rounded-xl border-slate-300 bg-slate-50 group"
             >
               <div className="relative z-0 flex w-full overflow-hidden aspect-square">
                 <Image
@@ -112,26 +112,42 @@ export function InterestFundLeadership({}: Props) {
                   {item.location}
                 </p>
               </div>
-              <ul className="flex w-full h-8 gap-2 px-4 py-2 bg-slate-100">
-                {item.social.map((link, idx) => (
-                  <li key={idx}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="transition duration-200 ease-in-out rounded-sm hover:bg-gray-400 saturate-0"
-                    >
-                      <link.icon
-                        className={`w-4 h-4 ${
-                          link.icon === FaLinkedinIn
-                            ? "saturate-0 hover:text-blue-600 hover:saturate-100"
-                            : "text-gray-600 hover:text-black"
-                        }`}
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+
+              <div className="absolute inset-0 z-20 flex flex-col items-start justify-start w-full h-full text-gray-200 transition-opacity duration-300 opacity-0 bg-brand2-base1 group-hover:opacity-100">
+                <div className="flex flex-col items-start justify-start w-full h-full p-8">
+                  <h3 className="font-semibold text-md">{item.name}</h3>
+                  <p className="mb-4 text-xs font-medium text-brand-g1">
+                    {item.details}
+                  </p>
+                  <ul className="flex flex-col items-start justify-start gap-2 pl-4 text-xs">
+                    {item.experience.map((exp, idx) => (
+                      <li key={idx} className="list-disc list-outside">
+                        {exp}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <ul className="flex items-center justify-start w-full h-10 gap-3 px-4 py-2 bg-black">
+                  {item.social.map((link, idx) => (
+                    <li key={idx}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition duration-200 ease-in-out rounded-sm hover:bg-gray-400 saturate-0"
+                      >
+                        <link.icon
+                          className={`w-4 h-4 ${
+                            link.icon === FaLinkedinIn
+                              ? "saturate-0 hover:text-blue-600 hover:saturate-100"
+                              : "text-gray-400 hover:text-white"
+                          }`}
+                        />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </li>
           ))}
         </ul>
