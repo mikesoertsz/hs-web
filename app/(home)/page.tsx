@@ -1,10 +1,5 @@
 import { homepage } from "@/public/content/en";
-import FAQ from "../(shared)/FAQ";
-import ImageWide from "../(shared)/ImageWide";
-import ActionCTA from "./Action";
-import { DesireSeychelles, DesireWhoFor } from "./Desire";
-import Disclaimer from "./Disclaimer";
-import EarningsCalculator from "./earnings-calculator";
+import AttentionHero from "./attention-hero";
 import { InterestAssetDistribution } from "./interest-assetdistribution";
 import { InterestBenefits } from "./interest-benefits";
 import { InterestHowGuaranteed } from "./interest-howguaranteed";
@@ -14,9 +9,16 @@ import { InterestMarket } from "./interest-market";
 import { InterestPremise } from "./interest-premise";
 import { InterestStrategy } from "./interest-strategy";
 import { InterestCorporateStructure } from "./interest-structure";
-import { InvestmentSpecifics } from "./Specifics";
-import AttentionHero from "./attention-hero";
-import { AttentionDetailsBar, AttentionStinger } from "./Attention";
+import { AttentionDetailsBar } from "./attention-detailsbar";
+import { InterestStinger } from "./interest-stinger";
+import { DesireInvestmentSpecifics } from "./desire-specifics";
+import Disclaimer from "./Disclaimer";
+import EarningsCalculator from "./earnings-calculator";
+import ActionCTA from "./action-cta";
+import FAQ from "../(shared)/FAQ";
+import ImageWide from "../(shared)/ImageWide";
+import { DesireSeychelles } from "./desire-seychelles";
+import { DesireWhoFor } from "./desire-whofor";
 
 export default function Home() {
   return (
@@ -26,12 +28,12 @@ export default function Home() {
       <InterestPremise />
       <InterestStrategy />
       <InterestMarket />
-      <AttentionStinger />
+      <InterestStinger />
       <InterestBenefits />
       <InterestHowGuaranteed />
       <InterestCorporateStructure />
       <InterestHowItWorks />
-      <InvestmentSpecifics />
+      <DesireInvestmentSpecifics />
       <InterestFundLeadership />
       <InterestAssetDistribution />
       <DesireSeychelles />

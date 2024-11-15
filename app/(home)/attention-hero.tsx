@@ -8,7 +8,7 @@ import { CgSpinner } from "react-icons/cg";
 
 export default function AttentionHero() {
   const [fundsRaisedPercentage, setFundsRaisedPercentage] =
-    useState<number>(38);
+    useState<number>(54);
   const [Loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -25,31 +25,36 @@ export default function AttentionHero() {
       value: "8%",
       subtitle: "Guaranteed",
     },
-    // {
-    //   title: "Target Yield",
-    //   value: "9.5%",
-    //   subtitle: "Projected",
-    // },
     {
       title: "Fund Status",
       value: "Pre-Raise",
       subtitle: "Register early interest",
     },
   ];
+
+  const textContent = {
+    pretitle: "Alternative Income Fund",
+    mainTitle: "Earn 8% yield from a fleet of charter yachts.",
+    description:
+      "Earn from a growing industry, without the high entry costs and risk.",
+    statusTitle: "2024 status",
+    buttonText: "Register Interest Now",
+    investmentRange: "Accepting €100,000 - €1,000,000 investments",
+  };
+
   return (
     <Wrapper className="relative flex min-h-[50vh] z-10 mx-auto items-center justify-center py-12">
       <div className="grid w-full grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden xl:max-w-7xl">
         <Left className="bg-brand2-base1 min-h-[50dvh] md:aspect-square aspect-auto py-24 md:py-8">
           <div className="flex flex-col items-start justify-center w-3/4 h-full slide-center">
             <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
-              Alternative Income Fund
+              {textContent.pretitle}
             </h4>
             <h1 className="text-6xl font-medium leading-tight text-white drop-shadow-md font-title">
-              Earn 8% yield from a fleet of charter yachts.
+              {textContent.mainTitle}
             </h1>
             <p className="hidden w-3/4 mt-4 text-2xl font-light text-brand-p0">
-              Earn from a growing industry, without the high entry costs and
-              risk.
+              {textContent.description}
             </p>
             <ul className="flex items-start justify-start w-full gap-6 mt-6">
               {stats.map((item, index) => (
@@ -70,7 +75,7 @@ export default function AttentionHero() {
               ))}
               <li className="md:flex-col items-start justify-start">
                 <p className="text-[9px] uppercase font-bold tracking-[0.3em] text-brand-g1">
-                  2024 status
+                  {textContent.statusTitle}
                 </p>
                 <div className="flex h-10 w-[200px] items-center justify-start">
                   <div className="w-[80%] h-4 mt-3 bg-brand2-base2 rounded-full overflow-hidden">
@@ -107,12 +112,12 @@ export default function AttentionHero() {
             <div className="flex flex-col items-center justify-between gap-2 mt-12">
               <button className="relative px-12 py-3 overflow-hidden text-black transition duration-100 rounded-lg hover:bg-brand2-g4 bg-brand2-g2">
                 <a href="#register" className="relative z-10">
-                  Register Interest Now
+                  {textContent.buttonText}
                 </a>
               </button>
 
               <p className="mt-1 text-xs text-gray-400">
-                Accepting €100,000 - €1,000,000 investments
+                {textContent.investmentRange}
               </p>
             </div>
           </div>

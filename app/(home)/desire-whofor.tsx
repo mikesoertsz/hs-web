@@ -1,13 +1,9 @@
 "use client";
-import EarningsCalculatorForm from "@/components/forms/earningsCalculatorForm";
 import QualifierForm from "@/components/forms/qualifierForm";
 import { TitleBlock } from "@/components/ui/titleblock";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 import { useStore } from "@/lib/store";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-
-type QuestionName = "income" | "assets" | "entity" | "license" | "score";
 import Confetti from "react-dom-confetti";
 
 const confettiConfig = {
@@ -98,20 +94,6 @@ export function DesireWhoFor({}: Props) {
           </div>
         </div>
       </InnerWrap>
-    </Wrapper>
-  );
-}
-
-export function DesireSeychelles() {
-  return (
-    <Wrapper className="min-h-[400px] relative">
-      <Image
-        src="/img/hero/hero21.JPG"
-        alt="Hero Image"
-        fill
-        className="absolute inset-0"
-        style={{ objectFit: "cover" }}
-      />
     </Wrapper>
   );
 }

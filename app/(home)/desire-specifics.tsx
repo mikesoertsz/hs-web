@@ -9,9 +9,7 @@ import {
 } from "@/components/ui/tooltip";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 
-type Props = {};
-
-export function InvestmentSpecifics() {
+export function DesireInvestmentSpecifics() {
   const specifics = [
     {
       title: "Returns",
