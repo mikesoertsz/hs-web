@@ -16,7 +16,7 @@ export default function EarningsCalculator() {
 
   const rates = {
     guaranteedAnnualReturnRate: 0.08,
-    projectedTargetReturnRate: 0.0975,
+    projectedTargetReturnRate: 0.1175,
     termYears: 6,
   };
 
