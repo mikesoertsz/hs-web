@@ -32,10 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="subpixel-antialiased scroll-smooth">
+    <html lang="en" className="">
       <GoogleAnalytics GA_MEASUREMENT_ID="G-G4BPMB4NGH" />
       <body
-        className={`${newsreader.variable} ${body.className} ${title.variable} relative z-0`}
+        className={`${newsreader.variable} ${body.className} ${title.variable} relative z-0 subpixel-antialiased scroll-smooth`}
       >
         <Drawer>
           <div className="fillscreen">
