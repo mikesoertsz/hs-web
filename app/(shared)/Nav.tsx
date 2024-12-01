@@ -31,7 +31,7 @@ export default function Nav({}: Props) {
   const accredited = useStore((state) => state.accredited); // Get the accredited state
 
   return (
-    <nav className="sticky top-0 left-0 right-0 z-30 flex items-center justify-between w-full py-2 overflow-hidden bg-white h-14">
+    <nav className="sticky top-0 left-0 right-0 z-30 flex items-center justify-between w-full py-2 overflow-hidden bg-white h-14 border-b border-gray-200">
       <div className="relative flex items-center justify-between px-3 pl-6">
         <div className="flex w-[400px] py-1">
           <Link href="/">
