@@ -52,7 +52,7 @@ export default function BlogMain({
         width={700}
         height={475}
       />
-      <div className="max-w-prose">{/* Blog content goes here */}</div>
+      <div className="max-w-prose">Rest of the blog content here.</div>
     </div>
   );
 }
