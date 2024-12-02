@@ -110,38 +110,48 @@ export default function BlogHomeAllArticles() {
           </h2>
           <Input
             type="text"
-            placeholder="Search/filter articles..."
+            placeholder="Search or filter articles..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="bg-white h-8"
           />
         </div>
-        <div className="border border-slate-200 rounded-lg w-full flex bg-white p-4">
+        <div className="border border-slate-200 rounded-md w-full flex bg-white">
           <Table>
             <TableHeader>
-              <TableRow>
-                <TableHead>Title</TableHead>
+              <TableRow className="">
+                <TableHead className="pl-6">Title</TableHead>
+                <TableHead>Category</TableHead>
                 <TableHead>Author</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead>Views</TableHead>
-                <TableHead>Link</TableHead>
+                <TableHead>Read</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {displayedArticles.map((article, index) => (
-                <TableRow key={index} className="hover:bg-slate-100">
+                <TableRow
+                  key={index}
+                  className="hover:bg-slate-100 group cursor-pointer"
+                >
                   <TableCell className="">
-                    <Link href="#" className="">
+                    <Link href="#" className="pl-4">
                       {article.title}
                     </Link>
                   </TableCell>
-                  <TableCell>{article.category}</TableCell>
-                  <TableCell>{article.author}</TableCell>
-                  <TableCell>{article.date}</TableCell>
-                  <TableCell>{article.views}</TableCell>
+                  <TableCell className="text-xs">{article.category}</TableCell>
+                  <TableCell className="text-xs">{article.author}</TableCell>
+                  <TableCell className="text-xs">{article.date}</TableCell>
+                  <TableCell className="text-xs">{article.views}</TableCell>
                   <TableCell>
-                    <Link href="#" className="flex items-center hover:text-blue-500">
-                      <ArrowRight />
+                    <Link
+                      href="#"
+                      className="flex items-center hover:text-blue-500"
+                    >
+                      <ArrowRight
+                        size={16}
+                        className="group-hover:translate-x-1 transition transform duration-200 ease-in-out"
+                      />
                     </Link>
                   </TableCell>
                 </TableRow>
