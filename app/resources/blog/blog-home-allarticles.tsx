@@ -1,19 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { InnerWrap, Wrapper } from "@/lib/atoms";
-import Image from "next/image";
-import Link from "next/link";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Input } from "@/components/ui/input";
 import {
   Pagination,
   PaginationContent,
@@ -23,67 +10,27 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { Article } from "@/lib/types";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
-type Article = {
-  author: string;
-  title: string;
-  description: string;
-  date: string;
-  views: number;
-  comments: number;
-  image: string;
-  category: string;
-};
+interface BlogHomeAllArticlesProps {
+  articles: Article[];
+}
 
-const articles: Article[] = [
-  {
-    author: "John Doe",
-    title: "The Rise of Fractional Yacht Ownership",
-    description:
-      "Exploring the benefits and growth of fractional yacht ownership.",
-    date: "Oct 15",
-    views: 1200,
-    comments: 45,
-    image: "/img/hero/hero2.jpg",
-    category: "Ownership",
-  },
-  {
-    author: "Jane Smith",
-    title: "How the Yacht Industry is Evolving",
-    description:
-      "A look into the latest trends and changes in the yacht industry.",
-    date: "Nov 10",
-    views: 950,
-    comments: 30,
-    image: "/img/hero/hero1.jpg",
-    category: "Industry",
-  },
-  {
-    author: "Alice Johnson",
-    title: "Investing in Yachts: What You Need to Know",
-    description: "Key insights for potential investors in the yacht market.",
-    date: "Sep 25",
-    views: 800,
-    comments: 20,
-    image: "/img/hero/hero5.jpg",
-    category: "Investment",
-  },
-  {
-    author: "Bob Brown",
-    title: "The Future of Yacht Ownership",
-    description:
-      "Predictions and expectations for the future of yacht ownership.",
-    date: "Dec 5",
-    views: 1100,
-    comments: 50,
-    image: "/img/hero/hero8.jpg",
-    category: "Future",
-  },
-];
-
-export default function BlogHomeAllArticles() {
+export default function BlogHomeAllArticles({
+  articles,
+}: BlogHomeAllArticlesProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -139,7 +86,9 @@ export default function BlogHomeAllArticles() {
                       {article.title}
                     </Link>
                   </TableCell>
-                  <TableCell className="text-xs">{article.category}</TableCell>
+                  <TableCell className="text-xs">
+                    {article.categories[0]}
+                  </TableCell>
                   <TableCell className="text-xs">{article.author}</TableCell>
                   <TableCell className="text-xs">{article.date}</TableCell>
                   <TableCell className="text-xs">{article.views}</TableCell>
