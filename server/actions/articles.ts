@@ -94,3 +94,20 @@ export async function getRelatedArticlesAction(
   const data = files.filter((file) => slugs?.includes(file.slug));
   return data || [];
 }
+
+export async function getArticlePaginationAction() {
+  const files = await genArticles();
+  return files;
+}
+
+export async function getArticlePaginationByPageAction(
+  page: number,
+  perPage: number
+) {
+  const start = (page - 1) * perPage;
+  const files = await genArticles();
+  return {
+    articles: files.slice(start, start + perPage),
+    totalArticles: files.length,
+  };
+}

@@ -1,4 +1,5 @@
 import { InnerWrap, Wrapper } from "@/lib/atoms";
+import { paths } from "@/routes/paths";
 import { getAllFeaturedArticlesAction } from "@/server/actions/articles";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,12 +14,15 @@ export default async function BlogHomePopular() {
           Popular ARTICLEs
         </h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 w-full">
-          {articles.map((article, index) => (
+          {articles.map((article) => (
             <li
-              key={index}
+              key={article.slug}
               className="flex flex-col p-6 w-full h-[450px] hover:-translate-y-0.5 grow bg-white group hover:shadow-md transition duration-200 ease-in-out transform hover:z-20 z-10 border border-gray-200"
             >
-              <Link href="#" className="flex flex-col justify-start h-full">
+              <Link
+                href={paths.blog.slug(article.slug)}
+                className="flex flex-col justify-start h-full"
+              >
                 <div className="flex w-full h-1/3 overflow-hidden relative rounded-md">
                   <Image
                     src={article.image}

@@ -1,15 +1,4 @@
-"use client";
-
-import { Input } from "@/components/ui/input";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 import {
   Table,
   TableBody,
@@ -19,49 +8,38 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
-import { Article } from "@/lib/types";
+import { paths } from "@/routes/paths";
+import { getArticlePaginationByPageAction } from "@/server/actions/articles";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
-interface BlogHomeAllArticlesProps {
-  articles: Article[];
-}
+type Props = {
+  searchParams: { [key: string]: string | undefined };
+};
 
-export default function BlogHomeAllArticles({
-  articles,
-}: BlogHomeAllArticlesProps) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
+export default async function BlogHomeAllArticles({ searchParams }: Props) {
+  const currentPage = parseInt((searchParams.page as string) || "1");
+  const postsPerPage = parseInt((searchParams.pageSize as string) || "10");
 
-  const articlesPerPage = 10;
-  const filteredArticles = articles.filter((article) =>
-    article.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const { articles, totalArticles } = await getArticlePaginationByPageAction(
+    currentPage,
+    postsPerPage
   );
-  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
-  const displayedArticles = filteredArticles.slice(
-    (currentPage - 1) * articlesPerPage,
-    currentPage * articlesPerPage
-  );
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
 
   return (
     <Wrapper className="py-[5dvh]">
       <InnerWrap className="max-w-4xl">
         <div className="flex items-center justify-between w-full py-3 pl-2">
           <h2 className="mb-2 tracking-widest font-medium text-xs uppercase w-full text-left">
-            All ARTICLES {filteredArticles.length}
+            All ARTICLES {totalArticles}
           </h2>
-          <Input
+          {/* <Input
             type="text"
             placeholder="Search or filter articles..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="bg-white h-8"
-          />
+          /> */}
         </div>
         <div className="border border-slate-200 rounded-md w-full flex bg-white">
           <Table>
@@ -76,25 +54,25 @@ export default function BlogHomeAllArticles({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {displayedArticles.map((article, index) => (
+              {articles.map((article, index) => (
                 <TableRow
                   key={index}
                   className="hover:bg-slate-100 group cursor-pointer"
                 >
                   <TableCell className="">
-                    <Link href="#" className="pl-4">
+                    <Link href={paths.blog.slug(article.slug)} className="pl-4">
                       {article.title}
                     </Link>
                   </TableCell>
                   <TableCell className="text-xs">
-                    {article.categories[0]}
+                    {article.categories?.[0]}
                   </TableCell>
                   <TableCell className="text-xs">{article.author}</TableCell>
                   <TableCell className="text-xs">{article.date}</TableCell>
                   <TableCell className="text-xs">{article.views}</TableCell>
                   <TableCell>
                     <Link
-                      href="#"
+                      href={paths.blog.slug(article.slug)}
                       className="flex items-center hover:text-blue-500"
                     >
                       <ArrowRight
@@ -108,23 +86,13 @@ export default function BlogHomeAllArticles({
             </TableBody>
           </Table>
         </div>
+
         <div className="flex items-center justify-center w-full bg-slate-100 border border-slate-200 rounded-md mt-4">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+          <PaginationWithLinks
+            page={currentPage}
+            pageSize={postsPerPage}
+            totalCount={totalArticles}
+          />
         </div>
       </InnerWrap>
     </Wrapper>

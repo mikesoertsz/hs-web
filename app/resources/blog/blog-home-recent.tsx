@@ -14,7 +14,7 @@ export default async function BlogHomeRecent() {
           Recent ARTICLES
         </h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 w-full">
-          {recentArticles.map((article, index) => (
+          {recentArticles.map((article) => (
             <li
               key={article.slug}
               className="flex flex-col p-6 w-full h-[450px] hover:-translate-y-0.5 grow bg-white group hover:shadow-md transition duration-200 ease-in-out transform hover:z-20 z-10 border border-gray-200"
@@ -45,7 +45,7 @@ export default async function BlogHomeRecent() {
                     <p className="text-gray-600 mt-2">{article.description}</p>
                   </div>
                   <p className="text-xs text-gray-400 mt-3">
-                    {article.date} · {article.views} views
+                  {article.date} · {article.views ?? 0} views
                   </p>
                 </div>
               </Link>
