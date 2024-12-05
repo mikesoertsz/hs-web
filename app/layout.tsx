@@ -2,11 +2,11 @@ import GoogleAnalytics from "@/components/Analytics";
 import { Drawer } from "@/components/ui/drawer";
 import { Toaster } from "@/components/ui/sonner";
 import { body, newsreader, title } from "@/lib/fonts";
-import { footer } from "@/public/content/en";
 import type { Metadata } from "next";
 import Footer from "./(shared)/Footer1";
 import Nav from "./(shared)/Nav";
 import "./globals.css";
+import "./prose.css";
 
 export const metadata: Metadata = {
   title: "HelmShare.yachts | Private market alternative asset fund.",
