@@ -151,8 +151,8 @@ export default function BookCallCTA() {
       <InnerWrap className="relative z-20 grid w-full grid-cols-1 gap-4 overflow-hidden bg-white shadow-md md:grid-cols-2 rounded-xl">
         <div className="flex flex-col h-full p-12 border-r border-slate-200">
           <TitleBlock
-            preheading="Preheading Text"
-            heading="Heading Text"
+            preheading="Interested?"
+            heading="Register"
             theme="light"
             orientation="left"
           />
