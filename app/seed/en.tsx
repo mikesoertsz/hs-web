@@ -6,7 +6,7 @@ export const seed_page = {
       subheading:
         "Be at the forefront of a groundbreaking venture that aims to reshape the financial landscape.",
       buttonText: "Invest Now",
-      buttonLink: "#invest",
+      buttonLink: "#seed",
       investmentRange: "Target Raise: €100,000",
       imageSrc: "/img/hero/hero-seed.png",
       imageAlt: "hero",

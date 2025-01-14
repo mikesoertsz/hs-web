@@ -163,7 +163,7 @@ export const RegisterForm = () => {
                 <FormItem>
                   <FormLabel>FullName</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your full name" {...field} />
+                    <Input placeholder="Your full name" {...field} required />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -180,6 +180,7 @@ export const RegisterForm = () => {
                       type="email"
                       placeholder="your@email.com"
                       {...field}
+                      required
                     />
                   </FormControl>
                   <FormMessage />
@@ -193,7 +194,7 @@ export const RegisterForm = () => {
                 <FormItem>
                   <FormLabel>Location</FormLabel>
                   <FormControl>
-                    <Input placeholder="City, Country" {...field} />
+                    <Input placeholder="City, Country" {...field} required />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
