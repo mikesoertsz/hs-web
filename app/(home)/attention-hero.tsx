@@ -53,7 +53,7 @@ export default function AttentionHero() {
   return (
     <Wrapper className="relative flex min-h-[50vh] z-10 mx-auto items-center justify-center py-12">
       <div className="grid w-full grid-cols-1 md:grid-cols-5 rounded-xl overflow-hidden lg:max-w-7xl xl:max-w-7xl">
-        <Left className="bg-brand2-base1 min-h-[50dvh] md:col-span-3 aspect-auto py-24 md:py-8">
+        <Left className="bg-brand2-base1 min-h-[50dvh] md:col-span-3 aspect-auto py-24 md:py-8 lg:py-16">
           <div className="flex flex-col items-start justify-center w-3/4 h-full slide-center">
             <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
               {textContent.pretitle}
@@ -106,7 +106,6 @@ export default function AttentionHero() {
             style={{ objectFit: "cover" }}
             className="absolute inset-0 z-20 bg-blue-950 saturate-75"
           />
-          
         </div>
       </div>
     </Wrapper>
