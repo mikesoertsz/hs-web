@@ -60,13 +60,12 @@ export const seed_page = {
       {
         question: "Is my investment guaranteed?",
         answer:
-          "While all investments carry some level of risk, we are dedicated to meeting repayment terms promptly and ensuring the security of your investment.",
+          "While all investments carry some level of risk, we are dedicated to meeting repayment terms promptly and ensuring the security of your investment. The funds will be used for further fundraising, and as soon as minimums are hit, your seed principle will be paid back first.",
         value: "5",
       },
       {
         question: "Can I convert my investment into a discounted rate ticket?",
-        answer:
-          "Yes, you have the option to convert your investment into a discounted rate ticket in the overall fund, offering an 8% guaranteed yield and a projected 10% yield at the end of the 6-year closed fund term.",
+        answer: `Yes, you have the option to convert your investment into a discounted rate ticket in the overall fund, offering an 8% guaranteed yield and a projected 10% yield at the end of the 6-year closed fund term ending in ${new Date().getFullYear() + 6}.`,
         value: "6",
       },
     ],

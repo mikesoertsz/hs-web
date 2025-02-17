@@ -1,24 +1,23 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useForm, useWatch } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
-  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import "react-international-phone/style.css";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { Copy, Share2 } from "react-feather";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
 import Confetti from "react-dom-confetti";
+import { Copy, Share2 } from "react-feather";
+import { useForm, useWatch } from "react-hook-form";
+import "react-international-phone/style.css";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required."),

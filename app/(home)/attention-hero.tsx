@@ -1,5 +1,8 @@
 "use client";
 
+import HeroSlider from "@/components/hero-slider";
+import HeroStatusBar from "@/components/hero-status-bar";
+import { WordRotate } from "@/components/magicui/word-rotate";
 import { Left, Wrapper } from "@/lib/atoms";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -26,6 +29,11 @@ export default function AttentionHero() {
       subtitle: "Guaranteed",
     },
     {
+      title: "Net Yield",
+      value: "11.75%",
+      subtitle: "Projected",
+    },
+    {
       title: "Fund Status",
       value: "Pre-Raise",
       subtitle: "Register early interest",
@@ -37,15 +45,15 @@ export default function AttentionHero() {
     mainTitle: "Earn 8% yield from a fleet of charter yachts.",
     description:
       "Earn from a growing industry, without the high entry costs and risk.",
-    statusTitle: "2024 status",
+    statusTitle: "2025 status",
     buttonText: "Register Interest Now",
     investmentRange: "Accepting €100,000 - €1,000,000 investments",
   };
 
   return (
     <Wrapper className="relative flex min-h-[50vh] z-10 mx-auto items-center justify-center py-12">
-      <div className="grid w-full grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden xl:max-w-7xl">
-        <Left className="bg-brand2-base1 min-h-[50dvh] md:aspect-square aspect-auto py-24 md:py-8">
+      <div className="grid w-full grid-cols-1 md:grid-cols-5 rounded-xl overflow-hidden lg:max-w-7xl xl:max-w-7xl">
+        <Left className="bg-brand2-base1 min-h-[50dvh] md:col-span-3 aspect-auto py-24 md:py-8">
           <div className="flex flex-col items-start justify-center w-3/4 h-full slide-center">
             <h4 className="mb-3 text-sm tracking-wide text-brand-g1">
               {textContent.pretitle}
@@ -65,7 +73,7 @@ export default function AttentionHero() {
                   <p className="text-[9px] uppercase font-bold tracking-[0.3em] text-brand-g1">
                     {item.title}
                   </p>
-                  <h3 className="h-8 mt-2 text-2xl font-light text-white">
+                  <h3 className="h-8 mt-2 text-xl font-light text-white">
                     {item.value}
                   </h3>
                   <p className="pt-1 text-xs text-left text-gray-400">
@@ -74,39 +82,7 @@ export default function AttentionHero() {
                 </li>
               ))}
               <li className="md:flex-col items-start justify-start">
-                <p className="text-[9px] uppercase font-bold tracking-[0.3em] text-brand-g1">
-                  {textContent.statusTitle}
-                </p>
-                <div className="flex h-10 w-[200px] items-center justify-start">
-                  <div className="w-[80%] h-4 mt-3 bg-brand2-base2 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-brand2-g3"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${fundsRaisedPercentage}%` }}
-                      transition={{ duration: 1 }}
-                    />
-                  </div>
-                  {Loading && (
-                    <div className="flex items-center justify-start mt-3 ml-1">
-                      <CgSpinner
-                        className="text-slate-500 animate-spin"
-                        size={18}
-                      />
-                    </div>
-                  )}
-                </div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={!Loading ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.5 }}
-                >
-                  <p className="pt-[4px] text-xs text-left text-gray-400">
-                    <span className="font-medium text-brand-g1">
-                      {fundsRaisedPercentage}%
-                    </span>{" "}
-                    pre-subscribed
-                  </p>
-                </motion.div>
+                <HeroStatusBar />
               </li>
             </ul>
             <div className="flex flex-col items-center justify-between gap-2 mt-12">
@@ -122,14 +98,15 @@ export default function AttentionHero() {
             </div>
           </div>
         </Left>
-        <div className="relative z-10 min-h-[50dvh] md:flex">
+        <div className="z-10 min-h-[50dvh] md:flex relative overflow-hidden col-span-2">
           <Image
             src="/img/hero/wheelhero.png"
             alt="hero"
             fill
-            style={{ objectFit: "cover", objectPosition: "70%" }}
+            style={{ objectFit: "cover" }}
             className="absolute inset-0 z-20 bg-blue-950 saturate-75"
           />
+          
         </div>
       </div>
     </Wrapper>

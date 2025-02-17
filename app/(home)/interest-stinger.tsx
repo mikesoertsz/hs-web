@@ -1,5 +1,4 @@
 import { InnerWrap, Wrapper } from "@/lib/atoms";
-import CTAButtonsBasic from "../(shared)/CTAButtonsBasic";
 
 export function InterestStinger() {
   const stinger = {
@@ -21,7 +20,7 @@ export function InterestStinger() {
         <h1 className="text-5xl leading-1 px-3 lg:text-7xl font-medium font-title tracking-tight my-3 text-center balanced max-w-5xl lg:leading-[1.2]">
           {stinger.title}
         </h1>
-        <CTAButtonsBasic variant="secondary" theme="dark" />
+        {/* <CTAButtonsBasic variant="secondary" theme="dark" /> */}
       </InnerWrap>
     </Wrapper>
   );

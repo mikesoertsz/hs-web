@@ -1,17 +1,21 @@
 import { TitleBlock } from "@/components/ui/titleblock";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
 import Image from "next/image";
-import { AiOutlineDashboard } from "react-icons/ai";
-import { IoBoatOutline } from "react-icons/io5";
-import { PiClockClockwise, PiPiggyBank, PiShieldLight } from "react-icons/pi";
-import { TiChartPieOutline } from "react-icons/ti";
+import {
+  ShieldCheck,
+  Clock,
+  PiggyBank,
+  Shield,
+  PieChart,
+  Vault,
+} from "lucide-react";
 
 type Props = {};
 
 export function InterestBenefits({}: Props) {
   const benefits = [
     {
-      icon: <PiPiggyBank size={25} />,
+      icon: <PiggyBank size={22} />,
       title: (
         <span>
           <strong>Guaranteed Yield</strong>: Receive guaranteed return from your
@@ -20,7 +24,7 @@ export function InterestBenefits({}: Props) {
       ),
     },
     {
-      icon: <PiShieldLight size={25} />,
+      icon: <Shield size={22} />,
       title: (
         <span>
           <strong>Low Risk</strong>: Funds are invested into cashflowing, hard
@@ -29,7 +33,7 @@ export function InterestBenefits({}: Props) {
       ),
     },
     {
-      icon: <IoBoatOutline size={25} />,
+      icon: <Vault size={22} />,
       title: (
         <span>
           <strong>Asset Backed</strong>: Invest in tangible assets that offer
@@ -38,7 +42,7 @@ export function InterestBenefits({}: Props) {
       ),
     },
     {
-      icon: <PiClockClockwise size={25} />,
+      icon: <Clock size={22} />,
       title: (
         <span>
           <strong>Quarterly Payouts</strong>: Enjoy consistent returns with
@@ -47,7 +51,7 @@ export function InterestBenefits({}: Props) {
       ),
     },
     {
-      icon: <AiOutlineDashboard size={25} />,
+      icon: <ShieldCheck size={22} />,
       title: (
         <span>
           <strong>Transparent</strong>: Track the performance of your assets in
@@ -56,7 +60,7 @@ export function InterestBenefits({}: Props) {
       ),
     },
     {
-      icon: <TiChartPieOutline size={25} />,
+      icon: <PieChart size={22} />,
       title: (
         <span>
           <strong>Inelastic demand</strong>: Demand for luxury charters has

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useStore } from "@/lib/store"; // Import the store
 import Link from "next/link";
+import { WordRotate } from "@/components/magicui/word-rotate";
 
 type Props = {};
 
@@ -25,6 +26,10 @@ const navigation: NavigationItem[] = [
     title: "Earnings",
     href: "/#earnings",
   },
+  // {
+  //   title: "Articles",
+  //   href: "/blog",
+  // },
 ];
 
 export default function Nav({}: Props) {
@@ -43,6 +48,14 @@ export default function Nav({}: Props) {
               className=""
             />
           </Link>
+        </div>
+        <div className="hidden text-gray-700 items-center justify-start text-xs px-3">
+          Share the{" "}
+          <WordRotate
+            className="text-gray-900 text-xs ml-1"
+            words={["helm", "profits", "fleet", "security"]}
+          />
+          .
         </div>
       </div>
       <div className="hidden text-xs font-medium gap-9 md:flex"></div>

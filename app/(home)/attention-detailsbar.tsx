@@ -64,8 +64,8 @@ export function AttentionDetailsBar() {
     },
   ];
   return (
-    <Wrapper className="py-4 bg-white">
-      <InnerWrap className="bg-slate-50 border border-slate-200 rounded-lg p-4">
+    <Wrapper className="py-4 pb-12 ">
+      <InnerWrap className="bg-white shadow-md border border-slate-200 rounded-lg p-4">
         <ul className="grid w-full grid-cols-2 gap-4 md:grid-cols-5">
           {details.map((item, index) => (
             <li
