@@ -1,4 +1,5 @@
 "use client";
+import { supabase } from "@/app/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -56,7 +57,8 @@ export const RegisterForm = () => {
   const onSubmit = async (data: any) => {
     setLoading(true);
     try {
-      const response = await fetch(
+      // Submit to webhook
+      const webhookResponse = await fetch(
         "https://hook.eu2.make.com/2f8wfyklrsm88mxrf348rsqb6lgjhdk2",
         {
           method: "POST",
@@ -67,8 +69,27 @@ export const RegisterForm = () => {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Load failed");
+      if (!webhookResponse.ok) {
+        throw new Error("Webhook submission failed");
+      }
+
+      // Submit to Supabase
+      const { error: supabaseError } = await supabase
+        .from("registrations")
+        .insert([
+          {
+            full_name: data.name,
+            email: data.email,
+            location: data.location,
+            accredited_investor: data.accredited_investor || false,
+            city: data.location.split(",")[0]?.trim() || null,
+            country: data.location.split(",")[1]?.trim() || null,
+          },
+        ]);
+
+      if (supabaseError) {
+        console.error("Supabase error:", supabaseError);
+        throw new Error("Database submission failed");
       }
 
       toast.success(
