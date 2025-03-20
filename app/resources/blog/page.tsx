@@ -1,17 +1,25 @@
+import { Metadata } from "next";
+import { getAllArticles } from "@/app/lib/articles";
 import BlogHero from "./blog-hero";
-import BlogHomeAllArticles from "./blog-home-allarticles";
 import BlogHomePopular from "./blog-home-popular";
-import BlogHomeRecent from "./blog-home-recent";
+import BlogArticleSlider from "./blog-article-slider";
+import BlogHomeAllArticles from "./blog-home-allarticles";
+import BlogRelatedArticles from "./blog-related-articles";
 
-type Props = {};
+export const metadata: Metadata = {
+  title: "Blog | HelmShare Yachts",
+  description: "Read the latest articles about yachting and yacht investments.",
+};
 
-export default function BlogHome({}: Props) {
+export default async function BlogPage() {
+  const articles = await getAllArticles();
+
   return (
-    <main className="flex flex-col items-center justify-center mx-auto bg-slate-50">
+    <div className="container mx-auto px-4 py-8">
       <BlogHero />
-      <BlogHomePopular />
-      <BlogHomeRecent />
-      <BlogHomeAllArticles />
-    </main>
+      {/* <BlogHomePopular articles={articles} /> */}
+      <BlogArticleSlider articles={articles} />
+      <BlogHomeAllArticles articles={articles} />
+    </div>
   );
 }

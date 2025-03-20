@@ -1,5 +1,14 @@
 import { homepage } from "@/public/content/en";
+import FAQ from "../(shared)/FAQ";
+import ImageWide from "../(shared)/ImageWide";
+import ActionCTA from "./action-cta";
+import { AttentionDetailsBar } from "./attention-detailsbar";
 import AttentionHero from "./attention-hero";
+import { DesireSeychelles } from "./desire-seychelles";
+import { DesireInvestmentSpecifics } from "./desire-specifics";
+import { DesireWhoFor } from "./desire-whofor";
+import Disclaimer from "./Disclaimer";
+import EarningsCalculator from "./earnings-calculator";
 import { InterestAssetDistribution } from "./interest-assetdistribution";
 import { InterestBenefits } from "./interest-benefits";
 import { InterestHowGuaranteed } from "./interest-howguaranteed";
@@ -7,18 +16,14 @@ import { InterestHowItWorks } from "./interest-howitworks";
 import { InterestFundLeadership } from "./interest-leadership";
 import { InterestMarket } from "./interest-market";
 import { InterestPremise } from "./interest-premise";
+import { InterestStinger } from "./interest-stinger";
 import { InterestStrategy } from "./interest-strategy";
 import { InterestCorporateStructure } from "./interest-structure";
-import { AttentionDetailsBar } from "./attention-detailsbar";
-import { InterestStinger } from "./interest-stinger";
-import { DesireInvestmentSpecifics } from "./desire-specifics";
-import Disclaimer from "./Disclaimer";
-import EarningsCalculator from "./earnings-calculator";
-import ActionCTA from "./action-cta";
-import FAQ from "../(shared)/FAQ";
-import ImageWide from "../(shared)/ImageWide";
-import { DesireSeychelles } from "./desire-seychelles";
-import { DesireWhoFor } from "./desire-whofor";
+
+export const metadata = {
+  title: "HelmShare - Invest in Luxury Yachts",
+  description: "Earn guaranteed returns through fractional yacht ownership",
+};
 
 export default function Home() {
   return (

@@ -1,106 +1,55 @@
-import { InnerWrap, Wrapper } from "@/lib/atoms";
+"use client";
+
+import { Card } from "@/components/ui/card";
+import { Article } from "@/app/lib/articles";
 import Image from "next/image";
 import Link from "next/link";
 
-type Article = {
-  author: string;
-  title: string;
-  description: string;
-  date: string;
-  views: number;
-  comments: number;
-  image: string;
-  category: string;
-};
+interface BlogHomePopularProps {
+  articles: Article[];
+}
 
-const articles: Article[] = [
-  {
-    author: "John Doe",
-    title: "The Rise of Fractional Yacht Ownership",
-    description:
-      "Exploring the benefits and growth of fractional yacht ownership.",
-    date: "Oct 15",
-    views: 1200,
-    comments: 45,
-    image: "/img/hero/hero2.jpg",
-    category: "Ownership",
-  },
-  {
-    author: "Jane Smith",
-    title: "How the Yacht Industry is Evolving",
-    description:
-      "A look into the latest trends and changes in the yacht industry.",
-    date: "Nov 10",
-    views: 950,
-    comments: 30,
-    image: "/img/hero/hero1.jpg",
-    category: "Industry",
-  },
-  {
-    author: "Alice Johnson",
-    title: "Investing in Yachts: What You Need to Know",
-    description: "Key insights for potential investors in the yacht market.",
-    date: "Sep 25",
-    views: 800,
-    comments: 20,
-    image: "/img/hero/hero5.jpg",
-    category: "Investment",
-  },
-  {
-    author: "Bob Brown",
-    title: "The Future of Yacht Ownership",
-    description:
-      "Predictions and expectations for the future of yacht ownership.",
-    date: "Dec 5",
-    views: 1100,
-    comments: 50,
-    image: "/img/hero/hero8.jpg",
-    category: "Future",
-  },
-];
+export default function BlogHomePopular({ articles }: BlogHomePopularProps) {
+  // Take the first 3 articles as popular articles
+  const popularArticles = articles.slice(0, 3);
 
-export default function BlogHomePopular() {
   return (
-    <Wrapper className="py-[5dvh]">
-      <InnerWrap className="max-w-4xl">
-        <h2 className="mb-2 tracking-widest font-medium text-xs uppercase w-full text-left">
-          Popular ARTICLEs
-        </h2>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 w-full">
-          {articles.map((article, index) => (
-            <li
-              key={index}
-              className="flex flex-col p-6 w-full h-[450px] hover:-translate-y-0.5 grow bg-white group hover:shadow-md transition duration-200 ease-in-out transform hover:z-20 z-10 border border-gray-200"
+    <section className="py-16">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-bold mb-8">Popular Articles</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {popularArticles.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/resources/blog/${article.slug}`}
+              className="group"
             >
-              <Link href="#" className="flex flex-col justify-start h-full">
-                <div className="flex w-full h-1/3 overflow-hidden relative rounded-md">
+              <Card className="overflow-hidden">
+                <div className="aspect-[4/3] relative">
                   <Image
                     src={article.image}
                     alt={article.title}
                     fill
-                    className="absolute inset-0 aspect-square group-hover:scale-105 transition duration-200 ease-in-out z-10"
-                    style={{ objectFit: "cover" }}
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <span className="text-[9px] font-semibold uppercase tracking-widest text-gray-700 bg-amber-100 rounded-full rounded-l-none px-3 py-1 absolute top-2 left-0 z-20 border border-amber-200">
-                    {article.category}
-                  </span>
                 </div>
-                <div className="flex flex-col items-start justify-between h-2/3">
-                  <div className="pt-4">
-                    <h3 className="text-3xl font-light mt-6 tracking-tighter line-clamp-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600 mt-2">{article.description}</p>
-                  </div>
-                  <p className="text-xs text-gray-400 mt-3">
-                    {article.date} · {article.views} views
+                <div className="p-4">
+                  <h3 className="font-semibold mb-2">{article.title}</h3>
+                  <p className="text-sm text-gray-600 mb-2">
+                    {article.description}
                   </p>
+                  <p className="text-sm text-gray-500">{article.date}</p>
+                  {article.readingTime && (
+                    <p className="text-sm text-gray-400">
+                      {article.readingTime}
+                    </p>
+                  )}
                 </div>
-              </Link>
-            </li>
+              </Card>
+            </Link>
           ))}
-        </ul>
-      </InnerWrap>
-    </Wrapper>
+        </div>
+      </div>
+    </section>
   );
 }

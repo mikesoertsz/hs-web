@@ -26,10 +26,10 @@ const navigation: NavigationItem[] = [
     title: "Earnings",
     href: "/#earnings",
   },
-  // {
-  //   title: "Articles",
-  //   href: "/blog",
-  // },
+  {
+    title: "Articles",
+    href: "/resources/blog",
+  },
 ];
 
 export default function Nav({}: Props) {
