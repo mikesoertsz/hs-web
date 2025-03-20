@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/app/(shared)/Breadcrumbs";
-import React from "react";
+import { Suspense } from "react";
 import tw from "tailwind-styled-components";
 
 type legal = {
@@ -15,52 +15,54 @@ const Body = tw.div`mt-1 max-w-prose text-left text-xs text-gray-800 leading-rel
 const ColWrapper = tw.div`flex flex-row w-full mx-auto gap-10`;
 const LeftNav = tw.div`hidden sticky top-0 lg:block lg:col-span-3 xl:col-span-2`;
 
-export default function page() {
+export default function Page() {
   return (
-    <section className="flex flex-col w-full mx-auto">
-      <Breadcrumbs content={breadcrumbs} />
-      <Wrapper>
-        <ColWrapper>
-          <div>
-            <Heading>Legal</Heading>
-            <br />
-            <Preheading>Updated date: August 20th 2023</Preheading>
-            <Body>
-              This privacy statement provides an overview of how Drifter Apps
-              Unipessoal Limited (VAT:PT515983128), hereinafter DRIFTER,
-              processes personal information and how we take your privacy into
-              account.
-            </Body>
-            <SubHeading>About Investment.Yachts</SubHeading>
-            <Body className="mb-8">
-              <span className="font-semibold">
-                The owner of this website is:
-              </span>
+    <Suspense fallback={<div>Loading...</div>}>
+      <section className="flex flex-col w-full mx-auto">
+        <Breadcrumbs content={breadcrumbs} />
+        <Wrapper>
+          <ColWrapper>
+            <div>
+              <Heading>Terms of Service</Heading>
               <br />
-              Drifter Apps, Uni.Ltd <br />R Philip Folque, 2 , 2, <br />
-              Lisbon 1050-113 | Lisboa, Portugal
-              <br />
-              VAT No.: PT515983128
-              <br />
-              Legal nature: Sociedade Unipessoal por Quotas
-              <br />
-              <br />
-              mikeinvestment.yachts
-            </Body>
-            {legal.map((policy, index) => (
-              <div key={index}>
-                <SubHeading>{policy.title}</SubHeading>
-                <Body>{policy.content}</Body>
-              </div>
-            ))}
-          </div>
-        </ColWrapper>
-      </Wrapper>
-    </section>
+              <Preheading>Updated date: Aug 24th 2023</Preheading>
+              <Body>
+                These Terms of Service (&ldquo;Terms&rdquo;) govern your access
+                to and use of Investment.Yachts.com (&ldquo;the Website&rdquo;),
+                operated by Drifter Apps Unipessoal Limited (VAT:PT515983128),
+                hereinafter DRIFTER.
+              </Body>
+              <SubHeading>About Drifter</SubHeading>
+              <Body className="mb-8">
+                <span className="font-semibold">
+                  The owner of this website is:
+                </span>
+                <br />
+                Drifter Apps, Uni.Ltd <br />R Philip Folque, 2 , 2, <br />
+                Lisbon 1050-113 | Lisboa, Portugal
+                <br />
+                VAT No.: PT515983128
+                <br />
+                Legal nature: Sociedade Unipessoal por Quotas
+                <br />
+                <br />
+                mikeinvestment.yachts
+              </Body>
+              {termsOfService.map((term, index) => (
+                <div key={index}>
+                  <SubHeading>{term.title}</SubHeading>
+                  <Body>{term.content}</Body>
+                </div>
+              ))}
+            </div>
+          </ColWrapper>
+        </Wrapper>
+      </section>
+    </Suspense>
   );
 }
 
-const legal = [
+const termsOfService = [
   {
     title: "Welcome and Acceptance",
     content:

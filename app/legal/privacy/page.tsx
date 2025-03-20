@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/app/(shared)/Breadcrumbs";
-import React from "react";
+import { Suspense } from "react";
 import tw from "tailwind-styled-components";
 import { Metadata } from "next";
 
@@ -19,41 +19,43 @@ const Heading = tw.h1`text-3xl font-extrabold text-gray-900 sm:text-5xl sm:track
 const SubHeading = tw.h2`text-md font-medium text-gray-900 pt-3`;
 const Body = tw.div`mt-1 max-w-prose text-left text-xs text-gray-800 leading-relaxed tracking-wide`;
 
-export default function page() {
+export default function Page() {
   return (
-    <section className="flex flex-col w-full mx-auto">
-      <Breadcrumbs content={breadcrumbs} />
-      <Wrapper>
-        <Heading>Privacy Policy</Heading>
-        <br />
-        <Preheading>Updated date: July 24th 2023</Preheading>
-        <Body>
-          This privacy statement provides an overview of how Drifter Apps
-          Unipessoal Limited (VAT:PT515983128), hereinafter DRIFTER, processes
-          personal information and how we take your privacy into account.
-        </Body>
-        <SubHeading>About Investment.Yachts</SubHeading>
-        <Body className="mb-8">
-          <span className="font-semibold">The owner of this website is:</span>
+    <Suspense fallback={<div>Loading...</div>}>
+      <section className="flex flex-col w-full mx-auto">
+        <Breadcrumbs content={breadcrumbs} />
+        <Wrapper>
+          <Heading>Privacy Policy</Heading>
           <br />
-          Drifter Apps, Uni.Ltd <br />R Philip Folque, 2 , 2, <br />
-          Lisbon 1050-113 | Lisboa, Portugal
-          <br />
-          VAT No.: PT515983128
-          <br />
-          Legal nature: Sociedade Unipessoal por Quotas
-          <br />
-          <br />
-          mikeinvestment.yachts
-        </Body>
-        {privacyPolicy.map((policy, index) => (
-          <div key={index}>
-            <SubHeading>{policy.title}</SubHeading>
-            <Body>{policy.content}</Body>
-          </div>
-        ))}
-      </Wrapper>
-    </section>
+          <Preheading>Updated date: Aug 24th 2023</Preheading>
+          <Body>
+            This privacy statement provides an overview of how Drifter Apps
+            Unipessoal Limited (VAT:PT515983128), hereinafter DRIFTER, processes
+            personal information and how we take your privacy into account.
+          </Body>
+          <SubHeading>About Drifter</SubHeading>
+          <Body className="mb-8">
+            <span className="font-semibold">The owner of this website is:</span>
+            <br />
+            Drifter Apps, Uni.Ltd <br />R Philip Folque, 2 , 2, <br />
+            Lisbon 1050-113 | Lisboa, Portugal
+            <br />
+            VAT No.: PT515983128
+            <br />
+            Legal nature: Sociedade Unipessoal por Quotas
+            <br />
+            <br />
+            mikeinvestment.yachts
+          </Body>
+          {privacyPolicy.map((policy, index) => (
+            <div key={index}>
+              <SubHeading>{policy.title}</SubHeading>
+              <Body>{policy.content}</Body>
+            </div>
+          ))}
+        </Wrapper>
+      </section>
+    </Suspense>
   );
 }
 

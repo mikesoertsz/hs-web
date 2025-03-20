@@ -51,7 +51,7 @@ export default function EarningsStatement({}: Props) {
 
   useEffect(() => {
     updateInvestmentDetails();
-  }, [investmentAmount]);
+  }, [investmentAmount, updateInvestmentDetails]);
 
   const { quarterlyPayout, annualPayout, endOfTermBonus, totalYieldOnCapital } =
     investmentDetails;

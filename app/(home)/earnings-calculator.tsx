@@ -73,7 +73,7 @@ export default function EarningsCalculator({}: Props) {
 
   useEffect(() => {
     updateInvestmentDetails();
-  }, [localInvestmentAmount]);
+  }, [localInvestmentAmount, updateInvestmentDetails]);
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
     setIsSubmitting(true);

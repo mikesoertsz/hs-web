@@ -1,6 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import dynamic from "next/dynamic";
+import {
+  StatusIcon,
+  NetworkIcon,
+  EventIcon,
+  CheckIcon,
+} from "./components/icons";
+
+// Dynamically import interactive components
+const MarketChart = dynamic(() => import("./components/MarketChart"), {
+  ssr: false,
+});
+const ROICalculator = dynamic(() => import("./components/ROICalculator"), {
+  ssr: false,
+});
+const RiskMatrix = dynamic(() => import("./components/RiskMatrix"), {
+  ssr: false,
+});
 
 interface ArticleHeroProps {
   title: string;
@@ -62,7 +80,13 @@ export const components = {
   ValueFactors: ({ children }: { children: React.ReactNode }) => (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">{children}</div>
   ),
-  Factor: ({ icon, children }: { icon: string; children: React.ReactNode }) => (
+  Factor: ({
+    icon,
+    children,
+  }: {
+    icon: React.ReactNode;
+    children: React.ReactNode;
+  }) => (
     <div className="p-4 bg-gray-50 rounded-lg text-center">
       <div className="mb-2">{icon}</div>
       {children}
@@ -105,6 +129,15 @@ export const components = {
       <Button className="mt-4">{children}</Button>
     </Link>
   ),
+  // Interactive components
+  MarketChart,
+  ROICalculator,
+  RiskMatrix,
+  // Icons
+  StatusIcon,
+  NetworkIcon,
+  EventIcon,
+  CheckIcon,
   // Basic HTML elements
   h1: (props: any) => <h1 className="text-4xl font-bold mb-6" {...props} />,
   h2: (props: any) => <h2 className="text-3xl font-bold mb-4" {...props} />,
