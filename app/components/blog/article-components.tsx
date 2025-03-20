@@ -1,7 +1,6 @@
-import Image from "next/image";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { Check, Star, Users, Calendar } from "lucide-react";
+import { Calendar, Check, Star, Users } from "lucide-react";
+import Image from "next/image";
 
 export function ArticleHero({
   title,

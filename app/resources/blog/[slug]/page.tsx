@@ -1,4 +1,3 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { Metadata } from "next";
 import {
   getArticleBySlug,
@@ -7,6 +6,8 @@ import {
 } from "@/app/lib/articles";
 import { notFound } from "next/navigation";
 import BlogRelatedArticles from "../blog-related-articles";
+import { components } from "../mdx-components";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 
 interface PageProps {
@@ -73,12 +74,11 @@ export default async function ArticlePage({ params }: PageProps) {
               alt={article.title}
               fill
               className="object-cover"
-              priority
             />
           </div>
         )}
         <div className="prose-img:rounded-lg prose-a:text-blue-600">
-          <MDXRemote source={article.content} />
+          <MDXRemote source={article.content} components={components as any} />
         </div>
       </article>
       <div className="w-full max-w-7xl mx-auto">

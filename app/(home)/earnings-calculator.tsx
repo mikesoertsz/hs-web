@@ -1,203 +1,265 @@
 "use client";
-import { useState, useEffect } from "react";
-import { Slider } from "@/components/ui/slider";
+import React, { useState, useEffect, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Slider } from "@nextui-org/slider";
+import { PiSpinnerGapLight } from "react-icons/pi";
+import tw from "tailwind-styled-components";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { TitleBlock } from "@/components/ui/titleblock";
+import { useStore } from "@/lib/store";
 import { InnerWrap, Wrapper } from "@/lib/atoms";
-import { Calculator, ChevronRight } from "lucide-react";
 
-const rates = {
-  guaranteedAnnualReturnRate: 0.08,
-  projectedTargetReturnRate: 0.1175,
-  termYears: 6,
-};
+const FormSchema = z.object({
+  investmentAmount: z
+    .number()
+    .min(100000, { message: "Minimum investment is €100,000." })
+    .max(1000000, { message: "Maximum investment is €1,000,000." }),
+});
 
-export default function EarningsCalculator() {
-  const [investmentAmount, setInvestmentAmount] = useState(100000);
-  const [calculatedReturns, setCalculatedReturns] = useState(() =>
-    calculateReturns(100000, 5)
-  );
+type Props = {};
 
-  function calculateReturns(amount: number, years: number) {
+export default function EarningsCalculator({}: Props) {
+  const guaranteedAnnualReturnRate = 0.08;
+  const projectedTargetReturnRate = 0.113;
+  const termYears = 6;
+
+  const [localInvestmentAmount, setLocalInvestmentAmount] = useState(100000);
+  const setInvestmentAmount = useStore((state) => state.setInvestmentAmount);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const sliderRef = useRef(null);
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      investmentAmount: localInvestmentAmount,
+    },
+  });
+
+  const calculateInvestmentDetails = (amount: number) => {
     const adjustedAmount = Math.round(amount / 25000) * 25000;
-    const annualPayout = adjustedAmount * rates.guaranteedAnnualReturnRate;
-    const endOfTermBonus =
+    const quarterly = (adjustedAmount * guaranteedAnnualReturnRate) / 4;
+    const annual = adjustedAmount * guaranteedAnnualReturnRate;
+    const bonus =
       adjustedAmount *
-      (rates.projectedTargetReturnRate - rates.guaranteedAnnualReturnRate) *
-      rates.termYears;
-    const totalYieldOnCapital = annualPayout * rates.termYears + endOfTermBonus;
-    const guaranteedYieldOnCapital = annualPayout * rates.termYears;
-    const projectedValue =
-      adjustedAmount * Math.pow(1 + rates.guaranteedAnnualReturnRate, years);
-    const totalEarnings = projectedValue - adjustedAmount;
+      (projectedTargetReturnRate - guaranteedAnnualReturnRate) *
+      termYears;
+    const totalYield = annual * termYears + bonus;
 
     return {
-      formattedInvestmentAmount: `€${Math.round(
-        adjustedAmount
-      ).toLocaleString()}`,
-      formattedAnnualPayout: `€${Math.round(annualPayout).toLocaleString()}`,
-      formattedQuarterlyPayout: `€${Math.round(
-        annualPayout / 4
-      ).toLocaleString()}`,
-      formattedEndOfTermBonus: `€${Math.round(
-        endOfTermBonus
-      ).toLocaleString()}`,
-      formattedTotalYieldOnCapital: `€${Math.round(
-        totalYieldOnCapital
-      ).toLocaleString()}`,
-      formattedGuaranteedYieldOnCapital: `€${Math.round(
-        guaranteedYieldOnCapital
-      ).toLocaleString()}`,
-      totalEarnings: `€${Math.round(totalEarnings).toLocaleString()}`,
-      projectedValue: `€${Math.round(projectedValue).toLocaleString()}`,
-      adjustedAmount,
-      annualPayout,
-      endOfTermBonus,
-      totalYieldOnCapital,
-      guaranteedYieldOnCapital,
+      quarterlyPayout: quarterly,
+      annualPayout: annual,
+      endOfTermBonus: bonus,
+      totalYieldOnCapital: totalYield,
     };
-  }
+  };
+
+  const [investmentDetails, setInvestmentDetails] = useState(() =>
+    calculateInvestmentDetails(localInvestmentAmount)
+  );
+
+  const updateInvestmentDetails = () => {
+    setInvestmentDetails(calculateInvestmentDetails(localInvestmentAmount));
+  };
 
   useEffect(() => {
-    setCalculatedReturns(calculateReturns(investmentAmount, 5));
-  }, [investmentAmount]);
+    updateInvestmentDetails();
+  }, [localInvestmentAmount]);
 
-  const payoutData = [
-    {
-      label: "Quarterly Payout",
-      value: calculatedReturns.formattedQuarterlyPayout,
-      percentage: "2%",
-    },
-    {
-      label: "Annual Payout",
-      value: calculatedReturns.formattedAnnualPayout,
-      percentage: `${rates.guaranteedAnnualReturnRate * 100}%`,
-    },
-    {
-      label: "Target Annualized Yield",
-      value: calculatedReturns.formattedEndOfTermBonus,
-      percentage: `${rates.projectedTargetReturnRate * 100}%`,
-    },
-  ];
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setLocalInvestmentAmount(data.investmentAmount);
+      setInvestmentAmount(data.investmentAmount);
+      toast.success(`Investment amount set to: ${data.investmentAmount}`);
+      setIsSubmitting(false);
+    }, 1000);
+  };
 
-  const yieldData = [
-    {
-      label: "Guaranteed Yield-on-Capital",
-      value: calculatedReturns.formattedGuaranteedYieldOnCapital,
-      percentage: `${(
-        rates.guaranteedAnnualReturnRate *
-        100 *
-        rates.termYears
-      ).toFixed(2)}%`,
-    },
-    {
-      label: "Projected Net Yield-on-Capital",
-      value: calculatedReturns.formattedTotalYieldOnCapital,
-      percentage: `${(
-        rates.projectedTargetReturnRate *
-        100 *
-        rates.termYears
-      ).toFixed(2)}%`,
-    },
-  ];
+  const { quarterlyPayout, annualPayout, endOfTermBonus, totalYieldOnCapital } =
+    investmentDetails;
+
+  const Left = tw.div`flex flex-col items-center justify-center gap-2`;
+  const Right = tw.div`flex flex-col items-center justify-center gap-2 bg-white rounded-lg border border-slate-300 shadow-md`;
 
   return (
-    <div className="bg-bahama-blue-50 py-20" id="earnings">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-bahama-blue-900 mb-4">
-              Investment Calculator
-            </h2>
-            <p className="text-bahama-blue-600">
-              Calculate your potential returns from yacht investment
-            </p>
+    <Wrapper className="pt-[5vh] bg-gray-900" id="earnings">
+      <InnerWrap className="w-full">
+        <div className="flex flex-col w-full p-8 bg-white border rounded-xl border-slate-300">
+          <div className="flex flex-col items-center justify-center text-center">
+            <TitleBlock
+              preheading="How much you earn"
+              heading="Earnings Projection"
+              subheading="Use the calculator below to see your guaranteed and projected earnings."
+              theme="light"
+              orientation="center"
+            />
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 p-4 rounded-lg bg-slate-100 mt-4">
+            <Left>
+              <h3 className="text-lg font-medium text-gray-700 ">
+                Set your investment amount
+              </h3>
+              <p className="text-sm text-brand-p0">
+                Enter an amount to see your investment return.
+              </p>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="w-2/3 space-y-6"
+                >
+                  <FormField
+                    control={form.control}
+                    name="investmentAmount"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <div className="flex flex-row items-center justify-between w-full gap-4 my-8">
+                            <Slider
+                              ref={sliderRef}
+                              step={25000}
+                              size="lg"
+                              classNames={{
+                                base: "max-w-md gap-3 bg-slate-300 rounded-full border border-slate-300 p-0 flex",
+                                track: "ml-1",
+                                filler: "bg-gray-900",
+                              }}
+                              renderThumb={(props) => (
+                                <div
+                                  {...props}
+                                  className="group p-1 top-1/2 bg-white border-black border-[2px] shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing subpixel-antialiased"
+                                >
+                                  <span className="transition-transform bg-gradient-to-br shadow-small from-secondary-100 to-secondary-500 rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80" />
+                                </div>
+                              )}
+                              maxValue={1000000}
+                              minValue={100000}
+                              defaultValue={localInvestmentAmount}
+                              value={field.value}
+                              onChange={(value) => field.onChange(value)}
+                              className=""
+                            />
+                            <input
+                              type="hidden"
+                              value={field.value}
+                              onChange={(e) =>
+                                field.onChange(Number(e.target.value))
+                              }
+                            />
+                            <div className="text-2xl font-semibold tracking-tight flex items-center justify-end text-right">
+                              {field.value.toLocaleString("en-EU", {
+                                style: "currency",
+                                currency: "EUR",
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0,
+                              })}
+                            </div>
+                          </div>
+                        </FormControl>
 
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-8 border-b border-bahama-blue-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-bahama-blue-100 rounded-lg">
-                  <Calculator className="w-5 h-5 text-bahama-blue-600" />
-                </div>
-                <h3 className="text-xl font-medium text-bahama-blue-900">
-                  Set your investment amount
-                </h3>
-              </div>
-
-              <div className="flex items-center gap-8">
-                <div className="flex-1">
-                  <Slider
-                    defaultValue={[100000]}
-                    min={100000}
-                    max={1000000}
-                    step={25000}
-                    onValueChange={(value) => {
-                      setInvestmentAmount(value[0]);
-                    }}
-                    className="w-full"
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
+                  <div className="flex flex-col w-full items-center justify-center">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="rounded-full px-4 mb-2 flex items-center justify-center min-w-[150px]"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <PiSpinnerGapLight
+                          className="animate-spin text-gray-100"
+                          size={20}
+                        />
+                      ) : (
+                        "Re-Calculate"
+                      )}
+                    </Button>
+                    <p className="flex opacity-60 w-full text-center items-center justify-center text-xs">
+                      Minimum investment €100,000
+                    </p>
+                  </div>
+                </form>
+              </Form>
+            </Left>
+            <Right>
+              <div className="p-6 flex w-full flex-col rounded-lg">
+                <h3 className="text-md text-brand-g1 mb-4">Annual Schedule</h3>
+                <div className="flex justify-between">
+                  <h3 className="font-medium text-md">
+                    Quarterly Payout
+                    <sup className="pl-1 text-green-600">2%</sup>
+                  </h3>
+                  <p className="text-right">
+                    €{Math.round(quarterlyPayout).toLocaleString()}
+                  </p>
                 </div>
-                <div className="w-36 text-right">
-                  <div className="text-2xl font-semibold text-bahama-blue-900">
-                    {calculatedReturns.formattedInvestmentAmount}
-                  </div>
-                  <div className="text-sm text-bahama-blue-500">
-                    Investment Amount
-                  </div>
+                <div className="flex justify-between mt-4">
+                  <h3 className="font-medium text-md">
+                    Annual Payout
+                    <sup className="pl-1 text-green-600">{`${
+                      guaranteedAnnualReturnRate * 100
+                    }%`}</sup>
+                  </h3>
+                  <p className="text-right">
+                    €{Math.round(annualPayout).toLocaleString()}
+                  </p>
+                </div>
+                <div className="flex justify-between py-1 mt-3">
+                  <p className="text-left">
+                    Target Annualized Yield
+                    <sup className="pl-1 text-green-600">
+                      {`${projectedTargetReturnRate * 100}%`}
+                    </sup>
+                  </p>
+                  <p className="text-right">
+                    €{Math.round(endOfTermBonus).toLocaleString()}
+                  </p>
                 </div>
               </div>
-            </div>
-
-            <div className="p-8">
-              <div className="grid gap-8 md:grid-cols-2">
-                <div className="space-y-6">
-                  <h4 className="text-lg font-medium text-bahama-blue-900">
-                    Annual Returns
-                  </h4>
-                  {payoutData.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-4 bg-bahama-blue-50 rounded-lg"
-                    >
-                      <div className="text-bahama-blue-700">{item.label}</div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-lg font-medium text-bahama-blue-900">
-                          {item.value}
-                        </span>
-                        <span className="text-sm text-bahama-blue-500">
-                          {item.percentage}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+              <div className="p-6 border rounded-lg flex w-full flex-col">
+                <h3 className="text-md text-brand-g1 mb-4">
+                  Cumulated End of Term Yields
+                </h3>
+                <div className="flex justify-between">
+                  <h3 className="text-lg font-semibold">
+                    Guaranteed{" "}
+                    <span className="font-normal">Yield-on-Capital</span>
+                  </h3>
+                  <p className="text-lg font-semibold text-right">
+                    €
+                    {Math.round(
+                      guaranteedAnnualReturnRate *
+                        localInvestmentAmount *
+                        termYears
+                    ).toLocaleString()}
+                  </p>
                 </div>
-
-                <div className="space-y-6">
-                  <h4 className="text-lg font-medium text-bahama-blue-900">
-                    Total Returns (6 Years)
-                  </h4>
-                  {yieldData.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-4 bg-bahama-blue-50 rounded-lg"
-                    >
-                      <div className="text-bahama-blue-700">{item.label}</div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-lg font-medium text-bahama-blue-900">
-                          {item.value}
-                        </span>
-                        <span className="text-sm text-bahama-blue-500">
-                          {item.percentage}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+                <div className="flex justify-between mt-4">
+                  <h3 className="text-lg font-semibold">
+                    Projected Net{" "}
+                    <span className="font-normal">Yield-on-Capital</span>
+                  </h3>
+                  <p className="text-lg font-semibold text-right">
+                    €{Math.round(totalYieldOnCapital).toLocaleString()}
+                  </p>
                 </div>
               </div>
-            </div>
+            </Right>
           </div>
         </div>
-      </div>
-    </div>
+      </InnerWrap>
+    </Wrapper>
   );
 }

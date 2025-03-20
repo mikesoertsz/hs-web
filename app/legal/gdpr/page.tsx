@@ -13,7 +13,7 @@ const Heading = tw.h1`text-3xl font-extrabold text-gray-900 sm:text-5xl sm:track
 const SubHeading = tw.h2`text-md font-medium text-gray-900 pt-3`;
 const Body = tw.div`mt-1 max-w-prose text-left text-xs text-gray-800 leading-relaxed tracking-wide`;
 
-export default function page() {
+export default function Page() {
   return (
     <section className="flex flex-col w-full mx-auto">
       <Breadcrumbs content={breadcrumbs} />
